@@ -1,9 +1,9 @@
-package com.turkcell.turkcellcrm.customerService.core.entities.utilities.exceptions.handlers;
+package com.turkcell.turkcellcrm.customerService.core.utilities.exceptions.handlers;
 
 
-import com.turkcell.turkcellcrm.customerService.core.entities.utilities.exceptions.problemDetails.BusinessProblemDetails;
-import com.turkcell.turkcellcrm.customerService.core.entities.utilities.exceptions.problemDetails.ValidationProblemDetails;
-import com.turkcell.turkcellcrm.customerService.core.entities.utilities.exceptions.types.BusinessException;
+import com.turkcell.turkcellcrm.customerService.core.utilities.exceptions.problemDetails.BusinessProblemDetails;
+import com.turkcell.turkcellcrm.customerService.core.utilities.exceptions.problemDetails.ValidationProblemDetails;
+import com.turkcell.turkcellcrm.customerService.core.utilities.exceptions.types.BusinessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

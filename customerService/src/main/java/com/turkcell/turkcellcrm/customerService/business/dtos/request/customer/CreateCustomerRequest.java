@@ -1,5 +1,6 @@
-package com.turkcell.turkcellcrm.customerService.business.dtos.request.Customer;
+package com.turkcell.turkcellcrm.customerService.business.dtos.request.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -7,12 +8,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateCustomerRequest {
-    @NotNull
-    private int id;
+public class CreateCustomerRequest {
     @NotNull
     @Size(min = 2,max = 30)
     private String firstName;
