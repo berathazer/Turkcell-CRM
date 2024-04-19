@@ -1,4 +1,4 @@
-package com.turkcell.turkcellcrm.customerService.core.entities.utilities.mapping;
+package com.turkcell.turkcellcrm.customerService.core.utilities.mapping;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
