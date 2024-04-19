@@ -44,7 +44,7 @@ public class ContactManager implements ContactService {
     @Override
     public GetByIdContactResponse getById(int id) {
         Optional<Contact> contact =this.contactRepository.findById(id);
-        return this.modelMapperService.forResponse().map(contact, GetByIdContactResponse.class);
+        return this.modelMapperService.forResponse().map(contact.get(), GetByIdContactResponse.class);
     }
 
     @Override

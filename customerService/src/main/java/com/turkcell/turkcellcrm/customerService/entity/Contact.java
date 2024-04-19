@@ -2,13 +2,12 @@ package com.turkcell.turkcellcrm.customerService.entity;
 
 import com.turkcell.turkcellcrm.customerService.core.entities.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "contacts")
 public class Contact extends BaseEntity {

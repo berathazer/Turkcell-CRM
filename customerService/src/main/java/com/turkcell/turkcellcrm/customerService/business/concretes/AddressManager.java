@@ -45,7 +45,7 @@ public class AddressManager implements AddressService {
     @Override
     public GetByIdAddressResponse getById(int id) {
         Optional<Address> address =this.addressRepository.findById(id);
-        return this.modelMapperService.forResponse().map(address, GetByIdAddressResponse.class);
+        return this.modelMapperService.forResponse().map(address.get(), GetByIdAddressResponse.class);
     }
 
     @Override

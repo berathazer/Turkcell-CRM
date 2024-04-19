@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,23 +15,23 @@ public class UpdateCustomerRequest {
     @NotNull
     private int id;
     @NotNull
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String firstName;
-    @Size(min = 2,max = 30)
+
     private String middleName;
     @NotNull
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String lastName;
     @NotNull
     private LocalDate birthDate;
     @NotNull
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String gender;
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String fatherName;
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String motherName;
     @NotNull
-    @Size(min = 11,max = 11, message = "Nationality ID must be 11.")
+    @Size(min = 11, max = 11, message = "Nationality ID must be 11.")
     private String nationalityNumber;
 }

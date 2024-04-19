@@ -1,6 +1,5 @@
 package com.turkcell.turkcellcrm.customerService.business.dtos.request.customer;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -14,23 +13,23 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class CreateCustomerRequest {
     @NotNull
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String firstName;
-    @Size(min = 2,max = 30)
+
     private String middleName;
     @NotNull
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String lastName;
     @NotNull
     private LocalDate birthDate;
     @NotNull
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String gender;
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String fatherName;
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String motherName;
     @NotNull
-    @Size(min = 11,max = 11, message = "Nationality ID must be 11.")
+    @Size(min = 11, max = 11, message = "Nationality ID must be 11.")
     private String nationalityNumber;
 }

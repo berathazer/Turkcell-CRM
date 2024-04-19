@@ -44,7 +44,7 @@ public class CustomerManager implements CustomerService {
     public GetByIdCustomerResponse getById(int id) {
         this.customerBusinessRules.isCustomerIdExist(id);
         Optional<Customer> customer =this.customerRepository.findById(id);
-        return this.modelMapperService.forResponse().map(customer, GetByIdCustomerResponse.class);
+        return this.modelMapperService.forResponse().map(customer.get(), GetByIdCustomerResponse.class);
     }
 
     @Override

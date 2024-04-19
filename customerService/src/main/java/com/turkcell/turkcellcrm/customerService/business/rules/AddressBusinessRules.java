@@ -2,6 +2,7 @@ package com.turkcell.turkcellcrm.customerService.business.rules;
 
 import com.turkcell.turkcellcrm.customerService.business.dtos.request.address.CreateAddressRequest;
 import com.turkcell.turkcellcrm.customerService.business.messages.AddressMessages;
+import com.turkcell.turkcellcrm.customerService.core.business.abstracts.MessageService;
 import com.turkcell.turkcellcrm.customerService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.turkcellcrm.customerService.dataAccess.AddressRepository;
 import com.turkcell.turkcellcrm.customerService.entity.Address;
@@ -14,11 +15,12 @@ import java.util.Optional;
 @Service
 public class AddressBusinessRules {
     private AddressRepository addressRepository;
+    private MessageService messageService;
 
     public void isCustomerExist(CreateAddressRequest createAddressRequest){
         Optional<Address> address =this.addressRepository.findByCustomerId(createAddressRequest.getCustomerId());
-        if (address.isEmpty()){
-            throw new BusinessException(AddressMessages.CUSTOMER_DOES_NOT_EXIST);
+        if (address.isPresent()){
+            throw new BusinessException(messageService.getMessage(AddressMessages.ADDRESS_CUSTOMER_DOES_NOT_EXIST));
         }
     }
 }
