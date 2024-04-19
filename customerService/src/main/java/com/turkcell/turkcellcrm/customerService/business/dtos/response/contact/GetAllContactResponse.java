@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class GetAllContactResponse {
+    private int id;
     private String email;
     private String homePhone;
     private String mobilePhone;
