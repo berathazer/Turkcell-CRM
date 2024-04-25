@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface AddressRepository extends JpaRepository<Address,Integer> {
     Optional<Address> findByCustomerId(int id);
+    Optional<Address> findAddressById(int id);
 }

@@ -1,10 +1,7 @@
 package com.turkcell.turkcellcrm.customerService.entity;
 
 import com.turkcell.turkcellcrm.customerService.core.entities.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @NoArgsConstructor
@@ -22,4 +19,8 @@ public class Address extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private AccountAddress accountAddress;
 }
