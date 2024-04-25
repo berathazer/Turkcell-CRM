@@ -12,6 +12,7 @@
         <module name="customerService" />
         <module name="gatewayService" />
         <module name="configServer" />
+        <module name="searchService" />
       </profile>
     </annotationProcessing>
   </component>
@@ -22,6 +23,7 @@
       <module name="discoveryServer" options="-parameters" />
       <module name="gatewayService" options="-parameters" />
       <module name="identityService" options="-parameters" />
+      <module name="searchService" options="-parameters" />
     </option>
   </component>
 </project>

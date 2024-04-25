@@ -12,10 +12,15 @@ server:
   port: 0
 
 spring:
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
   application:
     name: customerService
   datasource:
-    url: jdbc:postgresql://localhost:5432/CRMcustomerServiceDB
+    url: jdbc:postgresql://localhost:5432/CRMcustomerService
     username: postgres
     password: 12345
   jpa:

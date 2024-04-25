@@ -11,6 +11,8 @@ import com.turkcell.turkcellcrm.customerService.business.rules.IndividualCustome
 import com.turkcell.turkcellcrm.customerService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.turkcellcrm.customerService.dataAccess.IndividualCustomerRepository;
 import com.turkcell.turkcellcrm.customerService.entity.IndividualCustomer;
+import com.turkcell.turkcellcrm.customerService.kafka.entities.CreateCustomerEvent;
+import com.turkcell.turkcellcrm.customerService.kafka.producers.CustomerProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,11 +26,18 @@ public class IndividualCustomerManager implements IndividualCustomerService {
     private IndividualCustomerRepository individualCustomerRepository;
     private ModelMapperService modelMapperService;
     private IndividualCustomerBusinessRules individualCustomerBusinessRules;
+    private CustomerProducer customerProducer;
     @Override
     public CreatedIndividualCustomerResponse add(CreateIndividualCustomerRequest createIndividualCustomerRequest) {
         this.individualCustomerBusinessRules.nationalityNumberCanNotBeDuplicate(createIndividualCustomerRequest);
 
         IndividualCustomer individualCustomer = this.modelMapperService.forRequest().map(createIndividualCustomerRequest, IndividualCustomer.class);
+        // CreateCustomerEvent maple
+        CreateCustomerEvent createCustomerEvent = this.modelMapperService.
+                forResponse().map(createIndividualCustomerRequest,CreateCustomerEvent.class);
+        // customerProducer ile kafkaya gönder
+        customerProducer.sendMessage(createCustomerEvent);
+
         return this.modelMapperService.forResponse().
                 map(this.individualCustomerRepository.save(individualCustomer), CreatedIndividualCustomerResponse.class);
     }
