@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 public class CreateCustomerEvent {
-    private int id;
+    //private int id;
     private String firstName;
     private String middleName;
     private String lastName;

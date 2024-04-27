@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 public class CustomerConsumer {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerConsumer.class);
 
-    @KafkaListener(topics = "customer-created", groupId = "customer_group")
+    @KafkaListener(topics = "customer-created",groupId = "customer_group")
     public void listenCustomerCreated(CreateCustomerEvent createCustomerEvent) {
         // Log the customer creation event
-        LOGGER.info("Received customer creation event for ID: {}", createCustomerEvent.getId());
+        LOGGER.info("Received customer creation event for ID: {}", createCustomerEvent.getEmail());
 
         // Here you can add the logic to handle the customer creation event
         // For example, updating a database, notifying other services, etc.
