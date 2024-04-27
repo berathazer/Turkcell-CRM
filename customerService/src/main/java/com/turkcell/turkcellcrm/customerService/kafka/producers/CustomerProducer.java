@@ -22,12 +22,16 @@ public class CustomerProducer {
     // customer oluştuğunda POST
     public void sendMessage(CreateCustomerEvent createCustomerEvent){
         LOGGER.info(String.format("Customer added =>%s",createCustomerEvent.toString()));
+        String TOPIC = "customer-topic"; // Kafka topic name
 
-        Message<CreateCustomerEvent> message = MessageBuilder.withPayload(createCustomerEvent)
-                .setHeader(KafkaHeaders.TOPIC,"customer-created")
-                .build();
+        kafkaTemplate.send(TOPIC, createCustomerEvent);
+        System.out.println("Published message: " + createCustomerEvent.getEmail());
 
-        kafkaTemplate.send(message);
+       // Message<CreateCustomerEvent> message = MessageBuilder.withPayload(createCustomerEvent)
+         //       .setHeader(KafkaHeaders.TOPIC,"customer-created")
+          //      .build();
+
+       // kafkaTemplate.send(message);
     }
 
     // TODO: delete ve update içinde event oluştur.

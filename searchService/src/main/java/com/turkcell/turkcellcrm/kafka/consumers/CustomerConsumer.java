@@ -1,7 +1,10 @@
 package com.turkcell.turkcellcrm.kafka.consumers;
 
 
+import com.turkcell.turkcellcrm.business.abstracts.SearchService;
+import com.turkcell.turkcellcrm.entities.Customer;
 import com.turkcell.turkcellcrm.kafka.entities.CreateCustomerEvent;
+import com.turkcell.turkcellcrm.repositories.SearchRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,13 +15,15 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CustomerConsumer {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerConsumer.class);
+    private SearchService searchService;
+
 
     @KafkaListener(topics = "customer-created", groupId = "customer_group")
     public void listenCustomerCreated(CreateCustomerEvent createCustomerEvent) {
-        // Log the customer creation event
-        LOGGER.info("Received customer creation event for ID: {}", createCustomerEvent.getId());
-
-        // Here you can add the logic to handle the customer creation event
-        // For example, updating a database, notifying other services, etc.
+        Customer customer = new Customer();
+        customer.setId(createCustomerEvent.getId());
+        customer.setEmail(createCustomerEvent.getEmail());
+        customer.setMobilePhoneNumber(createCustomerEvent.getPhoneNumber());
+        this.searchService.add(customer);
     }
 }

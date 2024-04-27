@@ -1,4 +1,4 @@
-package com.turkcell.rentacar.configServer;
+package com.turkcell.configServer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
