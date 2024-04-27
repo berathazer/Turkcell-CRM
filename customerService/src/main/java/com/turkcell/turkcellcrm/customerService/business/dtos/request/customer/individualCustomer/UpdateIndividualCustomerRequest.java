@@ -24,8 +24,7 @@ public class UpdateIndividualCustomerRequest {
     @NotNull
     private LocalDate birthDate;
     @NotNull
-    @Size(min = 2, max = 30)
-    private String gender;
+    private int gender;
     @Size(min = 2, max = 30)
     private String fatherName;
     @Size(min = 2, max = 30)

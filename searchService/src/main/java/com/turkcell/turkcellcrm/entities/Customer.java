@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 
 @NoArgsConstructor
@@ -16,8 +17,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 // TODO: customer servicedeki tabloları joinle gerekli bilgileri buraya ekle
 public class Customer {
     @Id
-    private String id;
+    private int id;
+    @Field(name = "email")
     private String email;
+    @Field(name = "mobilePhoneNumber")
     private String mobilePhoneNumber;
 
 }
