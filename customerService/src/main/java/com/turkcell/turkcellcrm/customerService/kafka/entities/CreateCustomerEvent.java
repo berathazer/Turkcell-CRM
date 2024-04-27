@@ -14,7 +14,7 @@ public class CreateCustomerEvent {
     private String middleName;
     private String lastName;
     private LocalDate birthDate;
-    private String gender;
+    private int gender;
     private String fatherName;
     private String motherName;
     private String nationalityNumber;

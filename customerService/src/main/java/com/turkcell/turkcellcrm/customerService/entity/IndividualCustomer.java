@@ -1,7 +1,8 @@
 package com.turkcell.turkcellcrm.customerService.entity;
 
-import com.turkcell.turkcellcrm.customerService.core.entities.BaseEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

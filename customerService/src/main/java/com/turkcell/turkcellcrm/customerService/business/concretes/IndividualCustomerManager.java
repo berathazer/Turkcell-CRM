@@ -34,7 +34,7 @@ public class IndividualCustomerManager implements IndividualCustomerService {
         IndividualCustomer individualCustomer = this.modelMapperService.forRequest().map(createIndividualCustomerRequest, IndividualCustomer.class);
         // CreateCustomerEvent maple
         CreateCustomerEvent createCustomerEvent = this.modelMapperService.
-                forResponse().map(createIndividualCustomerRequest,CreateCustomerEvent.class);
+                forResponse().map(individualCustomer,CreateCustomerEvent.class);
         // customerProducer ile kafkaya gönder
         customerProducer.sendMessage(createCustomerEvent);
 
