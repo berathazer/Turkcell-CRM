@@ -12,6 +12,8 @@ import com.turkcell.turkcellcrm.customerService.core.utilities.mapping.ModelMapp
 import com.turkcell.turkcellcrm.customerService.dataAccess.IndividualCustomerRepository;
 import com.turkcell.turkcellcrm.customerService.entity.IndividualCustomer;
 import com.turkcell.turkcellcrm.customerService.kafka.entities.CreateCustomerEvent;
+import com.turkcell.turkcellcrm.customerService.kafka.entities.DeleteCustomerEvent;
+import com.turkcell.turkcellcrm.customerService.kafka.entities.UpdateCustomerEvent;
 import com.turkcell.turkcellcrm.customerService.kafka.producers.CustomerProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,13 +32,13 @@ public class IndividualCustomerManager implements IndividualCustomerService {
     @Override
     public CreatedIndividualCustomerResponse add(CreateIndividualCustomerRequest createIndividualCustomerRequest) {
         this.individualCustomerBusinessRules.nationalityNumberCanNotBeDuplicate(createIndividualCustomerRequest);
+        IndividualCustomer individualCustomer = this.modelMapperService.forRequest().
+                map(createIndividualCustomerRequest, IndividualCustomer.class);
 
-        IndividualCustomer individualCustomer = this.modelMapperService.forRequest().map(createIndividualCustomerRequest, IndividualCustomer.class);
-        // CreateCustomerEvent maple
+        // Kafka create message producer
         CreateCustomerEvent createCustomerEvent = this.modelMapperService.
                 forResponse().map(individualCustomer,CreateCustomerEvent.class);
-        // customerProducer ile kafkaya gönder
-        customerProducer.sendMessage(createCustomerEvent);
+        customerProducer.sendCreatedMessage(createCustomerEvent);
 
         return this.modelMapperService.forResponse().
                 map(this.individualCustomerRepository.save(individualCustomer), CreatedIndividualCustomerResponse.class);
@@ -63,6 +65,12 @@ public class IndividualCustomerManager implements IndividualCustomerService {
 
         IndividualCustomer individualCustomer = this.modelMapperService.forRequest().
                 map(updateIndividualCustomerRequest,IndividualCustomer.class);
+
+        //Kafka update message producer
+        UpdateCustomerEvent updateCustomerEvent = this.modelMapperService.forResponse().
+                map(individualCustomer, UpdateCustomerEvent.class);
+        this.customerProducer.sendUpdatedMessage(updateCustomerEvent);
+
         return this.modelMapperService.forResponse().
                 map(this.individualCustomerRepository.save(individualCustomer), UpdatedIndividualCustomerResponse.class);
     }
@@ -70,6 +78,10 @@ public class IndividualCustomerManager implements IndividualCustomerService {
     @Override
     public void delete(int id) {
         this.individualCustomerBusinessRules.isCustomerIdExist(id);
+
+        //Kafka delete message producer
+        this.customerProducer.sendDeletedMessage(id);
+
         this.individualCustomerRepository.deleteById(id);
     }
 }

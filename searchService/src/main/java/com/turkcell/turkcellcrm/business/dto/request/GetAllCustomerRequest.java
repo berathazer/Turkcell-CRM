@@ -1,14 +1,13 @@
-package com.turkcell.turkcellcrm.customerService.kafka.entities;
+package com.turkcell.turkcellcrm.business.dto.request;
 
-import lombok.*;
-
-import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-@Getter
-@Setter
 @NoArgsConstructor
-public class CreateCustomerEvent {
+@Data
+public class GetAllCustomerRequest {
     private String nationalityNumber;
     private int id;
     private String accountAccountNumber;
