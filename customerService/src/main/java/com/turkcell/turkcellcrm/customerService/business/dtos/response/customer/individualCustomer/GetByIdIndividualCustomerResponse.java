@@ -19,5 +19,5 @@ public class GetByIdIndividualCustomerResponse {
     private String fatherName;
     private String motherName;
     private String email;
-    private String phoneNumber;
+    private String mobilePhoneNumber;
 }

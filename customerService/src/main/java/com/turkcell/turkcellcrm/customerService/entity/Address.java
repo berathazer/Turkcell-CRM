@@ -11,7 +11,6 @@ import lombok.*;
 @Entity
 @Table(name = "addresses")
 public class Address extends BaseEntity {
-    private String city;
     private String street;
     private String flatNumber;
     private String addressDescription;
@@ -23,4 +22,8 @@ public class Address extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private AccountAddress accountAddress;
+
+    @ManyToOne()
+    @JoinColumn(name = "city_id")
+    private City city;
 }

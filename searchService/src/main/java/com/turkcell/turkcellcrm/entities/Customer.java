@@ -1,5 +1,8 @@
 package com.turkcell.turkcellcrm.entities;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,10 +20,13 @@ import org.springframework.data.mongodb.core.mapping.Field;
 // TODO: customer servicedeki tabloları joinle gerekli bilgileri buraya ekle
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Field(name = "id")
     private int id;
-    @Field(name = "email")
-    private String email;
-    @Field(name = "mobilePhoneNumber")
+    private String nationalityNumber;
+    private String accountAccountNumber;
     private String mobilePhoneNumber;
-
+    private String firstName;
+    private String middleName;
+    private String lastName;
 }

@@ -10,15 +10,11 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class CreateCustomerEvent {
+    private String nationalityNumber;
     private int id;
+    private String accountAccountNumber;
+    private String mobilePhoneNumber;
     private String firstName;
     private String middleName;
     private String lastName;
-    private LocalDate birthDate;
-    private int gender;
-    private String fatherName;
-    private String motherName;
-    private String nationalityNumber;
-    private String email;
-    private String phoneNumber;
 }

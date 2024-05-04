@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateAccountRequest {
     @NotNull
-    @Size(min = 16,max = 16)
+    @Size(min = 19,max = 19)
     private String accountNumber;
     @NotNull
     private String accountName;

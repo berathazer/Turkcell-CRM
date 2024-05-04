@@ -20,5 +20,5 @@ public class CreatedIndividualCustomerResponse {
     private String motherName;
     private String nationalityNumber;
     private String email;
-    private String phoneNumber;
+    private String mobilePhoneNumber;
 }
