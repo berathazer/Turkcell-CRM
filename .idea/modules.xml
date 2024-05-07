@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/TurkcellCRM.iml" filepath="$PROJECT_DIR$/.idea/TurkcellCRM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Turkcell-CRM.iml" filepath="$PROJECT_DIR$/.idea/Turkcell-CRM.iml" />
     </modules>
   </component>
 </project>

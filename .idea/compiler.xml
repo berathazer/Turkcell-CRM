@@ -8,16 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="identityService" />
-        <module name="discoveryServer" />
+        <module name="common" />
         <module name="customerService" />
-        <module name="gatewayService" />
         <module name="configServer" />
+        <module name="gatewayService" />
         <module name="searchService" />
+        <module name="discoveryServer" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common" options="-parameters" />
       <module name="configServer" options="-parameters" />
       <module name="customerService" options="-parameters" />
       <module name="discoveryServer" options="-parameters" />

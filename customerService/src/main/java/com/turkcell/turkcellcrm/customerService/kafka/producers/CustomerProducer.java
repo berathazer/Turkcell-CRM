@@ -1,10 +1,9 @@
 package com.turkcell.turkcellcrm.customerService.kafka.producers;
 
 
-import com.turkcell.turkcellcrm.customerService.kafka.entities.CreateCustomerEvent;
-import com.turkcell.turkcellcrm.customerService.kafka.entities.DeleteCustomerEvent;
-import com.turkcell.turkcellcrm.customerService.kafka.entities.UpdateCustomerEvent;
-import lombok.AllArgsConstructor;
+import com.turkcell.turkcellcrm.common.events.CustomerCreatedEvent;
+import com.turkcell.turkcellcrm.common.events.CustomerDeletedEvent;
+import com.turkcell.turkcellcrm.common.events.CustomerUpdatedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -14,35 +13,40 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
 public class CustomerProducer {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerProducer.class);
-    private final KafkaTemplate<String,Object> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public void sendCreatedMessage(CreateCustomerEvent createCustomerEvent){
-        LOGGER.info(String.format("Customer added =>%s",createCustomerEvent.toString()));
+    public CustomerProducer(KafkaTemplate<String, Object> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
-        Message<CreateCustomerEvent> message = MessageBuilder.withPayload(createCustomerEvent)
-               .setHeader(KafkaHeaders.TOPIC,"customer-created")
+    public void sendCreatedMessage(CustomerCreatedEvent customerCreatedEvent) {
+        LOGGER.info(String.format("Customer added =>%s", customerCreatedEvent.toString()));
+
+        Message<CustomerCreatedEvent> message = MessageBuilder.withPayload(customerCreatedEvent)
+                .setHeader(KafkaHeaders.TOPIC, "customer-created-test")
                 .build();
 
         kafkaTemplate.send(message);
     }
-    public void sendUpdatedMessage(UpdateCustomerEvent updateCustomerEvent){
-        LOGGER.info(String.format("Customer updated =>%s",updateCustomerEvent.toString()));
 
-        Message<UpdateCustomerEvent> message = MessageBuilder.withPayload(updateCustomerEvent)
-                .setHeader(KafkaHeaders.TOPIC,"customer-updated")
+    public void sendUpdatedMessage(CustomerUpdatedEvent customerUpdatedEvent) {
+        LOGGER.info(String.format("Customer updated =>%s", customerUpdatedEvent.toString()));
+
+        Message<CustomerUpdatedEvent> message = MessageBuilder.withPayload(customerUpdatedEvent)
+                .setHeader(KafkaHeaders.TOPIC, "customer-updated")
                 .build();
 
         kafkaTemplate.send(message);
     }
-    public void sendDeletedMessage(int id){
-        DeleteCustomerEvent deleteCustomerEvent = new DeleteCustomerEvent(id);
-        LOGGER.info(String.format("Customer deleted =>%s",deleteCustomerEvent.toString()));
 
-        Message<DeleteCustomerEvent> message = MessageBuilder.withPayload(deleteCustomerEvent)
-                .setHeader(KafkaHeaders.TOPIC,"customer-deleted")
+    public void sendDeletedMessage(int id) {
+        CustomerDeletedEvent customerDeletedEvent = new CustomerDeletedEvent(id);
+        LOGGER.info(String.format("Customer deleted =>%s", customerDeletedEvent.toString()));
+
+        Message<CustomerDeletedEvent> message = MessageBuilder.withPayload(customerDeletedEvent)
+                .setHeader(KafkaHeaders.TOPIC, "customer-deleted")
                 .build();
 
         kafkaTemplate.send(message);
