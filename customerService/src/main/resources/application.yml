@@ -12,20 +12,15 @@ server:
   port: 0
 
 spring:
-  kafka:
-    producer:
-      bootstrap-servers: localhost:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
   application:
     name: customerService
   datasource:
-    url: jdbc:postgresql://localhost:5432/CRMcustomerService
+    url: jdbc:postgresql://localhost:5432/CRMcustomerServiceDB
     username: postgres
     password: 12345
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -34,3 +29,8 @@ spring:
           validation:
             mode: none
     show-sql: true
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

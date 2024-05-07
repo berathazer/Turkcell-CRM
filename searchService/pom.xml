@@ -64,8 +64,13 @@
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
+		<dependency>
+			<groupId>com.turkcell.turkcellcrm</groupId>
+			<artifactId>common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
     </dependencies>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
