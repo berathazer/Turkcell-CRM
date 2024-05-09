@@ -1,5 +1,6 @@
 package com.turkcell.turkcellcrm.customerService.business.concretes;
 
+import com.turkcell.turkcellcrm.customerService.business.abstracts.AccountAddressService;
 import com.turkcell.turkcellcrm.customerService.business.abstracts.AccountService;
 import com.turkcell.turkcellcrm.customerService.business.dtos.request.account.CreateAccountRequest;
 import com.turkcell.turkcellcrm.customerService.business.dtos.request.account.UpdateAccountRequest;
@@ -22,6 +23,7 @@ public class AccountManager implements AccountService {
     private AccountRepository accountRepository;
     private ModelMapperService modelMapperService;
     private AccountBusinessRules accountBusinessRules;
+    private AccountAddressService accountAddressService;
 
     @Override
     public CreatedAccountResponse add(CreateAccountRequest createAccountRequest) {
@@ -31,6 +33,7 @@ public class AccountManager implements AccountService {
 
         Account account =this.modelMapperService.forRequest().map(createAccountRequest, Account.class);
         this.accountRepository.save(account);
+        this.accountAddressService.add(account);
 
         return this.modelMapperService.forResponse().map(account, CreatedAccountResponse.class);
     }
@@ -52,13 +55,18 @@ public class AccountManager implements AccountService {
     @Override
     public UpdatedAccountResponse update(UpdateAccountRequest updateAccountRequest) {
         this.accountBusinessRules.isAccountExistById(updateAccountRequest.getId());
+        Account account = this.modelMapperService.forRequest().
+                map(updateAccountRequest, Account.class);
+
+        this.accountAddressService.update(account);
         return this.modelMapperService.forResponse().
-                map(this.accountRepository.save(this.modelMapperService.forRequest().
-                        map(updateAccountRequest, Account.class)), UpdatedAccountResponse.class);
+                map(this.accountRepository.save(account), UpdatedAccountResponse.class);
     }
 
     @Override
     public void delete(int id) {
+        this.accountBusinessRules.isAccountExistById(id);
+        this.accountAddressService.delete(this.accountRepository.findById(id).orElse(null));
         this.accountRepository.deleteById(id);
     }
 }

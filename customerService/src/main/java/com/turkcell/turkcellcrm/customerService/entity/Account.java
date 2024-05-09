@@ -21,7 +21,7 @@ public class Account extends BaseEntity {
     @OneToOne(mappedBy = "account")
     private AccountAddress accountAddress;
 
-    @OneToOne(mappedBy = "account")
+    @ManyToOne
+    @JoinColumn(name = "account_type_id")
     private AccountType accountType;
-
 }

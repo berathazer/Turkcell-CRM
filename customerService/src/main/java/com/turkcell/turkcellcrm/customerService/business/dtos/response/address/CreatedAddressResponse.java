@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 public class CreatedAddressResponse {
     private int id;
     private String customerFirstName;
-    private String city;
     private String street;
     private String flatNumber;
     private String addressDescription;
+    private String cityName;
 }

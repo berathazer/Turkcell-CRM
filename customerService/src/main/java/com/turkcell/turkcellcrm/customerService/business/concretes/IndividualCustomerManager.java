@@ -1,5 +1,7 @@
 package com.turkcell.turkcellcrm.customerService.business.concretes;
 
+import com.turkcell.turkcellcrm.common.events.CustomerCreatedEvent;
+import com.turkcell.turkcellcrm.common.events.CustomerUpdatedEvent;
 import com.turkcell.turkcellcrm.customerService.business.abstracts.IndividualCustomerService;
 import com.turkcell.turkcellcrm.customerService.business.dtos.request.customer.individualCustomer.CreateIndividualCustomerRequest;
 import com.turkcell.turkcellcrm.customerService.business.dtos.request.customer.individualCustomer.UpdateIndividualCustomerRequest;
@@ -10,8 +12,8 @@ import com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.
 import com.turkcell.turkcellcrm.customerService.business.rules.IndividualCustomerBusinessRules;
 import com.turkcell.turkcellcrm.customerService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.turkcellcrm.customerService.dataAccess.IndividualCustomerRepository;
+import com.turkcell.turkcellcrm.customerService.entity.Customer;
 import com.turkcell.turkcellcrm.customerService.entity.IndividualCustomer;
-import com.turkcell.turkcellcrm.customerService.kafka.entities.CreateCustomerEvent;
 import com.turkcell.turkcellcrm.customerService.kafka.producers.CustomerProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,16 +32,17 @@ public class IndividualCustomerManager implements IndividualCustomerService {
     @Override
     public CreatedIndividualCustomerResponse add(CreateIndividualCustomerRequest createIndividualCustomerRequest) {
         this.individualCustomerBusinessRules.nationalityNumberCanNotBeDuplicate(createIndividualCustomerRequest);
+        IndividualCustomer individualCustomer = this.modelMapperService.forRequest().
+                map(createIndividualCustomerRequest, IndividualCustomer.class);
 
-        IndividualCustomer individualCustomer = this.modelMapperService.forRequest().map(createIndividualCustomerRequest, IndividualCustomer.class);
-        // CreateCustomerEvent maple
-        CreateCustomerEvent createCustomerEvent = this.modelMapperService.
-                forResponse().map(individualCustomer,CreateCustomerEvent.class);
-        // customerProducer ile kafkaya gönder
-        customerProducer.sendMessage(createCustomerEvent);
-
+        IndividualCustomer createdCustomer = this.individualCustomerRepository.save(individualCustomer);
+        // Kafka create message producer
+        CustomerCreatedEvent customerCreatedEvent = this.modelMapperService.
+                forRequest().map(createdCustomer,CustomerCreatedEvent.class);
+        customerCreatedEvent.setCustomerId(createdCustomer.getId());
+        customerProducer.sendCreatedMessage(customerCreatedEvent);
         return this.modelMapperService.forResponse().
-                map(this.individualCustomerRepository.save(individualCustomer), CreatedIndividualCustomerResponse.class);
+                map(createdCustomer, CreatedIndividualCustomerResponse.class);
     }
 
     @Override
@@ -63,6 +66,12 @@ public class IndividualCustomerManager implements IndividualCustomerService {
 
         IndividualCustomer individualCustomer = this.modelMapperService.forRequest().
                 map(updateIndividualCustomerRequest,IndividualCustomer.class);
+
+        //Kafka update message producer
+        CustomerUpdatedEvent customerUpdatedEvent = this.modelMapperService.forResponse().
+                map(individualCustomer, CustomerUpdatedEvent.class);
+        this.customerProducer.sendUpdatedMessage(customerUpdatedEvent);
+
         return this.modelMapperService.forResponse().
                 map(this.individualCustomerRepository.save(individualCustomer), UpdatedIndividualCustomerResponse.class);
     }
@@ -70,6 +79,10 @@ public class IndividualCustomerManager implements IndividualCustomerService {
     @Override
     public void delete(int id) {
         this.individualCustomerBusinessRules.isCustomerIdExist(id);
+
+        //Kafka delete message producer
+        this.customerProducer.sendDeletedMessage(id);
+
         this.individualCustomerRepository.deleteById(id);
     }
 }

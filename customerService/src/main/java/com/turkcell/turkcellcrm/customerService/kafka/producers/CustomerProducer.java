@@ -1,7 +1,9 @@
 package com.turkcell.turkcellcrm.customerService.kafka.producers;
 
 
-import com.turkcell.turkcellcrm.customerService.kafka.entities.CreateCustomerEvent;
+import com.turkcell.turkcellcrm.common.events.CustomerCreatedEvent;
+import com.turkcell.turkcellcrm.common.events.CustomerDeletedEvent;
+import com.turkcell.turkcellcrm.common.events.CustomerUpdatedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -13,26 +15,40 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerProducer {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerProducer.class);
-    private final KafkaTemplate<String,Object> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public CustomerProducer(KafkaTemplate<String,Object> kafkaTemplate){
+    public CustomerProducer(KafkaTemplate<String, Object> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    // customer oluştuğunda POST
-    public void sendMessage(CreateCustomerEvent createCustomerEvent){
-        LOGGER.info(String.format("Customer added =>%s",createCustomerEvent.toString()));
-        String TOPIC = "customer-topic"; // Kafka topic name
+    public void sendCreatedMessage(CustomerCreatedEvent customerCreatedEvent) {
+        LOGGER.info(String.format("Customer added =>%s", customerCreatedEvent.toString()));
 
-        kafkaTemplate.send(TOPIC, createCustomerEvent);
-        System.out.println("Published message: " + createCustomerEvent.getEmail());
+        Message<CustomerCreatedEvent> message = MessageBuilder.withPayload(customerCreatedEvent)
+                .setHeader(KafkaHeaders.TOPIC, "customer-created-test")
+                .build();
 
-       // Message<CreateCustomerEvent> message = MessageBuilder.withPayload(createCustomerEvent)
-         //       .setHeader(KafkaHeaders.TOPIC,"customer-created")
-          //      .build();
-
-       // kafkaTemplate.send(message);
+        kafkaTemplate.send(message);
     }
 
-    // TODO: delete ve update içinde event oluştur.
+    public void sendUpdatedMessage(CustomerUpdatedEvent customerUpdatedEvent) {
+        LOGGER.info(String.format("Customer updated =>%s", customerUpdatedEvent.toString()));
+
+        Message<CustomerUpdatedEvent> message = MessageBuilder.withPayload(customerUpdatedEvent)
+                .setHeader(KafkaHeaders.TOPIC, "customer-updated")
+                .build();
+
+        kafkaTemplate.send(message);
+    }
+
+    public void sendDeletedMessage(int id) {
+        CustomerDeletedEvent customerDeletedEvent = new CustomerDeletedEvent(id);
+        LOGGER.info(String.format("Customer deleted =>%s", customerDeletedEvent.toString()));
+
+        Message<CustomerDeletedEvent> message = MessageBuilder.withPayload(customerDeletedEvent)
+                .setHeader(KafkaHeaders.TOPIC, "customer-deleted")
+                .build();
+
+        kafkaTemplate.send(message);
+    }
 }

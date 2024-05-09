@@ -14,9 +14,6 @@ public class UpdateAddressRequest {
     private int id;
     @NotNull
     @Size(min = 2 ,max = 30)
-    private String city;
-    @NotNull
-    @Size(min = 2 ,max = 30)
     private String street;
     @NotNull
     @Size(min = 2 ,max = 30)
@@ -24,4 +21,8 @@ public class UpdateAddressRequest {
     @NotNull
     @Size(min = 2 ,max = 100)
     private String addressDescription;
+    @NotNull
+    private int cityId;
+    @NotNull
+    private int customerId;
 }

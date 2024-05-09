@@ -20,5 +20,5 @@ public class GetAllIndividualCustomerResponse {
     private String motherName;
     private String nationalityId;
     private String email;
-    private String phoneNumber;
+    private String mobilePhoneNumber;
 }

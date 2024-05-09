@@ -12,11 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateAddressRequest {
     @NotNull
-    private int customerId;
-    @NotNull
-    @Size(min = 2 ,max = 30)
-    private String city;
-    @NotNull
     @Size(min = 2 ,max = 30)
     private String street;
     @NotNull
@@ -25,4 +20,8 @@ public class CreateAddressRequest {
     @NotNull
     @Size(min = 2 ,max = 100)
     private String addressDescription;
+    @NotNull
+    private int cityId;
+    @NotNull
+    private int customerId;
 }
