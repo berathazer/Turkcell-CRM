@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/searchservice/api/v1/filter")
@@ -18,6 +17,7 @@ import java.util.Optional;
 public class SearchController {
     private SearchService searchService;
     private SearchRepository searchRepository;
+
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<GetAllCustomerResponse> getAll(@ModelAttribute GetAllCustomerRequest getAllCustomerRequest){
@@ -26,8 +26,9 @@ public class SearchController {
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    public String get(){
-        Optional<Customer> customer = searchRepository.findById("663a656dae0148586dc525f5");
-        return "663a656dae0148586dc525f5";
+    public List<Customer> get(){
+        return this.searchRepository.findAll();
+//        Optional<Customer> customer = searchRepository.findById("663a656dae0148586dc525f5");
+//        return "663a656dae0148586dc525f5";
     }
 }

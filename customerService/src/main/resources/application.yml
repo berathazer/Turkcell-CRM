@@ -17,10 +17,10 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/CRMcustomerServiceDB
     username: postgres
-    password: 12345
+    password: 1234
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect

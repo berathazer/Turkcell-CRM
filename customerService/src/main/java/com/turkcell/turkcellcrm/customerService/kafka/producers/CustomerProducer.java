@@ -25,7 +25,7 @@ public class CustomerProducer {
         LOGGER.info(String.format("Customer added =>%s", customerCreatedEvent.toString()));
 
         Message<CustomerCreatedEvent> message = MessageBuilder.withPayload(customerCreatedEvent)
-                .setHeader(KafkaHeaders.TOPIC, "customer-created-test")
+                .setHeader(KafkaHeaders.TOPIC, "customer-created")
                 .build();
 
         kafkaTemplate.send(message);
