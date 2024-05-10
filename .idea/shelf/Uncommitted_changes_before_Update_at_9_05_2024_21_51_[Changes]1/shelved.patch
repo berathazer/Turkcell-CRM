@@ -1,0 +1,119 @@
+Index: compose_old.yml
+===================================================================
+diff --git a/compose_old.yml b/compose_old.yml
+deleted file mode 100644
+--- a/compose_old.yml	
++++ /dev/null	
+@@ -1,73 +0,0 @@
+-version: '3.8'
+-
+-services:
+-
+-  postgres:
+-    image: postgres:latest
+-    restart: always
+-    environment:
+-      POSTGRES_DB: postgresdb
+-      POSTGRES_USER: postgres
+-      POSTGRES_PASSWORD: 12345
+-    ports:
+-      - "5432:5432"
+-    volumes:
+-      - postgres_data:/var/lib/postgresql/data
+-
+-  pgadmin:
+-    image: dpage/pgadmin4:latest
+-    environment:
+-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+-      PGADMIN_DEFAULT_PASSWORD: admin
+-    ports:
+-      - "80:80"
+-    depends_on:
+-      - postgres
+-
+-  zookeeper:
+-    image: wurstmeister/zookeeper:latest
+-    ports:
+-      - "2181:2181"
+-    volumes:
+-      - zookeeper_data:/data
+-      - zookeeper_datalog:/datalog
+-
+-  kafka:
+-    image: wurstmeister/kafka:latest
+-    ports:
+-      - "9092:9092"
+-    environment:
+-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+-    depends_on:
+-      - zookeeper
+-    volumes:
+-      - kafka_data:/kafka
+-
+-  mongo:
+-    image: mongo:latest
+-    ports:
+-      - "27018:27017"
+-    volumes:
+-      - mongo_data:/data/db
+-
+-  kafdrop:
+-    image: obsidiandynamics/kafdrop
+-    restart: always
+-    ports:
+-      - "9030:9030"
+-    environment:
+-      KAFKA_BROKERCONNECT: "kafka:9092"
+-      JVM_OPTS: "-Xms32M -Xmx64M"
+-      SERVER_SERVLET_CONTEXT_PATH: "/"
+-      SERVER_PORT: 9030
+-    depends_on:
+-      - kafka
+-
+-volumes:
+-  postgres_data:
+-  kafka_data:
+-  zookeeper_data:
+-  zookeeper_datalog:
+-  mongo_data:
+Index: customerService/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>eureka:\r\n  client:\r\n    fetchRegistry: true\r\n    registerWithEureka: true\r\n    serviceUrl:\r\n      defaultZone: http://localhost:9000/eureka\r\n  instance:\r\n    instance-id: ${spring.application.name}:${instanceId:${random.value}}\r\n    preferIpAddress: true\r\n\r\nserver:\r\n  port: 0\r\n\r\nspring:\r\n  kafka:\r\n    producer:\r\n      bootstrap-servers: localhost:9092\r\n      key-serializer: org.apache.kafka.common.serialization.StringSerializer\r\n      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer\r\n  application:\r\n    name: customerService\r\n  datasource:\r\n    url: jdbc:postgresql://localhost:5432/CRMcustomerService\r\n    username: postgres\r\n    password: 12345\r\n  jpa:\r\n    hibernate:\r\n      ddl-auto: update\r\n    properties:\r\n      hibernate:\r\n        dialect: org.hibernate.dialect.PostgreSQLDialect\r\n      javax:\r\n        persistence:\r\n          validation:\r\n            mode: none\r\n    show-sql: true
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/customerService/src/main/resources/application.yml b/customerService/src/main/resources/application.yml
+--- a/customerService/src/main/resources/application.yml	
++++ b/customerService/src/main/resources/application.yml	
+@@ -20,7 +20,7 @@
+   application:
+     name: customerService
+   datasource:
+-    url: jdbc:postgresql://localhost:5432/CRMcustomerService
++    url: jdbc:postgresql://localhost:5432/CRMcustomerServiceDB
+     username: postgres
+     password: 12345
+   jpa:
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/inventoryService/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/discoveryServer/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/customerService/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/gatewayService/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/configServer/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/identityService/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/searchService/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"17\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -9,8 +9,8 @@
+         <option value="$PROJECT_DIR$/customerService/pom.xml" />
+         <option value="$PROJECT_DIR$/gatewayService/pom.xml" />
+         <option value="$PROJECT_DIR$/configServer/pom.xml" />
+-        <option value="$PROJECT_DIR$/identityService/pom.xml" />
+         <option value="$PROJECT_DIR$/searchService/pom.xml" />
++        <option value="$PROJECT_DIR$/identityService/pom.xml" />
+       </list>
+     </option>
+   </component>

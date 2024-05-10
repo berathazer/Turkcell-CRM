@@ -68,11 +68,4 @@ public class JwtService {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
-
-    public String randomRefreshToken() {
-        byte[] numberByte = new byte[33];
-        SecureRandom random = new SecureRandom();
-        random.nextBytes(numberByte);
-        return Base64.getEncoder().encodeToString(numberByte);
-    }
 }

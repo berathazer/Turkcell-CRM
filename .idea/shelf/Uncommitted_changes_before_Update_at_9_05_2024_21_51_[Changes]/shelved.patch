@@ -1,0 +1,55 @@
+Index: docker-compose.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>version: '3.8'\r\n\r\nservices:\r\n\r\n  postgres:\r\n    image: postgres:latest\r\n    restart: always\r\n    environment:\r\n      POSTGRES_DB: postgresdb\r\n      POSTGRES_USER: postgres\r\n      POSTGRES_PASSWORD: 12345\r\n    ports:\r\n      - \"5432:5432\"\r\n    volumes:\r\n      - postgres_data:/var/lib/postgresql/data\r\n\r\n  pgadmin:\r\n    image: dpage/pgadmin4:latest\r\n    environment:\r\n      PGADMIN_DEFAULT_EMAIL: admin@admin.com\r\n      PGADMIN_DEFAULT_PASSWORD: admin\r\n    ports:\r\n      - \"80:80\"\r\n    depends_on:\r\n      - postgres\r\n\r\n  zookeeper:\r\n    image: wurstmeister/zookeeper:latest\r\n    ports:\r\n      - \"2181:2181\"\r\n    environment:\r\n      ZOOKEEPER_CLIENT_PORT: 2181\r\n      ZOOKEEPER_TICK_TIME: 2000\r\n    volumes:\r\n      - zookeeper_data:/data\r\n      - zookeeper_datalog:/datalog\r\n\r\n  kafka:\r\n    image: wurstmeister/kafka:latest\r\n    ports:\r\n      - \"9092:9092\"\r\n    environment:\r\n      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT\r\n      KAFKA_LISTENERS: PLAINTEXT://:29092,PLAINTEXT_HOST://:9092\r\n      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092\r\n      KAFKA_ADVERTISED_HOST_NAME: kafka\r\n      KAFKA_CREATE_TOPICS: \"test:1:1\"\r\n      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181\r\n    depends_on:\r\n      - zookeeper\r\n    volumes:\r\n      - kafka_data:/kafka\r\n\r\n  mongo:\r\n    image: mongo:latest\r\n    ports:\r\n      - \"27018:27017\"\r\n    volumes:\r\n      - mongo_data:/data/db\r\n\r\n  kafdrop:\r\n    image: obsidiandynamics/kafdrop\r\n    restart: always\r\n    ports:\r\n      - \"9030:9030\"\r\n    environment:\r\n      KAFKA_BROKERCONNECT: \"kafka:29092\"\r\n      JVM_OPTS: \"-Xms32M -Xmx64M\"\r\n      SERVER_SERVLET_CONTEXT_PATH: \"/\"\r\n      SERVER_PORT: 9030\r\n    depends_on:\r\n      - kafka\r\n\r\nvolumes:\r\n  postgres_data:\r\n  kafka_data:\r\n  zookeeper_data:\r\n  zookeeper_datalog:\r\n  mongo_data:\r\n
+===================================================================
+diff --git a/docker-compose.yml b/docker-compose.yml
+--- a/docker-compose.yml	
++++ b/docker-compose.yml	
+@@ -1,29 +1,26 @@
+ version: '3.8'
+ 
+ services:
+-
+-  postgres:
++  db:
+     image: postgres:latest
+     restart: always
+     environment:
+-      POSTGRES_DB: postgresdb
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: 12345
++      POSTGRES_DB: postgresdb
+     ports:
+       - "5432:5432"
+     volumes:
+-      - postgres_data:/var/lib/postgresql/data
++      - ./pgdata:/var/lib/postgresql/data
+ 
+   pgadmin:
+-    image: dpage/pgadmin4:latest
++    image: dpage/pgadmin4
++    restart: always
+     environment:
+-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+-      PGADMIN_DEFAULT_PASSWORD: admin
++      PGADMIN_DEFAULT_EMAIL: rozerin@example.com
++      PGADMIN_DEFAULT_PASSWORD: 12345
+     ports:
+-      - "80:80"
+-    depends_on:
+-      - postgres
+-
++      - "5050:80"
+   zookeeper:
+     image: wurstmeister/zookeeper:latest
+     ports:
+@@ -72,7 +69,7 @@
+       - kafka
+ 
+ volumes:
+-  postgres_data:
++  db_data:
+   kafka_data:
+   zookeeper_data:
+   zookeeper_datalog:
