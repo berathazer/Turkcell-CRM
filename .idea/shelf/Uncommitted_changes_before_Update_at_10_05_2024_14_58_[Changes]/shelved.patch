@@ -1,0 +1,236 @@
+Index: identityService/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>eureka:\r\n    client:\r\n        fetchRegistry: true\r\n        registerWithEureka: true\r\n        serviceUrl:\r\n            defaultZone: http://localhost:9000/eureka\r\n    instance:\r\n        instance-id: ${spring.application.name}:${instanceId:${random.value}}\r\n        preferIpAddress: true\r\nserver:\r\n    port: 9003\r\nspring:\r\n    application:\r\n        name: identityService\r\n    datasource:\r\n        url: jdbc:postgresql://localhost:5432/securityDB\r\n        username: postgres\r\n        password: 1234\r\n    jpa:\r\n        hibernate:\r\n            ddl-auto: update\r\n        properties:\r\n            hibernate:\r\n                dialect: org.hibernate.dialect.PostgreSQLDialect\r\n            javax:\r\n                persistence:\r\n                    validation:\r\n                        mode: none\r\n        show-sql: true\r\n\r\n# Security\r\n# Unit Test\r\n\r\njwt:\r\n    secret:\r\n        key: R+QUtnWgWtt+gghxv/jVBkTSgAj6RnVfN6aEkj658K3la8HSYeCbD48RktVTclnDh2aWYC0Vo7++e3EZ9KwLLILqLwwK8PcAAzUXAuntHhcCnj6lOQBz9F9r1Wl7HF8jidhaqkhz/PR1Acu5dQ3GBoqI27I+EXb1KK93RBmPe0YL90ForyJ8rdaX8DCiix3vMahUB8BA6rl8PU9/nfjK4wzw7A2fEPn7Ad6ool4GQLtcq6YVqlJKgeQpMj7IPeQ2sSfO2l8t9pihuatnzA3GklU+A4IDqNKjvTqarZLVHVtrSwrGZMLRYovEM+1LrXvKZEWTOKzz2WhuMcG5Hp2I3A==\r\n    expiration:\r\n        time: 60000\r\n    refresh:\r\n        days: 10\r\n        key: refresh-token
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/identityService/src/main/resources/application.yml b/identityService/src/main/resources/application.yml
+--- a/identityService/src/main/resources/application.yml	(revision 9f1ebac31092026ec7bb244bd1fd8e233441852a)
++++ b/identityService/src/main/resources/application.yml	(date 1715286661917)
+@@ -15,7 +15,7 @@
+     datasource:
+         url: jdbc:postgresql://localhost:5432/securityDB
+         username: postgres
+-        password: 1234
++        password: 12345
+     jpa:
+         hibernate:
+             ddl-auto: update
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ce0a59e7-c594-418e-be99-1590f63b6dda\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/Turkcell-CRM.iml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/CustomerCreatedEvent.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/CustomerDeletedEvent.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/CustomerUpdatedEvent.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/configurations/KafkaConsumerConfig.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/.gitignore\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/TurkcellCRM.iml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/compiler.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/compiler.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/encodings.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/encodings.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/modules.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/modules.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/vcs.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/compose_old.yml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/customerService/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/concretes/IndividualCustomerManager.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/concretes/IndividualCustomerManager.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/entities/CreateCustomerEvent.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/entities/DeleteCustomerEvent.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/entities/UpdateCustomerEvent.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/producers/CustomerProducer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/producers/CustomerProducer.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/src/main/resources/application.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/customerService/src/main/resources/application.yml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/docker-compose.yml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/api/controller/SearchController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/business/abstracts/SearchService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/business/concretes/SearchManager.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/business/dto/request/GetAllCustomerRequest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/request/GetAllCustomerRequest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/business/dto/response/GetAllCustomerResponse.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/response/GetAllCustomerResponse.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/core/configurations/KafkaConsumerConfig.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/core/utilities/mapping/ModelMapperManager.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/mapping/ModelMapperManager.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/core/utilities/mapping/ModelMapperService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/mapping/ModelMapperService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/dataAccess/SearchRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/entities/Customer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/entities/Customer.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/kafka/consumers/CustomerConsumer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/kafka/entities/CreateCustomerEvent.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/kafka/entities/DeleteCustomerEvent.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/kafka/entities/UpdateCustomerEvent.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/resources/application.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/resources/application.yml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Ahmethan1&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/berathazer/Turkcell-CRM.git&quot;,\r\n    &quot;accountId&quot;: &quot;d0d8cbac-ba48-4e3f-a6fc-4a6b8f8df2fc&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2g95RLTt0o05JN2tEdh3Y4lC9UN\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"Application.ConfigServerApplication.executor\": \"Run\",\r\n    \"Application.CustomerServiceApplication.executor\": \"Debug\",\r\n    \"Application.DiscoveryServerApplication.executor\": \"Run\",\r\n    \"Application.GatewayServiceApplication.executor\": \"Run\",\r\n    \"Application.SearchServiceApplication.executor\": \"Debug\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"Dparlar33\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/Ahmethan/Desktop/rentacarMS/RentACarMS\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunDashboard\">\r\n    <option name=\"configurationTypes\">\r\n      <set>\r\n        <option value=\"Application\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.DiscoveryServerApplication\">\r\n    <configuration name=\"ConfigServerApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.turkcell.configServer.ConfigServerApplication\" />\r\n      <module name=\"configServer\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.turkcell.configServer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CustomerServiceApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.turkcell.turkcellcrm.customerService.CustomerServiceApplication\" />\r\n      <module name=\"customerService\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.turkcell.turkcellcrm.customerService.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DiscoveryServerApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.turkcell.turkcellcrm.discoveryServer.DiscoveryServerApplication\" />\r\n      <module name=\"discoveryServer\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.turkcell.turkcellcrm.discoveryServer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"GatewayServiceApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.turkcell.rentacar.gatewayService.GatewayServiceApplication\" />\r\n      <module name=\"gatewayService\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.turkcell.rentacar.gatewayService.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"SearchServiceApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.turkcell.turkcellcrm.searchService.SearchServiceApplication\" />\r\n      <module name=\"searchService\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.turkcell.turkcellcrm.searchService.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.ConfigServerApplication\" />\r\n      <item itemvalue=\"Application.CustomerServiceApplication\" />\r\n      <item itemvalue=\"Application.DiscoveryServerApplication\" />\r\n      <item itemvalue=\"Application.GatewayServiceApplication\" />\r\n      <item itemvalue=\"Application.SearchServiceApplication\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.CustomerServiceApplication\" />\r\n        <item itemvalue=\"Application.SearchServiceApplication\" />\r\n        <item itemvalue=\"Application.GatewayServiceApplication\" />\r\n        <item itemvalue=\"Application.ConfigServerApplication\" />\r\n        <item itemvalue=\"Application.DiscoveryServerApplication\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ce0a59e7-c594-418e-be99-1590f63b6dda\" name=\"Changes\" comment=\"\" />\r\n      <created>1715096943648</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1715096943648</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java</url>\r\n          <line>26</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java</url>\r\n          <line>28</line>\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/concretes/IndividualCustomerManager.java</url>\r\n          <line>37</line>\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java</url>\r\n          <line>24</line>\r\n          <properties class=\"com.turkcell.turkcellcrm.searchService.kafka.consumers.CustomerConsumer\" method=\"listenCustomerCreated\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 9f1ebac31092026ec7bb244bd1fd8e233441852a)
++++ b/.idea/workspace.xml	(date 1715340915754)
+@@ -5,44 +5,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="ce0a59e7-c594-418e-be99-1590f63b6dda" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/Turkcell-CRM.iml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/CustomerCreatedEvent.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/CustomerDeletedEvent.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/CustomerUpdatedEvent.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/configurations/KafkaConsumerConfig.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/TurkcellCRM.iml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/compose_old.yml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/customerService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/concretes/IndividualCustomerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/concretes/IndividualCustomerManager.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/entities/CreateCustomerEvent.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/entities/DeleteCustomerEvent.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/entities/UpdateCustomerEvent.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/producers/CustomerProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/producers/CustomerProducer.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/api/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/business/abstracts/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/business/concretes/SearchManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/business/dto/request/GetAllCustomerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/request/GetAllCustomerRequest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/business/dto/response/GetAllCustomerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/response/GetAllCustomerResponse.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/core/configurations/KafkaConsumerConfig.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/core/utilities/mapping/ModelMapperManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/mapping/ModelMapperManager.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/core/utilities/mapping/ModelMapperService.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/mapping/ModelMapperService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/dataAccess/SearchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/entities/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/entities/Customer.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/kafka/consumers/CustomerConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/kafka/entities/CreateCustomerEvent.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/kafka/entities/DeleteCustomerEvent.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/kafka/entities/UpdateCustomerEvent.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/resources/application.yml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/identityService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/resources/application.yml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -61,7 +26,7 @@
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/berathazer/Turkcell-CRM.git&quot;,
+-    &quot;accountId&quot;: &quot;d0d8cbac-ba48-4e3f-a6fc-4a6b8f8df2fc&quot;
++    &quot;accountId&quot;: &quot;97c435c8-5d49-4c4a-8254-0ddf78719fba&quot;
+   }
+ }</component>
+   <component name="MarkdownSettingsMigration">
+@@ -78,21 +43,21 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_ADD_EXTERNAL_FILES": "true",
+-    "Application.ConfigServerApplication.executor": "Run",
+-    "Application.CustomerServiceApplication.executor": "Debug",
+-    "Application.DiscoveryServerApplication.executor": "Run",
+-    "Application.GatewayServiceApplication.executor": "Run",
+-    "Application.SearchServiceApplication.executor": "Debug",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "Dparlar33",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/Ahmethan/Desktop/rentacarMS/RentACarMS"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
++    &quot;Application.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.CustomerServiceApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.DiscoveryServerApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.GatewayServiceApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.SearchServiceApplication.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;rozeringunes&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ahmethan/Desktop/rentacarMS/RentACarMS&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunDashboard">
+     <option name="configurationTypes">
+       <set>
+@@ -162,34 +127,40 @@
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="JetRunConfigurationType">
++      <module name="customerService" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
++      <module name="customerService" />
++      <option name="filePath" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+     <list>
+       <item itemvalue="Application.ConfigServerApplication" />
++      <item itemvalue="Application.SearchServiceApplication" />
+       <item itemvalue="Application.CustomerServiceApplication" />
+       <item itemvalue="Application.DiscoveryServerApplication" />
+       <item itemvalue="Application.GatewayServiceApplication" />
+-      <item itemvalue="Application.SearchServiceApplication" />
+     </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Application.CustomerServiceApplication" />
+         <item itemvalue="Application.SearchServiceApplication" />
++        <item itemvalue="Application.CustomerServiceApplication" />
+         <item itemvalue="Application.GatewayServiceApplication" />
+         <item itemvalue="Application.ConfigServerApplication" />
+         <item itemvalue="Application.DiscoveryServerApplication" />
+       </list>
+     </recent_temporary>
+   </component>
+-  <component name="SharedIndexes">
+-    <attachedChunks>
+-      <set>
+-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+-      </set>
+-    </attachedChunks>
+-  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -208,28 +179,9 @@
+     <breakpoint-manager>
+       <breakpoints>
+         <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java</url>
+-          <line>26</line>
+-          <option name="timeStamp" value="1" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java</url>
+-          <line>28</line>
+-          <option name="timeStamp" value="2" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+           <url>file://$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/concretes/IndividualCustomerManager.java</url>
+           <line>37</line>
+           <option name="timeStamp" value="4" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-method">
+-          <url>file://$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java</url>
+-          <line>24</line>
+-          <properties class="com.turkcell.turkcellcrm.searchService.kafka.consumers.CustomerConsumer" method="listenCustomerCreated">
+-            <option name="EMULATED" value="true" />
+-            <option name="WATCH_EXIT" value="false" />
+-          </properties>
+-          <option name="timeStamp" value="3" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/common/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/configServer/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/searchService/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/gatewayService/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/customerService/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/discoveryServer/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/identityService/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_17\" default=\"true\" project-jdk-name=\"21\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 9f1ebac31092026ec7bb244bd1fd8e233441852a)
++++ b/.idea/misc.xml	(date 1715280975718)
+@@ -4,17 +4,18 @@
+   <component name="MavenProjectsManager">
+     <option name="originalFiles">
+       <list>
+-        <option value="$PROJECT_DIR$/common/pom.xml" />
+-        <option value="$PROJECT_DIR$/configServer/pom.xml" />
+-        <option value="$PROJECT_DIR$/searchService/pom.xml" />
+-        <option value="$PROJECT_DIR$/gatewayService/pom.xml" />
+-        <option value="$PROJECT_DIR$/customerService/pom.xml" />
++        <option value="$PROJECT_DIR$/inventoryService/pom.xml" />
+         <option value="$PROJECT_DIR$/discoveryServer/pom.xml" />
++        <option value="$PROJECT_DIR$/customerService/pom.xml" />
++        <option value="$PROJECT_DIR$/gatewayService/pom.xml" />
++        <option value="$PROJECT_DIR$/configServer/pom.xml" />
+         <option value="$PROJECT_DIR$/identityService/pom.xml" />
++        <option value="$PROJECT_DIR$/searchService/pom.xml" />
++        <option value="$PROJECT_DIR$/common/pom.xml" />
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file

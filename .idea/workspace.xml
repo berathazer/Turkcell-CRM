@@ -5,27 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce0a59e7-c594-418e-be99-1590f63b6dda" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/messages/CustomerFilterBusinessRulesMessages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/CustomerFilterBusinessRules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/handlers/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/problemDetails/BusinessProblemDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/problemDetails/ProblemDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/problemDetails/ValidationProblemDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/types/BusinessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/rules/AuthBusinessRules.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/core/configuration/KafkaProducerConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/producers/CustomerProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/producers/CustomerProducer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/response/GetAllCustomerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/response/GetAllCustomerResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/configurations/KafkaConsumerConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/BaseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/abstracts/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/abstracts/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/abstracts/RefreshTokenService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/concretes/AuthManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/concretes/AuthManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/concretes/RefreshTokenManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/concretes/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/concretes/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/dtos/responses/LoggedInResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/dtos/responses/RefreshedTokenResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/messages/AuthMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/messages/AuthMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/messages/RefreshTokenMessages.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/rules/RefreshTokenBusinessRules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/security/SecurityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/security/SecurityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/configurations/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/configurations/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/services/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/services/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/dataAccess/RefreshTokenRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/entitites/RefreshToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/entitites/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/entitites/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/resources/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/resources/messages_tr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/resources/messages_tr.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,16 +53,12 @@
     &quot;assignee&quot;: &quot;Ahmethan1&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/berathazer/Turkcell-CRM.git&quot;,
-    &quot;accountId&quot;: &quot;149d2adf-eb22-46c2-a25c-212dfbfb4402&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/berathazer/Turkcell-CRM.git",
+    "accountId": "97c435c8-5d49-4c4a-8254-0ddf78719fba"
   }
-}</component>
-  <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -76,53 +77,64 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.ConfigServerApplication.executor": "Run",
-    "Application.CustomerServiceApplication.executor": "Debug",
+    "Application.CustomerServiceApplication.executor": "Run",
     "Application.DiscoveryServerApplication.executor": "Run",
     "Application.GatewayServiceApplication.executor": "Run",
-    "Application.SearchServiceApplication.executor": "Debug",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
+    "Application.SearchServiceApplication.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.CommonApplication.executor": "Run",
-    "Spring Boot.ConfigServerApplication.executor": "Run",
-    "Spring Boot.CustomerServiceApplication.executor": "Run",
-    "Spring Boot.DiscoveryServerApplication.executor": "Run",
-    "Spring Boot.GatewayServiceApplication.executor": "Run",
-    "Spring Boot.IdentityServiceApplication.executor": "Run",
-    "Spring Boot.SearchServiceApplication.executor": "Run",
-    "git-widget-placeholder": "Dparlar33",
+    "git-widget-placeholder": "rozeringunes",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/dparl/Desktop/Turkcell-CRM/Turkcell-CRM/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+    "last_opened_file_path": "C:/Users/Ahmethan/Desktop/rentacarMS/RentACarMS"
   }
 }]]></component>
-  <component name="ReactorSettings">
-    <option name="notificationShown" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dparl\Desktop\Turkcell-CRM\Turkcell-CRM\searchService\src\main\java\com\turkcell\turkcellcrm\searchService\core\utilities\exceptions" />
-    </key>
-  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
-        <option value="MicronautRunConfigurationType" />
-        <option value="QuarkusRunConfigurationType" />
-        <option value="SpringBootApplicationConfigurationType" />
+        <option value="Application" />
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ConfigServerApplication">
+  <component name="RunManager" selected="Application.CustomerServiceApplication">
+    <configuration name="ConfigServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.configServer.ConfigServerApplication" />
+      <module name="configServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.configServer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.customerService.CustomerServiceApplication" />
+      <module name="customerService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.turkcellcrm.customerService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiscoveryServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.discoveryServer.DiscoveryServerApplication" />
+      <module name="discoveryServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.turkcellcrm.discoveryServer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GatewayServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.turkcell.rentacar.gatewayService.GatewayServiceApplication" />
       <module name="gatewayService" />
@@ -136,106 +148,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="common" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.common.CommonApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="configServer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.configServer.ConfigServerApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.configServer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="customerService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.customerService.CustomerServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DiscoveryServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="discoveryServer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.discoveryServer.DiscoveryServerApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.turkcellcrm.discoveryServer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="gatewayService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.rentacar.gatewayService.GatewayServiceApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.rentacar.gatewayService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IdentityServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="identityService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.identityService.IdentityServiceApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.identityService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SearchServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="SearchServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.searchService.SearchServiceApplication" />
       <module name="searchService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.searchService.SearchServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.turkcellcrm.searchService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.ConfigServerApplication" />
+      <item itemvalue="Application.SearchServiceApplication" />
+      <item itemvalue="Application.CustomerServiceApplication" />
+      <item itemvalue="Application.DiscoveryServerApplication" />
       <item itemvalue="Application.GatewayServiceApplication" />
-      <item itemvalue="Spring Boot.SearchServiceApplication" />
-      <item itemvalue="Spring Boot.CommonApplication" />
-      <item itemvalue="Spring Boot.CustomerServiceApplication" />
-      <item itemvalue="Spring Boot.ConfigServerApplication" />
-      <item itemvalue="Spring Boot.DiscoveryServerApplication" />
-      <item itemvalue="Spring Boot.GatewayServiceApplication" />
-      <item itemvalue="Spring Boot.IdentityServiceApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.ConfigServerApplication" />
-        <item itemvalue="Spring Boot.IdentityServiceApplication" />
-        <item itemvalue="Spring Boot.GatewayServiceApplication" />
-        <item itemvalue="Spring Boot.DiscoveryServerApplication" />
+        <item itemvalue="Application.SearchServiceApplication" />
+        <item itemvalue="Application.CustomerServiceApplication" />
         <item itemvalue="Application.GatewayServiceApplication" />
+        <item itemvalue="Application.ConfigServerApplication" />
+        <item itemvalue="Application.DiscoveryServerApplication" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -245,13 +186,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715096943648</updated>
-      <workItem from="1715168428938" duration="11556000" />
-      <workItem from="1715262709951" duration="12011000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -263,11 +199,6 @@
           <url>file://$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/concretes/IndividualCustomerManager.java</url>
           <line>37</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/gatewayService/src/main/java/com/turkcell/rentacar/gatewayService/GatewayServiceApplication.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
