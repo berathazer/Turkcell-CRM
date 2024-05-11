@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/discoveryServer/pom.xml" />
         <option value="$PROJECT_DIR$/identityService/pom.xml" />
         <option value="$PROJECT_DIR$/accountService/pom.xml" />
+        <option value="$PROJECT_DIR$/productService/pom.xml" />
       </list>
     </option>
   </component>

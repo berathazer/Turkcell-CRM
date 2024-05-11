@@ -18,7 +18,7 @@ public class AccountTypeBusinessRules {
     public void isAccountTypeExistById(int id) {
         Optional<AccountType> accountType = this.accountTypeRepository.findById(id);
         if (accountType.isEmpty()) {
-            throw new BusinessException(AccountMessages.ACCOUNTTYPE_NOT_FOUND);
+            throw new BusinessException(AccountMessages.ACCOUNT_TYPE_NOT_FOUND);
         }
     }
 

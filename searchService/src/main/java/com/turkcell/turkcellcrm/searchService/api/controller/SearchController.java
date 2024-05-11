@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/searchservice/api/v1/filter")
+@RequestMapping("/searchservice/api/v1/filters/search")
 @AllArgsConstructor
 public class SearchController {
     private SearchService searchService;
@@ -28,7 +28,5 @@ public class SearchController {
     @ResponseStatus(HttpStatus.OK)
     public List<Customer> get(){
         return this.searchRepository.findAll();
-//        Optional<Customer> customer = searchRepository.findById("663a656dae0148586dc525f5");
-//        return "663a656dae0148586dc525f5";
     }
 }
