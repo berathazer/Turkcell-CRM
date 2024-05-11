@@ -29,7 +29,6 @@ public class UserManager implements UserService
         user.setPassword(encodedPassword);
         userRepository.save(user);
     }
-
     @Override
     public User findByUsername(String username) {
         return userRepository.findUserByEmail(username).orElseThrow();

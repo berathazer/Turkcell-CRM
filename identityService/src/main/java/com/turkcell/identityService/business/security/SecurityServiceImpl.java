@@ -21,7 +21,6 @@ public class SecurityServiceImpl implements SecurityService
             "/api/v1/auth/**",
             "/api/v1/users"
     };
-
     // C# => Extension Method Alternatif
     @Override
     public HttpSecurity configureSecurity(HttpSecurity http) throws Exception {
