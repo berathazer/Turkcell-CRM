@@ -39,4 +39,8 @@ public class IndividualCustomerBusinessRules {
             throw new BusinessException(messageService.getMessage(IndividualCustomerMessages.CUSTOMER_DOES_NOT_EXIST));
         }
     }
+    public boolean isCustomerIdExistForAccount(int id){
+        Optional<IndividualCustomer> individualCustomer = this.individualCustomerRepository.findById(id);
+        return individualCustomer.isPresent();
+    }
 }

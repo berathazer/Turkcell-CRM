@@ -16,8 +16,6 @@ public class Account extends BaseEntity {
     private String accountName;
     private int customerId;
 
-
-
     @ManyToOne
     @JoinColumn(name = "account_type_id")
     private AccountType accountType;

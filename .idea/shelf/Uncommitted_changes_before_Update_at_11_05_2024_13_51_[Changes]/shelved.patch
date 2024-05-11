@@ -1,0 +1,16 @@
+Index: customerService/src/main/java/com/turkcell/turkcellcrm/customerService/entity/Account.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.turkcell.turkcellcrm.customerService.entity;\r\n\r\nimport com.turkcell.turkcellcrm.customerService.core.entities.BaseEntity;\r\nimport jakarta.persistence.*;\r\nimport lombok.*;\r\n\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Getter\r\n@Setter\r\n@Entity\r\n@Table(name = \"accounts\")\r\npublic class Account extends BaseEntity {\r\n    private String accountNumber;\r\n    private String accountName;\r\n\r\n    @ManyToOne\r\n    @JoinColumn(name = \"customer_id\")\r\n    private Customer customer;\r\n\r\n    @OneToOne(mappedBy = \"account\")\r\n    private AccountAddress accountAddress;\r\n\r\n    @ManyToOne\r\n    @JoinColumn(name = \"account_type_id\")\r\n    private AccountType accountType;\r\n}\r\n
+===================================================================
+diff --git a/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/entity/Account.java b/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/entity/Account.java
+--- a/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/entity/Account.java	
++++ b/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/entity/Account.java	
+@@ -13,7 +13,6 @@
+ public class Account extends BaseEntity {
+     private String accountNumber;
+     private String accountName;
+-
+     @ManyToOne
+     @JoinColumn(name = "customer_id")
+     private Customer customer;

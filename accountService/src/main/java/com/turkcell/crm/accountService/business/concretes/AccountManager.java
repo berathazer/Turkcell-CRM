@@ -28,6 +28,7 @@ public class AccountManager implements AccountService {
     @Override
     public CreatedAccountResponse add(CreateAccountRequest createAccountRequest) {
         this.accountBusinessRules.isAccountTypeExist(createAccountRequest);
+        this.accountBusinessRules.isCustomerIdExist(createAccountRequest);
 
         Account account =this.modelMapperService.forRequest().map(createAccountRequest, Account.class);
         this.accountRepository.save(account);

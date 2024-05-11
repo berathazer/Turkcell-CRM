@@ -15,6 +15,7 @@
         <module name="searchService" />
         <module name="accountService" />
         <module name="discoveryServer" />
+        <module name="productService" />
       </profile>
     </annotationProcessing>
   </component>
@@ -27,6 +28,7 @@
       <module name="discoveryServer" options="-parameters" />
       <module name="gatewayService" options="-parameters" />
       <module name="identityService" options="-parameters" />
+      <module name="productService" options="-parameters" />
       <module name="searchService" options="-parameters" />
     </option>
   </component>
