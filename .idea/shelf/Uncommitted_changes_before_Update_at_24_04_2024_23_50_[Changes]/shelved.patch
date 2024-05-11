@@ -1,0 +1,124 @@
+Index: gatewayService/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n\txsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n\t<modelVersion>4.0.0</modelVersion>\r\n\t<parent>\r\n\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t<artifactId>spring-boot-starter-parent</artifactId>\r\n\t\t<version>3.2.5</version>\r\n\t\t<relativePath/> <!-- lookup parent from repository -->\r\n\t</parent>\r\n\t<groupId>com.turkcell.rentacar</groupId>\r\n\t<artifactId>gatewayService</artifactId>\r\n\t<version>0.0.1-SNAPSHOT</version>\r\n\t<name>gatewayService</name>\r\n\t<description>Demo project for Spring Boot</description>\r\n\t<properties>\r\n\t\t<java.version>17</java.version>\r\n\t\t<spring-cloud.version>2023.0.1</spring-cloud.version>\r\n\t</properties>\r\n\t<dependencies>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.cloud</groupId>\r\n\t\t\t<artifactId>spring-cloud-starter-gateway-mvc</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.cloud</groupId>\r\n\t\t\t<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>\r\n\t\t</dependency>\r\n\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-test</artifactId>\r\n\t\t\t<scope>test</scope>\r\n\t\t</dependency>\r\n\t</dependencies>\r\n\t<dependencyManagement>\r\n\t\t<dependencies>\r\n\t\t\t<dependency>\r\n\t\t\t\t<groupId>org.springframework.cloud</groupId>\r\n\t\t\t\t<artifactId>spring-cloud-dependencies</artifactId>\r\n\t\t\t\t<version>${spring-cloud.version}</version>\r\n\t\t\t\t<type>pom</type>\r\n\t\t\t\t<scope>import</scope>\r\n\t\t\t</dependency>\r\n\t\t</dependencies>\r\n\t</dependencyManagement>\r\n\r\n\t<build>\r\n\t\t<plugins>\r\n\t\t\t<plugin>\r\n\t\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t\t<artifactId>spring-boot-maven-plugin</artifactId>\r\n\t\t\t</plugin>\r\n\t\t</plugins>\r\n\t</build>\r\n\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gatewayService/pom.xml b/gatewayService/pom.xml
+--- a/gatewayService/pom.xml	(revision d8118154be75e600b4c9f8ea63c542890fa05f6e)
++++ b/gatewayService/pom.xml	(date 1713618923213)
+@@ -24,6 +24,10 @@
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.springframework.cloud</groupId>
++			<artifactId>spring-cloud-starter-config</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>org.springframework.cloud</groupId>
+ 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+ 		</dependency>
+ 
+Index: gatewayService/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 9002\r\neureka:\r\n  client:\r\n    fetchRegistry: true\r\n    registerWithEureka: true\r\n    serviceUrl:\r\n      defaultZone: http://localhost:9000/eureka\r\n  instance:\r\n    instance-id: ${spring.application.name}:${instanceId:${random.value}}\r\n    preferIpAddress: true\r\nspring:\r\n  application:\r\n    name: gateway-service\r\n  cloud:\r\n    gateway:\r\n      mvc:\r\n        routes[0]:\r\n          id: customerservice\r\n          predicates[0]: Path=/customerservice/api/v1/customers/**\r\n          uri: lb://CUSTOMER-SERVICE\r\n        routes[1]:\r\n          id: discoveryserver\r\n          predicates[0]: Path=/eureka/web\r\n          filters[0]: SetPath=/\r\n          uri: http://localhost:9000\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gatewayService/src/main/resources/application.yml b/gatewayService/src/main/resources/application.yml
+--- a/gatewayService/src/main/resources/application.yml	(revision d8118154be75e600b4c9f8ea63c542890fa05f6e)
++++ b/gatewayService/src/main/resources/application.yml	(date 1713618883132)
+@@ -1,26 +1,8 @@
+-server:
+-  port: 9002
+-eureka:
+-  client:
+-    fetchRegistry: true
+-    registerWithEureka: true
+-    serviceUrl:
+-      defaultZone: http://localhost:9000/eureka
+-  instance:
+-    instance-id: ${spring.application.name}:${instanceId:${random.value}}
+-    preferIpAddress: true
+ spring:
+   application:
+-    name: gateway-service
++    name: gatewayService
+   cloud:
+-    gateway:
+-      mvc:
+-        routes[0]:
+-          id: customerservice
+-          predicates[0]: Path=/customerservice/api/v1/customers/**
+-          uri: lb://CUSTOMER-SERVICE
+-        routes[1]:
+-          id: discoveryserver
+-          predicates[0]: Path=/eureka/web
+-          filters[0]: SetPath=/
+-          uri: http://localhost:9000
++    config:
++      profile: dev
++  config:
++    import: configserver:http://localhost:8050/
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Encoding\">\r\n    <file url=\"file://$PROJECT_DIR$/customerService/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/discoveryServer/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/gatewayService/src/main/java\" charset=\"UTF-8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+--- a/.idea/encodings.xml	(revision d8118154be75e600b4c9f8ea63c542890fa05f6e)
++++ b/.idea/encodings.xml	(date 1713619002131)
+@@ -1,6 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/configServer/src/main/java" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/customerService/src/main/java" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/discoveryServer/src/main/java" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/gatewayService/src/main/java" charset="UTF-8" />
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/inventoryService/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/discoveryServer/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/customerService/pom.xml\" />\r\n        <option value=\"$PROJECT_DIR$/gatewayService/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"17\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision d8118154be75e600b4c9f8ea63c542890fa05f6e)
++++ b/.idea/misc.xml	(date 1713619002105)
+@@ -8,6 +8,7 @@
+         <option value="$PROJECT_DIR$/discoveryServer/pom.xml" />
+         <option value="$PROJECT_DIR$/customerService/pom.xml" />
+         <option value="$PROJECT_DIR$/gatewayService/pom.xml" />
++        <option value="$PROJECT_DIR$/configServer/pom.xml" />
+       </list>
+     </option>
+   </component>
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile default=\"true\" name=\"Default\" enabled=\"true\" />\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <module name=\"discoveryServer\" />\r\n        <module name=\"customerService\" />\r\n        <module name=\"gatewayService\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n  </component>\r\n  <component name=\"JavacSettings\">\r\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\r\n      <module name=\"customerService\" options=\"-parameters\" />\r\n      <module name=\"discoveryServer\" options=\"-parameters\" />\r\n      <module name=\"gatewayService\" options=\"-parameters\" />\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision d8118154be75e600b4c9f8ea63c542890fa05f6e)
++++ b/.idea/compiler.xml	(date 1713619002114)
+@@ -10,11 +10,13 @@
+         <module name="discoveryServer" />
+         <module name="customerService" />
+         <module name="gatewayService" />
++        <module name="configServer" />
+       </profile>
+     </annotationProcessing>
+   </component>
+   <component name="JavacSettings">
+     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
++      <module name="configServer" options="-parameters" />
+       <module name="customerService" options="-parameters" />
+       <module name="discoveryServer" options="-parameters" />
+       <module name="gatewayService" options="-parameters" />

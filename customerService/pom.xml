@@ -8,7 +8,7 @@
 		<version>3.2.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.turkcell.rentacar</groupId>
+	<groupId>com.turkcell.crm</groupId>
 	<artifactId>customerService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>customerService</name>
@@ -64,7 +64,7 @@
 			<version>2.3.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.turkcell.rentacar</groupId>
+			<groupId>com.turkcell.crm</groupId>
 			<artifactId>customerService</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>compile</scope>
@@ -75,11 +75,15 @@
 			<version>2.3.9</version>
 		</dependency>
         <dependency>
-			<groupId>com.turkcell.turkcellcrm</groupId>
+			<groupId>com.turkcell.crm</groupId>
 			<artifactId>common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
     </dependencies>
 	<dependencyManagement>
 		<dependencies>

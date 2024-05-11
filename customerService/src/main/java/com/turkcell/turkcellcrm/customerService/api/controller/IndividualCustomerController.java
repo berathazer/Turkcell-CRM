@@ -31,7 +31,7 @@ public class IndividualCustomerController {
         return this.individualCustomerService.getAll();
     }
 
-    @GetMapping("/getById/{id}")  //Burayi Request yapabilir miyiz ?
+    @GetMapping("/getById/{id}")  //todo Burayi Request yapabilir miyiz ?
     @ResponseStatus(HttpStatus.OK)
     public GetByIdIndividualCustomerResponse getById(@PathVariable int id){
         return this.individualCustomerService.getById(id);
@@ -48,4 +48,5 @@ public class IndividualCustomerController {
     public void delete(@PathVariable int id){
         this.individualCustomerService.delete(id);
     }
+    //todo --> Spesifik güncellemeler yapmak için @PatchMapping methodu eklememiz lazım Eğer spesifik güncelleme istersek
 }

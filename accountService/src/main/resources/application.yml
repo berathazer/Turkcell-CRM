@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: accountService
+  config:
+    import: configserver:http://localhost:8050/
+  cloud:
+    config:
+      profile: dev
+
