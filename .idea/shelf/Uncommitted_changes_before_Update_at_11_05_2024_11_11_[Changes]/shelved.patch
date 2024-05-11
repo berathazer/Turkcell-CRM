@@ -1,0 +1,366 @@
+Index: customerService/src/main/java/com/turkcell/turkcellcrm/customerService/api/controller/IndividualCustomerController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.turkcell.turkcellcrm.customerService.api.controller;\r\n\r\nimport com.turkcell.turkcellcrm.customerService.business.abstracts.IndividualCustomerService;\r\nimport com.turkcell.turkcellcrm.customerService.business.dtos.request.customer.individualCustomer.CreateIndividualCustomerRequest;\r\nimport com.turkcell.turkcellcrm.customerService.business.dtos.request.customer.individualCustomer.UpdateIndividualCustomerRequest;\r\nimport com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.individualCustomer.CreatedIndividualCustomerResponse;\r\nimport com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.individualCustomer.GetAllIndividualCustomerResponse;\r\nimport com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.individualCustomer.GetByIdIndividualCustomerResponse;\r\nimport com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.individualCustomer.UpdatedIndividualCustomerResponse;\r\nimport jakarta.validation.Valid;\r\nimport lombok.AllArgsConstructor;\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.List;\r\n\r\n@RestController\r\n@RequestMapping(\"/customerservice/api/v1/individualcustomers\")\r\n@AllArgsConstructor\r\npublic class IndividualCustomerController {\r\n    private IndividualCustomerService individualCustomerService;\r\n\r\n    @PostMapping(\"/add\")\r\n    @ResponseStatus(HttpStatus.CREATED)\r\n    public CreatedIndividualCustomerResponse add(@Valid @RequestBody CreateIndividualCustomerRequest createIndividualCustomerRequest){\r\n        return this.individualCustomerService.add(createIndividualCustomerRequest);\r\n    }\r\n    @GetMapping(\"/getAll\")\r\n    @ResponseStatus(HttpStatus.OK)\r\n    public List<GetAllIndividualCustomerResponse> getAll(){\r\n        return this.individualCustomerService.getAll();\r\n    }\r\n\r\n    @GetMapping(\"/getById/{id}\")  //Burayi Request yapabilir miyiz ?\r\n    @ResponseStatus(HttpStatus.OK)\r\n    public GetByIdIndividualCustomerResponse getById(@PathVariable int id){\r\n        return this.individualCustomerService.getById(id);\r\n    }\r\n\r\n    @PutMapping(\"/update\")\r\n    @ResponseStatus(HttpStatus.OK)\r\n    public UpdatedIndividualCustomerResponse update(@Valid @RequestBody UpdateIndividualCustomerRequest updateIndividualCustomerRequest){\r\n        return this.individualCustomerService.update(updateIndividualCustomerRequest);\r\n    }\r\n\r\n    @DeleteMapping(\"/delete/{id}\")\r\n    @ResponseStatus(HttpStatus.NO_CONTENT)\r\n    public void delete(@PathVariable int id){\r\n        this.individualCustomerService.delete(id);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/api/controller/IndividualCustomerController.java b/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/api/controller/IndividualCustomerController.java
+--- a/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/api/controller/IndividualCustomerController.java	(revision 8a57e319a5f11bf5f399c194709a37b1d32f187d)
++++ b/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/api/controller/IndividualCustomerController.java	(date 1715341674681)
+@@ -31,7 +31,7 @@
+         return this.individualCustomerService.getAll();
+     }
+ 
+-    @GetMapping("/getById/{id}")  //Burayi Request yapabilir miyiz ?
++    @GetMapping("/getById/{id}")  //todo Burayi Request yapabilir miyiz ?
+     @ResponseStatus(HttpStatus.OK)
+     public GetByIdIndividualCustomerResponse getById(@PathVariable int id){
+         return this.individualCustomerService.getById(id);
+@@ -48,4 +48,5 @@
+     public void delete(@PathVariable int id){
+         this.individualCustomerService.delete(id);
+     }
++    //todo --> Spesifik güncellemeler yapmak için @PatchMapping methodu eklememiz lazım Eğer spesifik güncelleme istersek
+ }
+Index: customerService/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>eureka:\r\n  client:\r\n    fetchRegistry: true\r\n    registerWithEureka: true\r\n    serviceUrl:\r\n      defaultZone: http://localhost:9000/eureka\r\n  instance:\r\n    instance-id: ${spring.application.name}:${instanceId:${random.value}}\r\n    preferIpAddress: true\r\n\r\nserver:\r\n  port: 0\r\n\r\nspring:\r\n  application:\r\n    name: customerService\r\n  datasource:\r\n    url: jdbc:postgresql://localhost:5432/CRMcustomerServiceDB\r\n    username: postgres\r\n    password: 1234\r\n  jpa:\r\n    hibernate:\r\n      ddl-auto: update\r\n    properties:\r\n      hibernate:\r\n        dialect: org.hibernate.dialect.PostgreSQLDialect\r\n      javax:\r\n        persistence:\r\n          validation:\r\n            mode: none\r\n    show-sql: true\r\n  kafka:\r\n    producer:\r\n      bootstrap-servers: localhost:9092\r\n      key-serializer: org.apache.kafka.common.serialization.StringSerializer\r\n      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/customerService/src/main/resources/application.yml b/customerService/src/main/resources/application.yml
+--- a/customerService/src/main/resources/application.yml	(revision 8a57e319a5f11bf5f399c194709a37b1d32f187d)
++++ b/customerService/src/main/resources/application.yml	(date 1715341675581)
+@@ -17,10 +17,10 @@
+   datasource:
+     url: jdbc:postgresql://localhost:5432/CRMcustomerServiceDB
+     username: postgres
+-    password: 1234
++    password: 12345
+   jpa:
+     hibernate:
+-      ddl-auto: update
++      ddl-auto: create
+     properties:
+       hibernate:
+         dialect: org.hibernate.dialect.PostgreSQLDialect
+Index: customerService/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n\txsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n\t<modelVersion>4.0.0</modelVersion>\r\n\t<parent>\r\n\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t<artifactId>spring-boot-starter-parent</artifactId>\r\n\t\t<version>3.2.4</version>\r\n\t\t<relativePath/> <!-- lookup parent from repository -->\r\n\t</parent>\r\n\t<groupId>com.turkcell.rentacar</groupId>\r\n\t<artifactId>customerService</artifactId>\r\n\t<version>0.0.1-SNAPSHOT</version>\r\n\t<name>customerService</name>\r\n\t<description>Demo project for Spring Boot</description>\r\n\t<properties>\r\n\t\t<java.version>17</java.version>\r\n\t\t<spring-cloud.version>2023.0.1</spring-cloud.version>\r\n\t</properties>\r\n\t<dependencies>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-data-jpa</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-validation</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-web</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.cloud</groupId>\r\n\t\t\t<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.kafka</groupId>\r\n\t\t\t<artifactId>spring-kafka</artifactId>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.kafka</groupId>\r\n\t\t\t<artifactId>spring-kafka-test</artifactId>\r\n\t\t\t<scope>test</scope>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.postgresql</groupId>\r\n\t\t\t<artifactId>postgresql</artifactId>\r\n\t\t\t<scope>runtime</scope>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.projectlombok</groupId>\r\n\t\t\t<artifactId>lombok</artifactId>\r\n\t\t\t<optional>true</optional>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t<artifactId>spring-boot-starter-test</artifactId>\r\n\t\t\t<scope>test</scope>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.springdoc</groupId>\r\n\t\t\t<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>\r\n\t\t\t<version>2.3.0</version>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>com.turkcell.rentacar</groupId>\r\n\t\t\t<artifactId>customerService</artifactId>\r\n\t\t\t<version>0.0.1-SNAPSHOT</version>\r\n\t\t\t<scope>compile</scope>\r\n\t\t</dependency>\r\n\t\t<dependency>\r\n\t\t\t<groupId>org.modelmapper</groupId>\r\n\t\t\t<artifactId>modelmapper</artifactId>\r\n\t\t\t<version>2.3.9</version>\r\n\t\t</dependency>\r\n        <dependency>\r\n\t\t\t<groupId>com.turkcell.turkcellcrm</groupId>\r\n\t\t\t<artifactId>common</artifactId>\r\n\t\t\t<version>0.0.1-SNAPSHOT</version>\r\n            <scope>compile</scope>\r\n        </dependency>\r\n    </dependencies>\r\n\t<dependencyManagement>\r\n\t\t<dependencies>\r\n\t\t\t<dependency>\r\n\t\t\t\t<groupId>org.springframework.cloud</groupId>\r\n\t\t\t\t<artifactId>spring-cloud-dependencies</artifactId>\r\n\t\t\t\t<version>${spring-cloud.version}</version>\r\n\t\t\t\t<type>pom</type>\r\n\t\t\t\t<scope>import</scope>\r\n\t\t\t</dependency>\r\n\t\t</dependencies>\r\n\t</dependencyManagement>\r\n\r\n\t<build>\r\n\t\t<plugins>\r\n\t\t\t<plugin>\r\n\t\t\t\t<groupId>org.springframework.boot</groupId>\r\n\t\t\t\t<artifactId>spring-boot-maven-plugin</artifactId>\r\n\t\t\t\t<configuration>\r\n\t\t\t\t\t<excludes>\r\n\t\t\t\t\t\t<exclude>\r\n\t\t\t\t\t\t\t<groupId>org.projectlombok</groupId>\r\n\t\t\t\t\t\t\t<artifactId>lombok</artifactId>\r\n\t\t\t\t\t\t</exclude>\r\n\t\t\t\t\t</excludes>\r\n\t\t\t\t</configuration>\r\n\t\t\t</plugin>\r\n\t\t</plugins>\r\n\t</build>\r\n\r\n</project>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/customerService/pom.xml b/customerService/pom.xml
+--- a/customerService/pom.xml	(revision 8a57e319a5f11bf5f399c194709a37b1d32f187d)
++++ b/customerService/pom.xml	(date 1715415031094)
+@@ -8,7 +8,7 @@
+ 		<version>3.2.4</version>
+ 		<relativePath/> <!-- lookup parent from repository -->
+ 	</parent>
+-	<groupId>com.turkcell.rentacar</groupId>
++	<groupId>com.turkcell.crm</groupId>
+ 	<artifactId>customerService</artifactId>
+ 	<version>0.0.1-SNAPSHOT</version>
+ 	<name>customerService</name>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ce0a59e7-c594-418e-be99-1590f63b6dda\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/messages/CustomerFilterBusinessRulesMessages.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/CustomerFilterBusinessRules.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/handlers/GlobalExceptionHandler.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/problemDetails/BusinessProblemDetails.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/problemDetails/ProblemDetails.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/problemDetails/ValidationProblemDetails.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/types/BusinessException.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/customerService/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/core/configuration/KafkaProducerConfig.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/producers/CustomerProducer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/producers/CustomerProducer.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/customerService/src/main/resources/application.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/customerService/src/main/resources/application.yml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/response/GetAllCustomerResponse.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/response/GetAllCustomerResponse.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/configurations/KafkaConsumerConfig.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Ahmethan1&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/berathazer/Turkcell-CRM.git&quot;,\r\n    &quot;accountId&quot;: &quot;149d2adf-eb22-46c2-a25c-212dfbfb4402&quot;\r\n  }\r\n}</component>\r\n  <component name=\"KubernetesApiPersistence\">{}</component>\r\n  <component name=\"KubernetesApiProvider\">{\r\n  &quot;isMigrated&quot;: true\r\n}</component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2g95RLTt0o05JN2tEdh3Y4lC9UN\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"Application.ConfigServerApplication.executor\": \"Run\",\r\n    \"Application.CustomerServiceApplication.executor\": \"Debug\",\r\n    \"Application.DiscoveryServerApplication.executor\": \"Run\",\r\n    \"Application.GatewayServiceApplication.executor\": \"Run\",\r\n    \"Application.SearchServiceApplication.executor\": \"Debug\",\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"Spring Boot.CommonApplication.executor\": \"Run\",\r\n    \"Spring Boot.ConfigServerApplication.executor\": \"Run\",\r\n    \"Spring Boot.CustomerServiceApplication.executor\": \"Run\",\r\n    \"Spring Boot.DiscoveryServerApplication.executor\": \"Run\",\r\n    \"Spring Boot.GatewayServiceApplication.executor\": \"Run\",\r\n    \"Spring Boot.IdentityServiceApplication.executor\": \"Run\",\r\n    \"Spring Boot.SearchServiceApplication.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"Dparlar33\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/dparl/Desktop/Turkcell-CRM/Turkcell-CRM/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"run.configurations.included.in.services\": \"true\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"ReactorSettings\">\r\n    <option name=\"notificationShown\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\dparl\\Desktop\\Turkcell-CRM\\Turkcell-CRM\\searchService\\src\\main\\java\\com\\turkcell\\turkcellcrm\\searchService\\core\\utilities\\exceptions\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunDashboard\">\r\n    <option name=\"configurationTypes\">\r\n      <set>\r\n        <option value=\"MicronautRunConfigurationType\" />\r\n        <option value=\"QuarkusRunConfigurationType\" />\r\n        <option value=\"SpringBootApplicationConfigurationType\" />\r\n      </set>\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.ConfigServerApplication\">\r\n    <configuration name=\"GatewayServiceApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.turkcell.rentacar.gatewayService.GatewayServiceApplication\" />\r\n      <module name=\"gatewayService\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.turkcell.rentacar.gatewayService.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CommonApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"common\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.turkcell.turkcellcrm.common.CommonApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"ConfigServerApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"configServer\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.turkcell.configServer.ConfigServerApplication\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.turkcell.configServer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CustomerServiceApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"customerService\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.turkcell.turkcellcrm.customerService.CustomerServiceApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DiscoveryServerApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"discoveryServer\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.turkcell.turkcellcrm.discoveryServer.DiscoveryServerApplication\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.turkcell.turkcellcrm.discoveryServer.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"GatewayServiceApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"gatewayService\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.turkcell.rentacar.gatewayService.GatewayServiceApplication\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.turkcell.rentacar.gatewayService.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"IdentityServiceApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"identityService\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.turkcell.identityService.IdentityServiceApplication\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.turkcell.identityService.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"SearchServiceApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"searchService\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.turkcell.turkcellcrm.searchService.SearchServiceApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.GatewayServiceApplication\" />\r\n      <item itemvalue=\"Spring Boot.SearchServiceApplication\" />\r\n      <item itemvalue=\"Spring Boot.CommonApplication\" />\r\n      <item itemvalue=\"Spring Boot.CustomerServiceApplication\" />\r\n      <item itemvalue=\"Spring Boot.ConfigServerApplication\" />\r\n      <item itemvalue=\"Spring Boot.DiscoveryServerApplication\" />\r\n      <item itemvalue=\"Spring Boot.GatewayServiceApplication\" />\r\n      <item itemvalue=\"Spring Boot.IdentityServiceApplication\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Spring Boot.ConfigServerApplication\" />\r\n        <item itemvalue=\"Spring Boot.IdentityServiceApplication\" />\r\n        <item itemvalue=\"Spring Boot.GatewayServiceApplication\" />\r\n        <item itemvalue=\"Spring Boot.DiscoveryServerApplication\" />\r\n        <item itemvalue=\"Application.GatewayServiceApplication\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ce0a59e7-c594-418e-be99-1590f63b6dda\" name=\"Changes\" comment=\"\" />\r\n      <created>1715096943648</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1715096943648</updated>\r\n      <workItem from=\"1715168428938\" duration=\"11556000\" />\r\n      <workItem from=\"1715262709951\" duration=\"12011000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/concretes/IndividualCustomerManager.java</url>\r\n          <line>37</line>\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/gatewayService/src/main/java/com/turkcell/rentacar/gatewayService/GatewayServiceApplication.java</url>\r\n          <line>7</line>\r\n          <option name=\"timeStamp\" value=\"5\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 8a57e319a5f11bf5f399c194709a37b1d32f187d)
++++ b/.idea/workspace.xml	(date 1715347613761)
+@@ -5,40 +5,15 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="ce0a59e7-c594-418e-be99-1590f63b6dda" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/messages/CustomerFilterBusinessRulesMessages.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/CustomerFilterBusinessRules.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/handlers/GlobalExceptionHandler.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/problemDetails/BusinessProblemDetails.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/problemDetails/ProblemDetails.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/problemDetails/ValidationProblemDetails.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions/types/BusinessException.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/customerService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/core/configuration/KafkaProducerConfig.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/producers/CustomerProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/kafka/producers/CustomerProducer.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/api/controller/IndividualCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/api/controller/IndividualCustomerController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/response/GetAllCustomerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/response/GetAllCustomerResponse.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/configurations/KafkaConsumerConfig.java" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CustomerConsumer.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="Class" />
+-      </list>
+-    </option>
+-  </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+@@ -51,12 +26,8 @@
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/berathazer/Turkcell-CRM.git&quot;,
+-    &quot;accountId&quot;: &quot;149d2adf-eb22-46c2-a25c-212dfbfb4402&quot;
++    &quot;accountId&quot;: &quot;d0d8cbac-ba48-4e3f-a6fc-4a6b8f8df2fc&quot;
+   }
+-}</component>
+-  <component name="KubernetesApiPersistence">{}</component>
+-  <component name="KubernetesApiProvider">{
+-  &quot;isMigrated&quot;: true
+ }</component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+@@ -72,63 +43,35 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_ADD_EXTERNAL_FILES": "true",
+-    "Application.ConfigServerApplication.executor": "Run",
+-    "Application.CustomerServiceApplication.executor": "Debug",
+-    "Application.DiscoveryServerApplication.executor": "Run",
+-    "Application.GatewayServiceApplication.executor": "Run",
+-    "Application.SearchServiceApplication.executor": "Debug",
+-    "RequestMappingsPanelOrder0": "0",
+-    "RequestMappingsPanelOrder1": "1",
+-    "RequestMappingsPanelWidth0": "75",
+-    "RequestMappingsPanelWidth1": "75",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "Spring Boot.CommonApplication.executor": "Run",
+-    "Spring Boot.ConfigServerApplication.executor": "Run",
+-    "Spring Boot.CustomerServiceApplication.executor": "Run",
+-    "Spring Boot.DiscoveryServerApplication.executor": "Run",
+-    "Spring Boot.GatewayServiceApplication.executor": "Run",
+-    "Spring Boot.IdentityServiceApplication.executor": "Run",
+-    "Spring Boot.SearchServiceApplication.executor": "Run",
+-    "git-widget-placeholder": "Dparlar33",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/dparl/Desktop/Turkcell-CRM/Turkcell-CRM/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/core/utilities/exceptions",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "run.configurations.included.in.services": "true",
+-    "vue.rearranger.settings.migration": "true"
+-  }
+-}]]></component>
+-  <component name="ReactorSettings">
+-    <option name="notificationShown" value="true" />
+-  </component>
+-  <component name="RecentsManager">
+-    <key name="CopyFile.RECENT_KEYS">
+-      <recent name="C:\Users\dparl\Desktop\Turkcell-CRM\Turkcell-CRM\searchService\src\main\java\com\turkcell\turkcellcrm\searchService\core\utilities\exceptions" />
+-    </key>
+-  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
++    &quot;Application.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.CustomerServiceApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.DiscoveryServerApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.GatewayServiceApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.SearchServiceApplication.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;Ahmethan1&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ahmethan/Desktop/rentacarMS/RentACarMS&quot;
++  }
++}</component>
+   <component name="RunDashboard">
+     <option name="configurationTypes">
+       <set>
+-        <option value="MicronautRunConfigurationType" />
+-        <option value="QuarkusRunConfigurationType" />
+-        <option value="SpringBootApplicationConfigurationType" />
++        <option value="Application" />
+       </set>
+     </option>
+   </component>
+-  <component name="RunManager" selected="Spring Boot.ConfigServerApplication">
+-    <configuration name="GatewayServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="com.turkcell.rentacar.gatewayService.GatewayServiceApplication" />
+-      <module name="gatewayService" />
++  <component name="RunManager" selected="Application.DiscoveryServerApplication">
++    <configuration name="ConfigServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.turkcell.configServer.ConfigServerApplication" />
++      <module name="configServer" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="com.turkcell.rentacar.gatewayService.*" />
++          <option name="PATTERN" value="com.turkcell.configServer.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+@@ -136,19 +79,12 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="CommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+-      <module name="common" />
+-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.common.CommonApplication" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+-      <module name="configServer" />
+-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.configServer.ConfigServerApplication" />
++    <configuration name="CustomerServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.customerService.CustomerServiceApplication" />
++      <module name="customerService" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="com.turkcell.configServer.*" />
++          <option name="PATTERN" value="com.turkcell.turkcellcrm.customerService.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+@@ -156,16 +92,9 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="CustomerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+-      <module name="customerService" />
+-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.customerService.CustomerServiceApplication" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration name="DiscoveryServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
++    <configuration name="DiscoveryServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.discoveryServer.DiscoveryServerApplication" />
+       <module name="discoveryServer" />
+-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.discoveryServer.DiscoveryServerApplication" />
+       <extension name="coverage">
+         <pattern>
+           <option name="PATTERN" value="com.turkcell.turkcellcrm.discoveryServer.*" />
+@@ -176,9 +105,9 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="GatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
++    <configuration name="GatewayServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.turkcell.rentacar.gatewayService.GatewayServiceApplication" />
+       <module name="gatewayService" />
+-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.rentacar.gatewayService.GatewayServiceApplication" />
+       <extension name="coverage">
+         <pattern>
+           <option name="PATTERN" value="com.turkcell.rentacar.gatewayService.*" />
+@@ -189,12 +118,12 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="IdentityServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+-      <module name="identityService" />
+-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.identityService.IdentityServiceApplication" />
++    <configuration name="SearchServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.searchService.SearchServiceApplication" />
++      <module name="searchService" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="com.turkcell.identityService.*" />
++          <option name="PATTERN" value="com.turkcell.turkcellcrm.searchService.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+@@ -202,41 +131,23 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="SearchServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+-      <module name="searchService" />
+-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.searchService.SearchServiceApplication" />
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+     <list>
++      <item itemvalue="Application.ConfigServerApplication" />
++      <item itemvalue="Application.CustomerServiceApplication" />
++      <item itemvalue="Application.DiscoveryServerApplication" />
+       <item itemvalue="Application.GatewayServiceApplication" />
+-      <item itemvalue="Spring Boot.SearchServiceApplication" />
+-      <item itemvalue="Spring Boot.CommonApplication" />
+-      <item itemvalue="Spring Boot.CustomerServiceApplication" />
+-      <item itemvalue="Spring Boot.ConfigServerApplication" />
+-      <item itemvalue="Spring Boot.DiscoveryServerApplication" />
+-      <item itemvalue="Spring Boot.GatewayServiceApplication" />
+-      <item itemvalue="Spring Boot.IdentityServiceApplication" />
++      <item itemvalue="Application.SearchServiceApplication" />
+     </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Spring Boot.ConfigServerApplication" />
+-        <item itemvalue="Spring Boot.IdentityServiceApplication" />
+-        <item itemvalue="Spring Boot.GatewayServiceApplication" />
+-        <item itemvalue="Spring Boot.DiscoveryServerApplication" />
++        <item itemvalue="Application.SearchServiceApplication" />
++        <item itemvalue="Application.CustomerServiceApplication" />
+         <item itemvalue="Application.GatewayServiceApplication" />
++        <item itemvalue="Application.ConfigServerApplication" />
++        <item itemvalue="Application.DiscoveryServerApplication" />
+       </list>
+     </recent_temporary>
+   </component>
+-  <component name="SharedIndexes">
+-    <attachedChunks>
+-      <set>
+-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+-      </set>
+-    </attachedChunks>
+-  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -245,13 +156,8 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1715096943648</updated>
+-      <workItem from="1715168428938" duration="11556000" />
+-      <workItem from="1715262709951" duration="12011000" />
+     </task>
+     <servers />
+-  </component>
+-  <component name="TypeScriptGeneratedFilesManager">
+-    <option name="version" value="3" />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+@@ -263,11 +169,6 @@
+           <url>file://$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/concretes/IndividualCustomerManager.java</url>
+           <line>37</line>
+           <option name="timeStamp" value="4" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/gatewayService/src/main/java/com/turkcell/rentacar/gatewayService/GatewayServiceApplication.java</url>
+-          <line>7</line>
+-          <option name="timeStamp" value="5" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>

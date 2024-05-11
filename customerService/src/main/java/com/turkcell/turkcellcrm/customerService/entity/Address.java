@@ -19,9 +19,6 @@ public class Address extends BaseEntity {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @OneToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private AccountAddress accountAddress;
 
     @ManyToOne()
     @JoinColumn(name = "city_id")
