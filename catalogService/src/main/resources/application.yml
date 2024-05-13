@@ -1,6 +1,6 @@
 spring:
   application:
-    name: productService
+    name: catalogService
   config:
     import: configserver:http://localhost:8050/
   cloud:
