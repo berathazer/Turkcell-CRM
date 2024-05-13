@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  config-server:
+    build: ./configServer
+    ports:
+      - "8050:8050"
+    networks:
+      - common
+
+  discovery-server:
+    build: ./discoveryServer
+    ports:
+      - "9000:9000"
+    networks:
+      - common
+
+  gateway-service:
+    build: ./gatewayService
+    ports:
+      - "9002:9002"
+    depends_on:
+      - discovery-server
+      - config-server
+    environment:
+      - SPRING_CLOUD_CONFIG_PROFILE=prod
+      - CONFIG_URL=http://config-server:8050
+    restart: on-failure
+    networks:
+      - common
+
+networks:
+  common:
+    driver: bridge

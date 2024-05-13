@@ -2,7 +2,9 @@ spring:
   application:
     name: gatewayService
   config:
-    import: configserver:http://localhost:8050/
+    import: configserver:${CONFIG_URL} # Docker için
+    #import: configserver:http://localhost:8050/  # Local için
   cloud:
     config:
       profile: dev
+CONFIG_URL: http://localhost:8050
