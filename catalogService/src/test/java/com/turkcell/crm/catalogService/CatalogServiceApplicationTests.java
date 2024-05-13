@@ -1,10 +1,10 @@
-package com.turkcell.crm.productService;
+package com.turkcell.crm.catalogService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProductServiceApplicationTests {
+class CatalogServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

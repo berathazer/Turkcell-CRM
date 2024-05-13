@@ -1,12 +1,9 @@
 package com.turkcell.turkcellcrm.customerService.api.controller;
 
-import com.turkcell.turkcellcrm.customerService.business.dtos.request.GetCustomerIdRequest;
 import com.turkcell.turkcellcrm.customerService.business.rules.IndividualCustomerBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/customerservice/api/v1/customers/account")
