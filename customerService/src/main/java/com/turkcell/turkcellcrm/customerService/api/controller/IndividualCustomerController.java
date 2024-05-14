@@ -7,6 +7,7 @@ import com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.
 import com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.individualCustomer.GetAllIndividualCustomerResponse;
 import com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.individualCustomer.GetByIdIndividualCustomerResponse;
 import com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.individualCustomer.UpdatedIndividualCustomerResponse;
+import com.turkcell.turkcellcrm.customerService.entity.Gender;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import java.util.List;
 @RequestMapping("/customerservice/api/v1/customers/individualcustomers")
 @AllArgsConstructor
 public class IndividualCustomerController {
+
     private IndividualCustomerService individualCustomerService;
 
     @PostMapping("/add")
@@ -44,9 +46,13 @@ public class IndividualCustomerController {
     }
 
     @DeleteMapping("/delete/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable int id){
+    @ResponseStatus(HttpStatus.OK)
+    public String delete(@PathVariable int id){
+
         this.individualCustomerService.delete(id);
+
+        // TODO: Geriye Düzgün Formatta Bir Hata Döndür.
+        return "Silme Başarılı";
     }
-    //todo --> Spesifik güncellemeler yapmak için @PatchMapping methodu eklememiz lazım Eğer spesifik güncelleme istersek
+
 }

@@ -13,8 +13,8 @@
         <module name="customerService" />
         <module name="configServer" />
         <module name="gatewayService" />
-        <module name="searchService" />
         <module name="accountService" />
+        <module name="searchService" />
         <module name="discoveryServer" />
       </profile>
     </annotationProcessing>

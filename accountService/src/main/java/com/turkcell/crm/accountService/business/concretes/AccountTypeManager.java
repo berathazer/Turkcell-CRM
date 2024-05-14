@@ -13,8 +13,10 @@ import com.turkcell.crm.accountService.core.utilities.mapping.ModelMapperService
 import com.turkcell.crm.accountService.dataAccess.AccountTypeRepository;
 import com.turkcell.crm.accountService.entities.AccountType;
 import lombok.AllArgsConstructor;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 @AllArgsConstructor
@@ -54,7 +56,10 @@ public class AccountTypeManager implements AccountTypeService {
 
     @Override
     public void delete(int id) {
-        this.accountTypeBusinessRules.isAccountTypeExistById(id);
-        this.accountTypeRepository.deleteById(id);
+
+        AccountType accountType = this.accountTypeBusinessRules.isAccountTypeAlreadyDeleted(id);
+        accountType.setDeletedDate(LocalDateTime.now());
+
+        this.accountTypeRepository.save(accountType);
     }
 }

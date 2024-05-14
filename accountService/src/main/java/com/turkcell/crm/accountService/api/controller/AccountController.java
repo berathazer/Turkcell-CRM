@@ -47,8 +47,11 @@ public class AccountController {
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable int id){
+    public String delete(@PathVariable int id){
         this.accountService.delete(id);
+
+        // TODO: Düzgün formata getir (resources)
+        return "Hesap Silme Başarılı";
     }
 
 }

@@ -19,6 +19,7 @@ import java.util.List;
 @RequestMapping("/accountservice/api/v1/accounts/accounttypes")
 @AllArgsConstructor
 public class AccountTypeController {
+
     private AccountTypeService accountTypeService;
 
     @PostMapping("/add")
@@ -46,8 +47,12 @@ public class AccountTypeController {
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable int id){
+    public String delete(@PathVariable int id){
+
         this.accountTypeService.delete(id);
+
+        // TODO: mesajı resources olarak getir.
+        return "Hesap tipi silme başarılı";
     }
 
 }

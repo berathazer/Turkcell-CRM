@@ -27,11 +27,12 @@ public class AccountBusinessRules {
     private AccountRepository accountRepository;
     private RestTemplate restTemplate;
 
-    public void isAccountExistById(int id) {
+    public Account isAccountExistById(int id) {
         Optional<Account> account = this.accountRepository.findById(id);
         if (account.isEmpty()) {
             throw new BusinessException(AccountMessages.ACCOUNT_NOT_FOUND);
         }
+        return account.get();
     }
 
     public void isAccountTypeExist(CreateAccountRequest createAccountRequest){
@@ -41,6 +42,7 @@ public class AccountBusinessRules {
         }
     }
 
+    // TODO: feign clienta çevir
     public void isCustomerIdExist(CreateAccountRequest createAccountRequest) {
         String url = "http://localhost:9002/customerservice/api/v1/customers/account/get/"
                 + createAccountRequest.getCustomerId();
@@ -49,10 +51,23 @@ public class AccountBusinessRules {
             if ( ! (response.getStatusCode() == HttpStatus.OK && response.getBody() != null && response.getBody())) {
                 throw new BusinessException(AccountMessages.CUSTOMER_ID_NOT_FOUND);
             }
+
         } catch (HttpClientErrorException.NotFound e) {
             throw new BusinessException(AccountMessages.ACCOUNT_TYPE_NOT_FOUND);
         } catch (RestClientException e) {
             throw new BusinessException(AccountMessages.ERROR_CHECKING_CUSTOMER_ID_EXISTENCE);
         }
     }
+
+    public Account isAccountAlreadyDeleted(int id){
+
+        Account account = this.isAccountExistById(id);
+
+        if(account.getDeletedDate() != null){
+            throw new BusinessException(AccountMessages.ACCOUNT_ALREADY_EXISTS);
+        }
+
+        return account;
+    }
+
 }

@@ -15,6 +15,7 @@ import com.turkcell.crm.accountService.entities.Account;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -62,7 +63,11 @@ public class AccountManager implements AccountService {
 
     @Override
     public void delete(int id) {
-        this.accountBusinessRules.isAccountExistById(id);
-        this.accountRepository.deleteById(id);
+
+        Account account = this.accountBusinessRules.isAccountAlreadyDeleted(id);
+        account.setDeletedDate(LocalDateTime.now());
+
+        this.accountRepository.save(account);
+
     }
 }

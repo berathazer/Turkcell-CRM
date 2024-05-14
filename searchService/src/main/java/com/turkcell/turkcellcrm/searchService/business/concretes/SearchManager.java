@@ -40,8 +40,10 @@ public class SearchManager implements SearchService {
         this.searchRepository.save(customer);
     }
 
+    // TODO: Kayıtlara Tarih alanlarını ekle, Soft_delete ekle.
     @Override
     public void deleteCustomer(int id) {
         this.searchRepository.deleteCustomersByCustomerId(id);
     }
+
 }

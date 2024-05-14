@@ -6,7 +6,6 @@
       <list>
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/configServer/pom.xml" />
-        <option value="$PROJECT_DIR$/searchService/pom.xml" />
         <option value="$PROJECT_DIR$/gatewayService/pom.xml" />
         <option value="$PROJECT_DIR$/customerService/pom.xml" />
         <option value="$PROJECT_DIR$/discoveryServer/pom.xml" />
@@ -14,6 +13,7 @@
         <option value="$PROJECT_DIR$/accountService/pom.xml" />
         <option value="$PROJECT_DIR$/productService/pom.xml" />
         <option value="$PROJECT_DIR$/catalogService/pom.xml" />
+        <option value="$PROJECT_DIR$/searchService/pom.xml" />
       </list>
     </option>
   </component>

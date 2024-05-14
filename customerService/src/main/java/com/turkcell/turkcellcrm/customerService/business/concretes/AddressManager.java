@@ -56,6 +56,7 @@ public class AddressManager implements AddressService {
     }
 
     @Override
+    //TODO: configure request mapping and soft delete
     public void delete(int id) {
         this.addressRepository.deleteById(id);
     }
