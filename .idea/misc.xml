@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/configServer/pom.xml" />
+        <option value="$PROJECT_DIR$/searchService/pom.xml" />
         <option value="$PROJECT_DIR$/gatewayService/pom.xml" />
         <option value="$PROJECT_DIR$/customerService/pom.xml" />
         <option value="$PROJECT_DIR$/discoveryServer/pom.xml" />
@@ -13,11 +14,10 @@
         <option value="$PROJECT_DIR$/accountService/pom.xml" />
         <option value="$PROJECT_DIR$/productService/pom.xml" />
         <option value="$PROJECT_DIR$/catalogService/pom.xml" />
-        <option value="$PROJECT_DIR$/searchService/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

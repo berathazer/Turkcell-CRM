@@ -1,12 +1,9 @@
-package com.turkcell.turkcellcrm.customerService.core.entities;
-
+package com.turkcell.crm.catalogService.core.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
