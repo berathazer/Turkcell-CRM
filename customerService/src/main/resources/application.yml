@@ -6,3 +6,4 @@ spring:
   cloud:
     config:
       profile: dev
+
