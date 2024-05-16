@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdatedCatalogPropertyResponse {
     private int id;
     private int catalogId;
-    private String catalogProperty;
-    private String catalogPropertyDetail;
+    private Map<String, String> properties;
 }

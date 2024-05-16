@@ -5,38 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce0a59e7-c594-418e-be99-1590f63b6dda" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/api/controller/CatalogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/api/controller/CatalogPropertiesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/abstracts/CatalogPropertyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/abstracts/CatalogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/concretes/CatalogManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/concretes/CatalogPropertyManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalog/CreateCatalogRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalog/UpdateCatalogRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalogProperties/CreateCatalogPropertyRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalogProperties/UpdateCatalogPropertyRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalog/CreatedCatalogResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalog/GetAllCatalogResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalog/GetByIdCatalogResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalog/UpdatedCatalogResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/CatalogPropertyResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/CreatedCatalogPropertyResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/GetAllCatalogPropertyResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/GetByIdCatalogPropertyResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/UpdatedCatalogPropertyResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/configuration/ApplicationConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/entities/BaseEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/utilities/exceptions/handlers/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/utilities/exceptions/problemDetails/BusinessProblemDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/utilities/exceptions/problemDetails/ProblemDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/utilities/exceptions/problemDetails/ValidationProblemDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/utilities/exceptions/types/BusinessException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/utilities/mapping/ModelMapperManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/utilities/mapping/ModelMapperService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/dataAccess/CatalogPropertyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/dataAccess/CatalogRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/entity/Catalog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/entity/CatalogProperty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2024_14_47__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2024_14_47__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2024_23_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2024_23_55__Changes_.xml" afterDir="false" />
@@ -52,11 +20,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_20_16__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_20_16__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/concretes/CatalogPropertyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/concretes/CatalogPropertyManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalogProperties/CreateCatalogPropertyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalogProperties/CreateCatalogPropertyRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalogProperties/UpdateCatalogPropertyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalogProperties/UpdateCatalogPropertyRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/CatalogPropertyResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/CreatedCatalogPropertyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/CreatedCatalogPropertyResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/GetAllCatalogPropertyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/GetAllCatalogPropertyResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/UpdatedCatalogPropertyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/UpdatedCatalogPropertyResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/entity/Catalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/entity/Catalog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/entity/CatalogProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/entity/CatalogProperty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customerService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/core/entities/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/core/entities/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +46,24 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="Ahmethan1" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -108,7 +100,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.AccountServiceApplication.executor": "Run",
-    "Application.CatalogServiceApplication.executor": "Run",
+    "Application.CatalogServiceApplication.executor": "Debug",
     "Application.ConfigServerApplication.executor": "Run",
     "Application.CustomerServiceApplication.executor": "Run",
     "Application.DiscoveryServerApplication.executor": "Run",
@@ -116,6 +108,9 @@
     "Application.ProductServiceApplication.executor": "Run",
     "Application.SearchServiceApplication.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Maven.catalogService [clean].executor": "Run",
+    "Maven.catalogService [install].executor": "Run",
+    "Maven.customerService [clean,install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -130,7 +125,7 @@
     "Spring Boot.GatewayServiceApplication.executor": "Run",
     "Spring Boot.IdentityServiceApplication.executor": "Run",
     "Spring Boot.SearchServiceApplication.executor": "Run",
-    "git-widget-placeholder": "Cansu-uzum",
+    "git-widget-placeholder": "Ahmethan1",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Intelij/Turkcell-CRM/catalogService/src/main/java/com/turkcell/crm/catalogService/core",
     "node.js.detected.package.eslint": "true",
@@ -138,6 +133,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "run.configurations.included.in.services": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -255,10 +253,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.CatalogServiceApplication" />
+        <item itemvalue="Application.CustomerServiceApplication" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Application.ConfigServerApplication" />
         <item itemvalue="Application.DiscoveryServerApplication" />
-        <item itemvalue="Application.CustomerServiceApplication" />
       </list>
     </recent_temporary>
   </component>

@@ -5,18 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-import java.util.Map;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetAllCatalogPropertyResponse {
+    private int id;
 
     private String catalogName;
-  //  private String catalogPropertyName;
-  //  private String catalogPropertyDetail;
+    //  private String catalogPropertyName;
+    //  private String catalogPropertyDetail;
+    private String key;
+    private String value;
 
-    private List<CatalogPropertyResponse> properties;
+    //private Map<String, String> properties;
 
 }

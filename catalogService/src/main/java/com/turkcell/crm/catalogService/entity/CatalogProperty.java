@@ -1,28 +1,25 @@
 package com.turkcell.crm.catalogService.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.turkcell.crm.catalogService.core.entities.BaseEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="catalog_properties")
+@Table(name = "catalog_properties")
 public class CatalogProperty extends BaseEntity {
 
-   // private String key;
-   // private String value;
+    private String key;
+    private String value;
 
-    @ElementCollection
-    private List<Map<String, String>> properties=new ArrayList<>();
 
 
     @ManyToOne

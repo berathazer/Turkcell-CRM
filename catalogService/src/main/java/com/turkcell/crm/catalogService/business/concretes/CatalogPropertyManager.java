@@ -9,11 +9,15 @@ import com.turkcell.crm.catalogService.business.dtos.response.catalogProperties.
 import com.turkcell.crm.catalogService.business.dtos.response.catalogProperties.UpdatedCatalogPropertyResponse;
 import com.turkcell.crm.catalogService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.crm.catalogService.dataAccess.CatalogPropertyRepository;
+import com.turkcell.crm.catalogService.dataAccess.CatalogRepository;
 import com.turkcell.crm.catalogService.entity.CatalogProperty;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -26,12 +30,12 @@ public class CatalogPropertyManager implements CatalogPropertyService {
     public CreatedCatalogPropertyResponse add(CreateCatalogPropertyRequest createCatalogPropertyRequest) {
 
 
-        CatalogProperty catalogProperty  = this.modelMapperService.forRequest().map(createCatalogPropertyRequest, CatalogProperty.class);
+        CatalogProperty catalogProperty = this.modelMapperService.forRequest().map(createCatalogPropertyRequest, CatalogProperty.class);
+        catalogProperty.setId(0);
+        CatalogProperty saveCatalog = this.catalogPropertyRepository.save(catalogProperty);
 
-        List<Map<String, String>> mappedProperties = mapProperties(createCatalogPropertyRequest.getCatalogProperty(), createCatalogPropertyRequest.getCatalogPropertyDetail());
-        catalogProperty.setProperties(mappedProperties);
 
-        CreatedCatalogPropertyResponse createdCatalogPropertyResponse = this.modelMapperService.forResponse().map(this.catalogPropertyRepository.save(catalogProperty), CreatedCatalogPropertyResponse.class);
+        CreatedCatalogPropertyResponse createdCatalogPropertyResponse = this.modelMapperService.forResponse().map(saveCatalog, CreatedCatalogPropertyResponse.class);
         return createdCatalogPropertyResponse;
     }
 
@@ -48,7 +52,7 @@ public class CatalogPropertyManager implements CatalogPropertyService {
     @Override
     public UpdatedCatalogPropertyResponse update(UpdateCatalogPropertyRequest updateCatalogPropertyRequest) {
 
-        CatalogProperty catalogProperty = this.modelMapperService.forRequest().map(updateCatalogPropertyRequest,CatalogProperty.class);
+        CatalogProperty catalogProperty = this.modelMapperService.forRequest().map(updateCatalogPropertyRequest, CatalogProperty.class);
         return this.modelMapperService.forResponse().
                 map(this.catalogPropertyRepository.save(catalogProperty), UpdatedCatalogPropertyResponse.class);
     }
@@ -56,20 +60,19 @@ public class CatalogPropertyManager implements CatalogPropertyService {
     @Override
     public GetByIdCatalogPropertyResponse getById(int id) {
 
-        Optional<CatalogProperty> catalogProperty =this.catalogPropertyRepository.findById(id);
+        Optional<CatalogProperty> catalogProperty = this.catalogPropertyRepository.findById(id);
         return this.modelMapperService.forResponse().map(catalogProperty.get(), GetByIdCatalogPropertyResponse.class);
     }
 
     @Override
     public void delete(int id) {
-     this.catalogPropertyRepository.getById(id);
+        this.catalogPropertyRepository.getById(id);
     }
 
-    public List<Map<String,String>> mapProperties(String key, String value) {
+    public Map<String, String> mapProperties(String key, String value) {
         Map<String, String> property = new HashMap<>();
         property.put(key, value);
-        List<Map<String, String>> properties = new ArrayList<>();
-        properties.add(property);
-        return properties;
+
+        return property;
     }
 }
