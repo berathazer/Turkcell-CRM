@@ -33,6 +33,7 @@ public class SearchCustomerManager implements SearchCustomerService {
     }
     @Override
     public List<GetAllCustomerResponse> getAll(GetAllCustomerRequest getAllCustomerRequest) {
+
         List<Customer> customerList = this.customerFilterBusinessRules.filterCustomer(getAllCustomerRequest);
 
         return customerList.stream().

@@ -21,12 +21,15 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class AccountTypeManager implements AccountTypeService {
+
     private AccountTypeRepository accountTypeRepository;
     private ModelMapperService modelMapperService;
     private AccountTypeBusinessRules accountTypeBusinessRules;
     @Override
     public CreatedAccountTypeResponse add(CreateAccountTypeRequest createAccountTypeRequest) {
+
         AccountType accountType =this.modelMapperService.forRequest().map(createAccountTypeRequest, AccountType.class);
+
         this.accountTypeRepository.save(accountType);
 
         return this.modelMapperService.forResponse().map(accountType, CreatedAccountTypeResponse.class);
@@ -34,21 +37,27 @@ public class AccountTypeManager implements AccountTypeService {
 
     @Override
     public List<GetAllAccountTypeResponse> getAll() {
+
         List<AccountType> accountType = this.accountTypeRepository.findAll();
+
         return accountType.stream().map(accountType1 -> this.modelMapperService.forResponse().
                 map(accountType1, GetAllAccountTypeResponse.class)).toList();
     }
 
     @Override
     public GetByIdAccountTypeResponse getById(int id) {
+
         this.accountTypeBusinessRules.isAccountTypeExistById(id);
+
         return this.modelMapperService.forResponse()
                 .map(this.accountTypeRepository.findById(id), GetByIdAccountTypeResponse.class);
     }
 
     @Override
     public UpdatedAccountTypeResponse update(UpdateAccountTypeRequest updateAccountTypeRequest) {
+
         this.accountTypeBusinessRules.isAccountTypeExistById(updateAccountTypeRequest.getId());
+
         return this.modelMapperService.forResponse().
                 map(this.accountTypeRepository.save(this.modelMapperService.forRequest().
                         map(updateAccountTypeRequest, AccountType.class)), UpdatedAccountTypeResponse.class);

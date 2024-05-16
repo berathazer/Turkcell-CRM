@@ -25,6 +25,7 @@ public class AccountController {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public CreatedAccountResponse add(@Valid @RequestBody CreateAccountRequest createAccountRequest){
+
         return this.accountService.add(createAccountRequest);
     }
     @GetMapping("/getAll")
@@ -42,12 +43,14 @@ public class AccountController {
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.OK)
     public UpdatedAccountResponse update(@Valid @RequestBody UpdateAccountRequest updateAccountRequest){
+
         return this.accountService.update(updateAccountRequest);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public String delete(@PathVariable int id){
+
         this.accountService.delete(id);
 
         // TODO: Düzgün formata getir (resources)
