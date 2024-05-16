@@ -19,10 +19,12 @@ public class CatalogConsumer {
 
     @KafkaListener(topics = "catalog-created", groupId = "catalog_group-1")
     public void listenCatalogCreated(CatalogCreatedEvent catalogCreatedEvent) {
+
         this.searchCatalogService.add(catalogCreatedEvent);
     }
     @KafkaListener(topics = "catalog-updated", groupId = "catalog_group-2")
     public void listenCatalogUpdated(CatalogUpdatedEvent catalogUpdatedEvent) {
+
         this.searchCatalogService.update(catalogUpdatedEvent);
     }
 }

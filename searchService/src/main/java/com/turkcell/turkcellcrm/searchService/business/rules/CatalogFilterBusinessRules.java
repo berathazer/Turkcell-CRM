@@ -52,6 +52,7 @@ public class CatalogFilterBusinessRules {
             }
         }
         if (getAllCatalogRequest.getCatalogId() != 0) {
+
             query.addCriteria(Criteria.where("catalogId").is(getAllCatalogRequest.getCatalogId()));
         }
         return this.mongoTemplate.find(query, Catalog.class);

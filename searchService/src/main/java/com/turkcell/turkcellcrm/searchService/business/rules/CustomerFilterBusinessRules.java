@@ -49,11 +49,13 @@ public class CustomerFilterBusinessRules {
     }
 
     public void IsCustomerIdExistById(CustomerCreatedEvent customerCreatedEvent){
+
         if (this.searchCustomerRepository.findCustomersByCustomerId(customerCreatedEvent.getCustomerId()).isPresent()){
             throw new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_IS_ALREADY_EXIST);
         }
     }
     public void IsCustomerIdExistById(CustomerUpdatedEvent customerUpdatedEvent){
+
         if (this.searchCustomerRepository.findCustomersByCustomerId(customerUpdatedEvent.getId()).isPresent()){
             throw new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_IS_ALREADY_EXIST);
         }

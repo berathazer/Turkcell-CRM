@@ -25,6 +25,7 @@ public class SearchCatalogManager implements SearchCatalogService {
 
     @Override
     public void add(CatalogCreatedEvent catalogCreatedEvent) {
+
         this.catalogFilterBusinessRules.IsCatalogIdExistById(catalogCreatedEvent);
 
         Catalog catalog = this.modelMapperService.forRequest().map(catalogCreatedEvent, Catalog.class);
@@ -34,6 +35,7 @@ public class SearchCatalogManager implements SearchCatalogService {
 
     @Override
     public List<GetAllCatalogResponse> getAll(GetAllCatalogRequest getAllCatalogRequest) {
+
         List<Catalog> catalogList = this.catalogFilterBusinessRules.filterCatalog(getAllCatalogRequest);
 
         return catalogList.stream().
@@ -43,6 +45,7 @@ public class SearchCatalogManager implements SearchCatalogService {
 
     @Override
     public void update(CatalogUpdatedEvent catalogUpdatedEvent) {
+
         this.catalogFilterBusinessRules.IsCatalogIdExistById(catalogUpdatedEvent);
 
         Catalog catalog = this.modelMapperService.forRequest().map(catalogUpdatedEvent, Catalog.class);

@@ -20,6 +20,7 @@ public class AccountTypeBusinessRules {
         if (accountType.isEmpty()) {
             throw new BusinessException(AccountMessages.ACCOUNT_TYPE_NOT_FOUND);
         }
+        return accountType.get();
     }
 
     public AccountType isAccountTypeAlreadyDeleted(int id){

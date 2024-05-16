@@ -1,6 +1,7 @@
 package com.turkcell.crm.accountService.business.rules;
 
 
+import com.turkcell.crm.accountService.api.client.CustomerClient;
 import com.turkcell.crm.accountService.business.dtos.request.CustomerIdExistRequest;
 import com.turkcell.crm.accountService.business.dtos.request.account.CreateAccountRequest;
 import com.turkcell.crm.accountService.business.messages.AccountMessages;
@@ -25,7 +26,7 @@ import java.util.Optional;
 public class AccountBusinessRules {
     private AccountTypeRepository accountTypeRepository;
     private AccountRepository accountRepository;
-    private RestTemplate restTemplate;
+    private CustomerClient customerClient;
 
     public Account isAccountExistById(int id) {
         Optional<Account> account = this.accountRepository.findById(id);
@@ -42,22 +43,7 @@ public class AccountBusinessRules {
         }
     }
 
-    // TODO: feign clienta çevir
-    public void isCustomerIdExist(CreateAccountRequest createAccountRequest) {
-        String url = "http://localhost:9002/customerservice/api/v1/customers/account/get/"
-                + createAccountRequest.getCustomerId();
-        try {
-            ResponseEntity<Boolean> response = this.restTemplate.getForEntity(url, Boolean.class);
-            if ( ! (response.getStatusCode() == HttpStatus.OK && response.getBody() != null && response.getBody())) {
-                throw new BusinessException(AccountMessages.CUSTOMER_ID_NOT_FOUND);
-            }
 
-        } catch (HttpClientErrorException.NotFound e) {
-            throw new BusinessException(AccountMessages.ACCOUNT_TYPE_NOT_FOUND);
-        } catch (RestClientException e) {
-            throw new BusinessException(AccountMessages.ERROR_CHECKING_CUSTOMER_ID_EXISTENCE);
-        }
-    }
 
     public Account isAccountAlreadyDeleted(int id){
 
@@ -68,6 +54,15 @@ public class AccountBusinessRules {
         }
 
         return account;
+    }
+
+    public void isCustomerExistById(int id){
+
+        if (!customerClient.getCustomer(id)){
+            throw new BusinessException("Boyle bir customer Id yok!");
+        }
+
+
     }
 
 }

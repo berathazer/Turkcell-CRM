@@ -5,33 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce0a59e7-c594-418e-be99-1590f63b6dda" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/business/abstracts/MessageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/core/business/concretes/MessageManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/resources/messages.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/resources/messages_en.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/resources/messages_tr.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2024_14_47__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2024_14_47__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2024_23_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2024_23_55__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_05_2024_14_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_05_2024_14_58__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_11_03__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_11_03__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_11_11__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_11_11__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_13_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_13_51__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_13_51__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_13_51__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_04_2024_13_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_04_2024_13_17__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_04_2024_23_50__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_04_2024_23_50__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_04_2024_14_22__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_04_2024_14_22__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_05_2024_14_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_05_2024_14_32__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_20_16__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_20_16__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/client/CustomerClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_20_16_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_20_16__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/concretes/CatalogPropertyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/concretes/CatalogPropertyManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/messages/CatalogMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/messages/CatalogMessages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/messages/CatalogPropertyMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/messages/CatalogPropertyMessages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/resources/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/resources/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/src/main/resources/messages_tr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/resources/messages_tr.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/AccountServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/AccountServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/concretes/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/concretes/AccountManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/rules/AccountBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/rules/AccountBusinessRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/rules/AccountTypeBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/rules/AccountTypeBusinessRules.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,12 +23,30 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="Ahmethan1" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -55,12 +55,12 @@
     &quot;assignee&quot;: &quot;Ahmethan1&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/berathazer/Turkcell-CRM.git",
-    "accountId": "97c435c8-5d49-4c4a-8254-0ddf78719fba"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/berathazer/Turkcell-CRM.git&quot;,
+    &quot;accountId&quot;: &quot;d0d8cbac-ba48-4e3f-a6fc-4a6b8f8df2fc&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -90,7 +90,10 @@
     "Application.GatewayServiceApplication.executor": "Run",
     "Application.ProductServiceApplication.executor": "Run",
     "Application.SearchServiceApplication.executor": "Run",
-    "Docker.docker-compose.yml.gateway-service: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Maven.catalogService [clean].executor": "Run",
+    "Maven.catalogService [install].executor": "Run",
+    "Maven.customerService [clean,install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -98,7 +101,6 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.CatalogServiceApplication.executor": "Run",
     "Spring Boot.CommonApplication.executor": "Run",
     "Spring Boot.ConfigServerApplication.executor": "Run",
     "Spring Boot.CustomerServiceApplication.executor": "Run",
@@ -106,16 +108,18 @@
     "Spring Boot.GatewayServiceApplication.executor": "Run",
     "Spring Boot.IdentityServiceApplication.executor": "Run",
     "Spring Boot.SearchServiceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Ahmethan1",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/TurkcellJava/Yeni klasör/Turkcell-CRM/catalogService/src/main/java/com/turkcell/crm/catalogService/core",
+    "last_opened_file_path": "D:/Intelij/Turkcell-CRM/catalogService/src/main/java/com/turkcell/crm/catalogService/core",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "project.propCompiler",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -124,7 +128,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\TurkcellJava\Yeni klasör\Turkcell-CRM\catalogService\src\main\java\com\turkcell\crm\catalogService\core" />
+      <recent name="D:\Intelij\Turkcell-CRM\catalogService\src\main\java\com\turkcell\crm\catalogService\core" />
+      <recent name="D:\Intelij\Turkcell-CRM\catalogService\src\main\java\com\turkcell\crm\catalogService\core\entities" />
       <recent name="C:\Users\Ahmethan\Desktop\TurkcellProje\Turkcell-CRM\accountService\src\main\java\com\turkcell\crm\accountService" />
       <recent name="C:\Users\dparl\Desktop\Turkcell-CRM\Turkcell-CRM\searchService\src\main\java\com\turkcell\turkcellcrm\searchService\core\utilities\exceptions" />
     </key>
@@ -132,13 +137,40 @@
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
+        <option value="Application" />
         <option value="MicronautRunConfigurationType" />
         <option value="QuarkusRunConfigurationType" />
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ConfigServerApplication">
+  <component name="RunManager" selected="Application.CustomerServiceApplication">
+    <configuration name="AccountServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.accountService.AccountServiceApplication" />
+      <module name="accountService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.crm.accountService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CatalogServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.catalogService.CatalogServiceApplication" />
+      <module name="catalogService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.crm.catalogService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ConfigServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.turkcell.configServer.ConfigServerApplication" />
       <module name="configServer" />
@@ -152,55 +184,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DiscoveryServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.discoveryServer.DiscoveryServerApplication" />
-      <module name="discoveryServer" />
+    <configuration name="CustomerServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.customerService.CustomerServiceApplication" />
+      <module name="customerService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.turkcell.turkcellcrm.discoveryServer.*" />
+          <option name="PATTERN" value="com.turkcell.turkcellcrm.customerService.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GatewayServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.rentacar.gatewayService.GatewayServiceApplication" />
-      <module name="gatewayService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.rentacar.gatewayService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SearchServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.searchService.SearchServiceApplication" />
-      <module name="searchService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.turkcellcrm.searchService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AccountServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="accountService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.crm.accountService.AccountServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CatalogServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="catalogService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.crm.catalogService.CatalogServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -212,37 +204,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="configServer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.configServer.ConfigServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CustomerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="customerService" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.customerService.CustomerServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DiscoveryServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="discoveryServer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.discoveryServer.DiscoveryServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="gatewayService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.rentacar.gatewayService.GatewayServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IdentityServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="identityService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.identityService.IdentityServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -254,39 +218,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml.gateway-service: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="services">
-            <list>
-              <option value="gateway-service" />
-            </list>
-          </option>
           <option name="sourceFilePath" value="docker-compose.yml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.AccountServiceApplication" />
       <item itemvalue="Application.ConfigServerApplication" />
-      <item itemvalue="Application.DiscoveryServerApplication" />
-      <item itemvalue="Application.SearchServiceApplication" />
-      <item itemvalue="Application.GatewayServiceApplication" />
-      <item itemvalue="Docker.docker-compose.yml.gateway-service: Compose Deployment" />
+      <item itemvalue="Application.CatalogServiceApplication" />
+      <item itemvalue="Application.CustomerServiceApplication" />
+      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GatewayServiceApplication" />
+        <item itemvalue="Application.AccountServiceApplication" />
+        <item itemvalue="Application.CustomerServiceApplication" />
+        <item itemvalue="Application.CatalogServiceApplication" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Application.ConfigServerApplication" />
-        <item itemvalue="Application.DiscoveryServerApplication" />
-        <item itemvalue="Application.SearchServiceApplication" />
-        <item itemvalue="Docker.docker-compose.yml.gateway-service: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>

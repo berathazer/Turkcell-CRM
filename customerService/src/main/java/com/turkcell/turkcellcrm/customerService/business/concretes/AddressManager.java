@@ -28,15 +28,20 @@ public class AddressManager implements AddressService {
 
     @Override
     public CreatedAddressResponse add(CreateAddressRequest createAddressRequest) {
+
         this.addressBusinessRules.isCustomerExist(createAddressRequest);
+
         Address address = this.modelMapperService.forRequest().map(createAddressRequest, Address.class);
+
         CreatedAddressResponse createdAddressResponse = this.modelMapperService.forResponse().map(this.addressRepository.save(address), CreatedAddressResponse.class);
         return createdAddressResponse;
     }
 
     @Override
     public List<GetAllAddressResponse> getAll() {
+
         List<Address> addresses = this.addressRepository.findAll();
+
         List<GetAllAddressResponse> getAllAddressResponses = addresses.stream().map(address -> this.modelMapperService.forResponse().
                 map(address, GetAllAddressResponse.class)).toList();
         return getAllAddressResponses;
@@ -44,13 +49,17 @@ public class AddressManager implements AddressService {
 
     @Override
     public GetByIdAddressResponse getById(int id) {
+
         Optional<Address> address =this.addressRepository.findById(id);
+
         return this.modelMapperService.forResponse().map(address.get(), GetByIdAddressResponse.class);
     }
 
     @Override
     public UpdatedAddressResponse update(UpdateAddressRequest updateAddressRequest) {
+
         Address address = this.modelMapperService.forRequest().map(updateAddressRequest,Address.class);
+
         return this.modelMapperService.forResponse().
                 map(this.addressRepository.save(address), UpdatedAddressResponse.class);
     }
@@ -58,6 +67,7 @@ public class AddressManager implements AddressService {
     @Override
     //TODO: configure request mapping and soft delete
     public void delete(int id) {
+
         this.addressRepository.deleteById(id);
     }
 }
