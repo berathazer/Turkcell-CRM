@@ -20,7 +20,7 @@ public class Catalog extends BaseEntity {
     private double price;
     private int unitInStock;
 
-    @OneToMany(mappedBy = "catalog", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "catalog")
     private List<CatalogProperty> properties = new ArrayList<>();
 
 }

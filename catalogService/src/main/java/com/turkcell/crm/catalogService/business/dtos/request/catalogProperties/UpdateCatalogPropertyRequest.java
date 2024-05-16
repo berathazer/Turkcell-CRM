@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class UpdateCatalogPropertyRequest {
     private int id;
     private int catalogId;
-    private String catalogProperty;
-    private String catalogPropertyDetail;
+    private String key;
+    private String value;
 }
