@@ -1,9 +1,9 @@
 package com.turkcell.turkcellcrm.customerService.kafka.producers;
 
 
-import com.turkcell.turkcellcrm.common.events.CustomerCreatedEvent;
-import com.turkcell.turkcellcrm.common.events.CustomerDeletedEvent;
-import com.turkcell.turkcellcrm.common.events.CustomerUpdatedEvent;
+import com.turkcell.turkcellcrm.common.events.customer.CustomerCreatedEvent;
+import com.turkcell.turkcellcrm.common.events.customer.CustomerDeletedEvent;
+import com.turkcell.turkcellcrm.common.events.customer.CustomerUpdatedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;

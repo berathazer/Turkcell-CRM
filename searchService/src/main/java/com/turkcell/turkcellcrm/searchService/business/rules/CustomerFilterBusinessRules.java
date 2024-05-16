@@ -1,10 +1,11 @@
 package com.turkcell.turkcellcrm.searchService.business.rules;
 
-import com.turkcell.turkcellcrm.common.events.CustomerCreatedEvent;
+import com.turkcell.turkcellcrm.common.events.customer.CustomerCreatedEvent;
+import com.turkcell.turkcellcrm.common.events.customer.CustomerUpdatedEvent;
 import com.turkcell.turkcellcrm.searchService.business.dto.request.GetAllCustomerRequest;
 import com.turkcell.turkcellcrm.searchService.business.messages.CustomerFilterBusinessRulesMessages;
 import com.turkcell.turkcellcrm.searchService.core.utilities.exceptions.types.BusinessException;
-import com.turkcell.turkcellcrm.searchService.dataAccess.SearchRepository;
+import com.turkcell.turkcellcrm.searchService.dataAccess.SearchCustomerRepository;
 import com.turkcell.turkcellcrm.searchService.entities.Customer;
 import lombok.AllArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -19,7 +20,7 @@ import java.util.Map;
 @AllArgsConstructor
 @Service
 public class CustomerFilterBusinessRules {
-    private SearchRepository searchRepository;
+    private SearchCustomerRepository searchCustomerRepository;
     private MongoTemplate mongoTemplate;
 
     public List<Customer> filterCustomer(GetAllCustomerRequest getAllCustomerRequest) {
@@ -48,7 +49,12 @@ public class CustomerFilterBusinessRules {
     }
 
     public void IsCustomerIdExistById(CustomerCreatedEvent customerCreatedEvent){
-        if (this.searchRepository.findCustomersByCustomerId(customerCreatedEvent.getCustomerId()).isPresent()){
+        if (this.searchCustomerRepository.findCustomersByCustomerId(customerCreatedEvent.getCustomerId()).isPresent()){
+            throw new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_IS_ALREADY_EXIST);
+        }
+    }
+    public void IsCustomerIdExistById(CustomerUpdatedEvent customerUpdatedEvent){
+        if (this.searchCustomerRepository.findCustomersByCustomerId(customerUpdatedEvent.getId()).isPresent()){
             throw new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_IS_ALREADY_EXIST);
         }
     }

@@ -1,4 +1,4 @@
-package com.turkcell.turkcellcrm.common.events;
+package com.turkcell.turkcellcrm.common.events.customer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
