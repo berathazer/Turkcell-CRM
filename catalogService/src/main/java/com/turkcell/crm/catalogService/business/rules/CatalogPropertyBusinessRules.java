@@ -1,6 +1,8 @@
 package com.turkcell.crm.catalogService.business.rules;
 
 import com.turkcell.crm.catalogService.business.abstracts.CatalogPropertyService;
+import com.turkcell.crm.catalogService.business.messages.CatalogPropertyMessages;
+import com.turkcell.crm.catalogService.core.business.abstracts.MessageService;
 import com.turkcell.crm.catalogService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.crm.catalogService.dataAccess.CatalogPropertyRepository;
 import com.turkcell.crm.catalogService.entity.Catalog;
@@ -15,13 +17,14 @@ import java.util.Optional;
 public class CatalogPropertyBusinessRules {
     private CatalogPropertyRepository catalogPropertyRepository;
     private CatalogBusinessRules catalogBusinessRules;
+    private MessageService messageService;
 
     public CatalogProperty isCatalogPropertyExistById(int id){
 
         Optional<CatalogProperty> catalogProperty = this.catalogPropertyRepository.findById(id);
 
         if (catalogProperty.isEmpty()){
-            throw new BusinessException("Catalog Property not found");
+            throw new BusinessException(messageService.getMessage(CatalogPropertyMessages.CATALOG_PROPERTY_NOT_FOUND));
         }
 
         return catalogProperty.get();
@@ -36,7 +39,7 @@ public class CatalogPropertyBusinessRules {
         CatalogProperty catalogProperty = this.isCatalogPropertyExistById(id);
 
         if(catalogProperty.getDeletedDate() != null) {
-            throw new BusinessException("Catalog property already deleted");
+            throw new BusinessException(messageService.getMessage(CatalogPropertyMessages.CATALOG_PROPERTY_ALREADY_DELETED));
         }
 
         return catalogProperty;

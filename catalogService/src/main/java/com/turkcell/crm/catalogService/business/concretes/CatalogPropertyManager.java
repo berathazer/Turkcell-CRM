@@ -10,16 +10,13 @@ import com.turkcell.crm.catalogService.business.dtos.response.catalogProperties.
 import com.turkcell.crm.catalogService.business.rules.CatalogPropertyBusinessRules;
 import com.turkcell.crm.catalogService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.crm.catalogService.dataAccess.CatalogPropertyRepository;
-import com.turkcell.crm.catalogService.dataAccess.CatalogRepository;
-import com.turkcell.crm.catalogService.entity.Catalog;
 import com.turkcell.crm.catalogService.entity.CatalogProperty;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
