@@ -1,9 +1,9 @@
 package com.turkcell.turkcellcrm.searchService.api.controller;
 
-import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchService;
+import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchCustomerService;
 import com.turkcell.turkcellcrm.searchService.business.dto.request.GetAllCustomerRequest;
 import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllCustomerResponse;
-import com.turkcell.turkcellcrm.searchService.dataAccess.SearchRepository;
+import com.turkcell.turkcellcrm.searchService.dataAccess.SearchCustomerRepository;
 import com.turkcell.turkcellcrm.searchService.entities.Customer;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/searchservice/api/v1/filters/search")
+@RequestMapping("/searchservice/api/v1/filters/searchcustomer")
 @AllArgsConstructor
-public class SearchController {
-    private SearchService searchService;
-    private SearchRepository searchRepository;
+public class SearchCustomerController {
+    private SearchCustomerService searchCustomerService;
+    private SearchCustomerRepository searchCustomerRepository;
 
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.OK)
     public List<GetAllCustomerResponse> getAll(@ModelAttribute GetAllCustomerRequest getAllCustomerRequest){
-        return this.searchService.getAll(getAllCustomerRequest);
+        return this.searchCustomerService.getAll(getAllCustomerRequest);
     }
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
     public List<Customer> get(){
-        return this.searchRepository.findAll();
+        return this.searchCustomerRepository.findAll();
     }
 }
