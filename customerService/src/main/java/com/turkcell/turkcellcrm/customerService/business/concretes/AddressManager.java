@@ -16,12 +16,14 @@ import com.turkcell.turkcellcrm.customerService.entity.Customer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class AddressManager implements AddressService {
+
     private AddressRepository addressRepository;
     private ModelMapperService modelMapperService;
     private AddressBusinessRules addressBusinessRules;
@@ -40,7 +42,7 @@ public class AddressManager implements AddressService {
     @Override
     public List<GetAllAddressResponse> getAll() {
 
-        List<Address> addresses = this.addressRepository.findAll();
+        List<Address> addresses = this.addressRepository.findByDeletedDateIsNull();
 
         List<GetAllAddressResponse> getAllAddressResponses = addresses.stream().map(address -> this.modelMapperService.forResponse().
                 map(address, GetAllAddressResponse.class)).toList();
@@ -50,6 +52,7 @@ public class AddressManager implements AddressService {
     @Override
     public GetByIdAddressResponse getById(int id) {
 
+        this.addressBusinessRules.isAddressAlreadyDeleted(id);
         Optional<Address> address =this.addressRepository.findById(id);
 
         return this.modelMapperService.forResponse().map(address.get(), GetByIdAddressResponse.class);
@@ -58,6 +61,7 @@ public class AddressManager implements AddressService {
     @Override
     public UpdatedAddressResponse update(UpdateAddressRequest updateAddressRequest) {
 
+        this.addressBusinessRules.isAddressAlreadyDeleted(updateAddressRequest.getId());
         Address address = this.modelMapperService.forRequest().map(updateAddressRequest,Address.class);
 
         return this.modelMapperService.forResponse().
@@ -68,6 +72,9 @@ public class AddressManager implements AddressService {
     //TODO: configure request mapping and soft delete
     public void delete(int id) {
 
-        this.addressRepository.deleteById(id);
+        Address address =this.addressBusinessRules.isAddressAlreadyDeleted(id);
+        address.setDeletedDate(LocalDateTime.now());
+
+        this.addressRepository.save(address);
     }
 }

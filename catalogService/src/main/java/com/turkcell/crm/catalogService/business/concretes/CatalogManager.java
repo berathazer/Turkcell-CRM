@@ -50,6 +50,7 @@ public class CatalogManager implements CatalogService {
     @Override
     public UpdatedCatalogResponse update(UpdateCatalogRequest updateCatalogRequest) {
 
+        this.catalogBusinessRules.isCatalogAlreadyDeleted(updateCatalogRequest.getId());
         this.catalogBusinessRules.isCatalogExistById(updateCatalogRequest.getId());
 
         Catalog catalog = this.modelMapperService.forRequest().map(updateCatalogRequest,Catalog.class);
@@ -67,6 +68,7 @@ public class CatalogManager implements CatalogService {
     @Override
     public GetByIdCatalogResponse getById(int id) {
 
+        this.catalogBusinessRules.isCatalogAlreadyDeleted(id);
         this.catalogBusinessRules.isCatalogExistById(id);
 
         Optional<Catalog> catalog =this.catalogRepository.findById(id);
@@ -78,7 +80,7 @@ public class CatalogManager implements CatalogService {
     @Override
     public List<GetAllCatalogResponse> getAll() {
 
-        List<Catalog> catalogs = this.catalogRepository.findAll();
+        List<Catalog> catalogs = this.catalogRepository.findByDeletedDateIsNull();
 
         List<GetAllCatalogResponse> getAllCatalogResponses = catalogs.stream().map(catalog -> this.modelMapperService.forResponse().
                 map(catalog, GetAllCatalogResponse.class)).toList();
@@ -91,8 +93,6 @@ public class CatalogManager implements CatalogService {
 
         Catalog catalog = this.catalogBusinessRules.isCatalogAlreadyDeleted(id);
         catalog.setDeletedDate(LocalDateTime.now());
-
-        //this.customerProducer.sendDeletedMessage(id);
 
         this.catalogRepository.save(catalog);
     }

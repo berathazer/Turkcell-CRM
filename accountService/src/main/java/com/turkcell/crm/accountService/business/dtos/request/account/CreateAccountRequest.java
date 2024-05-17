@@ -1,6 +1,7 @@
 package com.turkcell.crm.accountService.business.dtos.request.account;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,8 +13,10 @@ import lombok.NoArgsConstructor;
 public class CreateAccountRequest {
     @NotNull
     @Size(min = 19,max = 19)
+    @Pattern(regexp = "\\d+", message = "Mobile Phone number must contain only digits")
     private String accountNumber;
     @NotNull
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "First name must contain only letters")
     private String accountName;
     @NotNull
     private int accountTypeId;

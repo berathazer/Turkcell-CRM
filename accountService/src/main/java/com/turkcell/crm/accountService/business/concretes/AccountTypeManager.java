@@ -38,7 +38,7 @@ public class AccountTypeManager implements AccountTypeService {
     @Override
     public List<GetAllAccountTypeResponse> getAll() {
 
-        List<AccountType> accountType = this.accountTypeRepository.findAll();
+        List<AccountType> accountType = this.accountTypeRepository.findByDeletedDateIsNull();
 
         return accountType.stream().map(accountType1 -> this.modelMapperService.forResponse().
                 map(accountType1, GetAllAccountTypeResponse.class)).toList();
@@ -47,6 +47,7 @@ public class AccountTypeManager implements AccountTypeService {
     @Override
     public GetByIdAccountTypeResponse getById(int id) {
 
+        this.accountTypeBusinessRules.isAccountTypeAlreadyDeleted(id);
         this.accountTypeBusinessRules.isAccountTypeExistById(id);
 
         return this.modelMapperService.forResponse()
@@ -56,6 +57,7 @@ public class AccountTypeManager implements AccountTypeService {
     @Override
     public UpdatedAccountTypeResponse update(UpdateAccountTypeRequest updateAccountTypeRequest) {
 
+        this.accountTypeBusinessRules.isAccountTypeAlreadyDeleted(updateAccountTypeRequest.getId());
         this.accountTypeBusinessRules.isAccountTypeExistById(updateAccountTypeRequest.getId());
 
         return this.modelMapperService.forResponse().
