@@ -1,6 +1,7 @@
 package com.turkcell.crm.catalogService.business.concretes;
 
 import com.turkcell.crm.catalogService.business.abstracts.CatalogPropertyService;
+import com.turkcell.crm.catalogService.business.abstracts.CatalogService;
 import com.turkcell.crm.catalogService.business.dtos.request.catalogProperties.CreateCatalogPropertyRequest;
 import com.turkcell.crm.catalogService.business.dtos.request.catalogProperties.UpdateCatalogPropertyRequest;
 import com.turkcell.crm.catalogService.business.dtos.response.catalogProperties.CreatedCatalogPropertyResponse;
@@ -26,11 +27,12 @@ public class CatalogPropertyManager implements CatalogPropertyService {
     private ModelMapperService modelMapperService;
     private CatalogPropertyRepository catalogPropertyRepository;
     private CatalogPropertyBusinessRules catalogPropertyBusinessRules;
+    private CatalogService catalogService;
 
     @Override
     public CreatedCatalogPropertyResponse add(CreateCatalogPropertyRequest createCatalogPropertyRequest) {
 
-        this.catalogPropertyBusinessRules.isCatalogExistByCatalogId(createCatalogPropertyRequest.getCatalogId());
+        this.catalogService.getById(createCatalogPropertyRequest.getCatalogId());
 
         CatalogProperty catalogProperty = this.modelMapperService.forRequest().map(createCatalogPropertyRequest, CatalogProperty.class);
         catalogProperty.setId(0);
@@ -44,7 +46,7 @@ public class CatalogPropertyManager implements CatalogPropertyService {
     @Override
     public List<GetAllCatalogPropertyResponse> getAll() {
 
-        List<CatalogProperty> catalogProperties = this.catalogPropertyRepository.findAll();
+        List<CatalogProperty> catalogProperties = this.catalogPropertyRepository.findByDeletedDateIsNull();
 
         List<GetAllCatalogPropertyResponse> getAllCatalogPropertyResponses = catalogProperties.stream().map(catalogProperty -> this.modelMapperService.forResponse().
                 map(catalogProperty, GetAllCatalogPropertyResponse.class)).toList();
@@ -54,7 +56,8 @@ public class CatalogPropertyManager implements CatalogPropertyService {
     @Override
     public UpdatedCatalogPropertyResponse update(UpdateCatalogPropertyRequest updateCatalogPropertyRequest) {
 
-        this.catalogPropertyBusinessRules.isCatalogExistByCatalogId(updateCatalogPropertyRequest.getCatalogId());
+        this.catalogService.getById(updateCatalogPropertyRequest.getCatalogId());
+        this.catalogPropertyBusinessRules.isCatalogPropertyAlreadyDeleted(updateCatalogPropertyRequest.getId());
         this.catalogPropertyBusinessRules.isCatalogPropertyExistById(updateCatalogPropertyRequest.getId());
 
         CatalogProperty catalogProperty = this.modelMapperService.forRequest().map(updateCatalogPropertyRequest, CatalogProperty.class);
@@ -65,6 +68,7 @@ public class CatalogPropertyManager implements CatalogPropertyService {
     @Override
     public GetByIdCatalogPropertyResponse getById(int id) {
 
+        this.catalogPropertyBusinessRules.isCatalogPropertyAlreadyDeleted(id);
         this.catalogPropertyBusinessRules.isCatalogPropertyExistById(id);
 
         Optional<CatalogProperty> catalogProperty = this.catalogPropertyRepository.findById(id);

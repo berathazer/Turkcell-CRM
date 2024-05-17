@@ -23,4 +23,26 @@ public class AddressBusinessRules {
             throw new BusinessException(messageService.getMessage(AddressMessages.ADDRESS_CUSTOMER_DOES_NOT_EXIST));
         }
     }
+
+    public Address isAddressExistByID(int id){
+
+        Optional<Address> address = this.addressRepository.findAddressById(id);
+
+        if (address.isEmpty()){
+            throw new BusinessException(messageService.getMessage(AddressMessages.ADDRESS_ID_DOES_NOT_EXIST));
+        }
+        return address.get();
+    }
+
+    public Address isAddressAlreadyDeleted(int id){
+
+        Address address = this.isAddressExistByID(id);
+        if (address.getDeletedDate() != null){
+            throw new BusinessException(messageService.getMessage(AddressMessages.ADDRESS_DOES_NOT_EXIST));
+        }
+        return address;
+    }
+
+
+
 }

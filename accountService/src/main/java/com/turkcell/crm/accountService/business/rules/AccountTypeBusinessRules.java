@@ -16,6 +16,7 @@ public class AccountTypeBusinessRules {
     private AccountTypeRepository accountTypeRepository;
 
     public AccountType isAccountTypeExistById(int id) {
+
         Optional<AccountType> accountType = this.accountTypeRepository.findById(id);
         if (accountType.isEmpty()) {
             throw new BusinessException(AccountMessages.ACCOUNT_TYPE_NOT_FOUND);
@@ -24,10 +25,11 @@ public class AccountTypeBusinessRules {
     }
 
     public AccountType isAccountTypeAlreadyDeleted(int id){
+
         AccountType accountType = this.isAccountTypeExistById(id);
 
         if(accountType.getDeletedDate() != null){
-            throw new BusinessException(AccountMessages.ACCOUNT_ALREADY_EXISTS);
+            throw new BusinessException(AccountMessages.ACCOUNT_TYPE_NOT_FOUND);
         }
 
         return accountType;

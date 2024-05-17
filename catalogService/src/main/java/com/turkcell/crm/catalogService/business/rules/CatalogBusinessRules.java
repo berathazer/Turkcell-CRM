@@ -1,6 +1,5 @@
 package com.turkcell.crm.catalogService.business.rules;
 
-import com.turkcell.crm.catalogService.business.dtos.request.catalog.CreateCatalogRequest;
 import com.turkcell.crm.catalogService.business.messages.CatalogMessages;
 import com.turkcell.crm.catalogService.core.business.abstracts.MessageService;
 import com.turkcell.crm.catalogService.core.utilities.exceptions.types.BusinessException;

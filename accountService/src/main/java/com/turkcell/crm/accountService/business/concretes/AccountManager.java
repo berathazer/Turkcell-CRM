@@ -3,6 +3,7 @@ package com.turkcell.crm.accountService.business.concretes;
 
 import com.turkcell.crm.accountService.api.client.CustomerClient;
 import com.turkcell.crm.accountService.business.abstracts.AccountService;
+import com.turkcell.crm.accountService.business.abstracts.AccountTypeService;
 import com.turkcell.crm.accountService.business.dtos.request.account.CreateAccountRequest;
 import com.turkcell.crm.accountService.business.dtos.request.account.UpdateAccountRequest;
 import com.turkcell.crm.accountService.business.dtos.response.account.CreatedAccountResponse;
@@ -25,13 +26,14 @@ public class AccountManager implements AccountService {
     private AccountRepository accountRepository;
     private ModelMapperService modelMapperService;
     private AccountBusinessRules accountBusinessRules;
+    private AccountTypeService accountTypeService;
 
 
 
     @Override
     public CreatedAccountResponse add(CreateAccountRequest createAccountRequest) {
 
-        this.accountBusinessRules.isAccountTypeExist(createAccountRequest);
+        this.accountTypeService.getById(createAccountRequest.getAccountTypeId());
         this.accountBusinessRules.isCustomerExistById(createAccountRequest.getCustomerId());
 
         Account account = this.modelMapperService.forRequest().map(createAccountRequest, Account.class);
@@ -43,6 +45,7 @@ public class AccountManager implements AccountService {
     @Override
     public GetByIdAccountResponse getById(int id) {
 
+        this.accountBusinessRules.isAccountAlreadyDeleted(id);
         this.accountBusinessRules.isAccountExistById(id);
 
         return this.modelMapperService.forResponse()
@@ -52,7 +55,7 @@ public class AccountManager implements AccountService {
     @Override
     public List<GetAllAccountResponse> getAll() {
 
-        List<Account> accounts = this.accountRepository.findAll();
+        List<Account> accounts = this.accountRepository.findByDeletedDateIsNull();
 
         return accounts.stream().map(account -> this.modelMapperService.forResponse().
                 map(account, GetAllAccountResponse.class)).toList();
@@ -62,6 +65,7 @@ public class AccountManager implements AccountService {
     public UpdatedAccountResponse update(UpdateAccountRequest updateAccountRequest) {
 
         this.accountBusinessRules.isAccountExistById(updateAccountRequest.getId());
+        this.accountBusinessRules.isAccountAlreadyDeleted(updateAccountRequest.getId());
 
         Account account = this.modelMapperService.forRequest().
                 map(updateAccountRequest, Account.class);

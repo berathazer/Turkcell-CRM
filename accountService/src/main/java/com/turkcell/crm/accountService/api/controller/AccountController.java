@@ -12,6 +12,7 @@ import com.turkcell.crm.accountService.business.dtos.response.account.UpdatedAcc
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,7 +55,7 @@ public class AccountController {
         this.accountService.delete(id);
 
         // TODO: Düzgün formata getir (resources)
-        return "Hesap Silme Başarılı";
+        return "Silme başarılı";
     }
 
 }

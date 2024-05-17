@@ -14,6 +14,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateIndividualCustomerRequest {
+
+    @NotNull
+    private int id;
     @NotNull
     @Pattern(regexp = "^[a-zA-Z]+$", message = "First name must contain only letters")
     @Size(min = 2, max = 30)
