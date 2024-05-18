@@ -26,3 +26,16 @@ public class CatalogProperty extends BaseEntity {
     private Catalog catalog;
 
 }
+
+
+
+//@Table(name = "product_properties")
+//public class ProductProperty extends BaseEntity {
+//    private String key;
+//    private String value;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "product_id")
+//    private Catalog catalog;
+//
+//}

@@ -3,26 +3,22 @@ package com.turkcell.turkcellcrm.customerService.entity;
 
 import com.turkcell.turkcellcrm.customerService.core.entities.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
+@Table(name="customers")
 @Getter
 @Setter
-@Entity
-@Table(name = "customers")
+@NoArgsConstructor
+@AllArgsConstructor
+@DiscriminatorColumn(name = "customer_type")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Customer extends BaseEntity {
+
     private String email;
     private String mobilePhoneNumber;
-
-    @OneToOne
-    @JoinColumn(name = "individual_id", referencedColumnName = "id")
-    private IndividualCustomer individualCustomer;
 
     @OneToMany(mappedBy = "customer")
     private List<Address> addresses;

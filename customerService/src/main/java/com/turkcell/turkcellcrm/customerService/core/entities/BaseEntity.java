@@ -2,15 +2,14 @@ package com.turkcell.turkcellcrm.customerService.core.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public class BaseEntity {
     @Id
