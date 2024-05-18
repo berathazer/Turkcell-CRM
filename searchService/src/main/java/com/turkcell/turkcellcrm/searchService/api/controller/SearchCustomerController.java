@@ -24,9 +24,4 @@ public class SearchCustomerController {
         return this.searchCustomerService.getAll(getAllCustomerRequest);
     }
 
-    @GetMapping("/")
-    @ResponseStatus(HttpStatus.OK)
-    public List<Customer> get(){
-        return this.searchCustomerRepository.findAll();
-    }
 }

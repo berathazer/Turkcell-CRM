@@ -1,6 +1,7 @@
 package com.turkcell.crm.catalogService.kafka.producers;
 
 import com.turkcell.turkcellcrm.common.events.catalog.CatalogCreatedEvent;
+import com.turkcell.turkcellcrm.common.events.catalog.CatalogDeletedEvent;
 import com.turkcell.turkcellcrm.common.events.catalog.CatalogUpdatedEvent;
 import lombok.AllArgsConstructor;
 
@@ -35,6 +36,16 @@ public class CatalogProducer {
 
         Message<CatalogUpdatedEvent> message = MessageBuilder.withPayload(catalogUpdatedEvent)
                 .setHeader(KafkaHeaders.TOPIC, "catalog-updated")
+                .build();
+
+        kafkaTemplate.send(message);
+    }
+
+    public void sendDeletedMessage(CatalogDeletedEvent catalogDeletedEvent) {
+        LOGGER.info(String.format("Catalog deleted =>%s", catalogDeletedEvent.toString()));
+
+        Message<CatalogDeletedEvent> message = MessageBuilder.withPayload(catalogDeletedEvent)
+                .setHeader(KafkaHeaders.TOPIC, "catalog-deleted")
                 .build();
 
         kafkaTemplate.send(message);

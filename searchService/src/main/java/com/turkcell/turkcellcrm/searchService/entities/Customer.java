@@ -1,6 +1,7 @@
 package com.turkcell.turkcellcrm.searchService.entities;
 
 
+import com.turkcell.turkcellcrm.searchService.core.entities.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,10 +17,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Getter
 @Setter
 @Document(collection = "customers")
-public class Customer {
-
-    @Id
-    private ObjectId id;
+public class Customer extends BaseEntity {
 
     @Field(name = "customerId")
     private int customerId;

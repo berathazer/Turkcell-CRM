@@ -12,6 +12,7 @@ import com.turkcell.turkcellcrm.searchService.dataAccess.SearchCustomerRepositor
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -28,7 +29,8 @@ public class SearchCustomerManager implements SearchCustomerService {
         this.customerFilterBusinessRules.IsCustomerIdExistById(customerCreatedEvent);
 
         Customer customer = this.modelMapperService.forRequest().map(customerCreatedEvent, Customer.class);
-        customer.setId(null); // idyi null yapıyoruz mongodb otomatik objectid olarak ekleyecek
+        customer.setId(null);
+
         this.searchCustomerRepository.save(customer);
     }
     @Override
@@ -39,6 +41,7 @@ public class SearchCustomerManager implements SearchCustomerService {
         return customerList.stream().
                 map(customer -> this.modelMapperService.forResponse().
                 map(customer, GetAllCustomerResponse.class)).toList();
+
     }
     @Override
     public void update(CustomerUpdatedEvent customerUpdatedEvent) {
@@ -47,12 +50,19 @@ public class SearchCustomerManager implements SearchCustomerService {
 
         Customer customer = this.modelMapperService.forRequest().map(customerUpdatedEvent, Customer.class);
         this.searchCustomerRepository.save(customer);
+
     }
 
-    // TODO: Kayıtlara Tarih alanlarını ekle, Soft_delete ekle.
     @Override
     public void deleteCustomer(int id) {
-        this.searchCustomerRepository.deleteCustomersByCustomerId(id);
+
+        Customer customer = this.customerFilterBusinessRules.IsCustomerAlreadyDeleted(id);
+        customer.setDeletedDate(LocalDateTime.now());
+
+        this.searchCustomerRepository.save(customer);
+
     }
+
+
 
 }

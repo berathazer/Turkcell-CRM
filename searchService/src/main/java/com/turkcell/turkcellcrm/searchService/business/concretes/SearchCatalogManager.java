@@ -14,6 +14,7 @@ import com.turkcell.turkcellcrm.searchService.entities.Customer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -51,4 +52,16 @@ public class SearchCatalogManager implements SearchCatalogService {
         Catalog catalog = this.modelMapperService.forRequest().map(catalogUpdatedEvent, Catalog.class);
         this.searchCatalogRepository.save(catalog);
     }
+
+    @Override
+    public void delete(int catalogId) {
+
+        Catalog catalog = this.catalogFilterBusinessRules.IsCatalogAlreadyDeleted(catalogId);
+        catalog.setDeletedDate(LocalDateTime.now());
+
+        this.searchCatalogRepository.save(catalog);
+
+    }
+
+
 }

@@ -57,4 +57,16 @@ public class CatalogFilterBusinessRules {
         }
         return this.mongoTemplate.find(query, Catalog.class);
     }
+
+    // TODO: Mesajı Catalog olarak ekle.
+    public Catalog IsCatalogAlreadyDeleted(int catalogId){
+
+        Catalog catalog = this.searchCatalogRepository.findCatalogByCatalogId(catalogId).orElseThrow(() -> new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_NOT_EXISTS));
+
+        if(catalog.getDeletedDate() != null){
+            throw new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_IS_ALREADY_DELETED);
+        }
+
+        return catalog;
+    }
 }

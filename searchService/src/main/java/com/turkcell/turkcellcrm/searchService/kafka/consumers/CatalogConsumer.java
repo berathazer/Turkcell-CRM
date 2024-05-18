@@ -27,4 +27,11 @@ public class CatalogConsumer {
 
         this.searchCatalogService.update(catalogUpdatedEvent);
     }
+
+    @KafkaListener(topics = "catalog-deleted", groupId = "catalog_group-3")
+    public void listenCatalogDeleted(CatalogUpdatedEvent catalogUpdatedEvent) {
+
+        this.searchCatalogService.delete(catalogUpdatedEvent.getCatalogId());
+
+    }
 }

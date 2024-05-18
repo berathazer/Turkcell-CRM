@@ -31,6 +31,7 @@ public class CustomerConsumer {
    }
    @KafkaListener(topics = "customer-deleted", groupId = "customer_group-3")
     public void listenCustomerDeleted(CustomerDeletedEvent customerDeletedEvent) {
+
       this.searchCustomerService.deleteCustomer(customerDeletedEvent.getCustomerId());
     }
 }

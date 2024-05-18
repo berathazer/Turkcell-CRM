@@ -13,6 +13,7 @@ import com.turkcell.crm.catalogService.dataAccess.CatalogRepository;
 import com.turkcell.crm.catalogService.entity.Catalog;
 import com.turkcell.crm.catalogService.kafka.producers.CatalogProducer;
 import com.turkcell.turkcellcrm.common.events.catalog.CatalogCreatedEvent;
+import com.turkcell.turkcellcrm.common.events.catalog.CatalogDeletedEvent;
 import com.turkcell.turkcellcrm.common.events.catalog.CatalogUpdatedEvent;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -48,12 +49,14 @@ public class CatalogManager implements CatalogService {
     }
 
     @Override
+    @Transactional
     public UpdatedCatalogResponse update(UpdateCatalogRequest updateCatalogRequest) {
 
         this.catalogBusinessRules.isCatalogAlreadyDeleted(updateCatalogRequest.getId());
         this.catalogBusinessRules.isCatalogExistById(updateCatalogRequest.getId());
 
         Catalog catalog = this.modelMapperService.forRequest().map(updateCatalogRequest,Catalog.class);
+        catalog.setUpdatedDate(LocalDateTime.now());
 
         Catalog savedCatalog = this.catalogRepository.save(catalog);
 
@@ -89,12 +92,19 @@ public class CatalogManager implements CatalogService {
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
 
         Catalog catalog = this.catalogBusinessRules.isCatalogAlreadyDeleted(id);
         catalog.setDeletedDate(LocalDateTime.now());
 
         this.catalogRepository.save(catalog);
+
+        CatalogDeletedEvent catalogDeletedEvent = this.modelMapperService.forRequest().map(catalog, CatalogDeletedEvent.class);
+
+        this.catalogProducer.sendDeletedMessage(catalogDeletedEvent);
+
+
     }
 
 

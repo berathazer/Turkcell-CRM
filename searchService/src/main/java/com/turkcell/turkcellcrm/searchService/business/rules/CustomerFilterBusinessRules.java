@@ -16,16 +16,20 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
 public class CustomerFilterBusinessRules {
+
     private SearchCustomerRepository searchCustomerRepository;
     private MongoTemplate mongoTemplate;
 
     public List<Customer> filterCustomer(GetAllCustomerRequest getAllCustomerRequest) {
 
         Query query = new Query();
+        query.addCriteria(Criteria.where("deletedDate").is(null));
+
         Map<String,String> dtoMap = new HashMap();
         dtoMap.put("middleName" ,getAllCustomerRequest.getMiddleName());
         dtoMap.put("firstName" ,getAllCustomerRequest.getFirstName());
@@ -42,9 +46,11 @@ public class CustomerFilterBusinessRules {
                 query.addCriteria(Criteria.where(key).regex(".*" + value + ".*","i"));
             }
         }
+
         if (getAllCustomerRequest.getCustomerId() != 0) {
             query.addCriteria(Criteria.where("customerId").is(getAllCustomerRequest.getCustomerId()));
-       }
+        }
+
         return this.mongoTemplate.find(query, Customer.class);
     }
 
@@ -53,11 +59,24 @@ public class CustomerFilterBusinessRules {
         if (this.searchCustomerRepository.findCustomersByCustomerId(customerCreatedEvent.getCustomerId()).isPresent()){
             throw new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_IS_ALREADY_EXIST);
         }
+
     }
     public void IsCustomerIdExistById(CustomerUpdatedEvent customerUpdatedEvent){
 
         if (this.searchCustomerRepository.findCustomersByCustomerId(customerUpdatedEvent.getId()).isPresent()){
             throw new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_IS_ALREADY_EXIST);
         }
+
+    }
+
+    public Customer IsCustomerAlreadyDeleted(int customerId){
+
+        Customer customer = this.searchCustomerRepository.findCustomersByCustomerId(customerId).orElseThrow(() -> new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_NOT_EXISTS));
+
+        if(customer.getDeletedDate() != null){
+            throw new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_IS_ALREADY_DELETED);
+        }
+
+        return customer;
     }
 }

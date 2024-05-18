@@ -12,6 +12,7 @@ import com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.
 import com.turkcell.turkcellcrm.customerService.business.rules.IndividualCustomerBusinessRules;
 import com.turkcell.turkcellcrm.customerService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.turkcellcrm.customerService.dataAccess.IndividualCustomerRepository;
+import com.turkcell.turkcellcrm.customerService.entity.Gender;
 import com.turkcell.turkcellcrm.customerService.entity.IndividualCustomer;
 import com.turkcell.turkcellcrm.customerService.kafka.producers.CustomerProducer;
 import lombok.AllArgsConstructor;
@@ -38,8 +39,11 @@ public class IndividualCustomerManager implements IndividualCustomerService {
         IndividualCustomer individualCustomer = this.modelMapperService.forRequest().
                 map(createIndividualCustomerRequest, IndividualCustomer.class);
 
+        Gender gender = Gender.fromValue(createIndividualCustomerRequest.getGender());
+        individualCustomer.setGender(gender);
+
         IndividualCustomer createdCustomer = this.individualCustomerRepository.save(individualCustomer);
-        // Kafka create message producer
+
         CustomerCreatedEvent customerCreatedEvent = this.modelMapperService.
                 forRequest().map(createdCustomer,CustomerCreatedEvent.class);
         customerCreatedEvent.setCustomerId(createdCustomer.getId());
@@ -50,12 +54,15 @@ public class IndividualCustomerManager implements IndividualCustomerService {
                 map(createdCustomer, CreatedIndividualCustomerResponse.class);
     }
 
+    // TODO: Gender kısmını integer olarak döndür
     @Override
     public List<GetAllIndividualCustomerResponse> getAll() {
 
         List<IndividualCustomer> individualCustomers = this.individualCustomerRepository.findByDeletedDateIsNull();
 
-        return  individualCustomers.stream().map(individualCustomer -> this.modelMapperService.forResponse().
+        return  individualCustomers.stream().map(individualCustomer ->
+
+                this.modelMapperService.forResponse().
                 map(individualCustomer, GetAllIndividualCustomerResponse.class)).collect(Collectors.toList());
     }
 

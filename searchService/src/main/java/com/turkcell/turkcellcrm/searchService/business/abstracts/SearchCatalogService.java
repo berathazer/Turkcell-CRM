@@ -11,4 +11,6 @@ public interface SearchCatalogService {
     void add(CatalogCreatedEvent catalogCreatedEvent);
     List<GetAllCatalogResponse> getAll(GetAllCatalogRequest getAllCatalogRequest);
     void update(CatalogUpdatedEvent catalogUpdatedEvent);
+
+    void delete (int catalogId);
 }
