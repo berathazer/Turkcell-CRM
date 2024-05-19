@@ -1,7 +1,5 @@
 package com.turkcell.crm.accountService.api.controller;
 
-
-
 import com.turkcell.crm.accountService.business.abstracts.AccountService;
 import com.turkcell.crm.accountService.business.dtos.request.account.CreateAccountRequest;
 import com.turkcell.crm.accountService.business.dtos.request.account.UpdateAccountRequest;
@@ -12,7 +10,6 @@ import com.turkcell.crm.accountService.business.dtos.response.account.UpdatedAcc
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

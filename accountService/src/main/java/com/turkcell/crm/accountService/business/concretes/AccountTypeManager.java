@@ -1,6 +1,5 @@
 package com.turkcell.crm.accountService.business.concretes;
 
-
 import com.turkcell.crm.accountService.business.abstracts.AccountTypeService;
 import com.turkcell.crm.accountService.business.dtos.request.accountType.CreateAccountTypeRequest;
 import com.turkcell.crm.accountService.business.dtos.request.accountType.UpdateAccountTypeRequest;
@@ -13,7 +12,6 @@ import com.turkcell.crm.accountService.core.utilities.mapping.ModelMapperService
 import com.turkcell.crm.accountService.dataAccess.AccountTypeRepository;
 import com.turkcell.crm.accountService.entities.AccountType;
 import lombok.AllArgsConstructor;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
