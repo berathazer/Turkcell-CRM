@@ -1,7 +1,5 @@
 package com.turkcell.crm.accountService.business.concretes;
 
-
-import com.turkcell.crm.accountService.api.client.CustomerClient;
 import com.turkcell.crm.accountService.business.abstracts.AccountService;
 import com.turkcell.crm.accountService.business.abstracts.AccountTypeService;
 import com.turkcell.crm.accountService.business.dtos.request.account.CreateAccountRequest;
@@ -27,8 +25,6 @@ public class AccountManager implements AccountService {
     private ModelMapperService modelMapperService;
     private AccountBusinessRules accountBusinessRules;
     private AccountTypeService accountTypeService;
-
-
 
     @Override
     public CreatedAccountResponse add(CreateAccountRequest createAccountRequest) {
@@ -81,6 +77,5 @@ public class AccountManager implements AccountService {
         account.setDeletedDate(LocalDateTime.now());
 
         this.accountRepository.save(account);
-
     }
 }

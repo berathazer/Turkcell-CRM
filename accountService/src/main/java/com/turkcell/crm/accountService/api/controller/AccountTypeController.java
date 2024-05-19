@@ -1,6 +1,5 @@
 package com.turkcell.crm.accountService.api.controller;
 
-
 import com.turkcell.crm.accountService.business.abstracts.AccountTypeService;
 import com.turkcell.crm.accountService.business.dtos.request.accountType.CreateAccountTypeRequest;
 import com.turkcell.crm.accountService.business.dtos.request.accountType.UpdateAccountTypeRequest;

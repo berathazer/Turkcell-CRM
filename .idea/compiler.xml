@@ -7,7 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="core" />
         <module name="identityService" />
         <module name="catalogService" />
         <module name="common" />
@@ -20,6 +19,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="core" target="17" />
       <module name="productService" target="17" />
     </bytecodeTargetLevel>
   </component>
