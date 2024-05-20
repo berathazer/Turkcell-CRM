@@ -3,7 +3,8 @@ package com.turkcell.turkcellcrm.searchService.business.concretes;
 import com.turkcell.turkcellcrm.common.events.product.ProductCreatedEvent;
 import com.turkcell.turkcellcrm.common.events.product.ProductUpdatedEvent;
 import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchProductService;
-import com.turkcell.turkcellcrm.searchService.business.dto.request.GetAllProductRequest;
+import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchService;
+import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicQuery;
 import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllProductResponse;
 import com.turkcell.turkcellcrm.searchService.business.rules.ProductFilterBusinessRules;
 import com.turkcell.turkcellcrm.searchService.core.utilities.mapping.ModelMapperService;
@@ -22,7 +23,7 @@ public class SearchProductManager implements SearchProductService {
     private SearchProductRepository searchProductRepository;
     private ModelMapperService modelMapperService;
     private ProductFilterBusinessRules productFilterBusinessRules;
-
+    private SearchService searchService;
     @Override
     public void add(ProductCreatedEvent productCreatedEvent) {
 
@@ -35,9 +36,9 @@ public class SearchProductManager implements SearchProductService {
     }
 
     @Override
-    public List<GetAllProductResponse> getAll(GetAllProductRequest getAllProductRequest) {
+    public List<GetAllProductResponse> getAll(DynamicQuery dynamicQuery) {
 
-        List<Product> productList = this.productFilterBusinessRules.filterProduct(getAllProductRequest);
+        List<Product> productList = this.searchService.dynamicSearch(dynamicQuery,Product.class);
 
         return productList.stream().
                 map(product -> this.modelMapperService.forResponse().

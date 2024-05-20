@@ -39,32 +39,6 @@ public class ProductFilterBusinessRules {
         }
     }
 
-    public List<Product> filterProduct(GetAllProductRequest getAllProductRequest) {
-
-        Query query = new Query();
-        Map<String,String> dtoMap = new HashMap();
-        dtoMap.put("name" , getAllProductRequest.getName());
-
-        for(Map.Entry<String,String> entry : dtoMap.entrySet()){
-
-            String key= entry.getKey();
-            String value = entry.getValue();
-
-            if(!value.equals("string")){
-                System.out.println(key + " " + value);
-                query.addCriteria(Criteria.where(key).regex(".*" + value + ".*","i"));
-            }
-
-        }
-
-        if (getAllProductRequest.getProductId() != 0) {
-
-            query.addCriteria(Criteria.where("productId").is(getAllProductRequest.getProductId()));
-        }
-
-        return this.mongoTemplate.find(query, Product.class);
-    }
-
     public Product IsProductAlreadyDeleted(int productId){
 
        Product product = this.searchProductRepository.findProductByProductId(productId).

@@ -38,6 +38,10 @@ public class SearchCatalogManager implements SearchCatalogService {
 
     @Override
     public List<GetAllProductResponse> getFilteredCatalog(GetAllCatalogRequest getAllCatalogRequest) {
+        /*
+        Kategoriye ait tüm ürünleri getirecek
+        product_id, product_name alanlarına görede filtreleme olabilecek.
+        */
 
         return List.of();
     }

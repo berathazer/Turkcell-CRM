@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/catalogservice/api/v1/catalogs/catalogproperty")
+@RequestMapping("/catalogservice/api/v1/catalogs/productproperties")
 @AllArgsConstructor
 public class ProductPropertiesController {
     private ProductPropertyService productPropertyService;
