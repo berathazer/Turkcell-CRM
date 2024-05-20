@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("api/v1/users")
+@RequestMapping("/identityservice/api/v1/identity/users")
 public class UsersController {
     private UserService userService;
 

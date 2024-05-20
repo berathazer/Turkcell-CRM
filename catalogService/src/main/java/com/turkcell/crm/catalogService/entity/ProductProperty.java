@@ -13,26 +13,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "catalog_properties")
+@Table(name = "product_properties")
 public class ProductProperty extends BaseEntity {
     private String key;
     private String value;
 
     @ManyToOne
-    @JoinColumn(name = "catalog_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
 }
 
 
 
-//@Table(name = "product_properties")
-//public class ProductProperty extends BaseEntity {
-//    private String key;
-//    private String value;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "product_id")
-//    private Catalog catalog;
-//
-//}

@@ -12,26 +12,26 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class CatalogConsumer {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CatalogConsumer.class);
+public class ProductConsumer {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductConsumer.class);
     private SearchProductService searchProductService;
 
 
-    @KafkaListener(topics = "catalog-created", groupId = "catalog_group-1")
+    @KafkaListener(topics = "product-created", groupId = "product_group-1")
     public void listenProductCreated(ProductCreatedEvent productCreatedEvent) {
 
         this.searchProductService.add(productCreatedEvent);
     }
-    @KafkaListener(topics = "catalog-updated", groupId = "catalog_group-2")
-    public void listenCatalogUpdated(ProductUpdatedEvent catalogUpdatedEvent) {
+    @KafkaListener(topics = "product-updated", groupId = "product_group-2")
+    public void listenCatalogUpdated(ProductUpdatedEvent productUpdatedEvent) {
 
-        this.searchProductService.update(catalogUpdatedEvent);
+        this.searchProductService.update(productUpdatedEvent);
     }
 
-    @KafkaListener(topics = "catalog-deleted", groupId = "catalog_group-3")
-    public void listenCatalogDeleted(ProductUpdatedEvent catalogUpdatedEvent) {
+    @KafkaListener(topics = "product-deleted", groupId = "product_group-3")
+    public void listenCatalogDeleted(ProductUpdatedEvent productUpdatedEvent) {
 
-        this.searchProductService.delete(catalogUpdatedEvent.getProductId());
+        this.searchProductService.delete(productUpdatedEvent.getProductId());
 
     }
 }
