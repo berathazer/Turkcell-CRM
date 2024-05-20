@@ -36,6 +36,7 @@ public class ProductPropertyManager implements ProductPropertyService {
 
         ProductProperty productProperty = this.modelMapperService.forRequest().map(createProductPropertyRequest, ProductProperty.class);
         productProperty.setId(0);
+
         ProductProperty saveProduct = this.productPropertyRepository.save(productProperty);
 
 

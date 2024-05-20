@@ -37,6 +37,7 @@ public class ProductManager implements ProductService {
     public CreatedProductResponse add(CreateProductRequest createProductRequest) {
 
         Product product = this.modelMapperService.forRequest().map(createProductRequest, Product.class);
+        product.setId(0);
 
         Product savedProduct = this.productRepository.save(product);
 
