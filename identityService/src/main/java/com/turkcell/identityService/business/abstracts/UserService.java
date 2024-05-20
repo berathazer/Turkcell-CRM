@@ -5,6 +5,7 @@ import com.turkcell.identityService.entitites.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService {
+
     void register(RegisterRequest request);
     User findByUsername(String username);
 }

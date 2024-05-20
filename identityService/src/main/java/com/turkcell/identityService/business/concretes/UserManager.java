@@ -23,12 +23,15 @@ public class UserManager implements UserService
 
     @Override
     public void register(RegisterRequest request) {
-        //TODO:Business Rule,Validation
+
         User user =modelMapperService.forRequest().map(request,User.class);
+
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         user.setPassword(encodedPassword);
+
         userRepository.save(user);
     }
+
     @Override
     public User findByUsername(String username) {
         return userRepository.findUserByEmail(username).orElseThrow();
@@ -36,6 +39,7 @@ public class UserManager implements UserService
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         return  userRepository
                 .findUserByEmail(username)
                 .orElseThrow(()->new BusinessException(AuthMessages.LOGIN_FAILED));

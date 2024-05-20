@@ -27,7 +27,7 @@ public class SecurityServiceImpl implements SecurityService
         http.authorizeHttpRequests(x-> x
                 .requestMatchers(WHITE_LIST_URLS).permitAll()
                 .requestMatchers(HttpMethod.GET).permitAll()
-                .requestMatchers(HttpMethod.POST, "customerservice/api/v1/**").hasAnyAuthority(Roles.ADMIN)
+                .requestMatchers(HttpMethod.POST, "**/api/v1/**").hasAnyAuthority(Roles.ADMIN)
                 .requestMatchers(HttpMethod.PUT, "customerservice/api/v1/**").hasAnyAuthority(Roles.ADMIN)
                 .requestMatchers(HttpMethod.DELETE, "customerservice/api/v1/**").hasAnyAuthority(Roles.ADMIN)
                 .requestMatchers(HttpMethod.GET, "customerservice/api/v1/**").hasAnyAuthority(Roles.ADMIN)
