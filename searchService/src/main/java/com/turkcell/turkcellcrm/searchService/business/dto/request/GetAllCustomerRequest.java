@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class GetAllCustomerRequest {
+
     private String nationalityNumber;
     private int customerId;
     private String accountAccountNumber;
@@ -15,4 +16,5 @@ public class GetAllCustomerRequest {
     private String firstName;
     private String middleName;
     private String lastName;
+
 }

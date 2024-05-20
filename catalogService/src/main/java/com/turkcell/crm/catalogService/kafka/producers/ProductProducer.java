@@ -22,6 +22,7 @@ public class ProductProducer {
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
     public void sendCreatedMessage(ProductCreatedEvent productCreatedEvent) {
+
         LOGGER.info(String.format("Product added =>%s", productCreatedEvent.toString()));
 
         Message<ProductCreatedEvent> message = MessageBuilder.withPayload(productCreatedEvent)
@@ -32,6 +33,7 @@ public class ProductProducer {
     }
 
     public void sendUpdatedMessage(ProductUpdatedEvent productUpdatedEvent) {
+
         LOGGER.info(String.format("Product updated =>%s",productUpdatedEvent.toString()));
 
         Message<ProductUpdatedEvent> message = MessageBuilder.withPayload(productUpdatedEvent)
@@ -42,6 +44,7 @@ public class ProductProducer {
     }
 
     public void sendDeletedMessage(ProductDeletedEvent productDeletedEvent) {
+
         LOGGER.info(String.format("Product deleted =>%s", productDeletedEvent.toString()));
 
         Message<ProductDeletedEvent> message = MessageBuilder.withPayload(productDeletedEvent)

@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @Document
 public class BaseEntity {
+
     @Id
     private ObjectId id;
 

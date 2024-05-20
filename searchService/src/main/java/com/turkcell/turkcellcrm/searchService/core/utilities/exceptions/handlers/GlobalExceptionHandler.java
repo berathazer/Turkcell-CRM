@@ -15,17 +15,21 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
     @ExceptionHandler({BusinessException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public BusinessProblemDetails handleBusinessException(BusinessException exception) {
+
         BusinessProblemDetails businessProblemDetails = new BusinessProblemDetails();
         businessProblemDetails.setDetail(exception.getMessage());
+
         return businessProblemDetails;
     }
 
     @ExceptionHandler({ MethodArgumentNotValidException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ValidationProblemDetails handleValidationException(MethodArgumentNotValidException exception) {
+
         Map<String,String> validationErrors = new HashMap<>();
 
         exception.getBindingResult().getFieldErrors().stream().map(error ->
@@ -34,6 +38,7 @@ public class GlobalExceptionHandler {
 
         ValidationProblemDetails validationProblemDetails = new ValidationProblemDetails();
         validationProblemDetails.setErrors(validationErrors);
+
         return validationProblemDetails;
     }
 }

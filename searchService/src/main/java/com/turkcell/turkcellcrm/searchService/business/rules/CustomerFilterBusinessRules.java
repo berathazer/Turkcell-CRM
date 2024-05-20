@@ -39,12 +39,15 @@ public class CustomerFilterBusinessRules {
         dtoMap.put("mobilePhoneNumber",getAllCustomerRequest.getMobilePhoneNumber());
 
         for(Map.Entry<String,String> entry : dtoMap.entrySet()){
+
             String key= entry.getKey();
             String value = entry.getValue();
+
             if(!value.equals("string")){  //value != null
                 System.out.println(key + " " + value);
                 query.addCriteria(Criteria.where(key).regex(".*" + value + ".*","i"));
             }
+
         }
 
         if (getAllCustomerRequest.getCustomerId() != 0) {
@@ -71,7 +74,8 @@ public class CustomerFilterBusinessRules {
 
     public Customer IsCustomerAlreadyDeleted(int customerId){
 
-        Customer customer = this.searchCustomerRepository.findCustomersByCustomerId(customerId).orElseThrow(() -> new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_NOT_EXISTS));
+        Customer customer = this.searchCustomerRepository.findCustomersByCustomerId(customerId).
+                orElseThrow(() -> new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_NOT_EXISTS));
 
         if(customer.getDeletedDate() != null){
             throw new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_IS_ALREADY_DELETED);

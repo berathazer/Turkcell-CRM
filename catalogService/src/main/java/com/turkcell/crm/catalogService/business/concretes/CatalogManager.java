@@ -12,7 +12,14 @@ import com.turkcell.crm.catalogService.core.utilities.mapping.ModelMapperService
 import com.turkcell.crm.catalogService.dataAccess.CatalogRepository;
 import com.turkcell.crm.catalogService.entity.Catalog;
 import com.turkcell.crm.catalogService.entity.Product;
+import com.turkcell.crm.catalogService.kafka.producers.CatalogProducer;
+import com.turkcell.turkcellcrm.common.events.catalog.CatalogCreatedEvent;
+import com.turkcell.turkcellcrm.common.events.catalog.CatalogDeletedEvent;
+import com.turkcell.turkcellcrm.common.events.catalog.CatalogUpdatedEvent;
+import com.turkcell.turkcellcrm.common.events.product.ProductCreatedEvent;
 import com.turkcell.turkcellcrm.common.events.product.ProductDeletedEvent;
+import com.turkcell.turkcellcrm.common.events.product.ProductUpdatedEvent;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,13 +34,19 @@ public class CatalogManager implements CatalogService {
     private CatalogRepository catalogRepository;
     private ModelMapperService modelMapperService;
     private CatalogBusinessRules catalogBusinessRules;
+    private CatalogProducer catalogProducer;
 
     @Override
+    @Transactional
     public CreatedCatalogResponse add(CreateCatalogRequest createCatalogRequest) {
 
         Catalog catalog = this.modelMapperService.forRequest().map(createCatalogRequest,Catalog.class);
 
         Catalog savedCatalog = this.catalogRepository.save(catalog);
+
+        CatalogCreatedEvent catalogCreatedEvent = this.modelMapperService.forRequest().map(savedCatalog, CatalogCreatedEvent.class);
+
+        this.catalogProducer.sendCreatedMessage(catalogCreatedEvent);
 
         return this.modelMapperService.forResponse().map(savedCatalog, CreatedCatalogResponse.class);
     }
@@ -46,6 +59,7 @@ public class CatalogManager implements CatalogService {
     }
 
     @Override
+    @Transactional
     public UpdatedCatalogResponse update(UpdateCatalogRequest updateCatalogRequest) {
 
         this.catalogBusinessRules.isCatalogExistById(updateCatalogRequest.getId());
@@ -54,6 +68,11 @@ public class CatalogManager implements CatalogService {
         catalog.setUpdatedDate(LocalDateTime.now());
 
         Catalog savedCatalog = this.catalogRepository.save(catalog);
+
+        CatalogUpdatedEvent catalogUpdatedEvent = this.modelMapperService.forRequest().
+                map(savedCatalog, CatalogUpdatedEvent.class);
+
+        this.catalogProducer.sendUpdatedMessage(catalogUpdatedEvent);
 
         return this.modelMapperService.forResponse().map(savedCatalog, UpdatedCatalogResponse.class);
     }
@@ -68,11 +87,16 @@ public class CatalogManager implements CatalogService {
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
+
         Catalog catalog = this.catalogBusinessRules.isCatalogAlreadyDeleted(id);
         catalog.setDeletedDate(LocalDateTime.now());
 
         this.catalogRepository.save(catalog);
 
+        CatalogDeletedEvent catalogDeletedEvent = this.modelMapperService.forRequest().map(catalog, CatalogDeletedEvent.class);
+
+        this.catalogProducer.sendDeletedMessage(catalogDeletedEvent);
     }
 }
