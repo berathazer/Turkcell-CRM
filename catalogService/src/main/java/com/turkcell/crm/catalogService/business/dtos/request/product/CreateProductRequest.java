@@ -13,5 +13,6 @@ public class CreateProductRequest {
     private String description;
     private double price;
     private int unitInStock;
+    private int catalogId;
 
 }

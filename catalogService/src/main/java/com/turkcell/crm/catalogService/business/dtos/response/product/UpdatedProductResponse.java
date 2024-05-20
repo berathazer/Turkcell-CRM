@@ -12,4 +12,5 @@ public class UpdatedProductResponse {
     private String description;
     private double price;
     private int unitInStock;
+    private int catalogId;
 }

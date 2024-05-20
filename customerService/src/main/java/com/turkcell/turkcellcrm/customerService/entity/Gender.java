@@ -10,7 +10,6 @@ public enum Gender {
     FEMALE (1),
     OTHER(2);
     private final int value;
-
     public static Gender fromValue(int value) {
         for (Gender gender : Gender.values()) {
             if (gender.getValue() == value) {
@@ -19,5 +18,4 @@ public enum Gender {
         }
         throw new IllegalArgumentException("Invalid gender value: " + value);
     }
-
 }

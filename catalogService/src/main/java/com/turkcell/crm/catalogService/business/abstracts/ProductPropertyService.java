@@ -11,8 +11,13 @@ import java.util.List;
 
 public interface ProductPropertyService {
     CreatedProductPropertyResponse add(CreateProductPropertyRequest createProductPropertyRequest);
+
     List<GetAllProductPropertyResponse> getAll();
+
     UpdatedProductProductResponse update(UpdateProductPropertyRequest updateProductPropertyRequest);
+
     GetByIdProductPropertyResponse getById(int id);
+
     void delete(int id);
+
 }
