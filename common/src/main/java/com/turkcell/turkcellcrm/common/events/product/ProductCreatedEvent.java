@@ -9,5 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductCreatedEvent {
     private int productId;
+    private int catalogId;
     private String name;
 }

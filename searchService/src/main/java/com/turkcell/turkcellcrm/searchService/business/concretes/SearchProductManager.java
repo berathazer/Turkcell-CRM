@@ -18,6 +18,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class SearchProductManager implements SearchProductService {
+
     private SearchProductRepository searchProductRepository;
     private ModelMapperService modelMapperService;
     private ProductFilterBusinessRules productFilterBusinessRules;
@@ -29,6 +30,7 @@ public class SearchProductManager implements SearchProductService {
 
         Product product = this.modelMapperService.forRequest().map(productCreatedEvent, Product.class);
         product.setId(null);
+
         this.searchProductRepository.save(product);
     }
 
@@ -38,8 +40,8 @@ public class SearchProductManager implements SearchProductService {
         List<Product> productList = this.productFilterBusinessRules.filterProduct(getAllProductRequest);
 
         return productList.stream().
-                map(catalog -> this.modelMapperService.forResponse().
-                        map(productList, GetAllProductResponse.class)).toList();
+                map(product -> this.modelMapperService.forResponse().
+                        map(product, GetAllProductResponse.class)).toList();
     }
 
     @Override
@@ -48,6 +50,7 @@ public class SearchProductManager implements SearchProductService {
         this.productFilterBusinessRules.IsProductIdExistById(productUpdatedEvent);
 
         Product product = this.modelMapperService.forRequest().map(productUpdatedEvent, Product.class);
+
         this.searchProductRepository.save(product);
     }
 
@@ -58,8 +61,5 @@ public class SearchProductManager implements SearchProductService {
         product.setDeletedDate(LocalDateTime.now());
 
         this.searchProductRepository.save(product);
-
     }
-
-
 }

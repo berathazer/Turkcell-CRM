@@ -8,10 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class GetAllCustomerResponse {
+
     private int customerId;
     private String nationalityNumber;
     private String firstName;
     private String middleName;
     private String lastName;
-    //Role eklenicek
+
 }

@@ -12,11 +12,14 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @AllArgsConstructor
 @Getter
 @Setter
-@Document(collection = "catalogs")
+@Document(collection = "products")
 public class Product extends BaseEntity {
 
     @Field(name = "productId")
     private int productId;
+
+    @Field(name = "catalogId")
+    private int catalogId;
 
     @Field(name = "name")
     private String name;

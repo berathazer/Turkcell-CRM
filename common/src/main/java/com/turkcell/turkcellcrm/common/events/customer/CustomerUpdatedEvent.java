@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerUpdatedEvent {
+
     private String nationalityNumber;
     private int id;
     private String accountAccountNumber;

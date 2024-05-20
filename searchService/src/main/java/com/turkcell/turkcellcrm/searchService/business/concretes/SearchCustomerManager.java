@@ -33,6 +33,7 @@ public class SearchCustomerManager implements SearchCustomerService {
 
         this.searchCustomerRepository.save(customer);
     }
+
     @Override
     public List<GetAllCustomerResponse> getAll(GetAllCustomerRequest getAllCustomerRequest) {
 
@@ -41,16 +42,16 @@ public class SearchCustomerManager implements SearchCustomerService {
         return customerList.stream().
                 map(customer -> this.modelMapperService.forResponse().
                 map(customer, GetAllCustomerResponse.class)).toList();
-
     }
+
     @Override
     public void update(CustomerUpdatedEvent customerUpdatedEvent) {
 
         this.customerFilterBusinessRules.IsCustomerIdExistById(customerUpdatedEvent);
 
         Customer customer = this.modelMapperService.forRequest().map(customerUpdatedEvent, Customer.class);
-        this.searchCustomerRepository.save(customer);
 
+        this.searchCustomerRepository.save(customer);
     }
 
     @Override
@@ -60,9 +61,5 @@ public class SearchCustomerManager implements SearchCustomerService {
         customer.setDeletedDate(LocalDateTime.now());
 
         this.searchCustomerRepository.save(customer);
-
     }
-
-
-
 }

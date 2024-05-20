@@ -3,7 +3,7 @@ package com.turkcell.turkcellcrm.searchService.business.rules;
 import com.turkcell.turkcellcrm.common.events.product.ProductCreatedEvent;
 import com.turkcell.turkcellcrm.common.events.product.ProductUpdatedEvent;
 import com.turkcell.turkcellcrm.searchService.business.dto.request.GetAllProductRequest;
-import com.turkcell.turkcellcrm.searchService.business.messages.CustomerFilterBusinessRulesMessages;
+import com.turkcell.turkcellcrm.searchService.business.messages.ProductFilterBusinessRulesMessages;
 import com.turkcell.turkcellcrm.searchService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.turkcellcrm.searchService.dataAccess.SearchProductRepository;
 import com.turkcell.turkcellcrm.searchService.entities.Product;
@@ -20,18 +20,22 @@ import java.util.Map;
 @Service
 @AllArgsConstructor
 public class ProductFilterBusinessRules {
+
     private SearchProductRepository searchProductRepository;
     private MongoTemplate mongoTemplate;
+
 
     public void IsProductIdExistById(ProductCreatedEvent productCreatedEvent){
 
         if (this.searchProductRepository.findProductByProductId(productCreatedEvent.getProductId()).isPresent()){
-            throw new BusinessException("Product is already exists");
+            throw new BusinessException(ProductFilterBusinessRulesMessages.PRODUCT_IS_ALREADY_EXISTS);
         }
     }
+
     public void IsProductIdExistById(ProductUpdatedEvent productUpdatedEvent){
+
         if (this.searchProductRepository.findProductByProductId(productUpdatedEvent.getProductId()).isPresent()){
-            throw new BusinessException("Product is already exists");
+            throw new BusinessException(ProductFilterBusinessRulesMessages.PRODUCT_IS_ALREADY_EXISTS);
         }
     }
 
@@ -42,27 +46,32 @@ public class ProductFilterBusinessRules {
         dtoMap.put("name" , getAllProductRequest.getName());
 
         for(Map.Entry<String,String> entry : dtoMap.entrySet()){
+
             String key= entry.getKey();
             String value = entry.getValue();
-            if(!value.equals("string")){  //value != null
+
+            if(!value.equals("string")){
                 System.out.println(key + " " + value);
                 query.addCriteria(Criteria.where(key).regex(".*" + value + ".*","i"));
             }
+
         }
+
         if (getAllProductRequest.getProductId() != 0) {
 
             query.addCriteria(Criteria.where("productId").is(getAllProductRequest.getProductId()));
         }
+
         return this.mongoTemplate.find(query, Product.class);
     }
 
-    // TODO: Mesajı Catalog olarak ekle.
     public Product IsProductAlreadyDeleted(int productId){
 
-       Product product = this.searchProductRepository.findProductByProductId(productId).orElseThrow(() -> new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_NOT_EXISTS));
+       Product product = this.searchProductRepository.findProductByProductId(productId).
+               orElseThrow(() -> new BusinessException(ProductFilterBusinessRulesMessages.PRODUCT_NOT_EXISTS));
 
         if(product.getDeletedDate() != null){
-            throw new BusinessException(CustomerFilterBusinessRulesMessages.CUSTOMER_IS_ALREADY_DELETED);
+            throw new BusinessException(ProductFilterBusinessRulesMessages.PRODUCT_IS_ALREADY_DELETED);
         }
 
         return product;

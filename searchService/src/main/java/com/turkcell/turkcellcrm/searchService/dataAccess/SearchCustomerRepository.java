@@ -8,7 +8,4 @@ import java.util.Optional;
 
 public interface SearchCustomerRepository extends MongoRepository<Customer,String> {
     Optional<Customer> findCustomersByCustomerId(int customerId);
-    void deleteCustomersByCustomerId(int customerId);
-
-    List<Customer> findByDeletedDateIsNull();
 }

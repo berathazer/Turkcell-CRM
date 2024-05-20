@@ -10,9 +10,14 @@ import com.turkcell.crm.catalogService.business.dtos.response.product.UpdatedPro
 import java.util.List;
 
 public interface ProductService {
+
     CreatedProductResponse add(CreateProductRequest createProductRequest);
+
     List<GetAllProductResponse> getAll();
+
     UpdatedProductResponse update(UpdateProductRequest updateProductRequest);
+
     GetByIdProductResponse getById(int id);
+
     void delete(int id);
 }

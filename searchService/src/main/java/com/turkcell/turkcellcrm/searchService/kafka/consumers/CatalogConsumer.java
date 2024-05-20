@@ -1,37 +1,37 @@
 package com.turkcell.turkcellcrm.searchService.kafka.consumers;
 
-import com.turkcell.turkcellcrm.common.events.product.ProductCreatedEvent;
-import com.turkcell.turkcellcrm.common.events.product.ProductUpdatedEvent;
-import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchProductService;
+import com.turkcell.turkcellcrm.common.events.catalog.CatalogCreatedEvent;
+import com.turkcell.turkcellcrm.common.events.catalog.CatalogDeletedEvent;
+import com.turkcell.turkcellcrm.common.events.catalog.CatalogUpdatedEvent;
+import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchCatalogService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
-
 @Service
 @AllArgsConstructor
 public class CatalogConsumer {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CatalogConsumer.class);
-    private SearchProductService searchProductService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductConsumer.class);
+    private SearchCatalogService searchCatalogService;
 
 
     @KafkaListener(topics = "catalog-created", groupId = "catalog_group-1")
-    public void listenProductCreated(ProductCreatedEvent productCreatedEvent) {
+    public void listenProductCreated(CatalogCreatedEvent catalogCreatedEvent) {
 
-        this.searchProductService.add(productCreatedEvent);
+        this.searchCatalogService.add(catalogCreatedEvent);
     }
     @KafkaListener(topics = "catalog-updated", groupId = "catalog_group-2")
-    public void listenCatalogUpdated(ProductUpdatedEvent catalogUpdatedEvent) {
+    public void listenCatalogUpdated(CatalogUpdatedEvent catalogUpdatedEvent) {
 
-        this.searchProductService.update(catalogUpdatedEvent);
+        this.searchCatalogService.update(catalogUpdatedEvent);
     }
 
     @KafkaListener(topics = "catalog-deleted", groupId = "catalog_group-3")
-    public void listenCatalogDeleted(ProductUpdatedEvent catalogUpdatedEvent) {
+    public void listenCatalogDeleted(CatalogDeletedEvent catalogDeletedEvent) {
 
-        this.searchProductService.delete(catalogUpdatedEvent.getProductId());
+        this.searchCatalogService.delete(catalogDeletedEvent.getId());
 
     }
 }
