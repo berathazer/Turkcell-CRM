@@ -4,6 +4,7 @@ import com.turkcell.identityService.business.dtos.requests.LoginRequest;
 
 
 public interface AuthService {
+
     String login(LoginRequest loginRequest);
 
 }

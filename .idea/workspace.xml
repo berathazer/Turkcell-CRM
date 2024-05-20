@@ -4,71 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce0a59e7-c594-418e-be99-1590f63b6dda" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/api/controller/ProductsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_11_03_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_11_03__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_11_11_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_11_11__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_13_51_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_13_51__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="ce0a59e7-c594-418e-be99-1590f63b6dda" name="Changes" comment="Catalog change name product">
+      <change afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/configuration/ApplicationConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2024_23_55_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2024_23_55__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/abstracts/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/abstracts/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/abstracts/AccountTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/abstracts/AccountTypeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/concretes/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/concretes/AccountManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/concretes/AccountTypeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/business/concretes/AccountTypeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/api/controller/CatalogController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/api/controller/CatalogPropertiesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/api/controller/ProductPropertiesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/abstracts/CatalogPropertyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/abstracts/ProductPropertyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/abstracts/CatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/abstracts/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/concretes/CatalogManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/concretes/ProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/concretes/CatalogPropertyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/concretes/ProductPropertyManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalog/CreateCatalogRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/product/CreateProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalog/UpdateCatalogRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/product/UpdateProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalogProperties/CreateCatalogPropertyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/productProperties/CreateProductPropertyRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalogProperties/UpdateCatalogPropertyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/productProperties/UpdateProductPropertyRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalog/CreatedCatalogResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/product/CreatedProductResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalog/GetAllCatalogResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/product/GetAllProductResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalog/GetByIdCatalogResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/product/GetByIdProductResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalog/UpdatedCatalogResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/product/UpdatedProductResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/CreatedCatalogPropertyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/productProperties/CreatedProductPropertyResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/GetAllCatalogPropertyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/productProperties/GetAllProductPropertyResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/GetByIdCatalogPropertyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/productProperties/GetByIdProductPropertyResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/catalogProperties/UpdatedCatalogPropertyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/response/productProperties/UpdatedProductProductResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/messages/CatalogMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/messages/ProductMessages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/messages/CatalogPropertyMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/messages/ProductPropertyMessages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/rules/CatalogBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/rules/ProductBusinessRules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/rules/CatalogPropertyBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/rules/ProductPropertyBusinessRules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/dataAccess/CatalogPropertyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/dataAccess/ProductPropertyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/dataAccess/CatalogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/dataAccess/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/entity/Catalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/entity/CatalogProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/entity/ProductProperty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/kafka/producers/CatalogProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/kafka/producers/ProductProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/resources/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/resources/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/resources/messages_tr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/resources/messages_tr.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/test/java/com/turkcell/crm/catalogService/CatalogServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/test/java/com/turkcell/crm/catalogService/ProductServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/catalog/CatalogCreatedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/product/ProductCreatedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/catalog/CatalogDeletedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/product/ProductDeletedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/catalog/CatalogUpdatedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/turkcell/turkcellcrm/common/events/product/ProductUpdatedEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/CustomerServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/CustomerServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/configurations/ApplicationConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/configurations/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchCatalogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchCatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchCatalogManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/request/GetAllCatalogRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/request/GetAllProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/response/GetAllCatalogResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/response/GetAllProductResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/CatalogFilterBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/ProductFilterBusinessRules.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchCatalogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/entities/Catalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/entities/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/entities/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/entities/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CatalogConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CatalogConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/dtos/request/customer/individualCustomer/CreateIndividualCustomerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/dtos/request/customer/individualCustomer/CreateIndividualCustomerRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/dtos/request/customer/individualCustomer/UpdateIndividualCustomerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/java/com/turkcell/turkcellcrm/customerService/business/dtos/request/customer/individualCustomer/UpdateIndividualCustomerRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/abstracts/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/abstracts/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/abstracts/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/abstracts/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/concretes/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/concretes/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/dtos/requests/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/dtos/requests/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/dtos/requests/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/dtos/requests/RegisterRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/messages/AuthMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/messages/AuthMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/security/SecurityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/business/security/SecurityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/resources/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/resources/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/resources/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/resources/messages_tr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/resources/messages_tr.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +98,7 @@
     &quot;Application.CustomerServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.DiscoveryServerApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.GatewayServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.IdentityServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.ProductServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.SearchServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
@@ -199,7 +155,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CatalogServiceApplication">
+  <component name="RunManager" selected="Application.IdentityServiceApplication">
     <configuration name="AccountServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.accountService.AccountServiceApplication" />
       <module name="accountService" />
@@ -226,12 +182,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConfigServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.configServer.ConfigServerApplication" />
-      <module name="configServer" />
+    <configuration name="CustomerServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.customerService.CustomerServiceApplication" />
+      <module name="customerService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.turkcell.configServer.*" />
+          <option name="PATTERN" value="com.turkcell.turkcellcrm.customerService.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -239,12 +195,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.customerService.CustomerServiceApplication" />
-      <module name="customerService" />
+    <configuration name="IdentityServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.identityService.IdentityServiceApplication" />
+      <module name="identityService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.turkcell.turkcellcrm.customerService.*" />
+          <option name="PATTERN" value="com.turkcell.identityService.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -282,19 +238,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.IdentityServiceApplication" />
       <item itemvalue="Application.AccountServiceApplication" />
-      <item itemvalue="Application.ConfigServerApplication" />
       <item itemvalue="Application.CatalogServiceApplication" />
       <item itemvalue="Application.CustomerServiceApplication" />
       <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.IdentityServiceApplication" />
         <item itemvalue="Application.CustomerServiceApplication" />
         <item itemvalue="Application.AccountServiceApplication" />
         <item itemvalue="Application.CatalogServiceApplication" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Application.ConfigServerApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -309,6 +265,15 @@
       <workItem from="1715168428938" duration="11556000" />
       <workItem from="1715262709951" duration="12011000" />
     </task>
+    <task id="LOCAL-00001" summary="Catalog change name product">
+      <option name="closed" value="true" />
+      <created>1716141590072</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716141590072</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,5 +292,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Catalog change name product" />
+    <option name="LAST_COMMIT_MESSAGE" value="Catalog change name product" />
   </component>
 </project>

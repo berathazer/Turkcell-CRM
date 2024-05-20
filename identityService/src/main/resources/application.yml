@@ -1,41 +1,8 @@
-eureka:
-    client:
-        fetchRegistry: true
-        registerWithEureka: true
-        serviceUrl:
-            defaultZone: http://localhost:9000/eureka
-    instance:
-        instance-id: ${spring.application.name}:${instanceId:${random.value}}
-        preferIpAddress: true
-server:
-    port: 9003
 spring:
-    application:
-        name: identityService
-    datasource:
-        url: jdbc:postgresql://localhost:5432/securityDB
-        username: postgres
-        password: 12345
-    jpa:
-        hibernate:
-            ddl-auto: update
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQLDialect
-            javax:
-                persistence:
-                    validation:
-                        mode: none
-        show-sql: true
-
-# Security
-# Unit Test
-
-jwt:
-    secret:
-        key: R+QUtnWgWtt+gghxv/jVBkTSgAj6RnVfN6aEkj658K3la8HSYeCbD48RktVTclnDh2aWYC0Vo7++e3EZ9KwLLILqLwwK8PcAAzUXAuntHhcCnj6lOQBz9F9r1Wl7HF8jidhaqkhz/PR1Acu5dQ3GBoqI27I+EXb1KK93RBmPe0YL90ForyJ8rdaX8DCiix3vMahUB8BA6rl8PU9/nfjK4wzw7A2fEPn7Ad6ool4GQLtcq6YVqlJKgeQpMj7IPeQ2sSfO2l8t9pihuatnzA3GklU+A4IDqNKjvTqarZLVHVtrSwrGZMLRYovEM+1LrXvKZEWTOKzz2WhuMcG5Hp2I3A==
-    expiration:
-        time: 60000
-    refresh:
-        days: 10
-        key: refresh-token
+  application:
+    name: identityService
+  config:
+    import: configserver:http://localhost:8050/
+  cloud:
+    config:
+      profile: dev
