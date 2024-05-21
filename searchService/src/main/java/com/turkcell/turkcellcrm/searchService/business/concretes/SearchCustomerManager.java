@@ -3,6 +3,8 @@ package com.turkcell.turkcellcrm.searchService.business.concretes;
 import com.turkcell.turkcellcrm.common.events.customer.CustomerCreatedEvent;
 import com.turkcell.turkcellcrm.common.events.customer.CustomerUpdatedEvent;
 import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchCustomerService;
+import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchService;
+import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicQuery;
 import com.turkcell.turkcellcrm.searchService.business.dto.request.GetAllCustomerRequest;
 import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllCustomerResponse;
 import com.turkcell.turkcellcrm.searchService.business.rules.CustomerFilterBusinessRules;
@@ -22,11 +24,10 @@ public class SearchCustomerManager implements SearchCustomerService {
     private SearchCustomerRepository searchCustomerRepository;
     private ModelMapperService modelMapperService;
     private CustomerFilterBusinessRules customerFilterBusinessRules;
+    private SearchService searchService;
 
     @Override
     public void add(CustomerCreatedEvent customerCreatedEvent) {
-
-        this.customerFilterBusinessRules.IsCustomerIdExistById(customerCreatedEvent);
 
         Customer customer = this.modelMapperService.forRequest().map(customerCreatedEvent, Customer.class);
         customer.setId(null);
@@ -35,9 +36,9 @@ public class SearchCustomerManager implements SearchCustomerService {
     }
 
     @Override
-    public List<GetAllCustomerResponse> getAll(GetAllCustomerRequest getAllCustomerRequest) {
+    public List<GetAllCustomerResponse> getAll(DynamicQuery dynamicQuery) {
 
-        List<Customer> customerList = this.customerFilterBusinessRules.filterCustomer(getAllCustomerRequest);
+        List<Customer> customerList = this.searchService.dynamicSearch(dynamicQuery,Customer.class);
 
         return customerList.stream().
                 map(customer -> this.modelMapperService.forResponse().
@@ -46,8 +47,6 @@ public class SearchCustomerManager implements SearchCustomerService {
 
     @Override
     public void update(CustomerUpdatedEvent customerUpdatedEvent) {
-
-        this.customerFilterBusinessRules.IsCustomerIdExistById(customerUpdatedEvent);
 
         Customer customer = this.modelMapperService.forRequest().map(customerUpdatedEvent, Customer.class);
 

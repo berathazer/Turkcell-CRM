@@ -1,7 +1,7 @@
 package com.turkcell.turkcellcrm.searchService.api.controller;
 
 import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchCustomerService;
-import com.turkcell.turkcellcrm.searchService.business.dto.request.GetAllCustomerRequest;
+import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicQuery;
 import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllCustomerResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,9 +16,9 @@ public class SearchCustomerController {
 
     private SearchCustomerService searchCustomerService;
 
-    @GetMapping("/get")
+    @PostMapping("/getAll")
     @ResponseStatus(HttpStatus.OK)
-    public List<GetAllCustomerResponse> getAll(@ModelAttribute GetAllCustomerRequest getAllCustomerRequest){
-        return this.searchCustomerService.getAll(getAllCustomerRequest);
+    public List<GetAllCustomerResponse> getAll(@RequestBody DynamicQuery dynamicQuery){
+        return this.searchCustomerService.getAll(dynamicQuery);
     }
 }

@@ -21,6 +21,4 @@ public class SearchProductController {
     public List<GetAllProductResponse> getAll(@RequestBody DynamicQuery dynamicQuery){
         return this.searchProductService.getAll(dynamicQuery);
     }
-
-
 }
