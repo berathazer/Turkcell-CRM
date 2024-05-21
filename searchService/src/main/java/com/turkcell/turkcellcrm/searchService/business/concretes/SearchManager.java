@@ -41,25 +41,39 @@ public class SearchManager implements SearchService {
         }
 
         filters.stream()
-                .map(filter ->
-                        switch (filter.operator()) {
-                            case EQUALS -> Criteria.where(filter.field()).is(filter.value());
-                            case NOT_EQUALS -> Criteria.where(filter.field()).ne(filter.value());
-                            case GREATER_THAN -> Criteria.where(filter.field()).gt(filter.value());
-                            case GREATER_THAN_OR_EQUALS -> Criteria.where(filter.field()).gte(filter.value());
-                            case LESS_THAN -> Criteria.where(filter.field()).lt(filter.value());
-                            case LESS_THAN_OR_EQUALS -> Criteria.where(filter.field()).lte(filter.value());
-                            case IN -> Criteria.where(filter.field()).in((Object[]) filter.value().split(","));
-                            case NOT_IN -> Criteria.where(filter.field()).nin((Object[]) filter.value().split(","));
-                            case IS_NULL -> Criteria.where(filter.field()).is(null);
-                            case IS_NOT_NULL -> Criteria.where(filter.field()).ne(null);
-                            case STARTS_WITH -> Criteria.where(filter.field()).regex("^" + filter.value());
-                            case ENDS_WITH -> Criteria.where(filter.field()).regex(filter.value() + "$");
-                            case CONTAINS -> Criteria.where(filter.field()).regex(".*" + filter.value() + ".*");
-                            case DOES_NOT_CONTAINS ->
-                                    Criteria.where(filter.field()).not().regex(".*" + filter.value() + ".*");
-                        }
-                )
+                .map(filter -> {
+                    Object value;
+                    switch (filter.valueType()) {
+                        case "Integer":
+                            value = Integer.parseInt(filter.value());
+                            break;
+                        case "Double":
+                            value = Double.parseDouble(filter.value());
+                            break;
+                        case "Boolean":
+                            value = Boolean.parseBoolean(filter.value());
+                            break;
+                        default:
+                            value = filter.value();
+                    }
+
+                    return switch (filter.operator()) {
+                        case EQUALS -> Criteria.where(filter.field()).is(value);
+                        case NOT_EQUALS -> Criteria.where(filter.field()).ne(value);
+                        case GREATER_THAN -> Criteria.where(filter.field()).gt(value);
+                        case GREATER_THAN_OR_EQUALS -> Criteria.where(filter.field()).gte(value);
+                        case LESS_THAN -> Criteria.where(filter.field()).lt(value);
+                        case LESS_THAN_OR_EQUALS -> Criteria.where(filter.field()).lte(value);
+                        case IN -> Criteria.where(filter.field()).in((Object[]) filter.value().split(","));
+                        case NOT_IN -> Criteria.where(filter.field()).nin((Object[]) filter.value().split(","));
+                        case IS_NULL -> Criteria.where(filter.field()).is(null);
+                        case IS_NOT_NULL -> Criteria.where(filter.field()).ne(null);
+                        case STARTS_WITH -> Criteria.where(filter.field()).regex("^" + value);
+                        case ENDS_WITH -> Criteria.where(filter.field()).regex(value + "$");
+                        case CONTAINS -> Criteria.where(filter.field()).regex(".*" + value + ".*");
+                        case DOES_NOT_CONTAINS -> Criteria.where(filter.field()).not().regex(".*" + value + ".*");
+                    };
+                })
                 .forEach(query::addCriteria);
     }
 

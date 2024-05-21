@@ -24,10 +24,9 @@ public class SearchProductManager implements SearchProductService {
     private ModelMapperService modelMapperService;
     private ProductFilterBusinessRules productFilterBusinessRules;
     private SearchService searchService;
+
     @Override
     public void add(ProductCreatedEvent productCreatedEvent) {
-
-        this.productFilterBusinessRules.IsProductIdExistById(productCreatedEvent);
 
         Product product = this.modelMapperService.forRequest().map(productCreatedEvent, Product.class);
         product.setId(null);
@@ -48,9 +47,8 @@ public class SearchProductManager implements SearchProductService {
     @Override
     public void update(ProductUpdatedEvent productUpdatedEvent) {
 
-        this.productFilterBusinessRules.IsProductIdExistById(productUpdatedEvent);
-
         Product product = this.modelMapperService.forRequest().map(productUpdatedEvent, Product.class);
+        product.setId(null);
 
         this.searchProductRepository.save(product);
     }

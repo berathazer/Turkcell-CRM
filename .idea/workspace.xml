@@ -5,28 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce0a59e7-c594-418e-be99-1590f63b6dda" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/DynamicFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/DynamicQuery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/DynamicSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/enums/FilterOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/enums/SortDirection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/api/controller/ProductPropertiesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/api/controller/ProductPropertiesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalog/CreateCatalogRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/src/main/java/com/turkcell/crm/catalogService/business/dtos/request/catalog/CreateCatalogRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identityService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/IdentityServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/IdentityServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchCatalogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchCatalogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchCustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/api/controller/SearchProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchCatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchCatalogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchCustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/abstracts/SearchCustomerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchCatalogManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchCatalogManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchCustomerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchCustomerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/concretes/SearchProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/request/GetAllCatalogRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/request/GetAllCatalogRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/request/GetAllProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/request/GetAllProductRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/dynamics/DynamicFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto/dynamics/DynamicFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/CatalogFilterBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/CatalogFilterBusinessRules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/CustomerFilterBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/CustomerFilterBusinessRules.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/ProductFilterBusinessRules.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/rules/ProductFilterBusinessRules.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/dataAccess/SearchProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CatalogConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/CatalogConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/ProductConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/kafka/consumers/ProductConsumer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +32,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -104,10 +100,10 @@
     "Application.ProductServiceApplication.executor": "Run",
     "Application.SearchServiceApplication.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "JUnit.All in catalogService.executor": "Run",
     "Maven.catalogService [clean].executor": "Run",
     "Maven.catalogService [install].executor": "Run",
     "Maven.customerService [clean,install].executor": "Run",
-    "Maven.identityService [install].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -123,9 +119,9 @@
     "Spring Boot.GatewayServiceApplication.executor": "Run",
     "Spring Boot.IdentityServiceApplication.executor": "Run",
     "Spring Boot.SearchServiceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Dparlar33",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/berat/Desktop/Codes/JAVA/TurkcellCRM/searchService/src/main/java/com/turkcell/turkcellcrm/searchService/business/dto",
+    "last_opened_file_path": "D:/Intelij/Turkcell-CRM/catalogService/src/main/java/com/turkcell/crm/catalogService/core",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -143,14 +139,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\berat\Desktop\Codes\JAVA\TurkcellCRM\searchService\src\main\java\com\turkcell\turkcellcrm\searchService\business\dto" />
       <recent name="D:\Intelij\Turkcell-CRM\catalogService\src\main\java\com\turkcell\crm\catalogService\core" />
       <recent name="D:\Intelij\Turkcell-CRM\catalogService\src\main\java\com\turkcell\crm\catalogService\core\entities" />
       <recent name="C:\Users\Ahmethan\Desktop\TurkcellProje\Turkcell-CRM\accountService\src\main\java\com\turkcell\crm\accountService" />
       <recent name="C:\Users\dparl\Desktop\Turkcell-CRM\Turkcell-CRM\searchService\src\main\java\com\turkcell\turkcellcrm\searchService\core\utilities\exceptions" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.turkcell.turkcellcrm.searchService.business.concretes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -162,7 +154,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CatalogServiceApplication">
+  <component name="RunManager" selected="JUnit.All in catalogService">
     <configuration name="AccountServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.accountService.AccountServiceApplication" />
       <module name="accountService" />
@@ -211,6 +203,14 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in catalogService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="catalogService" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -278,28 +278,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Application.SearchServiceApplication" />
       <item itemvalue="Application.AccountServiceApplication" />
       <item itemvalue="Application.CatalogServiceApplication" />
       <item itemvalue="Application.CustomerServiceApplication" />
-      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      <item itemvalue="JUnit.All in catalogService" />
+      <item itemvalue="Spring Boot.AccountServiceApplication" />
+      <item itemvalue="Spring Boot.CatalogServiceApplication" />
+      <item itemvalue="Spring Boot.CommonApplication" />
+      <item itemvalue="Spring Boot.ConfigServerApplication" />
+      <item itemvalue="Spring Boot.CustomerServiceApplication" />
+      <item itemvalue="Spring Boot.DiscoveryServerApplication" />
+      <item itemvalue="Spring Boot.GatewayServiceApplication" />
+      <item itemvalue="Spring Boot.IdentityServiceApplication" />
+      <item itemvalue="Spring Boot.SearchServiceApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in catalogService" />
         <item itemvalue="Application.CatalogServiceApplication" />
-        <item itemvalue="Application.SearchServiceApplication" />
         <item itemvalue="Application.CustomerServiceApplication" />
+        <item itemvalue="Application.SearchServiceApplication" />
         <item itemvalue="Application.AccountServiceApplication" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>

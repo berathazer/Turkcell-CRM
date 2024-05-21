@@ -24,13 +24,13 @@ public class ProductConsumer {
         this.searchProductService.add(productCreatedEvent);
     }
     @KafkaListener(topics = "product-updated", groupId = "product_group-2")
-    public void listenCatalogUpdated(ProductUpdatedEvent productUpdatedEvent) {
+    public void listenProductUpdated(ProductUpdatedEvent productUpdatedEvent) {
 
         this.searchProductService.update(productUpdatedEvent);
     }
 
     @KafkaListener(topics = "product-deleted", groupId = "product_group-3")
-    public void listenCatalogDeleted(ProductUpdatedEvent productUpdatedEvent) {
+    public void listenProductDeleted(ProductUpdatedEvent productUpdatedEvent) {
 
         this.searchProductService.delete(productUpdatedEvent.getProductId());
 
