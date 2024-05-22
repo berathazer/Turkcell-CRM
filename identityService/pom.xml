@@ -17,6 +17,14 @@
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.1</spring-cloud.version>
 	</properties>
+	<repositories>
+		<repository>
+			<id>github</id>
+			<name>Github Package Center</name>
+			<url>https://maven.pkg.github.com/berathazer/TurkcellCRMCore</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -93,6 +101,12 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.turkcell.crm</groupId>
+			<artifactId>core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -123,5 +137,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>

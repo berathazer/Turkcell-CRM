@@ -18,7 +18,7 @@ public class CatalogConsumer {
 
 
     @KafkaListener(topics = "catalog-created", groupId = "catalog_group-1")
-    public void listenProductCreated(CatalogCreatedEvent catalogCreatedEvent) {
+    public void listenCatalogCreated(CatalogCreatedEvent catalogCreatedEvent) {
 
         this.searchCatalogService.add(catalogCreatedEvent);
     }

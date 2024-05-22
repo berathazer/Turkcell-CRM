@@ -3,10 +3,7 @@ package com.turkcell.turkcellcrm.searchService.business.concretes;
 import com.turkcell.turkcellcrm.common.events.catalog.CatalogCreatedEvent;
 import com.turkcell.turkcellcrm.common.events.catalog.CatalogUpdatedEvent;
 import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchCatalogService;
-import com.turkcell.turkcellcrm.searchService.business.dto.request.GetAllCatalogRequest;
-import com.turkcell.turkcellcrm.searchService.business.dto.request.GetAllCustomerRequest;
 import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllCatalogResponse;
-import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllProductResponse;
 import com.turkcell.turkcellcrm.searchService.business.rules.CatalogFilterBusinessRules;
 import com.turkcell.turkcellcrm.searchService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.turkcellcrm.searchService.dataAccess.SearchCatalogRepository;
@@ -28,18 +25,10 @@ public class SearchCatalogManager implements SearchCatalogService {
     @Override
     public void add(CatalogCreatedEvent catalogCreatedEvent) {
 
-        this.catalogFilterBusinessRules.IsCatalogIdExistById(catalogCreatedEvent);
-
         Catalog catalog = this.modelMapperService.forRequest().map(catalogCreatedEvent, Catalog.class);
         catalog.setId(null);
 
         this.searchCatalogRepository.save(catalog);
-    }
-
-    @Override
-    public List<GetAllProductResponse> getFilteredCatalog(GetAllCatalogRequest getAllCatalogRequest) {
-
-        return List.of();
     }
 
     @Override
@@ -54,8 +43,6 @@ public class SearchCatalogManager implements SearchCatalogService {
 
     @Override
     public void update(CatalogUpdatedEvent catalogUpdatedEvent) {
-
-        this.catalogFilterBusinessRules.IsCatalogIdExistById(catalogUpdatedEvent);
 
         Catalog catalog = this.modelMapperService.forRequest().map(catalogUpdatedEvent, Catalog.class);
 

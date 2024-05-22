@@ -9,4 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class GetAllCatalogRequest {
     private int catalogId;
+    private int productId;
+    private String productName;
 }

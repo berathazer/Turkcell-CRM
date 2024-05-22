@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetAllProductRequest {
 
+    private int catalogId;
     private int productId;
     private String name;
 
