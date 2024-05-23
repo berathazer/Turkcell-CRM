@@ -1,13 +1,10 @@
 package com.turkcell.crm.catalogService.business.rules;
 
 import com.turkcell.crm.catalogService.business.messages.CatalogMessages;
-import com.turkcell.crm.catalogService.business.messages.ProductMessages;
 import com.turkcell.crm.catalogService.core.business.abstracts.MessageService;
 import com.turkcell.crm.catalogService.core.utilities.exceptions.types.BusinessException;
-import com.turkcell.crm.catalogService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.crm.catalogService.dataAccess.CatalogRepository;
 import com.turkcell.crm.catalogService.entity.Catalog;
-import com.turkcell.crm.catalogService.entity.Product;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

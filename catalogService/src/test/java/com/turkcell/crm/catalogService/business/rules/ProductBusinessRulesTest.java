@@ -48,15 +48,18 @@ public class ProductBusinessRulesTest {
     @Test
     public void testIsProductExistById_ProductDoesNotExist() {
         // Arrange
-        int productId = 1;
+        Product product = new Product();
+        product.setId(1);
+        product.setName("Test Product");
+        product.setCatalog(null);
 
-        when(productRepository.findById(productId)).thenReturn(Optional.empty());
+        when(productRepository.findById(product.getId())).thenReturn(Optional.empty());
         when(messageService.getMessage(ProductMessages.PRODUCT_NOT_FOUND))
                 .thenReturn("Product not found message");
 
         // Act & Assert
         BusinessException exception = assertThrows(BusinessException.class,
-                () -> productBusinessRules.isProductExistById(productId));
+                () -> productBusinessRules.isProductExistById(product.getId()));
         assertEquals("Product not found message", exception.getMessage());
     }
 
@@ -65,7 +68,7 @@ public class ProductBusinessRulesTest {
         // Arrange
 
         Product product = new Product();
-        product.setId(1);
+        product.setId(2);
         product.setName("Test Product");
         product.setCatalog(null);
 
@@ -83,7 +86,7 @@ public class ProductBusinessRulesTest {
     public void testIsProductAlreadyDeleted_ProductAlreadyDeleted() {
         // Arrange
         Product product = new Product();
-        product.setId(1);
+        product.setId(2);
         product.setName("Test Product");
         product.setCatalog(null);
         product.setDeletedDate(LocalDateTime.now()); // Set deleted date to simulate deleted product
