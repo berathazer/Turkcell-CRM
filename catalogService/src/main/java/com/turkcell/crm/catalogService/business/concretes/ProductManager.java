@@ -54,7 +54,7 @@ public class ProductManager implements ProductService {
     public UpdatedProductResponse update(UpdateProductRequest updateProductRequest) {
 
         this.productBusinessRules.isProductAlreadyDeleted(updateProductRequest.getId());
-        this.productBusinessRules.isProductExistById(updateProductRequest.getId());
+        //this.productBusinessRules.isProductExistById(updateProductRequest.getId());
 
         Product product = this.modelMapperService.forRequest().map(updateProductRequest, Product.class);
         product.setUpdatedDate(LocalDateTime.now());
