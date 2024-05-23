@@ -22,6 +22,7 @@ public class CatalogConsumer {
 
         this.searchCatalogService.add(catalogCreatedEvent);
     }
+
     @KafkaListener(topics = "catalog-updated", groupId = "catalog_group-2")
     public void listenCatalogUpdated(CatalogUpdatedEvent catalogUpdatedEvent) {
 
