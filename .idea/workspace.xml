@@ -4,16 +4,6 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce0a59e7-c594-418e-be99-1590f63b6dda" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/accountService/src/test/java/com/turkcell/crm/accountService/business/rules/AccountBusinessRulesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accountService/src/test/java/com/turkcell/crm/accountService/business/rules/AccountTypeBusinessRulesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/test/java/com/turkcell/crm/catalogService/business/concretes/ProductManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/test/java/com/turkcell/crm/catalogService/business/rules/CatalogBusinessRulesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/test/java/com/turkcell/crm/catalogService/business/rules/ProductBusinessRulesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/catalogService/src/test/java/com/turkcell/crm/catalogService/business/rules/ProductPropertyBusinessRulesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalogService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/catalogService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identityService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +49,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/berathazer/Turkcell-CRM.git&quot;,
-    &quot;accountId&quot;: &quot;d0d8cbac-ba48-4e3f-a6fc-4a6b8f8df2fc&quot;
+    &quot;accountId&quot;: &quot;149d2adf-eb22-46c2-a25c-212dfbfb4402&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -92,15 +82,7 @@
     "Application.ProductServiceApplication.executor": "Run",
     "Application.SearchServiceApplication.executor": "Run",
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "JUnit.AccountBusinessRulesTest.executor": "Coverage",
-    "JUnit.AccountTypeBusinessRulesTest.executor": "Coverage",
-    "JUnit.AccountTypeBusinessRulesTest.isAccountTypeAlreadyDeleted_WhenAccountTypeIsDeleted_ShouldThrowException.executor": "Run",
-    "JUnit.CatalogBusinessRulesTest.executor": "Coverage",
-    "JUnit.ProductBusinessRulesTest.executor": "Coverage",
-    "JUnit.ProductBusinessRulesTest.testIsProductAlreadyDeleted_ProductAlreadyDeleted.executor": "Run",
-    "JUnit.ProductManagerTest.add.executor": "Run",
-    "JUnit.ProductManagerTest.update.executor": "Run",
-    "JUnit.ProductPropertyBusinessRulesTest.executor": "Coverage",
+
     "Maven.catalogService [clean].executor": "Run",
     "Maven.catalogService [install].executor": "Run",
     "Maven.customerService [clean,install].executor": "Run",
@@ -121,7 +103,7 @@
     "Spring Boot.SearchServiceApplication.executor": "Run",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "Ahmethan1",
+
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Intelij/Turkcell-CRM/catalogService/src/main/java/com/turkcell/crm/catalogService/core",
     "node.js.detected.package.eslint": "true",
@@ -133,6 +115,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -150,9 +133,7 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.turkcell.crm.accountService.business.rules" />
-      <recent name="com.turkcell.crm.catalogService.business.rules" />
-      <recent name="com.turkcell.crm.catalogService.business.concretes" />
+
     </key>
   </component>
   <component name="RunDashboard">
@@ -164,79 +145,30 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AccountTypeBusinessRulesTest">
-    <configuration name="AccountBusinessRulesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="accountService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.crm.accountService.business.rules.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.turkcell.crm.accountService.business.rules" />
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.accountService.business.rules.AccountBusinessRulesTest" />
+
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountTypeBusinessRulesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="accountService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.crm.accountService.business.rules.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.turkcell.crm.accountService.business.rules" />
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.accountService.business.rules.AccountTypeBusinessRulesTest" />
-      <option name="TEST_OBJECT" value="class" />
+
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountTypeBusinessRulesTest.isAccountTypeAlreadyDeleted_WhenAccountTypeIsDeleted_ShouldThrowException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="accountService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.crm.accountService.business.rules.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.turkcell.crm.accountService.business.rules" />
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.accountService.business.rules.AccountTypeBusinessRulesTest" />
-      <option name="METHOD_NAME" value="isAccountTypeAlreadyDeleted_WhenAccountTypeIsDeleted_ShouldThrowException" />
+
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CatalogBusinessRulesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="catalogService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.crm.catalogService.business.rules.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.turkcell.crm.catalogService.business.rules" />
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.catalogService.business.rules.CatalogBusinessRulesTest" />
+
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductBusinessRulesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="catalogService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.crm.catalogService.business.rules.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.turkcell.crm.catalogService.business.rules" />
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.catalogService.business.rules.ProductBusinessRulesTest" />
-      <option name="TEST_OBJECT" value="class" />
+
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -305,21 +237,17 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AccountBusinessRulesTest" />
-      <item itemvalue="JUnit.AccountTypeBusinessRulesTest" />
-      <item itemvalue="JUnit.AccountTypeBusinessRulesTest.isAccountTypeAlreadyDeleted_WhenAccountTypeIsDeleted_ShouldThrowException" />
-      <item itemvalue="JUnit.CatalogBusinessRulesTest" />
-      <item itemvalue="JUnit.ProductBusinessRulesTest" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.AccountTypeBusinessRulesTest" />
-        <item itemvalue="JUnit.AccountTypeBusinessRulesTest.isAccountTypeAlreadyDeleted_WhenAccountTypeIsDeleted_ShouldThrowException" />
-        <item itemvalue="JUnit.AccountBusinessRulesTest" />
-        <item itemvalue="JUnit.CatalogBusinessRulesTest" />
-        <item itemvalue="JUnit.ProductBusinessRulesTest" />
+
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -331,7 +259,20 @@
       <updated>1715096943648</updated>
       <workItem from="1715168428938" duration="11556000" />
       <workItem from="1715262709951" duration="12011000" />
+      <workItem from="1716300079388" duration="108000" />
+      <workItem from="1716310974865" duration="3575000" />
+      <workItem from="1716373282273" duration="17315000" />
+      <workItem from="1716457987294" duration="19202000" />
     </task>
+    <task id="LOCAL-00001" summary="search service changed">
+      <option name="closed" value="true" />
+      <created>1716300112669</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716300112669</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,6 +291,51 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="search service changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="search service changed" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/searchService/src/test/java/com/turkcell/turkcellcrm/searchService/business/rules/CustomerFilterBusinessRulesTest.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Turkcell_CRM$ProductFilterBusinessRulesTest.ic" NAME="ProductFilterBusinessRulesTest Coverage Results" MODIFIED="1716464677022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.turkcell.turkcellcrm.searchService.business.rules.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchProductManagerTest.ic" NAME="SearchProductManagerTest Coverage Results" MODIFIED="1716475483377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchProductManagerTest_testUpdate.ic" NAME="SearchProductManagerTest.testUpdate Coverage Results" MODIFIED="1716471122530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchCustomerManagerTest.ic" NAME="SearchCustomerManagerTest Coverage Results" MODIFIED="1716478717071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchProductManagerTest_testAdd.ic" NAME="SearchProductManagerTest.testAdd Coverage Results" MODIFIED="1716471070080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchCatalogManagerTest.ic" NAME="SearchCatalogManagerTest Coverage Results" MODIFIED="1716478056802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchProductManagerTest_testDelete_Successful.ic" NAME="SearchProductManagerTest.testDelete_Successful Coverage Results" MODIFIED="1716475139485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchProductManagerTest_testGetAll.ic" NAME="SearchProductManagerTest.testGetAll Coverage Results" MODIFIED="1716471103613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Turkcell_CRM$CatalogFilterBusinessRulesTest.ic" NAME="CatalogFilterBusinessRulesTest Coverage Results" MODIFIED="1716464939895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.turkcell.turkcellcrm.searchService.business.rules.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Turkcell_CRM$CustomerFilterBusinessRulesTest.ic" NAME="CustomerFilterBusinessRulesTest Coverage Results" MODIFIED="1716464684900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.turkcell.turkcellcrm.searchService.business.rules.*</FILTER>
+    </SUITE>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Turkcell_CRM$ProductBusinessRulesTest.ic" NAME="ProductBusinessRulesTest Coverage Results" MODIFIED="1716463373005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

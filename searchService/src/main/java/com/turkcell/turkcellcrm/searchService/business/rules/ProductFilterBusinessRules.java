@@ -1,7 +1,5 @@
 package com.turkcell.turkcellcrm.searchService.business.rules;
 
-import com.turkcell.turkcellcrm.common.events.product.ProductCreatedEvent;
-import com.turkcell.turkcellcrm.common.events.product.ProductUpdatedEvent;
 import com.turkcell.turkcellcrm.searchService.business.messages.ProductFilterBusinessRulesMessages;
 import com.turkcell.turkcellcrm.searchService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.turkcellcrm.searchService.dataAccess.SearchProductRepository;
