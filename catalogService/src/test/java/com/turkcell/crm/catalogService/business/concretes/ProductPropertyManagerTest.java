@@ -3,6 +3,7 @@ package com.turkcell.crm.catalogService.business.concretes;
 import com.turkcell.crm.catalogService.business.abstracts.ProductService;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.CreateProductPropertyRequest;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.UpdateProductPropertyRequest;
+import com.turkcell.crm.catalogService.business.dtos.response.product.GetAllProductResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.CreatedProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetAllProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetByIdProductPropertyResponse;
@@ -18,6 +19,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,107 +52,143 @@ public class ProductPropertyManagerTest {
 
     @Test
     void testAdd() {
-        CreateProductPropertyRequest request = new CreateProductPropertyRequest();
-        request.setProductId(1);
-        ProductProperty productProperty = new ProductProperty();
-        productProperty.setId(0);
-        ProductProperty savedProductProperty = new ProductProperty();
-        savedProductProperty.setId(1);
+       ProductProperty productProperty = new ProductProperty();
+       productProperty.setId(0);
 
-        CreatedProductPropertyResponse response1 = new CreatedProductPropertyResponse();
-        response1.setId(1);
+       ProductProperty savedProperty= new ProductProperty();
+       savedProperty.setId(1);
 
-        when(productService.getById(request.getProductId())).thenReturn(any());
+       CreateProductPropertyRequest createProductPropertyRequest = new CreateProductPropertyRequest();
 
-        when(modelMapperService.forRequest()).thenReturn(modelMapper);
-        when(modelMapper.map(request,ProductProperty.class)).thenReturn(productProperty);
+       when(modelMapperService.forRequest()).thenReturn(modelMapper);
+       when(modelMapper.map(createProductPropertyRequest,ProductProperty.class)).thenReturn(productProperty);
 
-        when(modelMapperService.forResponse()).thenReturn(modelMapper);
-        when(modelMapper.map(savedProductProperty,CreatedProductPropertyResponse.class)).thenReturn(response1);
+       when(productPropertyRepository.save(productProperty)).thenReturn(savedProperty);
 
+       CreatedProductPropertyResponse createdProductPropertyResponse = new CreatedProductPropertyResponse();
+       createdProductPropertyResponse.setId(1);
 
-        when(productPropertyRepository.save(any(ProductProperty.class))).thenReturn(savedProductProperty);
+       when(modelMapperService.forResponse()).thenReturn(modelMapper);
+       when(modelMapper.map(savedProperty,CreatedProductPropertyResponse.class)).thenReturn(createdProductPropertyResponse);
 
-        CreatedProductPropertyResponse response = productPropertyManager.add(request);
+       CreatedProductPropertyResponse result = productPropertyManager.add(createProductPropertyRequest);
 
-        assertEquals(1, response.getId());
+       assertEquals(createdProductPropertyResponse,result);
 
-        verify(productService).getById(request.getProductId());
-        verify(productPropertyRepository).save(any(ProductProperty.class));
-        verify(modelMapperService.forResponse(), times(1)).map(any(), eq(CreatedProductPropertyResponse.class));
-        verify(modelMapperService.forRequest(), times(1)).map(any(), eq(CreateProductPropertyRequest.class));
+       verify(modelMapperService).forRequest();
+       verify(modelMapper).map(createProductPropertyRequest,ProductProperty.class);
+       verify(productPropertyRepository).save(productProperty);
+       verify(modelMapperService).forResponse();
+       verify(modelMapper).map(savedProperty,CreatedProductPropertyResponse.class);
     }
 
     @Test
     void testGetAll() {
         ProductProperty productProperty = new ProductProperty();
         productProperty.setId(1);
-        List<ProductProperty> productProperties = List.of(productProperty);
+        productProperty.setKey("Renk");
+        productProperty.setValue("Kırmızı");
 
-        CreatedProductPropertyResponse createdProductPropertyResponse = new CreatedProductPropertyResponse();
+        ProductProperty productProperty1 = new ProductProperty();
+        productProperty1.setId(2);
+        productProperty1.setKey("Renk");
+        productProperty1.setValue("Mavi");
+
+        List<ProductProperty> productProperties = Arrays.asList(productProperty, productProperty1);
 
         when(productPropertyRepository.findByDeletedDateIsNull()).thenReturn(productProperties);
 
+        GetAllProductPropertyResponse response1 = new GetAllProductPropertyResponse();
+        response1.setId(1);
+        response1.setKey("Renk");
+        response1.setValue("Kırmızı");
+
+        GetAllProductPropertyResponse response2 = new GetAllProductPropertyResponse();
+        response2.setId(2);
+        response2.setKey("Renk");
+        response2.setValue("Mavi");
+
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
-        when(modelMapper.map(productProperty,CreatedProductPropertyResponse.class)).thenReturn(createdProductPropertyResponse);
+        when(modelMapperService.forResponse().map(productProperty, GetAllProductPropertyResponse.class)).thenReturn(response1);
+        when(modelMapperService.forResponse().map(productProperty1, GetAllProductPropertyResponse.class)).thenReturn(response2);
 
-        List<GetAllProductPropertyResponse> responses = productPropertyManager.getAll();
+        List<GetAllProductPropertyResponse> result = productPropertyManager.getAll();
 
-        assertEquals(1, responses.size());
-        assertEquals(1, responses.get(0).getId());
+        assertEquals(2, result.size());
+        assertEquals(1, result.get(0).getId());
+        assertEquals("Kırmızı", result.get(0).getValue());
+        assertEquals(2, result.get(1).getId());
+        assertEquals("Mavi", result.get(1).getValue());
 
-        verify(productPropertyRepository).findByDeletedDateIsNull();
+
+        verify(modelMapperService.forResponse(), times(2)).map(any(), eq(GetAllProductPropertyResponse.class));
+
     }
 
     @Test
     void testUpdate() {
-        UpdateProductPropertyRequest request = new UpdateProductPropertyRequest();
-        request.setId(1);
-        request.setProductId(1);
+        UpdateProductPropertyRequest updateProductPropertyRequest = new UpdateProductPropertyRequest();
+        updateProductPropertyRequest.setId(1);
+
         ProductProperty productProperty = new ProductProperty();
         productProperty.setId(1);
 
-        UpdatedProductProductResponse updatedProductProductResponse=new UpdatedProductProductResponse();
-        updatedProductProductResponse.setId(1);
+        ProductProperty savedProperty = new ProductProperty();
+        savedProperty.setId(1);
+        savedProperty.setUpdatedDate(LocalDateTime.now());
 
-        when(productService.getById(request.getProductId())).thenReturn(any());
-        when(productPropertyBusinessRules.isProductPropertyAlreadyDeleted(request.getId()));
-        when(productPropertyBusinessRules.isProductPropertyExistById(request.getId()));
+        UpdatedProductProductResponse response = new UpdatedProductProductResponse();
+
+        when(productPropertyBusinessRules.isProductPropertyAlreadyDeleted(updateProductPropertyRequest.getId())).thenReturn(productProperty);
 
         when(modelMapperService.forRequest()).thenReturn(modelMapper);
-        when(modelMapper.map(request,ProductProperty.class)).thenReturn(productProperty);
+        when(modelMapper.map(updateProductPropertyRequest,ProductProperty.class)).thenReturn(productProperty);
+
+        when(productPropertyRepository.save(productProperty)).thenReturn(savedProperty);
 
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
-        when(modelMapper.map(productProperty,UpdatedProductProductResponse.class)).thenReturn(updatedProductProductResponse);
+        when(modelMapper.map(savedProperty,UpdatedProductProductResponse.class)).thenReturn(response);
 
-        when(productPropertyRepository.save(any(ProductProperty.class))).thenReturn(productProperty);
+        UpdatedProductProductResponse result = productPropertyManager.update(updateProductPropertyRequest);
 
-        UpdatedProductProductResponse response = productPropertyManager.update(request);
+        verify(productPropertyBusinessRules).isProductPropertyAlreadyDeleted(productProperty.getId());
+        verify(productPropertyRepository).save(productProperty);
 
-        assertEquals(1, response.getId());
-        verify(productService).getById(request.getProductId());
-        verify(productPropertyBusinessRules).isProductPropertyAlreadyDeleted(request.getId());
-        verify(productPropertyBusinessRules).isProductPropertyExistById(request.getId());
-        verify(productPropertyRepository).save(any(ProductProperty.class));
+        assertEquals(response,result);
+
+
+
     }
 
     @Test
     void testGetById() {
-        int id = 1;
         ProductProperty productProperty = new ProductProperty();
-        productProperty.setId(id);
+        productProperty.setId(1);
+
         Optional<ProductProperty> optionalProductProperty = Optional.of(productProperty);
 
-        doNothing().when(productPropertyBusinessRules).isProductPropertyAlreadyDeleted(id);
-        doNothing().when(productPropertyBusinessRules).isProductPropertyExistById(id);
-        when(productPropertyRepository.findById(id)).thenReturn(optionalProductProperty);
-        when(modelMapperService.forResponse()).thenReturn(modelMapper);
+        when(productPropertyRepository.findById(productProperty.getId())).thenReturn(optionalProductProperty);
 
-        GetByIdProductPropertyResponse response = productPropertyManager.getById(id);
-        assertEquals(id, response.getId());
-        verify(productPropertyBusinessRules).isProductPropertyAlreadyDeleted(id);
-        verify(productPropertyBusinessRules).isProductPropertyExistById(id);
-        verify(productPropertyRepository).findById(id);
+        when(productPropertyBusinessRules.isProductPropertyAlreadyDeleted(productProperty.getId())).thenReturn(productProperty);
+        when(productPropertyBusinessRules.isProductPropertyExistById(productProperty.getId())).thenReturn(productProperty);
+
+        GetByIdProductPropertyResponse getByIdProductPropertyResponse = new GetByIdProductPropertyResponse();
+
+        when(modelMapperService.forResponse()).thenReturn(modelMapper);
+        when(modelMapper.map(productProperty,GetByIdProductPropertyResponse.class)).thenReturn(getByIdProductPropertyResponse);
+
+        GetByIdProductPropertyResponse response = productPropertyManager.getById(1);
+
+        verify(productPropertyRepository).findById(1);
+
+        verify(productPropertyBusinessRules).isProductPropertyAlreadyDeleted(1);
+        verify(productPropertyBusinessRules).isProductPropertyExistById(1);
+
+        verify(modelMapperService.forResponse()).map(productProperty,GetByIdProductPropertyResponse.class);
+
+        assertEquals(getByIdProductPropertyResponse,response);
+
+
     }
 
     @Test

@@ -132,15 +132,12 @@ class ProductManagerTest {
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
         when(modelMapper.map(savedProduct, UpdatedProductResponse.class)).thenReturn(updatedProductResponse);
 
-        when(productBusinessRules.isProductAlreadyDeleted(product.getId())).thenReturn(product);
-        //when(productBusinessRules.isProductExistById(product.getId())).thenReturn(product);
 
         // Metodu çağırın
         UpdatedProductResponse result = productManager.update(updateProductRequest);
 
         // Etkileşimleri doğrulayın
         verify(productBusinessRules).isProductAlreadyDeleted(product.getId());
-        //verify(productBusinessRules).isProductExistById(product.getId());
         verify(productRepository).save(product);
         verify(productProducer).sendUpdatedMessage(productUpdatedEvent);
 
