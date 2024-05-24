@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class ProductUpdatedEvent {
     private int productId;
     private String name;
+    private int catalogId;
 }

@@ -1,0 +1,80 @@
+package com.turkcell.turkcellcrm.searchService.api.controller;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchCustomerService;
+import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchProductService;
+import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicFilter;
+import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicQuery;
+import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicSort;
+import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllCustomerResponse;
+import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllProductResponse;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@SpringBootTest
+@ExtendWith(MockitoExtension.class)
+@AutoConfigureMockMvc
+public class SearchCustomerControllerTest {
+
+    private MockMvc mockMvc;
+
+    @Mock
+    private SearchCustomerService searchCustomerService;
+
+    @InjectMocks
+    private SearchCustomerController searchCustomerController;
+
+    private  ObjectMapper objectMapper = new ObjectMapper();
+
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(searchCustomerController).build();
+    }
+
+    @Test
+    public void testGetAll() throws Exception {
+        List<DynamicFilter> filters = Collections.emptyList();
+        List<DynamicSort> sorts = Collections.emptyList();
+        DynamicQuery dynamicQuery = new DynamicQuery(filters, sorts);
+
+        GetAllCustomerResponse customerResponse1 = new GetAllCustomerResponse();
+        GetAllCustomerResponse customerResponse2 = new GetAllCustomerResponse();
+        List<GetAllCustomerResponse> customerResponseList = Arrays.asList(customerResponse1, customerResponse2);
+
+        // Mock davranışlarını ayarlayın
+        when(searchCustomerService.getAll(dynamicQuery)).thenReturn(customerResponseList);
+
+        // Metodu çağırın ve doğrulamaları yapın
+        mockMvc.perform(post("/searchservice/api/v1/filters/searchcustomer/getAll")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(dynamicQuery)))
+                .andExpect(status().isOk())
+                .andExpect(content().json(objectMapper.writeValueAsString(customerResponseList)))
+                .andDo(MockMvcResultHandlers.print());
+
+        // Servis metodunun çağrıldığını doğrulayın
+        verify(searchCustomerService, times(1)).getAll(dynamicQuery);
+    }
+}
