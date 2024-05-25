@@ -6,32 +6,44 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Set;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
+@Table(name="users")
 @Getter
 @Setter
-@Entity
-@Table(name = "users")
-public class User extends BaseEntity<Integer> implements UserDetails
+@AllArgsConstructor
+@NoArgsConstructor
+public class User extends BaseEntity implements UserDetails
 {
+
     @Column(name="password")
     private String password;
-
     @Column(name="email")
     private String email;
 
-    @Column(name="birthDate")
-    private LocalDateTime birthDate;
+    @Column(name="first_name")
+    private String firstName;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="user_role",joinColumns = @JoinColumn(name="user_id"),inverseJoinColumns =@JoinColumn(name="role_id"))
-    private Set<Role> authorities;
+    @Column(name="last_name")
+    private String lastName;
+
+    @ManyToMany
+    @JoinTable(
+            name="user_roles",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="role_id")
+    )
+    private Set<Role> roles;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
 
     @Override
     public String getUsername() {
