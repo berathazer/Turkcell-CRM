@@ -40,7 +40,8 @@ public class ProductPropertyManager implements ProductPropertyService {
         ProductProperty saveProduct = this.productPropertyRepository.save(productProperty);
 
 
-        CreatedProductPropertyResponse createdProductPropertyResponse = this.modelMapperService.forResponse().map(saveProduct, CreatedProductPropertyResponse.class);
+        CreatedProductPropertyResponse createdProductPropertyResponse = this.modelMapperService.forResponse()
+                .map(saveProduct, CreatedProductPropertyResponse.class);
         return createdProductPropertyResponse;
     }
 
@@ -49,8 +50,9 @@ public class ProductPropertyManager implements ProductPropertyService {
 
         List<ProductProperty> productProperties = this.productPropertyRepository.findByDeletedDateIsNull();
 
-        List<GetAllProductPropertyResponse> getAllProductPropertyResponse = productProperties.stream().map(productProperty -> this.modelMapperService.forResponse().
-                map(productProperty, GetAllProductPropertyResponse.class)).toList();
+        List<GetAllProductPropertyResponse> getAllProductPropertyResponse = productProperties.stream()
+                .map(productProperty -> this.modelMapperService.forResponse().map(productProperty, GetAllProductPropertyResponse.class)).toList();
+
         return getAllProductPropertyResponse;
     }
 
