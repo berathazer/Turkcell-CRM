@@ -38,6 +38,11 @@ public class UserManager implements UserService
     }
 
     @Override
+    public void add(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         return  userRepository

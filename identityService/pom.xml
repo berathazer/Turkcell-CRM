@@ -25,6 +25,7 @@
 		</repository>
 	</repositories>
 
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -76,12 +77,10 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.12.3</version>
 		</dependency>
-
 		<dependency>
-			<groupId>io.github.mhmmedinan</groupId>
+			<groupId>io.github.berathazer</groupId>
 			<artifactId>core</artifactId>
 			<version>1.0.0</version>
-			<type>pom</type>
 		</dependency>
 
 		<dependency>
