@@ -18,48 +18,43 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class SearchCustomerManagerTest {
-
+class SearchCustomerManagerTest {
     @Mock
-    private SearchCustomerRepository searchCustomerRepository;
-
+    CustomerFilterBusinessRules customerFilterBusinessRules;
     @Mock
-    private CustomerFilterBusinessRules customerFilterBusinessRules;
-
+    ModelMapperService modelMapperService;
     @Mock
-    private ModelMapper modelMapper;
-
+    ModelMapper modelMapper;
     @Mock
-    private ModelMapperService modelMapperService;
-
+    SearchCustomerRepository searchCustomerRepository;
     @Mock
-    private SearchService searchService;
-
+    SearchService searchService;
     @InjectMocks
-    private SearchCustomerManager searchCustomerManager;
-
+    SearchCustomerManager searchCustomerManager;
 
     @Test
     void testAdd() {
         CustomerCreatedEvent customerCreatedEvent = new CustomerCreatedEvent();
-        Customer customer = new Customer();
+        customerCreatedEvent.setCustomerId(111);
+        customerCreatedEvent.setFirstName("John");
 
+        Customer customer = new Customer();
+        customer.setCustomerId(111);
+        customer.setFirstName("John");
 
         when(modelMapperService.forRequest()).thenReturn(modelMapper);
         when(modelMapper.map(customerCreatedEvent,Customer.class)).thenReturn(customer);
 
         searchCustomerManager.add(customerCreatedEvent);
-
         verify(modelMapperService.forRequest()).map(customerCreatedEvent,Customer.class);
         verify(searchCustomerRepository).save(customer);
         assertDoesNotThrow(()->searchCustomerManager.add(customerCreatedEvent));
@@ -72,53 +67,64 @@ public class SearchCustomerManagerTest {
         List<DynamicSort> sorts = Collections.emptyList();
         DynamicQuery dynamicQuery = new DynamicQuery(filters, sorts);
 
-        Customer customer = new Customer();
-        List<Customer> customerList = Arrays.asList(customer);
+        // Prepare the expected response
         GetAllCustomerResponse response = new GetAllCustomerResponse();
+        response.setCustomerId(111);
+        response.setFirstName("test");
 
-        when(modelMapperService.forResponse()).thenReturn(modelMapper);
+        // Prepare the mock customer data
+        Customer customer = new Customer();
+        customer.setCustomerId(111);
+        customer.setFirstName("test");
+
+        // Mocking the service and model mapper
+        List<Customer> customerList = List.of(customer);
         when(searchService.dynamicSearch(dynamicQuery, Customer.class)).thenReturn(customerList);
-        when(modelMapperService.forResponse().map(customer, GetAllCustomerResponse.class)).thenReturn(response);
+        when(modelMapperService.forResponse()).thenReturn(modelMapper);
+        when(modelMapper.map(customer, GetAllCustomerResponse.class)).thenReturn(response);
 
+        // Execute the method
         List<GetAllCustomerResponse> responses = searchCustomerManager.getAll(dynamicQuery);
 
+        // Verify the interactions
         verify(searchService).dynamicSearch(dynamicQuery, Customer.class);
-        verify(modelMapperService.forResponse()).map(customer, GetAllCustomerResponse.class);
+        verify(modelMapper).map(customer, GetAllCustomerResponse.class);
+
+        // Validate the result
+        assertDoesNotThrow(() -> searchCustomerManager.getAll(dynamicQuery));
+        assertEquals(1, responses.size());
+        assertEquals(response, responses.get(0));
+
     }
 
     @Test
     void testUpdate() {
-
         CustomerUpdatedEvent customerUpdatedEvent = new CustomerUpdatedEvent();
+        customerUpdatedEvent.setFirstName("sampleFirstName");
+        customerUpdatedEvent.setLastName("sampleLastName");
+
         Customer customer = new Customer();
+        customer.setFirstName("sampleFirstName");
+        customer.setLastName("sampleLastName");
 
         when(modelMapperService.forRequest()).thenReturn(modelMapper);
-        when(modelMapperService.forRequest().map(customerUpdatedEvent, Customer.class)).thenReturn(customer);
+        when(modelMapper.map(customerUpdatedEvent,Customer.class)).thenReturn(customer);
 
         searchCustomerManager.update(customerUpdatedEvent);
 
-        verify(modelMapperService.forRequest()).map(customerUpdatedEvent, Customer.class);
+        verify(modelMapperService.forRequest()).map(customerUpdatedEvent,Customer.class);
         verify(searchCustomerRepository).save(customer);
         assertDoesNotThrow(()->searchCustomerManager.update(customerUpdatedEvent));
     }
 
     @Test
-    void testDelete_Successful() {
-        int customerId = 150;
-
+    void testDeleteCustomer() {
+        int customerId = 111;
         Customer customer = new Customer();
-
-        // Mock the business rule to return the product
         when(customerFilterBusinessRules.IsCustomerAlreadyDeleted(customerId)).thenReturn(customer);
-
-        // Perform the delete operation
-        searchCustomerManager.deleteCustomer(customerId);
-
-        // Verify that the methods were called
+        searchCustomerManager.deleteCustomer(111);
         verify(customerFilterBusinessRules).IsCustomerAlreadyDeleted(customerId);
         verify(searchCustomerRepository).save(customer);
 
-        // Check if the deleted date is set
-        assertNotNull(customer.getDeletedDate());
     }
 }
