@@ -8,6 +8,7 @@ import com.turkcell.identityService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.identityService.dataAccess.UserRepository;
 import com.turkcell.identityService.entitites.User;
 import lombok.AllArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,38 +16,17 @@ import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
-public class UserManager implements UserService
-{
-    private final UserRepository userRepository;
-    private final ModelMapperService modelMapperService;
-    private final PasswordEncoder passwordEncoder;
+public class UserManager implements UserService{
+private final UserRepository userRepository;
 
-    @Override
-    public void register(RegisterRequest request) {
+@Override
+public void add(User user) {
+    userRepository.save(user);
+}
 
-        User user =modelMapperService.forRequest().map(request,User.class);
-
-        String encodedPassword = passwordEncoder.encode(request.getPassword());
-        user.setPassword(encodedPassword);
-
-        userRepository.save(user);
-    }
-
-    @Override
-    public User findByUsername(String username) {
-        return userRepository.findUserByEmail(username).orElseThrow();
-    }
-
-    @Override
-    public void add(User user) {
-        userRepository.save(user);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        return  userRepository
-                .findUserByEmail(username)
-                .orElseThrow(()->new BusinessException(AuthMessages.LOGIN_FAILED));
-    }
+@Override
+public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    // Spring Security
+    return userRepository.findUserByEmail(username).orElseThrow(() -> new BadCredentialsException(""));
+}
 }

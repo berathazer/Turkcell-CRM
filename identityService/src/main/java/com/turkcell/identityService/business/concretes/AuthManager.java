@@ -5,17 +5,18 @@ import com.turkcell.identityService.business.abstracts.AuthService;
 import com.turkcell.identityService.business.abstracts.UserService;
 import com.turkcell.identityService.business.dtos.requests.LoginRequest;
 import com.turkcell.identityService.business.dtos.requests.RegisterRequest;
+import com.turkcell.identityService.business.messages.AuthMessages;
+import com.turkcell.identityService.business.rules.AuthBusinessRules;
+import com.turkcell.identityService.core.business.abstracts.MessageService;
+import com.turkcell.identityService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.identityService.entitites.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-
 import org.springframework.security.core.userdetails.UserDetails;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,17 +28,19 @@ public class AuthManager implements AuthService {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    private MessageService messageService;
 
 
     @Override
     public String login(LoginRequest loginRequest) {
         // TODO: Handle Exception.
-        // TODO: E-posta da şifre de yanlış olursa olsun, mesaj ve yanıt kalıbı birebir aynı olmalı.
+        //this.authBusinessRules.authenticateUser(loginRequest.getEmail(), loginRequest.getPassword());
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
         if (!authentication.isAuthenticated())
-            throw new RuntimeException("E-posta ya da şifre yanlış");
+            throw new BusinessException(messageService.getMessage(AuthMessages.LOGIN_FAILED));
+
 
         UserDetails user = userService.loadUserByUsername(loginRequest.getEmail());
         // TODO: Refactor
@@ -57,7 +60,6 @@ public class AuthManager implements AuthService {
         user.setEmail(request.getEmail());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
-        // Hashing
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         // Hassas bilgiler veritabanına "PLAIN TEXT" olarak yazılmaz.
         userService.add(user);
