@@ -21,9 +21,10 @@
 		<repository>
 			<id>github</id>
 			<name>Github Package Center</name>
-			<url>https://maven.pkg.github.com/berathazer/TurkcellCRMCore</url>
+			<url>https://maven.pkg.github.com/berathazer/TurkcellCrmCore-New</url>
 		</repository>
 	</repositories>
+
 
 	<dependencies>
 		<dependency>
@@ -75,6 +76,11 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.12.3</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.berathazer</groupId>
+			<artifactId>core</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
