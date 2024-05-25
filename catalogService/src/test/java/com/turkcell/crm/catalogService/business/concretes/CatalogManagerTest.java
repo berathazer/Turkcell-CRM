@@ -58,11 +58,11 @@ class CatalogManagerTest {
 
     @Test
     void testAdd() {
-        // Given
-        CreateCatalogRequest createCatalogRequest = new CreateCatalogRequest(/* initialize with required parameters */);
-        Catalog catalog = new Catalog(/* initialize with required parameters */);
-        CatalogCreatedEvent catalogCreatedEvent = new CatalogCreatedEvent(/* initialize with required parameters */);
-        CreatedCatalogResponse expectedResponse = new CreatedCatalogResponse(/* initialize with expected response */);
+
+        CreateCatalogRequest createCatalogRequest = new CreateCatalogRequest();
+        Catalog catalog = new Catalog();
+        CatalogCreatedEvent catalogCreatedEvent = new CatalogCreatedEvent();
+        CreatedCatalogResponse expectedResponse = new CreatedCatalogResponse();
 
         when(modelMapperService.forRequest()).thenReturn(modelMapper);
         when(modelMapperService.forRequest().map(createCatalogRequest, Catalog.class)).thenReturn(catalog);
@@ -72,17 +72,17 @@ class CatalogManagerTest {
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
         when(modelMapperService.forResponse().map(catalog, CreatedCatalogResponse.class)).thenReturn(expectedResponse);
 
-        // When
+
         CreatedCatalogResponse actualResponse = catalogManager.add(createCatalogRequest);
 
-        // Then
+
         assertEquals(expectedResponse, actualResponse);
         verify(catalogProducer, times(1)).sendCreatedMessage(catalogCreatedEvent);
     }
 
     @Test
     void testGetAll() {
-        // Given
+
         Catalog catalog1 = new Catalog();
         catalog1.setId(1);
         Catalog catalog2 = new Catalog();
@@ -99,10 +99,10 @@ class CatalogManagerTest {
         when(modelMapperService.forResponse().map(catalog1, GetAllCatalogResponse.class)).thenReturn(response1);
         when(modelMapperService.forResponse().map(catalog2, GetAllCatalogResponse.class)).thenReturn(response2);
 
-        // When
+
         List<GetAllCatalogResponse> actualResponses = catalogManager.getAll();
 
-        // Then
+
         assertEquals(2, actualResponses.size());
         assertEquals(1, actualResponses.get(0).getId());
         assertEquals(2, actualResponses.get(1).getId());
@@ -112,15 +112,15 @@ class CatalogManagerTest {
 
     @Test
     void testUpdate() {
-        // Given
+
         UpdateCatalogRequest updateCatalogRequest = new UpdateCatalogRequest();
         updateCatalogRequest.setId(1);
-        Catalog catalog = new Catalog(/* initialize with required parameters */);
+        Catalog catalog = new Catalog();
         catalog.setId(1);
-        CatalogUpdatedEvent catalogUpdatedEvent = new CatalogUpdatedEvent(/* initialize with required parameters */);
-        UpdatedCatalogResponse updatedCatalogResponse = new UpdatedCatalogResponse(/* initialize with expected response */);
+        CatalogUpdatedEvent catalogUpdatedEvent = new CatalogUpdatedEvent();
+        UpdatedCatalogResponse updatedCatalogResponse = new UpdatedCatalogResponse();
 
-        lenient().when(catalogBusinessRules.isCatalogExistById(catalog.getId())).thenReturn(catalog);
+        when(catalogBusinessRules.isCatalogExistById(catalog.getId())).thenReturn(catalog);
 
         when(modelMapperService.forRequest()).thenReturn(modelMapper);
         when(modelMapper.map(updateCatalogRequest, Catalog.class)).thenReturn(catalog); // Change here
@@ -130,10 +130,10 @@ class CatalogManagerTest {
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
         when(modelMapper.map(catalog, UpdatedCatalogResponse.class)).thenReturn(updatedCatalogResponse); // Change here
 
-        // When
+
         UpdatedCatalogResponse actualResponse = catalogManager.update(updateCatalogRequest);
 
-        // Then
+
         assertEquals(updatedCatalogResponse, actualResponse);
         verify(catalogProducer).sendUpdatedMessage(catalogUpdatedEvent);
         verify(modelMapper, times(3)).map(any(), any()); // Change here
@@ -142,20 +142,20 @@ class CatalogManagerTest {
 
     @Test
     void testGetById() {
-        // Given
+
         int id = 1;
-        Catalog catalog = new Catalog(/* initialize with required parameters */);
-        GetByIdCatalogResponse expectedResponse = new GetByIdCatalogResponse(/* initialize with expected response */);
+        Catalog catalog = new Catalog();
+        GetByIdCatalogResponse expectedResponse = new GetByIdCatalogResponse();
 
         when(catalogRepository.findById(id)).thenReturn(Optional.of(catalog));
 
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
         when(modelMapperService.forResponse().map(catalog, GetByIdCatalogResponse.class)).thenReturn(expectedResponse);
 
-        // When
+
         GetByIdCatalogResponse actualResponse = catalogManager.getById(id);
 
-        // Then
+
         assertEquals(expectedResponse, actualResponse);
 
         verify(modelMapperService.forResponse()).map(any(), eq(GetByIdCatalogResponse.class));
@@ -163,10 +163,10 @@ class CatalogManagerTest {
 
     @Test
     void testDelete() {
-        // Given
+
         int id = 1;
-        Catalog catalog = new Catalog(/* initialize with required parameters */);
-        CatalogDeletedEvent catalogDeletedEvent = new CatalogDeletedEvent(/* initialize with required parameters */);
+        Catalog catalog = new Catalog();
+        CatalogDeletedEvent catalogDeletedEvent = new CatalogDeletedEvent();
 
         when(catalogBusinessRules.isCatalogAlreadyDeleted(id)).thenReturn(catalog);
         when(catalogRepository.save(catalog)).thenReturn(catalog);
@@ -174,10 +174,10 @@ class CatalogManagerTest {
         when(modelMapperService.forRequest()).thenReturn(modelMapper);
         when(modelMapperService.forRequest().map(catalog, CatalogDeletedEvent.class)).thenReturn(catalogDeletedEvent);
 
-        // When
+
         catalogManager.delete(id);
 
-        // Then
+
         verify(catalogRepository, times(1)).save(catalog);
         verify(catalogProducer, times(1)).sendDeletedMessage(catalogDeletedEvent);
         verify(modelMapperService.forRequest()).map(any(), eq(CatalogDeletedEvent.class));

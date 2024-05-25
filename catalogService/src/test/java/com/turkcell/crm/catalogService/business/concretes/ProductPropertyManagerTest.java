@@ -3,7 +3,6 @@ package com.turkcell.crm.catalogService.business.concretes;
 import com.turkcell.crm.catalogService.business.abstracts.ProductService;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.CreateProductPropertyRequest;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.UpdateProductPropertyRequest;
-import com.turkcell.crm.catalogService.business.dtos.response.product.GetAllProductResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.CreatedProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetAllProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetByIdProductPropertyResponse;
@@ -127,6 +126,7 @@ public class ProductPropertyManagerTest {
 
     @Test
     void testUpdate() {
+
         UpdateProductPropertyRequest updateProductPropertyRequest = new UpdateProductPropertyRequest();
         updateProductPropertyRequest.setId(1);
 
@@ -162,6 +162,7 @@ public class ProductPropertyManagerTest {
 
     @Test
     void testGetById() {
+
         ProductProperty productProperty = new ProductProperty();
         productProperty.setId(1);
 
@@ -193,6 +194,7 @@ public class ProductPropertyManagerTest {
 
     @Test
     void testDelete() {
+
         int id = 1;
         ProductProperty productProperty = new ProductProperty();
         productProperty.setId(id);

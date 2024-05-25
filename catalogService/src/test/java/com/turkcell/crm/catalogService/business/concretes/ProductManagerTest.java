@@ -112,7 +112,7 @@ class ProductManagerTest {
 
     @Test
     public void testUpdate() {
-        // Test verilerini ayarlayın
+
         UpdateProductRequest updateProductRequest = new UpdateProductRequest();
         updateProductRequest.setId(1);
         Product product = new Product();
@@ -123,7 +123,7 @@ class ProductManagerTest {
         ProductUpdatedEvent productUpdatedEvent = new ProductUpdatedEvent();
         UpdatedProductResponse updatedProductResponse = new UpdatedProductResponse();
 
-        // Mock davranışlarını ayarlayın
+
         when(productBusinessRules.isProductAlreadyDeleted(updateProductRequest.getId())).thenReturn(product);
         when(modelMapperService.forRequest()).thenReturn(modelMapper);
         when(modelMapper.map(updateProductRequest, Product.class)).thenReturn(product);
@@ -133,15 +133,15 @@ class ProductManagerTest {
         when(modelMapper.map(savedProduct, UpdatedProductResponse.class)).thenReturn(updatedProductResponse);
 
 
-        // Metodu çağırın
+
         UpdatedProductResponse result = productManager.update(updateProductRequest);
 
-        // Etkileşimleri doğrulayın
+
         verify(productBusinessRules).isProductAlreadyDeleted(product.getId());
         verify(productRepository).save(product);
         verify(productProducer).sendUpdatedMessage(productUpdatedEvent);
 
-        // Sonuçları doğrulayın
+
         assertEquals(updatedProductResponse, result);
     }
 
@@ -149,40 +149,31 @@ class ProductManagerTest {
     @Test
     void getById() {
 
-        // Mock Product instance
+
         Product product = new Product();
         product.setId(1);
         product.setName("Test Product");
 
-        // Mock optional containing the product
         Optional<Product> optionalProduct = Optional.of(product);
 
-        // Mocking behavior of productRepository.findById()
         when(productRepository.findById(1)).thenReturn(optionalProduct);
 
-        // Mocking behavior of productBusinessRules methods
         when(productBusinessRules.isProductAlreadyDeleted(product.getId())).thenReturn(product);
         when(productBusinessRules.isProductExistById(product.getId())).thenReturn(product);
 
-        // Mocking behavior of modelMapperService
         GetByIdProductResponse response = new GetByIdProductResponse();
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
         when(modelMapperService.forResponse().map(product, GetByIdProductResponse.class)).thenReturn(response);
 
-        // Call the method under test
         GetByIdProductResponse actualResponse = productManager.getById(1);
 
-        // Verify that productRepository.findById() is called with the correct id
         verify(productRepository).findById(1);
 
-        // Verify that productBusinessRules methods are called with the correct id
         verify(productBusinessRules).isProductAlreadyDeleted(1);
         verify(productBusinessRules).isProductExistById(1);
 
-        // Verify that modelMapperService.forResponse().map() is called with the correct parameters
         verify(modelMapperService.forResponse()).map(product, GetByIdProductResponse.class);
 
-        // Assert the response
         assertEquals(response, actualResponse);
     }
 
@@ -208,7 +199,6 @@ class ProductManagerTest {
 
         List<Product> products = Arrays.asList(product, product1);
 
-        // Mock davranışı ayarla
         when(productRepository.findByDeletedDateIsNull()).thenReturn(products);
 
         GetAllProductResponse response1 = new GetAllProductResponse();
@@ -223,24 +213,20 @@ class ProductManagerTest {
         when(modelMapperService.forResponse().map(product, GetAllProductResponse.class)).thenReturn(response1);
         when(modelMapperService.forResponse().map(product1, GetAllProductResponse.class)).thenReturn(response2);
 
-        // Testi gerçekleştir
         List<GetAllProductResponse> result = productManager.getAll();
 
-        // Sonucu doğrula
         assertEquals(2, result.size());
         assertEquals(1, result.get(0).getId());
         assertEquals("Ürün 1", result.get(0).getName());
         assertEquals(2, result.get(1).getId());
         assertEquals("Ürün 2", result.get(1).getName());
 
-        // Doğru metotların çağrıldığını doğrula
         verify(modelMapperService.forResponse(), times(2)).map(any(), eq(GetAllProductResponse.class));
     }
 
 
     @Test
     public void testDelete() {
-        // Veri hazırlığı
 
         Product product = new Product();
         product.setId(1);
@@ -248,25 +234,18 @@ class ProductManagerTest {
 
         ProductDeletedEvent productDeletedEvent = new ProductDeletedEvent();
 
-
-
-        // Mock davranışı ayarla
         when(productBusinessRules.isProductAlreadyDeleted(product.getId())).thenReturn(product);
         when(modelMapperService.forRequest()).thenReturn(modelMapper);
         when(modelMapperService.forRequest().map(product, ProductDeletedEvent.class)).thenReturn(productDeletedEvent);
 
-
-        // Testi gerçekleştir
         productManager.delete(product.getId());
 
-        // Doğru metotların çağrıldığını ve doğru parametrelerle çağrıldığını doğrula
         verify(productRepository).save(product);
         verify(modelMapperService.forRequest()).map(product, ProductDeletedEvent.class);
         verify(productProducer).sendDeletedMessage(any(ProductDeletedEvent.class));
         verify(productBusinessRules).isProductAlreadyDeleted(product.getId());
 
-        // Silinme tarihini doğrula
-
         assertEquals(LocalDateTime.now().getDayOfYear(), product.getDeletedDate().getDayOfYear());
+
     }
 }
