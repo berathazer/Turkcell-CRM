@@ -75,7 +75,7 @@ public class ProductManager implements ProductService {
         this.productBusinessRules.isProductAlreadyDeleted(id);
         this.productBusinessRules.isProductExistById(id);
 
-        Optional<Product> product =this.productRepository.findById(id);
+        Optional<Product> product = this.productRepository.findById(id);
 
         return this.modelMapperService.forResponse().map(product.get(), GetByIdProductResponse.class);
 
@@ -86,7 +86,7 @@ public class ProductManager implements ProductService {
 
         List<Product> products = this.productRepository.findByDeletedDateIsNull();
 
-        List<GetAllProductResponse> getAllProductResponse= products.stream().map(product -> this.modelMapperService.forResponse().
+        List<GetAllProductResponse> getAllProductResponse = products.stream().map(product -> this.modelMapperService.forResponse().
                 map(product, GetAllProductResponse.class)).toList();
 
         return getAllProductResponse;
@@ -105,8 +105,9 @@ public class ProductManager implements ProductService {
 
         this.productProducer.sendDeletedMessage(productDeletedEvent);
 
-
     }
+
+
 
 
 }
