@@ -16,17 +16,16 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Role extends BaseEntity implements GrantedAuthority
-{
+public class Role extends BaseEntity<Integer> implements GrantedAuthority {
 
     @Column(name="name")
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "authorities")
     private Set<User> users;
 
     @Override
     public String getAuthority() {
-        return name;
+        return name.toLowerCase();
     }
 }

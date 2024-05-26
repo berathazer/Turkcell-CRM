@@ -16,17 +16,18 @@ import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
-public class UserManager implements UserService{
-private final UserRepository userRepository;
+public class UserManager implements UserService {
 
-@Override
-public void add(User user) {
-    userRepository.save(user);
-}
+    private final UserRepository userRepository;
 
-@Override
-public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    // Spring Security
-    return userRepository.findUserByEmail(username).orElseThrow(() -> new BadCredentialsException(""));
-}
+    @Override
+    public void add(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        return userRepository.findUserByEmail(username).orElseThrow(() -> new BadCredentialsException(""));
+    }
 }

@@ -13,17 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/auth")
 @AllArgsConstructor
 public class AuthController  {
+
     private final AuthService authService;
 
     @PostMapping("/register")
-    public void register(@RequestBody RegisterRequest request)
-    {
+    public void register(@RequestBody RegisterRequest request) {
         authService.register(request);
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request)
-    {
+    public String login(@RequestBody LoginRequest request) {
         return authService.login(request);
     }
 }
