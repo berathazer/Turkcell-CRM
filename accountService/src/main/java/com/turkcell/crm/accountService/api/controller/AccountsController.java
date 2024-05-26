@@ -7,6 +7,8 @@ import com.turkcell.crm.accountService.business.dtos.response.account.CreatedAcc
 import com.turkcell.crm.accountService.business.dtos.response.account.GetAllAccountResponse;
 import com.turkcell.crm.accountService.business.dtos.response.account.GetByIdAccountResponse;
 import com.turkcell.crm.accountService.business.dtos.response.account.UpdatedAccountResponse;
+import com.turkcell.crm.accountService.business.messages.AccountMessages;
+import com.turkcell.crm.accountService.core.business.abstracts.MessageService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,8 +19,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/accountservice/api/v1/accounts/account")
 @AllArgsConstructor
-public class AccountController {
+public class AccountsController {
     private AccountService accountService;
+    private MessageService messageService;
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
@@ -52,7 +55,7 @@ public class AccountController {
         this.accountService.delete(id);
 
         // TODO: Düzgün formata getir (resources)
-        return "Silme başarılı";
+        return messageService.getMessage(AccountMessages.ACCOUNT_DELETION_SUCCESSFUL);
     }
 
 }

@@ -26,7 +26,6 @@ public class CatalogsControllerTest {
     private CatalogService catalogService;
 
 
-
     @InjectMocks
     private CatalogsController catalogsController;
 
@@ -37,7 +36,6 @@ public class CatalogsControllerTest {
         CreatedCatalogResponse expectedResponse = new CreatedCatalogResponse();
         when(catalogService.add(request)).thenReturn(expectedResponse);
 
-        // Act
         CreatedCatalogResponse response = catalogsController.add(request);
 
         // Assert

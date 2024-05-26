@@ -28,7 +28,6 @@ public class AccountBusinessRulesTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        accountBusinessRules = new AccountBusinessRules(accountRepository, customerClient);
     }
 
     @Test
