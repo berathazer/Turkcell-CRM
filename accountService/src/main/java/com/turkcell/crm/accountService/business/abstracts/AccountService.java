@@ -6,11 +6,12 @@ import com.turkcell.crm.accountService.business.dtos.response.account.CreatedAcc
 import com.turkcell.crm.accountService.business.dtos.response.account.GetAllAccountResponse;
 import com.turkcell.crm.accountService.business.dtos.response.account.GetByIdAccountResponse;
 import com.turkcell.crm.accountService.business.dtos.response.account.UpdatedAccountResponse;
+import org.reactivestreams.Publisher;
 
 import java.util.List;
 
 public interface AccountService {
-    CreatedAccountResponse add(CreateAccountRequest createAccountRequest);
+   CreatedAccountResponse add(CreateAccountRequest createAccountRequest);
     GetByIdAccountResponse getById(int id);
     List<GetAllAccountResponse> getAll();
     UpdatedAccountResponse update(UpdateAccountRequest updateAccountRequest);

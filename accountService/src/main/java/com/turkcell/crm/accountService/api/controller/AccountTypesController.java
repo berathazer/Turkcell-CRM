@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/accountservice/api/v1/accounts/accounttypes")
 @AllArgsConstructor
-public class AccountTypeController {
+public class AccountTypesController {
 
     private AccountTypeService accountTypeService;
 
