@@ -49,7 +49,8 @@ public class CatalogManager implements CatalogService {
 
     @Override
     public List<GetAllCatalogResponse> getAll() {
-        List<Catalog> catalogs = this.catalogRepository.findAll();
+
+        List<Catalog> catalogs = this.catalogRepository.findByDeletedDateIsNull();
         return catalogs.stream().map(catalog -> this.modelMapperService.forResponse()
                 .map(catalog,GetAllCatalogResponse.class)).toList();
     }
@@ -76,6 +77,7 @@ public class CatalogManager implements CatalogService {
 
     @Override
     public GetByIdCatalogResponse getById(int id) {
+        this.catalogBusinessRules.isCatalogAlreadyDeleted(id);
 
         Optional<Catalog> catalog = this.catalogRepository.findById(id);
 

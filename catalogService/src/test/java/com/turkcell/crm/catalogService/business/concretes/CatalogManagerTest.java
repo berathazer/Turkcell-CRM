@@ -7,6 +7,7 @@ import com.turkcell.crm.catalogService.business.dtos.response.catalog.GetAllCata
 import com.turkcell.crm.catalogService.business.dtos.response.catalog.GetByIdCatalogResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.catalog.UpdatedCatalogResponse;
 import com.turkcell.crm.catalogService.business.rules.CatalogBusinessRules;
+import com.turkcell.crm.catalogService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.crm.catalogService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.crm.catalogService.dataAccess.CatalogRepository;
 import com.turkcell.crm.catalogService.entity.Catalog;
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -87,13 +89,17 @@ class CatalogManagerTest {
         catalog1.setId(1);
         Catalog catalog2 = new Catalog();
         catalog2.setId(2);
+
         List<Catalog> catalogs = Arrays.asList(catalog1, catalog2);
+
+        when(catalogRepository.findByDeletedDateIsNull()).thenReturn(catalogs);;
+
         GetAllCatalogResponse response1 = new GetAllCatalogResponse();
         response1.setId(1);
         GetAllCatalogResponse response2 = new GetAllCatalogResponse();
         response2.setId(2);
 
-        when(catalogRepository.findAll()).thenReturn(catalogs);
+        //when(catalogRepository.findAll()).thenReturn(catalogs);
 
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
         when(modelMapperService.forResponse().map(catalog1, GetAllCatalogResponse.class)).thenReturn(response1);
@@ -108,6 +114,17 @@ class CatalogManagerTest {
         assertEquals(2, actualResponses.get(1).getId());
 
         verify(modelMapperService.forResponse(), times(2)).map(any(), eq(GetAllCatalogResponse.class));
+    }
+
+    @Test
+    public void testGetAll_whenCatalogAlreadyDeleted_thenThrowException() {
+
+        when(catalogRepository.findByDeletedDateIsNull()).thenThrow(new BusinessException("PRODUCT ALREADY DELETED"));
+
+        assertThrows(BusinessException.class, () -> catalogManager.getAll());
+
+        verify(catalogRepository).findByDeletedDateIsNull();
+        verify(modelMapperService, never()).forResponse();
     }
 
     @Test
@@ -141,6 +158,25 @@ class CatalogManagerTest {
     }
 
     @Test
+    public void testUpdate_ThrowsExceptionWhenIsCatalogExistById() {
+
+        UpdateCatalogRequest request = new UpdateCatalogRequest();
+        request.setId(1);
+
+        when(catalogBusinessRules.isCatalogExistById(request.getId())).thenThrow(new BusinessException("CATALOG ALREADY DELETED"));
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            catalogManager.update(request);
+
+        });
+
+        assertEquals("CATALOG ALREADY DELETED", exception.getMessage());
+
+        verify(catalogBusinessRules).isCatalogExistById(request.getId());
+        verify(catalogRepository, never()).save(any(Catalog.class));
+        verify(catalogProducer, never()).sendUpdatedMessage(any(CatalogUpdatedEvent.class));
+    }
+
+    @Test
     void testGetById() {
 
         int id = 1;
@@ -159,6 +195,23 @@ class CatalogManagerTest {
         assertEquals(expectedResponse, actualResponse);
 
         verify(modelMapperService.forResponse()).map(any(), eq(GetByIdCatalogResponse.class));
+    }
+
+    @Test
+    public void testGetById_ThrowsExceptionWhenCatalogAlreadyDeleted(){
+
+        int catalogId = 1;
+
+        doThrow(new BusinessException("CATALOG ALREADY DELETED")).when(catalogBusinessRules).isCatalogAlreadyDeleted(catalogId);
+
+
+        assertThrows(BusinessException.class, () -> catalogManager.getById(catalogId));
+
+        verify(catalogBusinessRules).isCatalogAlreadyDeleted(catalogId);
+        verify(catalogRepository, never()).findById(anyInt());
+        verify(catalogBusinessRules, never()).isCatalogExistById(anyInt());
+        verify(modelMapperService, never()).forResponse();
+
     }
 
     @Test
@@ -182,5 +235,21 @@ class CatalogManagerTest {
         verify(catalogProducer, times(1)).sendDeletedMessage(catalogDeletedEvent);
         verify(modelMapperService.forRequest()).map(any(), eq(CatalogDeletedEvent.class));
         verify(catalogBusinessRules).isCatalogAlreadyDeleted(id);
+    }
+
+    @Test
+    void testDelete_whenProductAlreadyDeleted_thenThrowException() {
+
+        int catalogId = 1;
+
+        // `isCatalogAlreadyDeleted` metodu çağrıldığında bir CatalogAlreadyDeletedException fırlatması sağlanır.
+        when(catalogBusinessRules.isCatalogAlreadyDeleted(catalogId)).thenThrow(new BusinessException("CATALOG ALREADY DELETED"));
+
+        assertThrows(BusinessException.class, () -> catalogManager.delete(catalogId));
+
+        verify(catalogBusinessRules).isCatalogAlreadyDeleted(catalogId);
+        verify(catalogRepository, never()).save(any());
+        verify(modelMapperService, never()).forRequest();
+        verify(catalogProducer, never()).sendDeletedMessage(any());
     }
 }

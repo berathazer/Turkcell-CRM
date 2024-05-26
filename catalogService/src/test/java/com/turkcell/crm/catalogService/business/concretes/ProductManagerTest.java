@@ -1,6 +1,5 @@
 package com.turkcell.crm.catalogService.business.concretes;
 
-import com.turkcell.crm.catalogService.business.abstracts.ProductService;
 import com.turkcell.crm.catalogService.business.dtos.request.product.CreateProductRequest;
 import com.turkcell.crm.catalogService.business.dtos.request.product.UpdateProductRequest;
 import com.turkcell.crm.catalogService.business.dtos.response.product.CreatedProductResponse;
@@ -8,6 +7,7 @@ import com.turkcell.crm.catalogService.business.dtos.response.product.GetAllProd
 import com.turkcell.crm.catalogService.business.dtos.response.product.GetByIdProductResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.product.UpdatedProductResponse;
 import com.turkcell.crm.catalogService.business.rules.ProductBusinessRules;
+import com.turkcell.crm.catalogService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.crm.catalogService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.crm.catalogService.dataAccess.ProductRepository;
 import com.turkcell.crm.catalogService.entity.Catalog;
@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 
@@ -133,7 +133,6 @@ class ProductManagerTest {
         when(modelMapper.map(savedProduct, UpdatedProductResponse.class)).thenReturn(updatedProductResponse);
 
 
-
         UpdatedProductResponse result = productManager.update(updateProductRequest);
 
 
@@ -143,6 +142,25 @@ class ProductManagerTest {
 
 
         assertEquals(updatedProductResponse, result);
+    }
+
+    @Test
+    public void testUpdate_ThrowsExceptionWhenProductAlreadyDeleted() {
+
+        UpdateProductRequest request = new UpdateProductRequest();
+        request.setId(1);
+
+        when(productBusinessRules.isProductAlreadyDeleted(request.getId())).thenThrow(new BusinessException("PRODUCT ALREADY DELETED"));
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            productManager.update(request);
+
+        });
+
+        assertEquals("PRODUCT ALREADY DELETED", exception.getMessage());
+
+        verify(productBusinessRules).isProductAlreadyDeleted(request.getId());
+        verify(productRepository, never()).save(any(Product.class));
+        verify(productProducer, never()).sendUpdatedMessage(any(ProductUpdatedEvent.class));
     }
 
 
@@ -178,8 +196,26 @@ class ProductManagerTest {
     }
 
     @Test
-    public void testGetAll() {
+    public void testGetById_ThrowsExceptionWhenProductAlreadyDeleted(){
 
+
+        int productId = 1;
+
+        doThrow(new BusinessException("PRODUCT ALREADY DELETED")).when(productBusinessRules).isProductAlreadyDeleted(productId);
+
+
+        assertThrows(BusinessException.class, () -> productManager.getById(productId));
+
+
+        verify(productBusinessRules).isProductAlreadyDeleted(productId);
+        verify(productRepository, never()).findById(anyInt());
+        verify(productBusinessRules, never()).isProductExistById(anyInt());
+        verify(modelMapperService, never()).forResponse();
+
+    }
+
+    @Test
+    public void testGetAll() {
 
         Product product = new Product();
         product.setId(1);
@@ -224,6 +260,17 @@ class ProductManagerTest {
         verify(modelMapperService.forResponse(), times(2)).map(any(), eq(GetAllProductResponse.class));
     }
 
+    @Test
+    public void testGetAll_whenProductAlreadyDeleted_thenThrowException() {
+
+        when(productRepository.findByDeletedDateIsNull()).thenThrow(new BusinessException("PRODUCT ALREADY DELETED"));
+
+        assertThrows(BusinessException.class, () -> productManager.getAll());
+
+        verify(productRepository).findByDeletedDateIsNull();
+        verify(modelMapperService, never()).forResponse();
+    }
+
 
     @Test
     public void testDelete() {
@@ -247,5 +294,20 @@ class ProductManagerTest {
 
         assertEquals(LocalDateTime.now().getDayOfYear(), product.getDeletedDate().getDayOfYear());
 
+    }
+    @Test
+    void testDelete_whenProductAlreadyDeleted_thenThrowException() {
+
+        int productId = 1;
+
+        // `isProductAlreadyDeleted` metodu çağrıldığında bir ProductAlreadyDeletedException fırlatması sağlanır.
+        when(productBusinessRules.isProductAlreadyDeleted(productId)).thenThrow(new BusinessException("CATALOG ALREADY DELETED"));
+
+        assertThrows(BusinessException.class, () -> productManager.delete(productId));
+
+        verify(productBusinessRules).isProductAlreadyDeleted(productId);
+        verify(productRepository, never()).save(any());
+        verify(modelMapperService, never()).forRequest();
+        verify(productProducer, never()).sendDeletedMessage(any());
     }
 }
