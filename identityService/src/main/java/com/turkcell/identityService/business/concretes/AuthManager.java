@@ -29,7 +29,7 @@ public class AuthManager implements AuthService {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
-    private MessageService messageService;
+    private final  MessageService messageService;
 
 
     @Override
