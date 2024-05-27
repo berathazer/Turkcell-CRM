@@ -31,16 +31,16 @@ public class SearchManagerTest {
 
     @Test
     void testDynamicSearch() {
+
         List<DynamicFilter> filters = Collections.emptyList();
         List<DynamicSort> sorts = Collections.emptyList();
         DynamicQuery dynamicQuery = new DynamicQuery(filters,sorts);
-        Class<?> type = DynamicQuery.class; // Burada dinamik sorgu yapılacak olan nesne tipini belirtin
+        Class<?> type = DynamicQuery.class;
 
-        // Test
         List<?> result = searchManager.dynamicSearch(dynamicQuery, type);
 
-        // Verify
         assertNotNull(result);
+
         verify(mongoTemplate).find(any(Query.class), eq(type));
     }
 }
