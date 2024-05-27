@@ -34,59 +34,51 @@ class CatalogFilterBusinessRulesTest {
 
     @Test
     void testIsCatalogAlreadyDeleted_CatalogExistsAndNotDeleted() {
+
         int catalogId = 100;
-
         Catalog catalog = new Catalog();
-        catalog.setCatalogId(catalogId);
-        catalog.setName("Electronics");
 
-        // Mock the repository to return the catalog
         when(searchCatalogRepository.findCatalogByCatalogId(catalogId)).thenReturn(Optional.of(catalog));
 
-        // Perform the business rule check
         Catalog result = catalogFilterBusinessRules.IsCatalogAlreadyDeleted(catalogId);
 
-        // Verify the result
         assertEquals(catalog, result);
         verify(searchCatalogRepository).findCatalogByCatalogId(catalogId);
     }
 
     @Test
     void testIsCatalogAlreadyDeleted_CatalogDoesNotExist() {
+
         int catalogId = 200;
 
-        // Mock the repository to return an empty Optional
         when(searchCatalogRepository.findCatalogByCatalogId(catalogId)).thenReturn(Optional.empty());
 
-        // Expect an exception
         BusinessException exception = assertThrows(BusinessException.class, () -> {
             catalogFilterBusinessRules.IsCatalogAlreadyDeleted(catalogId);
         });
 
-        // Verify the exception message
         assertEquals(CatalogFilterBusinessRulesMessages.CATALOG_NOT_EXISTS, exception.getMessage());
+
         verify(searchCatalogRepository).findCatalogByCatalogId(catalogId);
     }
 
     @Test
     void testIsCatalogAlreadyDeleted_CatalogAlreadyDeleted() {
+
         int catalogId = 300;
 
         Catalog catalog = new Catalog();
-        catalog.setCatalogId(catalogId);
-        catalog.setName("Books");
-        catalog.setDeletedDate(LocalDateTime.now()); // Set the deleted date to simulate a deleted catalog
+        catalog.setDeletedDate(LocalDateTime.now());
 
-        // Mock the repository to return the catalog
         when(searchCatalogRepository.findCatalogByCatalogId(catalogId)).thenReturn(Optional.of(catalog));
 
-        // Expect an exception
+
         BusinessException exception = assertThrows(BusinessException.class, () -> {
             catalogFilterBusinessRules.IsCatalogAlreadyDeleted(catalogId);
         });
 
-        // Verify the exception message
         assertEquals(CatalogFilterBusinessRulesMessages.CATALOG_IS_ALREADY_DELETED, exception.getMessage());
+
         verify(searchCatalogRepository).findCatalogByCatalogId(catalogId);
     }
 }
