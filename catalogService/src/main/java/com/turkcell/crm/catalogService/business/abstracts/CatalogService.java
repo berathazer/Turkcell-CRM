@@ -1,7 +1,5 @@
 package com.turkcell.crm.catalogService.business.abstracts;
 
-
-
 import com.turkcell.crm.catalogService.business.dtos.request.catalog.CreateCatalogRequest;
 import com.turkcell.crm.catalogService.business.dtos.request.catalog.UpdateCatalogRequest;
 import com.turkcell.crm.catalogService.business.dtos.response.catalog.CreatedCatalogResponse;

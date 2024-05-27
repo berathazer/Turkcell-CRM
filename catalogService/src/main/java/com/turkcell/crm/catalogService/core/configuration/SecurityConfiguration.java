@@ -1,4 +1,4 @@
-package com.turkcell.identityService.core.configuration;
+package com.turkcell.crm.catalogService.core.configuration;
 
 import com.turkcell.crm.core.config.BaseSecurityService;
 import lombok.RequiredArgsConstructor;
