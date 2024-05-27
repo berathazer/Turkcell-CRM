@@ -3,6 +3,7 @@ package com.turkcell.turkcellcrm.searchService.business.rules;
 import com.turkcell.turkcellcrm.searchService.business.messages.ProductFilterBusinessRulesMessages;
 import com.turkcell.turkcellcrm.searchService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.turkcellcrm.searchService.dataAccess.SearchProductRepository;
+import com.turkcell.turkcellcrm.searchService.entities.Catalog;
 import com.turkcell.turkcellcrm.searchService.entities.Product;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,22 +30,20 @@ public class ProductFilterBusinessRulesTest {
     @Test
     void shouldReturnProductWhenProductIsNotDeleted() {
 
+        int productId = 100;
         Product product = new Product();
-        product.setProductId(1);
-        product.setDeletedDate(null);
 
-        when(searchProductRepository.findProductByProductId(1)).thenReturn(Optional.of(product));
+        when(searchProductRepository.findProductByProductId(productId)).thenReturn(Optional.of(product));
 
-        Product result = productFilterBusinessRules.IsProductAlreadyDeleted(1);
+        Product result = productFilterBusinessRules.IsProductAlreadyDeleted(productId);
 
-        assertNotNull(result);
-        assertEquals(1, result.getProductId());
-        assertNull(result.getDeletedDate());
-        verify(searchProductRepository).findProductByProductId(1);
+        assertEquals(product, result);
+        verify(searchProductRepository).findProductByProductId(productId);
     }
 
     @Test
     void shouldThrowBusinessExceptionWhenProductDoesNotExist() {
+
         when(searchProductRepository.findProductByProductId(1)).thenReturn(Optional.empty());
 
         BusinessException exception = assertThrows(BusinessException.class, () -> {
@@ -57,6 +56,7 @@ public class ProductFilterBusinessRulesTest {
 
     @Test
     void shouldThrowBusinessExceptionWhenProductIsAlreadyDeleted() {
+
         Product product = new Product();
         product.setProductId(1);
 
