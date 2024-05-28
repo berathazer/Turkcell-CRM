@@ -83,12 +83,10 @@
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>com.turkcell.crm</groupId>
-            <artifactId>common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+		<dependency><groupId>io.github.rozeringunes</groupId>
+			<artifactId>common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
     </dependencies>
 	<dependencyManagement>
 		<dependencies>
