@@ -14,9 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class BasketItem extends BaseEntity implements Serializable {
 
-
     private String productId;
     private String productName;
     private double price;
-
 }

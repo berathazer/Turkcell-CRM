@@ -7,6 +7,7 @@ import com.turkcell.turkcellcrm.searchService.entities.Product;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+
 @Service
 @AllArgsConstructor
 public class ProductFilterBusinessRules {

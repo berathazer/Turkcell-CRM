@@ -2,9 +2,11 @@ package com.turkcell.turkcellcrm.searchService.business.concretes;
 
 import com.turkcell.turkcellcrm.common.events.product.ProductCreatedEvent;
 import com.turkcell.turkcellcrm.common.events.product.ProductUpdatedEvent;
+import com.turkcell.turkcellcrm.searchService.api.client.BasketClient;
 import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchProductService;
 import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchService;
 import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicQuery;
+import com.turkcell.turkcellcrm.searchService.business.dto.request.SelectProductRequest;
 import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllProductResponse;
 import com.turkcell.turkcellcrm.searchService.business.rules.ProductFilterBusinessRules;
 import com.turkcell.turkcellcrm.searchService.core.utilities.mapping.ModelMapperService;
@@ -14,7 +16,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -24,6 +28,8 @@ public class SearchProductManager implements SearchProductService {
     private ModelMapperService modelMapperService;
     private ProductFilterBusinessRules productFilterBusinessRules;
     private SearchService searchService;
+    private BasketClient basketClient;
+
 
     @Override
     public void add(ProductCreatedEvent productCreatedEvent) {
@@ -60,5 +66,19 @@ public class SearchProductManager implements SearchProductService {
         product.setDeletedDate(LocalDateTime.now());
 
         this.searchProductRepository.save(product);
+    }
+
+    @Override
+    public void select(SelectProductRequest selectProductRequests){
+        List<Product> productList = new ArrayList<>();
+
+        for (Integer i:selectProductRequests.getSelectedProductIds()){
+            Product product =this.searchProductRepository.
+                    findProductByProductId(selectProductRequests.getSelectedProductIds().get(i)).orElse(null);
+
+            productList.add(product);
+        }
+
+        basketClient.sendProduct(productList,2);
     }
 }
