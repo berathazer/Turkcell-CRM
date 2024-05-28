@@ -24,4 +24,6 @@ public class Product extends BaseEntity {
     @Field(name = "name")
     private String name;
 
+    @Field(name = "price")
+    private double price;
 }

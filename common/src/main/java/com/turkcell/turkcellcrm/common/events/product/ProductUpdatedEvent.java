@@ -11,4 +11,5 @@ public class ProductUpdatedEvent {
     private int productId;
     private String name;
     private int catalogId;
+    private double price;
 }

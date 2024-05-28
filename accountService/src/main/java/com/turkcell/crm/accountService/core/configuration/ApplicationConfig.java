@@ -30,8 +30,4 @@ public class ApplicationConfig {
     public ModelMapper getModelMapper() {
         return new ModelMapper();
     }
-    @Bean
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
 }
