@@ -2,6 +2,7 @@ package com.turkcell.turkcellcrm.searchService.api.controller;
 
 import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchProductService;
 import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicQuery;
+import com.turkcell.turkcellcrm.searchService.business.dto.request.SelectProductRequest;
 import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllProductResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,5 +21,11 @@ public class SearchProductController {
     @ResponseStatus(HttpStatus.OK)
     public List<GetAllProductResponse> getAll(@RequestBody DynamicQuery dynamicQuery){
         return this.searchProductService.getAll(dynamicQuery);
+    }
+
+    @PostMapping("/select")
+    @ResponseStatus(HttpStatus.OK)
+    public void select(@RequestBody SelectProductRequest selectProductRequest){
+        this.searchProductService.select(selectProductRequest);
     }
 }

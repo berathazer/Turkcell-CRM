@@ -13,6 +13,7 @@ public class SecurityConfiguration {
 
     private final BaseSecurityService baseSecurityService;
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
@@ -20,7 +21,8 @@ public class SecurityConfiguration {
 
         http.authorizeHttpRequests(
 
-                (req)->req.requestMatchers("/api/**").permitAll()
+                (req)->req.requestMatchers("/swagger-ui/**").permitAll()
+                        .anyRequest().authenticated()
 
         );
         return http.build();
