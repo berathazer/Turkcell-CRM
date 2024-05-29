@@ -1,16 +1,15 @@
 package com.turkcell.turkcellcrm.searchService.api.client;
 
 
-import com.turkcell.turkcellcrm.searchService.entities.Product;
+import com.turkcell.turkcellcrm.searchService.business.dto.response.CreateBasketItemRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.List;
-
-@FeignClient(name = "basketservice", url = "http://localhost:9002/basketservice/api/v1/baskets/basket")
+@FeignClient(name = "basketService", url = "http://localhost:10033/basketservice/api/v1/baskets/basket")
 public interface BasketClient {
-    @PostMapping("/addItem")
-    void sendProduct(List<Product> products, int accountId);
+    @PostMapping("/addItems")
+    void sendProduct(@RequestBody CreateBasketItemRequest createBasketItemRequests);
 }
 
 

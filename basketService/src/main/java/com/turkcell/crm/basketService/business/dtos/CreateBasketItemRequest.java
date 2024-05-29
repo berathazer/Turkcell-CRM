@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllProductResponse {
+public class CreateBasketItemRequest {
+
     private String name;
-    private int productId;
+    private String productId;
     private double price;
-    private int accountId;
+    private int customerId;
 }

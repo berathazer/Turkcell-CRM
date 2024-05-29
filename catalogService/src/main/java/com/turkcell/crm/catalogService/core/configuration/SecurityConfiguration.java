@@ -21,8 +21,8 @@ public class SecurityConfiguration {
 
         http.authorizeHttpRequests(
 
-                (req)->req.requestMatchers("/swagger-ui/**").permitAll()
-                        .anyRequest().authenticated()
+                (req)->req.requestMatchers("/swagger-ui/**","catalogservice/api/**").permitAll()
+                        //.anyRequest().authenticated()
 
         );
         return http.build();

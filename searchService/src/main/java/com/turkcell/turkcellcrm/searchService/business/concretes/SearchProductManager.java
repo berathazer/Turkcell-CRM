@@ -7,6 +7,7 @@ import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchProductSe
 import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchService;
 import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicQuery;
 import com.turkcell.turkcellcrm.searchService.business.dto.request.SelectProductRequest;
+import com.turkcell.turkcellcrm.searchService.business.dto.response.CreateBasketItemRequest;
 import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllProductResponse;
 import com.turkcell.turkcellcrm.searchService.business.rules.ProductFilterBusinessRules;
 import com.turkcell.turkcellcrm.searchService.core.utilities.mapping.ModelMapperService;
@@ -70,15 +71,14 @@ public class SearchProductManager implements SearchProductService {
 
     @Override
     public void select(SelectProductRequest selectProductRequests){
-        List<Product> productList = new ArrayList<>();
 
-        for (Integer i:selectProductRequests.getSelectedProductIds()){
-            Product product =this.searchProductRepository.
-                    findProductByProductId(selectProductRequests.getSelectedProductIds().get(i)).orElse(null);
+        Product product = this.searchProductRepository
+                .findProductByProductId(selectProductRequests.getSelectedProductId())
+                .orElse(null);
 
-            productList.add(product);
-        }
+        CreateBasketItemRequest createBasketItemRequests = this.modelMapperService.forRequest().
+                map(product, CreateBasketItemRequest.class);
 
-        basketClient.sendProduct(productList,2);
+        basketClient.sendProduct(createBasketItemRequests);
     }
 }
