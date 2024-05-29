@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface BasketService {
-    void add(CreateBasketItemRequest createBasketItemRequest);
+    void add(CreateBasketItemRequest createBasketItemRequests);
     Map<String,Basket> getAllItems();
+    void delete (String id);
+    void deleteItem(int productId, String accountId);
 }

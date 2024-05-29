@@ -11,10 +11,11 @@ import java.util.Map;
 
 @Repository
 public class RedisRepository {
+
     public static final String Key="BASKET";
 
     private RedisTemplate<String, Object> redisTemplate;
-    private HashOperations<String,String, Basket> hashOperations;
+    private HashOperations<String,String,Basket> hashOperations;
 
     public RedisRepository(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
@@ -29,9 +30,9 @@ public class RedisRepository {
         this.hashOperations.put(Key,basket.getId()+"_"+basket.getAccountId(),basket);
     }
 
-    public Basket getBasketByAccountId(int accountId) {
+    public Basket getBasketByAccountId(String accountId) {
         return hashOperations.entries(Key).values().stream()
-                .filter(basket -> accountId == basket.getAccountId())
+                .filter(basket -> accountId.equals(basket.getAccountId()))
                 .findFirst()
                 .orElse(null);
     }

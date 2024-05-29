@@ -9,8 +9,10 @@ import com.turkcell.crm.basketService.entity.BasketItem;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -19,39 +21,46 @@ public class BasketManager implements BasketService {
     private RedisRepository redisRepository;
 
     @Override
-    public void add(CreateBasketItemRequest createBasketItemRequest) {
+    public void add(CreateBasketItemRequest createBasketItemRequests) {
 
-        Basket basket = this.redisRepository.getBasketByAccountId(createBasketItemRequest.getCustomerId());
+        Basket basket = redisRepository.getBasketByAccountId(createBasketItemRequests.getAccountId());
 
         if (basket == null) {
             basket = new Basket();
-            basket.setAccountId(createBasketItemRequest.getCustomerId());
+            basket.setAccountId(createBasketItemRequests.getAccountId());
         }
 
         BasketItem basketItem = new BasketItem();
-        basketItem.setName(createBasketItemRequest.getName());
-        basketItem.setPrice(createBasketItemRequest.getPrice());
-        basketItem.setProductId(createBasketItemRequest.getProductId());
+        basketItem.setProductId(createBasketItemRequests.getProductId());
+        basketItem.setName(createBasketItemRequests.getName());
+        basketItem.setPrice(createBasketItemRequests.getPrice());
 
-        double totalPrice = calculateTotalPrice(basket.getBasketItems());
-        basket.setTotalPrice(totalPrice);
+        basket.setTotalPrice(basket.getTotalPrice() + basketItem.getPrice());
 
         basket.getBasketItems().add(basketItem);
-        this.redisRepository.addItem(basket);
+
+        redisRepository.addItem(basket);
     }
+
 
     @Override
     public Map<String,Basket> getAllItems() {
         return this.redisRepository.getAllItems();
     }
 
-    public double calculateTotalPrice(List<BasketItem> basketItems){
 
-        double totalPrice = 0;
+    @Override
+    public void delete (String id){
 
-        for (BasketItem basketItem: basketItems) {
-            totalPrice += basketItem.getPrice();
-        }
-        return totalPrice;
+        this.redisRepository.deleteItem(id);
+
+    }
+
+    @Override
+    public void deleteItem(int productId, String accountId) {
+        Basket basket = redisRepository.getBasketByAccountId(accountId);
+        basket.getBasketItems().remove(productId -1);
+
+        redisRepository.addItem(basket);
     }
 }
