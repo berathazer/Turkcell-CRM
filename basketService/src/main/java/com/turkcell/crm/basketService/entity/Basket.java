@@ -12,13 +12,15 @@ import java.util.UUID;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Basket extends BaseEntity implements Serializable {
+public class Basket  implements Serializable {
 
-    private int accountId;
+    private String id;
+    private String accountId;
     private double totalPrice;
     private List<BasketItem> basketItems;
 
     public Basket(){
+        this.id= UUID.randomUUID().toString();
         this.basketItems = new ArrayList<>();
     }
 }

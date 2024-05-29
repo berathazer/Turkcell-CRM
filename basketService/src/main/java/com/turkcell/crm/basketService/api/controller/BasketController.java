@@ -25,4 +25,14 @@ public class BasketController {
     public Map<String,Basket> getAllItems(){
         return this.basketService.getAllItems();
     }
+
+    @DeleteMapping
+    public void delete(String id){
+        this.basketService.delete(id);
+    }
+
+    @DeleteMapping("/deleteItem")
+    public void deleteItem(int productId, String accountId){
+        this.basketService.deleteItem(productId, accountId);
+    }
 }

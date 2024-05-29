@@ -13,10 +13,8 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BasketItem extends BaseEntity implements Serializable {
+public class BasketItem implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = 354801933777929859L;
     private String productId;
     private String name;
     private double price;

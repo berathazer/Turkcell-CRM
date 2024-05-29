@@ -12,5 +12,5 @@ public class CreateBasketItemRequest {
     private String name;
     private String productId;
     private double price;
-    private int customerId;
+    private String accountId;
 }
