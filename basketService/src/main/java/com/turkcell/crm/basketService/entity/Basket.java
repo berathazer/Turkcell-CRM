@@ -20,6 +20,5 @@ public class Basket extends BaseEntity implements Serializable {
 
     public Basket(){
         this.basketItems = new ArrayList<>();
-
     }
 }

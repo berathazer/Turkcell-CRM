@@ -10,5 +10,5 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class SelectProductRequest {
-    private List<Integer> selectedProductIds;
+    private int selectedProductId;
 }
