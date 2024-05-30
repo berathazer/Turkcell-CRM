@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateBasketItemRequest {
-
-    private String name;
+public class BasketItemDto {
     private int productId;
+    private String name;
     private double price;
-    private int accountId;
+
 }

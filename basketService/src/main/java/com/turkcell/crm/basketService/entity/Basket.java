@@ -15,7 +15,7 @@ import java.util.UUID;
 public class Basket  implements Serializable {
 
     private String id;
-    private String accountId;
+    private int accountId;
     private double totalPrice;
     private List<BasketItem> basketItems;
 

@@ -2,6 +2,7 @@ package com.turkcell.crm.catalogService.core.configuration;
 
 import com.turkcell.crm.core.config.BaseSecurityService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -15,12 +16,14 @@ public class SecurityConfiguration {
     private final BaseSecurityService baseSecurityService;
 
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         baseSecurityService.configureCoreSecurity(http);
 
         http.authorizeHttpRequests((req) -> req
-                .requestMatchers("/swagger-ui/**").permitAll()
+                .requestMatchers("/swagger-ui/**","/catalogservice/api/v1/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/catalogservice/api/v1/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/catalogservice/api/v1/**").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/catalogservice/api/v1/**").permitAll()

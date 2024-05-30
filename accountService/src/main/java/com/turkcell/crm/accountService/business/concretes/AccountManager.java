@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -45,8 +46,10 @@ public class AccountManager implements AccountService {
         this.accountBusinessRules.isAccountAlreadyDeleted(id);
         this.accountBusinessRules.isAccountExistById(id);
 
+        Optional<Account> account = this.accountRepository.findById(id);
+
         return this.modelMapperService.forResponse()
-                .map(this.accountRepository.findById(id), GetByIdAccountResponse.class);
+                .map(account.get(), GetByIdAccountResponse.class);
     }
 
     @Override
