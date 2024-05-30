@@ -30,9 +30,9 @@ public class RedisRepository {
         this.hashOperations.put(Key,basket.getId()+"_"+basket.getAccountId(),basket);
     }
 
-    public Basket getBasketByAccountId(String accountId) {
+    public Basket getBasketByAccountId(int accountId) {
         return hashOperations.entries(Key).values().stream()
-                .filter(basket -> accountId.equals(basket.getAccountId()))
+                .filter(basket -> accountId == (basket.getAccountId()))
                 .findFirst()
                 .orElse(null);
     }

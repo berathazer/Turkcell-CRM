@@ -53,7 +53,7 @@ public class AccountManagerTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
@@ -104,20 +104,30 @@ public class AccountManagerTest {
 
     @Test
     void testGetById() {
-        int accountId = 1;
+
         Account account = new Account();
+        account.setId(1);
 
-        GetByIdAccountResponse getByIdAccountResponse = new GetByIdAccountResponse();
+        Optional<Account> accountOptional = Optional.of(account);
 
-        when(accountRepository.findById(accountId)).thenReturn(Optional.of(account));
+        when(accountRepository.findById(1)).thenReturn(accountOptional);
+        when(accountBusinessRules.isAccountAlreadyDeleted(account.getId())).thenReturn(account);
+        when(accountBusinessRules.isAccountExistById(account.getId())).thenReturn(account);
+
+        GetByIdAccountResponse response = new GetByIdAccountResponse();
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
-        when(modelMapperService.forResponse().map(account, GetByIdAccountResponse.class)).thenReturn(getByIdAccountResponse);
+        when(modelMapperService.forResponse().map(account, GetByIdAccountResponse.class)).thenReturn(response);
 
-        GetByIdAccountResponse result = accountManager.getById(accountId);
+        GetByIdAccountResponse result = accountManager.getById(1);
 
-        verify(accountBusinessRules).isAccountAlreadyDeleted(accountId);
-        verify(accountBusinessRules).isAccountExistById(accountId);
-        assertEquals(getByIdAccountResponse, result);
+        verify(accountRepository).findById(1);
+
+        verify(accountBusinessRules).isAccountAlreadyDeleted(1);
+        verify(accountBusinessRules).isAccountExistById(1);
+
+        verify(modelMapperService.forResponse()).map(account,GetByIdAccountResponse.class);
+
+        assertEquals(response, result);
     }
 
     @Test

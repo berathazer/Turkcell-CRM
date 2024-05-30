@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class BasketItem implements Serializable {
 
-    private String productId;
+    private int productId;
     private String name;
     private double price;
 }

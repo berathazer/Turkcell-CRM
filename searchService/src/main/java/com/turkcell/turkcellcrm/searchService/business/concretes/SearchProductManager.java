@@ -7,7 +7,7 @@ import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchProductSe
 import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchService;
 import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicQuery;
 import com.turkcell.turkcellcrm.searchService.business.dto.request.SelectProductRequest;
-import com.turkcell.turkcellcrm.searchService.business.dto.response.CreateBasketItemRequest;
+import com.turkcell.turkcellcrm.searchService.business.dto.request.CreateBasketItemRequest;
 import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllProductResponse;
 import com.turkcell.turkcellcrm.searchService.business.rules.ProductFilterBusinessRules;
 import com.turkcell.turkcellcrm.searchService.core.utilities.mapping.ModelMapperService;
@@ -17,9 +17,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor

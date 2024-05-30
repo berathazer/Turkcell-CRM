@@ -1,7 +1,9 @@
 package com.turkcell.crm.basketService.business.concretes;
 
 import com.turkcell.crm.basketService.business.abstracts.BasketService;
+import com.turkcell.crm.basketService.business.dtos.BasketItemDto;
 import com.turkcell.crm.basketService.business.dtos.CreateBasketItemRequest;
+import com.turkcell.crm.basketService.business.dtos.CreateOrderRequestByAccountId;
 import com.turkcell.crm.basketService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.crm.basketService.dataAccess.RedisRepository;
 import com.turkcell.crm.basketService.entity.Basket;
@@ -57,10 +59,37 @@ public class BasketManager implements BasketService {
     }
 
     @Override
-    public void deleteItem(int productId, String accountId) {
+    public void deleteItem(int productId, int accountId) {
         Basket basket = redisRepository.getBasketByAccountId(accountId);
         basket.getBasketItems().remove(productId -1);
 
         redisRepository.addItem(basket);
+    }
+
+    @Override
+    public CreateOrderRequestByAccountId getBasketByAccountId(int accountId) {
+
+        Basket basket = redisRepository.getBasketByAccountId(accountId);
+
+        CreateOrderRequestByAccountId createOrderRequestByAccountId = new CreateOrderRequestByAccountId();
+        createOrderRequestByAccountId.setAccountId(basket.getAccountId());
+        createOrderRequestByAccountId.setTotalPrice(basket.getTotalPrice());
+
+        List<BasketItemDto>  basketItemDtos = new ArrayList<>();
+
+        for (BasketItem basketItem : basket.getBasketItems()){
+
+            BasketItemDto basketItemDto = new BasketItemDto();
+            basketItemDto.setName(basketItem.getName());
+            basketItemDto.setPrice(basketItem.getPrice());
+            basketItemDto.setProductId(basketItem.getProductId());
+
+            basketItemDtos.add(basketItemDto);
+
+        }
+
+        createOrderRequestByAccountId.setBasketItemDtos(basketItemDtos);
+
+        return createOrderRequestByAccountId;
     }
 }
