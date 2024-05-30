@@ -16,14 +16,19 @@ import java.util.List;
 @Setter
 @Document(collection = "orders")
 public class Order extends BaseEntity {
+
     @Field(name = "totalPrice")
     private double totalPrice;
+
     @Field(name = "addressId")
     private int addressId;
+
     @Field(name = "accountId")
     private int accountId;
+
     @Field(name = "orderItems")
     private List<OrderItem> orderItems;
 
-
+    @Field(name = "customerId")
+    private int customerId;
 }

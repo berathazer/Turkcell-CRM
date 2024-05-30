@@ -12,11 +12,6 @@ public class GetAllProductPropertyResponse {
     private int id;
 
     private String productName;
-    //  private String catalogPropertyName;
-    //  private String catalogPropertyDetail;
     private String key;
     private String value;
-
-    //private Map<String, String> properties;
-
 }

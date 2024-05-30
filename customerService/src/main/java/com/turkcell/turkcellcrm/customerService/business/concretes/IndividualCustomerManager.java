@@ -31,6 +31,7 @@ public class IndividualCustomerManager implements IndividualCustomerService {
     private ModelMapperService modelMapperService;
     private IndividualCustomerBusinessRules individualCustomerBusinessRules;
     private CustomerProducer customerProducer;
+
     @Override
     public CreatedIndividualCustomerResponse add(CreateIndividualCustomerRequest createIndividualCustomerRequest) {
 
@@ -107,4 +108,12 @@ public class IndividualCustomerManager implements IndividualCustomerService {
 
         this.individualCustomerRepository.save(individualCustomer);
     }
+
+     @Override
+     public int getAddresIdByCustomerId(int customerId){
+
+        IndividualCustomer individualCustomer = this.individualCustomerBusinessRules.isCustomerIdExist(customerId);
+
+        return  individualCustomer.getAddresses().getFirst().getId();
+     }
 }

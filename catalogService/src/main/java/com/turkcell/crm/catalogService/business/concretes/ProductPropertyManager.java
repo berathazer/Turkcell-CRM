@@ -4,6 +4,7 @@ import com.turkcell.crm.catalogService.business.abstracts.ProductPropertyService
 import com.turkcell.crm.catalogService.business.abstracts.ProductService;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.CreateProductPropertyRequest;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.UpdateProductPropertyRequest;
+import com.turkcell.crm.catalogService.business.dtos.response.ProductPropertyResponseDto;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.CreatedProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetAllProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetByIdProductPropertyResponse;
@@ -38,7 +39,6 @@ public class ProductPropertyManager implements ProductPropertyService {
         productProperty.setId(0);
 
         ProductProperty saveProduct = this.productPropertyRepository.save(productProperty);
-
 
         CreatedProductPropertyResponse createdProductPropertyResponse = this.modelMapperService.forResponse()
                 .map(saveProduct, CreatedProductPropertyResponse.class);
@@ -88,6 +88,15 @@ public class ProductPropertyManager implements ProductPropertyService {
         //this.customerProducer.sendDeletedMessage(id);
 
         this.productPropertyRepository.save(productProperty);
+    }
+
+    @Override
+    public List<ProductPropertyResponseDto> getProductPropertyByProductId(int productId) {
+
+        List<ProductProperty> productProperties =this.productPropertyRepository.findProductPropertiesByProductId(productId);
+
+        return productProperties.stream().map(productProperty -> this.modelMapperService.forResponse().
+                map(productProperty, ProductPropertyResponseDto.class)).toList();
     }
 
 }

@@ -11,11 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProductConfig{
-
     private int productId;
     private String productTypeKey;
     private String productTypeValue;
-
-
-
 }

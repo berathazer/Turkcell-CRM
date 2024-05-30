@@ -15,4 +15,5 @@ public interface IndividualCustomerService {
     GetByIdIndividualCustomerResponse getById(int id);
     UpdatedIndividualCustomerResponse update(UpdateIndividualCustomerRequest updateIndividualCustomerRequest);
     void delete(int id);
+    int getAddresIdByCustomerId(int customerId);
 }

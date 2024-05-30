@@ -20,4 +20,5 @@ public interface ProductService {
     GetByIdProductResponse getById(int id);
 
     void delete(int id);
+
 }

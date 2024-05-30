@@ -2,6 +2,7 @@ package com.turkcell.crm.catalogService.business.abstracts;
 
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.CreateProductPropertyRequest;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.UpdateProductPropertyRequest;
+import com.turkcell.crm.catalogService.business.dtos.response.ProductPropertyResponseDto;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.CreatedProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetAllProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetByIdProductPropertyResponse;
@@ -20,4 +21,5 @@ public interface ProductPropertyService {
 
     void delete(int id);
 
+    List<ProductPropertyResponseDto> getProductPropertyByProductId(int productId);
 }

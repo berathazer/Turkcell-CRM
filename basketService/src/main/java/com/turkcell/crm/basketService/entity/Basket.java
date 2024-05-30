@@ -1,8 +1,8 @@
 package com.turkcell.crm.basketService.entity;
 
-import com.turkcell.crm.basketService.core.entites.BaseEntity;
-import lombok.*;
-import org.springframework.data.annotation.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,6 +16,7 @@ public class Basket  implements Serializable {
 
     private String id;
     private int accountId;
+    private int customerId;
     private double totalPrice;
     private List<BasketItem> basketItems;
 

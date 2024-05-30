@@ -11,5 +11,4 @@ public class BasketItemDto {
     private int productId;
     private String name;
     private double price;
-
 }
