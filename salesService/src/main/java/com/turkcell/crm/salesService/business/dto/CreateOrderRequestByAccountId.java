@@ -12,6 +12,7 @@ import java.util.List;
 public class CreateOrderRequestByAccountId {
     private String id;
     private int accountId;
+    private int customerId;
     private double totalPrice;
-    private List<OrderItem> orderItems;
+    private List<BasketItemDto> basketItemDtos;
 }

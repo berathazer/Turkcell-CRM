@@ -16,13 +16,11 @@ public class OrderController {
     @PostMapping("/add")
     public void add(@RequestParam int accountId){
         this.orderService.add(accountId);
-
     }
 
     @GetMapping("/getAll")
     public List<Order> getAll(){
         return this.orderService.getAll();
     }
-
 
 }

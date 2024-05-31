@@ -3,6 +3,7 @@ package com.turkcell.crm.catalogService.api.controller;
 import com.turkcell.crm.catalogService.business.abstracts.ProductPropertyService;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.CreateProductPropertyRequest;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.UpdateProductPropertyRequest;
+import com.turkcell.crm.catalogService.business.dtos.response.ProductPropertyResponseDto;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.CreatedProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetAllProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetByIdProductPropertyResponse;
@@ -52,4 +53,10 @@ public class ProductPropertiesController {
         this.productPropertyService.delete(id);
     }
 
+
+    @GetMapping("/getById/{productId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProductPropertyResponseDto> getProductPropertyByProductId(@PathVariable int productId){
+        return this.productPropertyService.getProductPropertyByProductId(productId);
+    }
 }

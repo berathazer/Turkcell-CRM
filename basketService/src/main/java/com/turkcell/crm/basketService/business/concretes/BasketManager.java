@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -36,6 +35,7 @@ public class BasketManager implements BasketService {
         basketItem.setProductId(createBasketItemRequests.getProductId());
         basketItem.setName(createBasketItemRequests.getName());
         basketItem.setPrice(createBasketItemRequests.getPrice());
+        basket.setCustomerId(createBasketItemRequests.getCustomerId());
 
         basket.setTotalPrice(basket.getTotalPrice() + basketItem.getPrice());
 
@@ -44,12 +44,10 @@ public class BasketManager implements BasketService {
         redisRepository.addItem(basket);
     }
 
-
     @Override
     public Map<String,Basket> getAllItems() {
         return this.redisRepository.getAllItems();
     }
-
 
     @Override
     public void delete (String id){
@@ -74,6 +72,7 @@ public class BasketManager implements BasketService {
         CreateOrderRequestByAccountId createOrderRequestByAccountId = new CreateOrderRequestByAccountId();
         createOrderRequestByAccountId.setAccountId(basket.getAccountId());
         createOrderRequestByAccountId.setTotalPrice(basket.getTotalPrice());
+        createOrderRequestByAccountId.setCustomerId(basket.getCustomerId());
 
         List<BasketItemDto>  basketItemDtos = new ArrayList<>();
 

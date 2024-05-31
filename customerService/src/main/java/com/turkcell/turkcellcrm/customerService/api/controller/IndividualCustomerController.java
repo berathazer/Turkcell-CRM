@@ -50,9 +50,13 @@ public class IndividualCustomerController {
     public String delete(@PathVariable int id){
 
         this.individualCustomerService.delete(id);
-
         // TODO: Geriye Düzgün Formatta Bir Hata Döndür.
         return "Silme Başarılı";
     }
 
+    @GetMapping("/getById/{customerId}")
+    @ResponseStatus(HttpStatus.OK)
+    public int getAddressIdByCustomerId(@PathVariable int customerId){
+        return this.individualCustomerService.getAddresIdByCustomerId(customerId);
+    }
 }

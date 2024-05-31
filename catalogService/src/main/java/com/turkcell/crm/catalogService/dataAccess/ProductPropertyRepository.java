@@ -8,5 +8,5 @@ import java.util.List;
 public interface ProductPropertyRepository extends JpaRepository<ProductProperty,Integer> {
 
     List<ProductProperty> findByDeletedDateIsNull();
-
+    List<ProductProperty> findProductPropertiesByProductId(int productId);
 }
