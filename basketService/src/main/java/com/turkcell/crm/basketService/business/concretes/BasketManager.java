@@ -1,5 +1,6 @@
 package com.turkcell.crm.basketService.business.concretes;
 
+import com.turkcell.crm.basketService.api.client.OrderClient;
 import com.turkcell.crm.basketService.business.abstracts.BasketService;
 import com.turkcell.crm.basketService.business.dtos.BasketItemDto;
 import com.turkcell.crm.basketService.business.dtos.CreateBasketItemRequest;
@@ -20,6 +21,7 @@ import java.util.Map;
 public class BasketManager implements BasketService {
 
     private RedisRepository redisRepository;
+    private OrderClient orderClient;
 
     @Override
     public void add(CreateBasketItemRequest createBasketItemRequests) {
@@ -65,8 +67,7 @@ public class BasketManager implements BasketService {
     }
 
     @Override
-    public CreateOrderRequestByAccountId getBasketByAccountId(int accountId) {
-
+    public void basketToOrder(int accountId){
         Basket basket = redisRepository.getBasketByAccountId(accountId);
 
         CreateOrderRequestByAccountId createOrderRequestByAccountId = new CreateOrderRequestByAccountId();
@@ -86,9 +87,8 @@ public class BasketManager implements BasketService {
             basketItemDtos.add(basketItemDto);
 
         }
-
         createOrderRequestByAccountId.setBasketItemDtos(basketItemDtos);
 
-        return createOrderRequestByAccountId;
+        this.orderClient.add(createOrderRequestByAccountId);
     }
 }

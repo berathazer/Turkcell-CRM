@@ -54,7 +54,7 @@ public class IndividualCustomerController {
         return "Silme Başarılı";
     }
 
-    @GetMapping("/getById/{customerId}")
+    @GetMapping("/getAddressByCustomerId/{customerId}")
     @ResponseStatus(HttpStatus.OK)
     public int getAddressIdByCustomerId(@PathVariable int customerId){
         return this.individualCustomerService.getAddresIdByCustomerId(customerId);

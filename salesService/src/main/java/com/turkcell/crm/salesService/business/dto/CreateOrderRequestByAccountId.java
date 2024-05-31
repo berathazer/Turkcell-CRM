@@ -1,6 +1,5 @@
 package com.turkcell.crm.salesService.business.dto;
 
-import com.turkcell.crm.salesService.entities.OrderItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

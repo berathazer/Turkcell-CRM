@@ -114,6 +114,6 @@ public class IndividualCustomerManager implements IndividualCustomerService {
 
         IndividualCustomer individualCustomer = this.individualCustomerBusinessRules.isCustomerIdExist(customerId);
 
-        return  individualCustomer.getAddresses().getFirst().getId();
+        return 1;
      }
 }

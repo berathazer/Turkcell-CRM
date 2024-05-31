@@ -12,5 +12,5 @@ public interface BasketService {
     Map<String,Basket> getAllItems();
     void delete (String id);
     void deleteItem(int productId, int accountId);
-    CreateOrderRequestByAccountId getBasketByAccountId(int accountId);
+    void basketToOrder(int accountId);
 }

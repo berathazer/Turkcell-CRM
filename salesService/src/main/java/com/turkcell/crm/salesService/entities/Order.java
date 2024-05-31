@@ -27,7 +27,7 @@ public class Order extends BaseEntity {
     private int accountId;
 
     @Field(name = "orderItems")
-    private List<OrderItem> orderItems;
+    private List<OrderItemEntity> orderItemEntities;
 
     @Field(name = "customerId")
     private int customerId;

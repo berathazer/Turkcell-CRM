@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "catalogService", url = "http://localhost:9050/customerservice/api/v1/customers/individualcustomers")
-public interface CatalogClient {
-    @GetMapping("/getById/{productId}")
-    List<ProductPropertyResponseDto> getProductPropertyIdByProductId(@PathVariable int productId);
-}
+//@FeignClient(name = "catalogService", url = "http://localhost:10042/customerservice/api/v1/customers/individualcustomers")
+//public interface CatalogClient {
+//    @GetMapping("/getById/{productId}")
+//    List<ProductPropertyResponseDto> getProductPropertyIdByProductId(@PathVariable int productId);
+//}
