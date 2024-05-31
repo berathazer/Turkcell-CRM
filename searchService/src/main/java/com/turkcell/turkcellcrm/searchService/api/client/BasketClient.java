@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "basketService", url = "http://localhost:10033/basketservice/api/v1/baskets/basket")
+@FeignClient(name = "basketService", url = "http://localhost:10041/basketservice/api/v1/baskets/basket")
 public interface BasketClient {
     @PostMapping("/addItems")
-    void sendProduct(@RequestBody CreateBasketItemRequest createBasketItemRequests);
+    void addItem(@RequestBody CreateBasketItemRequest createBasketItemRequests);
 }
 
 

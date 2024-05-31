@@ -36,8 +36,8 @@ public class BasketController {
         this.basketService.deleteItem(productId, accountId);
     }
 
-    @GetMapping("/getById/{accountId}")
-    public CreateOrderRequestByAccountId getById(@PathVariable("accountId") int accountId){
-        return this.basketService.getBasketByAccountId(accountId);
+    @GetMapping("/{accountId}")
+    public void getById(@PathVariable int accountId){
+        this.basketService.basketToOrder(accountId);
     }
 }

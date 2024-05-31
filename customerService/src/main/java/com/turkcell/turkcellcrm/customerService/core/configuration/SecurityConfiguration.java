@@ -4,6 +4,7 @@ import com.turkcell.crm.core.config.BaseSecurityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -18,11 +19,9 @@ public class SecurityConfiguration {
     {
         baseSecurityService.configureCoreSecurity(http);
 
-        http.authorizeHttpRequests(
-
-                (req)->req.requestMatchers("/api/**").permitAll()
-
-        );
+        http.authorizeHttpRequests((req) -> req
+                .requestMatchers("/swagger-ui/**","/customerservice/api/v1/**").permitAll());
+        //.anyRequest().authenticated());
         return http.build();
     }
 }

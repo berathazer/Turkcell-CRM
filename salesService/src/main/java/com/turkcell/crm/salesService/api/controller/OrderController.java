@@ -1,6 +1,7 @@
 package com.turkcell.crm.salesService.api.controller;
 
 import com.turkcell.crm.salesService.business.abstracts.OrderService;
+import com.turkcell.crm.salesService.business.dto.CreateOrderRequestByAccountId;
 import com.turkcell.crm.salesService.entities.Order;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +15,8 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/add")
-    public void add(@RequestParam int accountId){
-        this.orderService.add(accountId);
+    public void add(@RequestBody CreateOrderRequestByAccountId createOrderRequestByAccountId ){
+        this.orderService.add(createOrderRequestByAccountId);
     }
 
     @GetMapping("/getAll")
