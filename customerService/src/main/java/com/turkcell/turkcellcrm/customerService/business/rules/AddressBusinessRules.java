@@ -17,11 +17,12 @@ public class AddressBusinessRules {
     private AddressRepository addressRepository;
     private MessageService messageService;
 
-    public void isCustomerExist(CreateAddressRequest createAddressRequest){
+    public Address isCustomerExist(CreateAddressRequest createAddressRequest){
         Optional<Address> address =this.addressRepository.findByCustomerId(createAddressRequest.getCustomerId());
         if (address.isPresent()){
             throw new BusinessException(messageService.getMessage(AddressMessages.ADDRESS_CUSTOMER_DOES_NOT_EXIST));
         }
+        return address.get();
     }
 
     public Address isAddressExistByID(int id){
