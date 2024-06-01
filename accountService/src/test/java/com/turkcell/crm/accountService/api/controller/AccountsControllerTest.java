@@ -27,7 +27,7 @@ class AccountsControllerTest {
     private AccountService accountService;
 
     @InjectMocks
-    private AccountsController accountsController;
+    private AccountController accountsController;
 
 
     @Test

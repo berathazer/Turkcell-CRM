@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/accountservice/api/v1/accounts/accounttypes")
+@RequestMapping("/accountservice/api/v1/accounttypes")
 @AllArgsConstructor
 public class AccountTypesController {
 

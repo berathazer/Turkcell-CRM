@@ -4,357 +4,189 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="ac7ddf0b-91b0-49e4-9255-23e2356e65f8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/customerService/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_13_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_13_51__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_04_2024_13_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_04_2024_13_17__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_04_2024_23_50__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_04_2024_23_50__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_04_2024_14_22__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_04_2024_14_22__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_05_2024_14_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_05_2024_14_32__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountTypesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountTypesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/core/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/core/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/test/java/com/turkcell/crm/accountService/api/controller/AccountsControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/test/java/com/turkcell/crm/accountService/api/controller/AccountsControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basketService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/basketService/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basketService/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/basketService/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/BasketItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/BasketItemDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/CreateBasketItemRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/CreateBasketItemRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/CreateOrderRequestByAccountId.class" beforeDir="false" afterPath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/CreateOrderRequestByAccountId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customerService/src/test/java/com/turkcell/rentacar/inventoryService/InventoryServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/BasketItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/BasketItemDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/CreateOrderRequestByAccountId.class" beforeDir="false" afterPath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/CreateOrderRequestByAccountId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/ProductPropertyResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/ProductPropertyResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/core/entities/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/core/entities/BaseEntity.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-        <option value="JUnit5 Test Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="Ahmethan1" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Ahmethan1&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/berathazer/Turkcell-CRM.git&quot;,
-    &quot;accountId&quot;: &quot;149d2adf-eb22-46c2-a25c-212dfbfb4402&quot;
-  }
-}</component>
-  <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
+  &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2g95RLTt0o05JN2tEdh3Y4lC9UN" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2hHg8qkzcLK7tWRmbuE6QQDYUdk" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.AccountServiceApplication.executor": "Run",
+    "Application.BasketServiceApplication.executor": "Run",
     "Application.CatalogServiceApplication.executor": "Run",
-    "Application.ConfigServerApplication.executor": "Run",
     "Application.CustomerServiceApplication.executor": "Run",
-    "Application.DiscoveryServerApplication.executor": "Run",
-    "Application.GatewayServiceApplication.executor": "Run",
-    "Application.ProductServiceApplication.executor": "Run",
+    "Application.IdentityServiceApplication.executor": "Run",
+    "Application.InvoiceServiceApplication.executor": "Run",
+    "Application.SalesServiceApplication.executor": "Run",
     "Application.SearchServiceApplication.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-
-    "Maven.catalogService [clean].executor": "Run",
-    "Maven.catalogService [install].executor": "Run",
-    "Maven.customerService [clean,install].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
+    "JUnit.AddressManagerTest.executor": "Coverage",
+    "Maven.identityService [clean,install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.CatalogServiceApplication.executor": "Run",
-    "Spring Boot.CommonApplication.executor": "Run",
-    "Spring Boot.ConfigServerApplication.executor": "Run",
-    "Spring Boot.CustomerServiceApplication.executor": "Run",
-    "Spring Boot.DiscoveryServerApplication.executor": "Run",
-    "Spring Boot.GatewayServiceApplication.executor": "Run",
-    "Spring Boot.IdentityServiceApplication.executor": "Run",
-    "Spring Boot.SearchServiceApplication.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Intelij/Turkcell-CRM/catalogService/src/main/java/com/turkcell/crm/catalogService/core",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
+    "last_opened_file_path": "C:/Users/berat/Desktop/Codes/JAVA/TurkcellCRM/customerService",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
+    "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
-  <component name="ReactorSettings">
-    <option name="notificationShown" value="true" />
-  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Intelij\Turkcell-CRM\catalogService\src\main\java\com\turkcell\crm\catalogService\core" />
-      <recent name="D:\Intelij\Turkcell-CRM\catalogService\src\main\java\com\turkcell\crm\catalogService\core\entities" />
-      <recent name="C:\Users\Ahmethan\Desktop\TurkcellProje\Turkcell-CRM\accountService\src\main\java\com\turkcell\crm\accountService" />
-      <recent name="C:\Users\dparl\Desktop\Turkcell-CRM\Turkcell-CRM\searchService\src\main\java\com\turkcell\turkcellcrm\searchService\core\utilities\exceptions" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-
+      <recent name="C:\Users\berat\Desktop\Codes\JAVA\TurkcellCRM\customerService" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="configurationTypes">
-      <set>
-        <option value="MicronautRunConfigurationType" />
-        <option value="QuarkusRunConfigurationType" />
-        <option value="SpringBootApplicationConfigurationType" />
-      </set>
-    </option>
-  </component>
-
-      <option name="TEST_OBJECT" value="class" />
+  <component name="RunManager" selected="Application.BasketServiceApplication">
+    <configuration name="BasketServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.basketService.BasketServiceApplication" />
+      <module name="basketService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.crm.basketService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AccountServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="accountService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.crm.accountService.AccountServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CatalogServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="catalogService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.crm.catalogService.CatalogServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="common" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.common.CommonApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="configServer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.configServer.ConfigServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="customerService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.customerService.CustomerServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DiscoveryServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="discoveryServer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.discoveryServer.DiscoveryServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GatewayServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="gatewayService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.rentacar.gatewayService.GatewayServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IdentityServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="IdentityServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.identityService.IdentityServiceApplication" />
       <module name="identityService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.identityService.IdentityServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.identityService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="InvoiceServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.invoiceService.InvoiceServiceApplication" />
+      <module name="invoiceService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.crm.invoiceService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalesServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.salesService.SalesServiceApplication" />
+      <module name="salesService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.crm.salesService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SearchServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.searchService.SearchServiceApplication" />
       <module name="searchService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.turkcell.turkcellcrm.searchService.SearchServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.turkcell.turkcellcrm.searchService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="configServer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="configServer" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BasketServiceApplication" />
+        <item itemvalue="Application.SalesServiceApplication" />
+        <item itemvalue="Application.SearchServiceApplication" />
+        <item itemvalue="Application.IdentityServiceApplication" />
+        <item itemvalue="Application.InvoiceServiceApplication" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ce0a59e7-c594-418e-be99-1590f63b6dda" name="Changes" comment="" />
-      <created>1715096943648</created>
+      <changelist id="ac7ddf0b-91b0-49e4-9255-23e2356e65f8" name="Changes" comment="" />
+      <created>1717256264475</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1715096943648</updated>
-      <workItem from="1715168428938" duration="11556000" />
-      <workItem from="1715262709951" duration="12011000" />
-      <workItem from="1716300079388" duration="108000" />
-      <workItem from="1716310974865" duration="3575000" />
-      <workItem from="1716373282273" duration="17315000" />
-      <workItem from="1716457987294" duration="19202000" />
+      <updated>1717256264475</updated>
     </task>
-    <task id="LOCAL-00001" summary="search service changed">
-      <option name="closed" value="true" />
-      <created>1716300112669</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1716300112669</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="search service changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="search service changed" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/searchService/src/test/java/com/turkcell/turkcellcrm/searchService/business/rules/CustomerFilterBusinessRulesTest.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$ProductFilterBusinessRulesTest.ic" NAME="ProductFilterBusinessRulesTest Coverage Results" MODIFIED="1716464677022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.turkcellcrm.searchService.business.rules.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchProductManagerTest.ic" NAME="SearchProductManagerTest Coverage Results" MODIFIED="1716475483377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchProductManagerTest_testUpdate.ic" NAME="SearchProductManagerTest.testUpdate Coverage Results" MODIFIED="1716471122530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchCustomerManagerTest.ic" NAME="SearchCustomerManagerTest Coverage Results" MODIFIED="1716478717071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchProductManagerTest_testAdd.ic" NAME="SearchProductManagerTest.testAdd Coverage Results" MODIFIED="1716471070080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchCatalogManagerTest.ic" NAME="SearchCatalogManagerTest Coverage Results" MODIFIED="1716478056802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchProductManagerTest_testDelete_Successful.ic" NAME="SearchProductManagerTest.testDelete_Successful Coverage Results" MODIFIED="1716475139485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$SearchProductManagerTest_testGetAll.ic" NAME="SearchProductManagerTest.testGetAll Coverage Results" MODIFIED="1716471103613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.turkcellcrm.searchService.business.concretes.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$CatalogFilterBusinessRulesTest.ic" NAME="CatalogFilterBusinessRulesTest Coverage Results" MODIFIED="1716464939895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.turkcellcrm.searchService.business.rules.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$CustomerFilterBusinessRulesTest.ic" NAME="CustomerFilterBusinessRulesTest Coverage Results" MODIFIED="1716464684900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.turkcellcrm.searchService.business.rules.*</FILTER>
-    </SUITE>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$ProductBusinessRulesTest.ic" NAME="ProductBusinessRulesTest Coverage Results" MODIFIED="1716463373005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.crm.catalogService.business.rules.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$AccountTypeBusinessRulesTest.ic" NAME="AccountTypeBusinessRulesTest Coverage Results" MODIFIED="1716464675782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.crm.accountService.business.rules.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$AccountBusinessRulesTest.ic" NAME="AccountBusinessRulesTest Coverage Results" MODIFIED="1716464314535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.crm.accountService.business.rules.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$ProductManagerTest_add.ic" NAME="ProductManagerTest.add Coverage Results" MODIFIED="1716459331688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.crm.catalogService.business.concretes.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$ProductPropertyBusinessRulesTest.ic" NAME="ProductPropertyBusinessRulesTest Coverage Results" MODIFIED="1716463329206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.crm.catalogService.business.rules.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Turkcell_CRM$CatalogBusinessRulesTest.ic" NAME="CatalogBusinessRulesTest Coverage Results" MODIFIED="1716463623235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.turkcell.crm.catalogService.business.rules.*</FILTER>
+    <SUITE FILE_PATH="coverage/TurkcellCRM$AddressManagerTest.ic" NAME="AddressManagerTest Coverage Results" MODIFIED="1717257222990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.turkcell.turkcellcrm.customerService.business.concretes.*</FILTER>
     </SUITE>
   </component>
 </project>

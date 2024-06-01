@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/accountservice/api/v1/accounts/account")
+@RequestMapping("/accountservice/api/v1/accounts")
 @AllArgsConstructor
-public class AccountsController {
+public class AccountController {
     private AccountService accountService;
     private MessageService messageService;
 

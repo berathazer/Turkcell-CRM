@@ -27,7 +27,113 @@ services:
     restart: on-failure
     networks:
       - common
+  customer-service:
+    build: ./customerService
+    ports:
+      - "10050:10050"
+    networks:
+      - common
+  customerdbdev:
+    image: postgres
+    container_name: customerdbdev
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5450:5432"
+    volumes:
+      - customer_data:/var/lib/postgresql/data
+    networks:
+      - common
+
+  accountdbdev:
+    image: postgres
+    container_name: accountdbdev
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5451:5432"
+    volumes:
+      - account_data:/var/lib/postgresql/data
+
+  catalogdbdev:
+    image: postgres
+    container_name: catalogdbdev
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5452:5432"
+    volumes:
+      - catalog_data:/var/lib/postgresql/data
+
+  invoicedbdev:
+    image: postgres
+    container_name: invoicedbdev
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5453:5432"
+    volumes:
+      - invoice_data:/var/lib/postgresql/data
+
+  identitydbdev:
+    image: postgres
+    container_name: identitydbdev
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5454:5432"
+    volumes:
+      - identity_data:/var/lib/postgresql/data
+
+  searchdbdev:
+    image: mongo:latest
+    container_name: searchdbdev
+    ports:
+      - "27020:27017"
+    volumes:
+      - search_data:/data/db
+
+  salesdbdev:
+    image: mongo:latest
+    container_name: salesdbdev
+    ports:
+      - "27021:27017"
+    volumes:
+      - sales_data:/data/db
+
+  basketdbdev:
+    image: redis:latest
+    container_name: basketdbdev
+    ports:
+      - "6379:6379"
+
+volumes:
+  customer_data:
+    name: customer_data
+  account_data:
+    name: account_data
+  catalog_data:
+    name: catalog_data
+  invoice_data:
+    name: invoice_data
+  identity_data:
+    name: identity_data
+  search_data:
+    name: search_data
+  sales_data:
+    name: sales_data
 
 networks:
   common:
     driver: bridge
+

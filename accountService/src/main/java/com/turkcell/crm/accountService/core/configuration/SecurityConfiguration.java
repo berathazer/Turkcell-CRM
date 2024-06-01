@@ -20,7 +20,7 @@ public class SecurityConfiguration {
 
         http.authorizeHttpRequests(
 
-                (req)->req.requestMatchers("/api/**").permitAll()
+                (req)->req.requestMatchers("/swagger-ui/**","/accountservice/api/v1/accounts/**").permitAll()
 
         );
         return http.build();

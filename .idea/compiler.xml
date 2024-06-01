@@ -7,15 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="invoiceService" />
         <module name="identityService" />
         <module name="catalogService" />
         <module name="common" />
+        <module name="basketService" />
         <module name="customerService" />
         <module name="configServer" />
         <module name="gatewayService" />
         <module name="accountService" />
         <module name="searchService" />
         <module name="discoveryServer" />
+        <module name="salesService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -26,6 +29,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="accountService" options="-parameters" />
+      <module name="basketService" options="-parameters" />
       <module name="catalogService" options="-parameters" />
       <module name="common" options="-parameters" />
       <module name="configServer" options="-parameters" />
@@ -34,6 +38,8 @@
       <module name="discoveryServer" options="-parameters" />
       <module name="gatewayService" options="-parameters" />
       <module name="identityService" options="-parameters" />
+      <module name="invoiceService" options="-parameters" />
+      <module name="salesService" options="-parameters" />
       <module name="searchService" options="-parameters" />
     </option>
   </component>

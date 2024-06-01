@@ -1,6 +1,6 @@
 spring:
   application:
-    name: basketService
+    name: invoiceService
   config:
     import: configserver:http://localhost:8050/
   cloud:
