@@ -89,8 +89,20 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-openfeign-core</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>io.github.rozeringunes</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.rozeringunes</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.2</version>
+            <scope>compile</scope>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

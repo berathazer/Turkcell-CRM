@@ -54,9 +54,9 @@ public class ProductPropertiesController {
     }
 
 
-    @GetMapping("/getById/{productId}")
+    @GetMapping("/getById")
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductPropertyResponseDto> getProductPropertyByProductId(@PathVariable int productId){
-        return this.productPropertyService.getProductPropertyByProductId(productId);
+    public List<ProductPropertyResponseDto> getProductPropertyByProductId(@RequestBody List<Integer> productIds){
+        return this.productPropertyService.getProductPropertyByProductId(productIds);
     }
 }

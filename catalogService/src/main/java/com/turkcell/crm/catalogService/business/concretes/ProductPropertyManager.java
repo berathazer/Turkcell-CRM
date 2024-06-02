@@ -15,11 +15,14 @@ import com.turkcell.crm.catalogService.dataAccess.ProductPropertyRepository;
 import com.turkcell.crm.catalogService.entity.ProductProperty;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -91,12 +94,20 @@ public class ProductPropertyManager implements ProductPropertyService {
     }
 
     @Override
-    public List<ProductPropertyResponseDto> getProductPropertyByProductId(int productId) {
+    public List<ProductPropertyResponseDto> getProductPropertyByProductId(@RequestBody List<Integer> productIds) {
 
-        List<ProductProperty> productProperties =this.productPropertyRepository.findProductPropertiesByProductId(productId);
+        List<ProductPropertyResponseDto> productPropertyResponseDto = new ArrayList<>();
 
-        return productProperties.stream().map(productProperty -> this.modelMapperService.forResponse().
-                map(productProperty, ProductPropertyResponseDto.class)).toList();
+        for(Integer productId : productIds) {
+
+            List<ProductProperty> productProperty = this.productPropertyRepository.findProductPropertiesByProductId(productId);
+
+            productPropertyResponseDto.addAll(productProperty.stream().map(productProperty1 ->
+                    this.modelMapperService.forResponse().
+                    map(productProperty, ProductPropertyResponseDto.class)).toList());
+        }
+
+        return productPropertyResponseDto;
     }
 
 }
