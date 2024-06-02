@@ -9,4 +9,5 @@ public interface ProductPropertyRepository extends JpaRepository<ProductProperty
 
     List<ProductProperty> findByDeletedDateIsNull();
     List<ProductProperty> findProductPropertiesByProductId(int productId);
+
 }

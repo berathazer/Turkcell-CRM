@@ -1,7 +1,15 @@
 package com.turkcell.crm.salesService.api.client;
 
-//@FeignClient(name = "catalogService", url = "http://localhost:10042/customerservice/api/v1/customers/individualcustomers")
-//public interface CatalogClient {
-//    @GetMapping("/getById/{productId}")
-//    List<ProductPropertyResponseDto> getProductPropertyIdByProductId(@PathVariable int productId);
-//}
+import com.turkcell.crm.salesService.business.dto.response.ProductPropertyResponseDto;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
+
+@FeignClient(name = "catalogService", url = "http://localhost:10042/catalogservice/api/v1/catalogs/productproperties")
+public interface CatalogClient {
+    @GetMapping("/getById")
+    List<ProductPropertyResponseDto> getProductPropertyIdByProductId(@RequestBody List<Integer> productIds);
+}

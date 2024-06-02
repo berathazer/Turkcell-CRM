@@ -1,8 +1,7 @@
 package com.turkcell.crm.salesService.api.controller;
 
 import com.turkcell.crm.salesService.business.abstracts.OrderService;
-import com.turkcell.crm.salesService.entities.Order;
-import com.turkcell.crm.salesService.entities.ProductConfig;
+import com.turkcell.crm.salesService.business.dto.response.GetAllProductConfigResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +18,7 @@ public class ProductConfigurationController {
     private OrderService orderService;
 
     @GetMapping("/getAll/{accountId}")
-    public List<ProductConfig> getAll(@PathVariable int accountId){
+    public List<GetAllProductConfigResponse> getAll(@PathVariable int accountId){
         return this.orderService.getAllProductConfig(accountId);
     }
 }

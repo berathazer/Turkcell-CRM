@@ -1,5 +1,6 @@
 package com.turkcell.turkcellcrm.searchService.business.concretes;
 
+
 import com.turkcell.turkcellcrm.common.events.basket.CreateBasketItemRequest;
 import com.turkcell.turkcellcrm.common.events.product.ProductCreatedEvent;
 import com.turkcell.turkcellcrm.common.events.product.ProductUpdatedEvent;

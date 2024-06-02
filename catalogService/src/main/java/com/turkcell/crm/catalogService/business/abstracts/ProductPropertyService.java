@@ -7,6 +7,7 @@ import com.turkcell.crm.catalogService.business.dtos.response.productProperties.
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetAllProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetByIdProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.UpdatedProductProductResponse;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -21,5 +22,5 @@ public interface ProductPropertyService {
 
     void delete(int id);
 
-    List<ProductPropertyResponseDto> getProductPropertyByProductId(int productId);
+    List<ProductPropertyResponseDto> getProductPropertyByProductId(@RequestBody List<Integer> productIds);
 }

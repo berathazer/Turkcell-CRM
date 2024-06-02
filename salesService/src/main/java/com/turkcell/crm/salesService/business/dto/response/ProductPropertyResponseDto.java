@@ -1,12 +1,14 @@
-package com.turkcell.crm.catalogService.business.dtos.response;
+package com.turkcell.crm.salesService.business.dto.response;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class ProductPropertyResponseDto {
     private int productId;
     private String key;
