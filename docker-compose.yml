@@ -1,13 +1,17 @@
 version: '3.8'
 services:
   config-server:
+    container_name: config-server-prod
     build: ./configServer
     ports:
       - "8050:8050"
+    depends_on:
+      - discovery-server
     networks:
       - common
 
   discovery-server:
+    container_name: discovery-server-prod
     build: ./discoveryServer
     ports:
       - "9000:9000"
@@ -15,6 +19,7 @@ services:
       - common
 
   gateway-service:
+    container_name: gateway-service-prod
     build: ./gatewayService
     ports:
       - "9002:9002"
@@ -27,111 +32,268 @@ services:
     restart: on-failure
     networks:
       - common
+
   customer-service:
+    container_name: customer-service-prod
     build: ./customerService
     ports:
       - "10050:10050"
-    networks:
-      - common
-  customerdbdev:
-    image: postgres
-    container_name: customerdbdev
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 12345
-    ports:
-      - "5450:5432"
-    volumes:
-      - customer_data:/var/lib/postgresql/data
+    depends_on:
+      - discovery-server
+      - config-server
+      - gateway-service
+      - customer-db
     networks:
       - common
 
-  accountdbdev:
+  account-service:
+    container_name: account-service-prod
+    build: ./accountService
+    ports:
+      - "10051:10051"
+    depends_on:
+      - discovery-server
+      - config-server
+      - gateway-service
+      - account-db
+    networks:
+      - common
+
+  basket-service:
+    container_name: basket-service-prod
+    build: ./basketService
+    ports:
+      - "10052:10052"
+    depends_on:
+      - discovery-server
+      - config-server
+      - gateway-service
+      - basket-db
+    networks:
+      - common
+
+  catalog-service:
+    container_name: catalog-service-prod
+    build: ./catalogService
+    ports:
+      - "10053:10053"
+    depends_on:
+      - discovery-server
+      - config-server
+      - gateway-service
+      - catalog-db
+    networks:
+      - common
+
+  identity-service:
+    container_name: identity-service-prod
+    build: ./identityService
+    ports:
+      - "10054:10054"
+    depends_on:
+      - discovery-server
+      - config-server
+      - gateway-service
+      - identity-db
+    networks:
+      - common
+
+  invoice-service:
+    container_name: invoice-service-prod
+    build: ./invoiceService
+    ports:
+      - "10055:10055"
+    depends_on:
+      - discovery-server
+      - config-server
+      - gateway-service
+      - invoice-db
+    networks:
+      - common
+
+  sales-service:
+    container_name: sales-service-prod
+    build: ./salesService
+    ports:
+      - "10056:10056"
+    depends_on:
+      - discovery-server
+      - config-server
+      - gateway-service
+      - sales-db
+    networks:
+      - common
+
+  search-service:
+    container_name: search-service-prod
+    build: ./searchService
+    ports:
+      - "10057:10057"
+    depends_on:
+      - discovery-server
+      - config-server
+      - gateway-service
+      - search-db
+    networks:
+      - common
+
+  customer-db:
     image: postgres
-    container_name: accountdbdev
+    container_name: customer-db-prod
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 12345
     ports:
-      - "5451:5432"
+      - "5460:5432"
     volumes:
-      - account_data:/var/lib/postgresql/data
+      - customer_data_prod:/var/lib/postgresql/data
+    networks:
+      - common
 
-  catalogdbdev:
+  account-db:
     image: postgres
-    container_name: catalogdbdev
+    container_name: account-db-prod
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 12345
     ports:
-      - "5452:5432"
+      - "5461:5432"
     volumes:
-      - catalog_data:/var/lib/postgresql/data
+      - account_data_prod:/var/lib/postgresql/data
+    networks:
+      - common
 
-  invoicedbdev:
+  catalog-db:
     image: postgres
-    container_name: invoicedbdev
+    container_name: catalog-db-prod
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 12345
     ports:
-      - "5453:5432"
+      - "5462:5432"
     volumes:
-      - invoice_data:/var/lib/postgresql/data
+      - catalog_data_prod:/var/lib/postgresql/data
+    networks:
+      - common
 
-  identitydbdev:
+  invoice-db:
     image: postgres
-    container_name: identitydbdev
+    container_name: invoice-db-prod
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 12345
     ports:
-      - "5454:5432"
+      - "5463:5432"
     volumes:
-      - identity_data:/var/lib/postgresql/data
+      - invoice_data_prod:/var/lib/postgresql/data
+    networks:
+      - common
 
-  searchdbdev:
+  identity-db:
+    image: postgres
+    container_name: identity-db-prod
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5464:5432"
+    volumes:
+      - identity_data_prod:/var/lib/postgresql/data
+    networks:
+      - common
+
+  search-db:
     image: mongo:latest
-    container_name: searchdbdev
+    container_name: search-db-prod
     ports:
-      - "27020:27017"
+      - "27030:27017"
     volumes:
-      - search_data:/data/db
+      - search_data_prod:/data/db
+    networks:
+      - common
 
-  salesdbdev:
+  sales-db:
     image: mongo:latest
-    container_name: salesdbdev
+    container_name: sales-db-prod
     ports:
-      - "27021:27017"
+      - "27031:27017"
     volumes:
-      - sales_data:/data/db
+      - sales_data_prod:/data/db
+    networks:
+      - common
 
-  basketdbdev:
+  basket-db:
     image: redis:latest
-    container_name: basketdbdev
+    container_name: basket-db-prod
     ports:
-      - "6379:6379"
+      - "6380:6379"
+    volumes:
+      - basket_data_prod:/data
+    networks:
+      - common
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - common
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ADVERTISED_LISTENERS=INSIDE://kafka:9093,OUTSIDE://localhost:9092  # Different listener names
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      - KAFKA_LISTENERS=INSIDE://0.0.0.0:9093,OUTSIDE://0.0.0.0:9092
+      - KAFKA_INTER_BROKER_LISTENER_NAME=INSIDE
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_CREATE_TOPICS="example-topic:1:1"
+    depends_on:
+      - zookeeper
+    networks:
+      - common
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop:latest
+    container_name: kafdrop
+    ports:
+      - "9030:9000"
+    environment:
+      - KAFKA_BROKER_CONNECT=kafka:9093  # Using the inside listener
+    depends_on:
+      - kafka
+    networks:
+      - common
 
 volumes:
-  customer_data:
-    name: customer_data
-  account_data:
-    name: account_data
-  catalog_data:
-    name: catalog_data
-  invoice_data:
-    name: invoice_data
-  identity_data:
-    name: identity_data
-  search_data:
-    name: search_data
-  sales_data:
-    name: sales_data
+  customer_data_prod:
+    name: customer_data_prod
+  account_data_prod:
+    name: account_data_prod
+  catalog_data_prod:
+    name: catalog_data_prod
+  invoice_data_prod:
+    name: invoice_data_prod
+  identity_data_prod:
+    name: identity_data_prod
+  search_data_prod:
+    name: search_data_prod
+  sales_data_prod:
+    name: sales_data_prod
+  basket_data_prod:
+    name: basket_data_prod
 
 networks:
   common:

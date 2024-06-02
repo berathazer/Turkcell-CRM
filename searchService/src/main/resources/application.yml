@@ -2,7 +2,10 @@ spring:
   application:
     name: searchService
   config:
-    import: configserver:http://localhost:8050/
+    import: configserver:http://${serverUrl}:8050/
   cloud:
     config:
-      profile: dev
+      profile: ${profile}
+
+serverUrl: config-server-prod  #localhost or config-server-prod
+profile: prod # dev or prod

@@ -13,6 +13,9 @@ import com.turkcell.crm.salesService.entities.ProductConfig;
 import com.turkcell.crm.salesService.kafka.producers.OrderProducer;
 
 
+import com.turkcell.turkcellcrm.common.events.basket.BasketItemDto;
+import com.turkcell.turkcellcrm.common.events.basket.CreateOrderRequest;
+import com.turkcell.turkcellcrm.common.events.order.OrderCreatedEvent;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
