@@ -1,5 +1,4 @@
-package com.turkcell.crm.salesService.entities;
-
+package com.turkcell.crm.salesService.business.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,9 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class OrderItemEntity {
-
+public class GetAllOrderItemResponse {
     private int productId;
     private String productName;
-    //private List<ProductConfig> productConfigs;
 }

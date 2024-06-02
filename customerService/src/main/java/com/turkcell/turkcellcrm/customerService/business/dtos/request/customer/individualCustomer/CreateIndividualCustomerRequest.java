@@ -1,6 +1,5 @@
 package com.turkcell.turkcellcrm.customerService.business.dtos.request.customer.individualCustomer;
 
-import com.turkcell.turkcellcrm.customerService.entity.Gender;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;

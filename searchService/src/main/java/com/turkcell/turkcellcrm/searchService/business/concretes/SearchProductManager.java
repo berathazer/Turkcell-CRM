@@ -7,7 +7,6 @@ import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchProductSe
 import com.turkcell.turkcellcrm.searchService.business.abstracts.SearchService;
 import com.turkcell.turkcellcrm.searchService.business.dto.dynamics.DynamicQuery;
 import com.turkcell.turkcellcrm.searchService.business.dto.request.SelectProductRequest;
-import com.turkcell.turkcellcrm.searchService.business.dto.request.CreateBasketItemRequest;
 import com.turkcell.turkcellcrm.searchService.business.dto.response.GetAllProductResponse;
 import com.turkcell.turkcellcrm.searchService.business.rules.ProductFilterBusinessRules;
 import com.turkcell.turkcellcrm.searchService.core.utilities.mapping.ModelMapperService;

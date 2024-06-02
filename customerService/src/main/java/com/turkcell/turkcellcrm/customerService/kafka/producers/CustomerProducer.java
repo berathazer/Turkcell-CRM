@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerProducer {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerProducer.class);
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
@@ -22,6 +23,7 @@ public class CustomerProducer {
     }
 
     public void sendCreatedMessage(CustomerCreatedEvent customerCreatedEvent) {
+
         LOGGER.info(String.format("Customer added =>%s", customerCreatedEvent.toString()));
 
         Message<CustomerCreatedEvent> message = MessageBuilder.withPayload(customerCreatedEvent)
@@ -32,6 +34,7 @@ public class CustomerProducer {
     }
 
     public void sendUpdatedMessage(CustomerUpdatedEvent customerUpdatedEvent) {
+
         LOGGER.info(String.format("Customer updated =>%s", customerUpdatedEvent.toString()));
 
         Message<CustomerUpdatedEvent> message = MessageBuilder.withPayload(customerUpdatedEvent)
@@ -42,6 +45,7 @@ public class CustomerProducer {
     }
 
     public void sendDeletedMessage(int id) {
+
         CustomerDeletedEvent customerDeletedEvent = new CustomerDeletedEvent(id);
         LOGGER.info(String.format("Customer deleted =>%s", customerDeletedEvent.toString()));
 

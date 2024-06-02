@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ProblemDetails {
-    //rfce standarts
     private String title;
     private String detail;
     private String Status;

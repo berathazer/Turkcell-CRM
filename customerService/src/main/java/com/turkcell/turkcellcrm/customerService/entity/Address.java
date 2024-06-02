@@ -11,6 +11,7 @@ import lombok.*;
 @Entity
 @Table(name = "addresses")
 public class Address extends BaseEntity {
+
     private String street;
     private String flatNumber;
     private String addressDescription;

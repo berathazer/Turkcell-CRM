@@ -11,6 +11,7 @@ import java.util.Locale;
 
 @Configuration
 public class ApplicationConfig {
+
     @Bean
     public ResourceBundleMessageSource bundleMessageSource() {
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();

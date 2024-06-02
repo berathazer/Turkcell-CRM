@@ -15,6 +15,7 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
     @ExceptionHandler({BusinessException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public BusinessProblemDetails handleBusinessException(BusinessException exception) {
