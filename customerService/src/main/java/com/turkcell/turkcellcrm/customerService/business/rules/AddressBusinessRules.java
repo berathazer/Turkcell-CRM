@@ -14,11 +14,14 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 public class AddressBusinessRules {
+
     private AddressRepository addressRepository;
     private MessageService messageService;
 
     public Address isCustomerExist(CreateAddressRequest createAddressRequest){
+
         Optional<Address> address =this.addressRepository.findByCustomerId(createAddressRequest.getCustomerId());
+
         if (address.isPresent()){
             throw new BusinessException(messageService.getMessage(AddressMessages.ADDRESS_CUSTOMER_DOES_NOT_EXIST));
         }
@@ -38,12 +41,10 @@ public class AddressBusinessRules {
     public Address isAddressAlreadyDeleted(int id){
 
         Address address = this.isAddressExistByID(id);
+
         if (address.getDeletedDate() != null){
             throw new BusinessException(messageService.getMessage(AddressMessages.ADDRESS_DOES_NOT_EXIST));
         }
         return address;
     }
-
-
-
 }

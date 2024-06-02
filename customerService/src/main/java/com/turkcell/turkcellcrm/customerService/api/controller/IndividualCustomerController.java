@@ -7,7 +7,6 @@ import com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.
 import com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.individualCustomer.GetAllIndividualCustomerResponse;
 import com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.individualCustomer.GetByIdIndividualCustomerResponse;
 import com.turkcell.turkcellcrm.customerService.business.dtos.response.customer.individualCustomer.UpdatedIndividualCustomerResponse;
-import com.turkcell.turkcellcrm.customerService.entity.Gender;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -27,13 +26,14 @@ public class IndividualCustomerController {
     public CreatedIndividualCustomerResponse add(@Valid @RequestBody CreateIndividualCustomerRequest createIndividualCustomerRequest){
         return this.individualCustomerService.add(createIndividualCustomerRequest);
     }
+
     @GetMapping("/getAll")
     @ResponseStatus(HttpStatus.OK)
     public List<GetAllIndividualCustomerResponse> getAll(){
         return this.individualCustomerService.getAll();
     }
 
-    @GetMapping("/getById/{id}")  //todo Burayi Request yapabilir miyiz ?
+    @GetMapping("/getById/{id}")
     @ResponseStatus(HttpStatus.OK)
     public GetByIdIndividualCustomerResponse getById(@PathVariable int id){
         return this.individualCustomerService.getById(id);
@@ -50,7 +50,6 @@ public class IndividualCustomerController {
     public String delete(@PathVariable int id){
 
         this.individualCustomerService.delete(id);
-        // TODO: Geriye Düzgün Formatta Bir Hata Döndür.
         return "Silme Başarılı";
     }
 

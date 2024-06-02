@@ -3,8 +3,6 @@ package com.turkcell.crm.salesService.core.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -19,7 +17,7 @@ import java.time.LocalDateTime;
 @Document
 public class BaseEntity {
 
-   @Id
+    @Id
     private ObjectId id;
 
     @CreatedDate
@@ -36,7 +34,5 @@ public class BaseEntity {
     public BaseEntity(){
         this.createdDate = LocalDateTime.now();
         this.updatedDate = LocalDateTime.now();
-
     }
-
 }

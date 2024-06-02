@@ -17,6 +17,7 @@ import com.turkcell.turkcellcrm.customerService.entity.IndividualCustomer;
 import com.turkcell.turkcellcrm.customerService.kafka.producers.CustomerProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -33,6 +34,7 @@ public class IndividualCustomerManager implements IndividualCustomerService {
     private CustomerProducer customerProducer;
 
     @Override
+    @Transactional
     public CreatedIndividualCustomerResponse add(CreateIndividualCustomerRequest createIndividualCustomerRequest) {
 
         this.individualCustomerBusinessRules.nationalityNumberCanNotBeDuplicate(createIndividualCustomerRequest);
@@ -49,13 +51,12 @@ public class IndividualCustomerManager implements IndividualCustomerService {
                 forRequest().map(createdCustomer,CustomerCreatedEvent.class);
         customerCreatedEvent.setCustomerId(createdCustomer.getId());
 
-        customerProducer.sendCreatedMessage(customerCreatedEvent);
+        this.customerProducer.sendCreatedMessage(customerCreatedEvent);
 
         return this.modelMapperService.forResponse().
                 map(createdCustomer, CreatedIndividualCustomerResponse.class);
     }
 
-    // TODO: Gender kısmını integer olarak döndür
     @Override
     public List<GetAllIndividualCustomerResponse> getAll() {
 
@@ -80,6 +81,7 @@ public class IndividualCustomerManager implements IndividualCustomerService {
     }
 
     @Override
+    @Transactional
     public UpdatedIndividualCustomerResponse update(UpdateIndividualCustomerRequest updateIndividualCustomerRequest) {
 
         this.individualCustomerBusinessRules.isCustomerAlreadyDeleted(updateIndividualCustomerRequest.getId());
@@ -88,7 +90,6 @@ public class IndividualCustomerManager implements IndividualCustomerService {
         IndividualCustomer individualCustomer = this.modelMapperService.forRequest().
                 map(updateIndividualCustomerRequest,IndividualCustomer.class);
 
-        //Kafka update message producer
         CustomerUpdatedEvent customerUpdatedEvent = this.modelMapperService.forResponse().
                 map(individualCustomer, CustomerUpdatedEvent.class);
         this.customerProducer.sendUpdatedMessage(customerUpdatedEvent);
@@ -98,12 +99,12 @@ public class IndividualCustomerManager implements IndividualCustomerService {
     }
 
     @Override
+    @Transactional
     public void delete(int id) {
 
         IndividualCustomer individualCustomer =this.individualCustomerBusinessRules.isCustomerAlreadyDeleted(id);
         individualCustomer.setDeletedDate(LocalDateTime.now());
 
-        //Kafka delete message producer
         this.customerProducer.sendDeletedMessage(id);
 
         this.individualCustomerRepository.save(individualCustomer);

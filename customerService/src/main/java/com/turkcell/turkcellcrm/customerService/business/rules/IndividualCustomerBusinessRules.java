@@ -15,6 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 public class IndividualCustomerBusinessRules {
+
     private IndividualCustomerRepository individualCustomerRepository;
     private MessageService messageService;
 

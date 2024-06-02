@@ -11,17 +11,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateAddressRequest {
+
     @NotNull
     @Size(min = 2 ,max = 30)
     private String street;
+
     @NotNull
     @Size(min = 2 ,max = 30)
     private String flatNumber;
+
     @NotNull
     @Size(min = 2 ,max = 100)
     private String addressDescription;
+
     @NotNull
     private int cityId;
+
     @NotNull
     private int customerId;
 }

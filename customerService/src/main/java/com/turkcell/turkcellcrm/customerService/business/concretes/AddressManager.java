@@ -10,9 +10,7 @@ import com.turkcell.turkcellcrm.customerService.business.dtos.response.address.U
 import com.turkcell.turkcellcrm.customerService.business.rules.AddressBusinessRules;
 import com.turkcell.turkcellcrm.customerService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.turkcellcrm.customerService.dataAccess.AddressRepository;
-import com.turkcell.turkcellcrm.customerService.dataAccess.CustomerRepository;
 import com.turkcell.turkcellcrm.customerService.entity.Address;
-import com.turkcell.turkcellcrm.customerService.entity.Customer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -69,7 +67,6 @@ public class AddressManager implements AddressService {
     }
 
     @Override
-    //TODO: configure request mapping and soft delete
     public void delete(int id) {
 
         Address address =this.addressBusinessRules.isAddressAlreadyDeleted(id);
