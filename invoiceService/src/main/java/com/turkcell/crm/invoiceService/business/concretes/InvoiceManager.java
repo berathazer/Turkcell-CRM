@@ -20,15 +20,20 @@ public class InvoiceManager implements InvoiceService {
 
     @Override
     public void add(OrderCreatedEvent orderCreatedEvent) {
+
        Invoice invoice = this.modelMapperService.forRequest().map(orderCreatedEvent, Invoice.class);
        this.invoiceRepository.save(invoice);
     }
 
     @Override
     public List<GetAllInvoiceResponse> getAll() {
+
         List<Invoice> invoices = this.invoiceRepository.findAll();
 
-        return invoices.stream().map(invoice -> this.modelMapperService.forResponse().
+        List<GetAllInvoiceResponse> getAllInvoiceResponses=invoices.stream().map(invoice -> this.modelMapperService.forResponse().
                 map(invoice, GetAllInvoiceResponse.class)).toList();
+
+        return getAllInvoiceResponses;
+
     }
 }

@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 public class GetAllInvoiceResponse {
+    private int id;
     private int accountId;
     private int customerId;
     private double price;
