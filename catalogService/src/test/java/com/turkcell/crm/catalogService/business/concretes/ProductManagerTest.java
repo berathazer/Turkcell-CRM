@@ -6,6 +6,8 @@ import com.turkcell.crm.catalogService.business.dtos.response.product.CreatedPro
 import com.turkcell.crm.catalogService.business.dtos.response.product.GetAllProductResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.product.GetByIdProductResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.product.UpdatedProductResponse;
+import com.turkcell.crm.catalogService.business.messages.CatalogMessages;
+import com.turkcell.crm.catalogService.business.messages.ProductMessages;
 import com.turkcell.crm.catalogService.business.rules.ProductBusinessRules;
 import com.turkcell.crm.catalogService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.crm.catalogService.core.utilities.mapping.ModelMapperService;
@@ -150,13 +152,13 @@ class ProductManagerTest {
         UpdateProductRequest request = new UpdateProductRequest();
         request.setId(1);
 
-        when(productBusinessRules.isProductAlreadyDeleted(request.getId())).thenThrow(new BusinessException("PRODUCT ALREADY DELETED"));
+        when(productBusinessRules.isProductAlreadyDeleted(request.getId())).thenThrow(new BusinessException(ProductMessages.PRODUCT_ALREADY_DELETED));
         BusinessException exception = assertThrows(BusinessException.class, () -> {
             productManager.update(request);
 
         });
 
-        assertEquals("PRODUCT ALREADY DELETED", exception.getMessage());
+        assertEquals(ProductMessages.PRODUCT_ALREADY_DELETED, exception.getMessage());
 
         verify(productBusinessRules).isProductAlreadyDeleted(request.getId());
         verify(productRepository, never()).save(any(Product.class));
@@ -201,7 +203,7 @@ class ProductManagerTest {
 
         int productId = 1;
 
-        doThrow(new BusinessException("PRODUCT ALREADY DELETED")).when(productBusinessRules).isProductAlreadyDeleted(productId);
+        doThrow(new BusinessException(ProductMessages.PRODUCT_ALREADY_DELETED)).when(productBusinessRules).isProductAlreadyDeleted(productId);
 
 
         assertThrows(BusinessException.class, () -> productManager.getById(productId));
@@ -300,8 +302,7 @@ class ProductManagerTest {
 
         int productId = 1;
 
-        // `isProductAlreadyDeleted` metodu çağrıldığında bir ProductAlreadyDeletedException fırlatması sağlanır.
-        when(productBusinessRules.isProductAlreadyDeleted(productId)).thenThrow(new BusinessException("CATALOG ALREADY DELETED"));
+        when(productBusinessRules.isProductAlreadyDeleted(productId)).thenThrow(new BusinessException(ProductMessages.PRODUCT_ALREADY_DELETED));
 
         assertThrows(BusinessException.class, () -> productManager.delete(productId));
 

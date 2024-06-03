@@ -1,8 +1,8 @@
 package com.turkcell.crm.basketService.api.controller;
 
 import com.turkcell.crm.basketService.business.abstracts.BasketService;
+import com.turkcell.crm.basketService.business.dtos.CreateBasketItemRequest;
 import com.turkcell.crm.basketService.entity.Basket;
-import com.turkcell.turkcellcrm.common.events.basket.CreateBasketItemRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

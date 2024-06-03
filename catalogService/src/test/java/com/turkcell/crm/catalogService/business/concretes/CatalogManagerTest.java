@@ -6,6 +6,7 @@ import com.turkcell.crm.catalogService.business.dtos.response.catalog.CreatedCat
 import com.turkcell.crm.catalogService.business.dtos.response.catalog.GetAllCatalogResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.catalog.GetByIdCatalogResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.catalog.UpdatedCatalogResponse;
+import com.turkcell.crm.catalogService.business.messages.CatalogMessages;
 import com.turkcell.crm.catalogService.business.rules.CatalogBusinessRules;
 import com.turkcell.crm.catalogService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.crm.catalogService.core.utilities.mapping.ModelMapperService;
@@ -74,9 +75,7 @@ class CatalogManagerTest {
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
         when(modelMapperService.forResponse().map(catalog, CreatedCatalogResponse.class)).thenReturn(expectedResponse);
 
-
         CreatedCatalogResponse actualResponse = catalogManager.add(createCatalogRequest);
-
 
         assertEquals(expectedResponse, actualResponse);
         verify(catalogProducer, times(1)).sendCreatedMessage(catalogCreatedEvent);
@@ -99,15 +98,11 @@ class CatalogManagerTest {
         GetAllCatalogResponse response2 = new GetAllCatalogResponse();
         response2.setId(2);
 
-        //when(catalogRepository.findAll()).thenReturn(catalogs);
-
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
         when(modelMapperService.forResponse().map(catalog1, GetAllCatalogResponse.class)).thenReturn(response1);
         when(modelMapperService.forResponse().map(catalog2, GetAllCatalogResponse.class)).thenReturn(response2);
 
-
         List<GetAllCatalogResponse> actualResponses = catalogManager.getAll();
-
 
         assertEquals(2, actualResponses.size());
         assertEquals(1, actualResponses.get(0).getId());
@@ -140,12 +135,12 @@ class CatalogManagerTest {
         when(catalogBusinessRules.isCatalogExistById(catalog.getId())).thenReturn(catalog);
 
         when(modelMapperService.forRequest()).thenReturn(modelMapper);
-        when(modelMapper.map(updateCatalogRequest, Catalog.class)).thenReturn(catalog); // Change here
+        when(modelMapper.map(updateCatalogRequest, Catalog.class)).thenReturn(catalog);
         when(catalogRepository.save(catalog)).thenReturn(catalog);
-        when(modelMapper.map(catalog, CatalogUpdatedEvent.class)).thenReturn(catalogUpdatedEvent); // Change here
+        when(modelMapper.map(catalog, CatalogUpdatedEvent.class)).thenReturn(catalogUpdatedEvent);
 
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
-        when(modelMapper.map(catalog, UpdatedCatalogResponse.class)).thenReturn(updatedCatalogResponse); // Change here
+        when(modelMapper.map(catalog, UpdatedCatalogResponse.class)).thenReturn(updatedCatalogResponse);
 
 
         UpdatedCatalogResponse actualResponse = catalogManager.update(updateCatalogRequest);
@@ -153,7 +148,7 @@ class CatalogManagerTest {
 
         assertEquals(updatedCatalogResponse, actualResponse);
         verify(catalogProducer).sendUpdatedMessage(catalogUpdatedEvent);
-        verify(modelMapper, times(3)).map(any(), any()); // Change here
+        verify(modelMapper, times(3)).map(any(), any());
         verify(catalogBusinessRules).isCatalogExistById(catalog.getId());
     }
 
@@ -202,7 +197,7 @@ class CatalogManagerTest {
 
         int catalogId = 1;
 
-        doThrow(new BusinessException("CATALOG ALREADY DELETED")).when(catalogBusinessRules).isCatalogAlreadyDeleted(catalogId);
+        doThrow(new BusinessException(CatalogMessages.CATALOG_ALREADY_DELETED)).when(catalogBusinessRules).isCatalogAlreadyDeleted(catalogId);
 
 
         assertThrows(BusinessException.class, () -> catalogManager.getById(catalogId));
@@ -242,8 +237,7 @@ class CatalogManagerTest {
 
         int catalogId = 1;
 
-        // `isCatalogAlreadyDeleted` metodu çağrıldığında bir CatalogAlreadyDeletedException fırlatması sağlanır.
-        when(catalogBusinessRules.isCatalogAlreadyDeleted(catalogId)).thenThrow(new BusinessException("CATALOG ALREADY DELETED"));
+        when(catalogBusinessRules.isCatalogAlreadyDeleted(catalogId)).thenThrow(new BusinessException(CatalogMessages.CATALOG_ALREADY_DELETED));
 
         assertThrows(BusinessException.class, () -> catalogManager.delete(catalogId));
 
