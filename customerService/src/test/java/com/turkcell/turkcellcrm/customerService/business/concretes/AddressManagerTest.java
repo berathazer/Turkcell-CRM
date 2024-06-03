@@ -7,9 +7,9 @@ import com.turkcell.turkcellcrm.customerService.business.dtos.response.address.G
 import com.turkcell.turkcellcrm.customerService.business.dtos.response.address.GetByIdAddressResponse;
 import com.turkcell.turkcellcrm.customerService.business.dtos.response.address.UpdatedAddressResponse;
 import com.turkcell.turkcellcrm.customerService.business.messages.AddressMessages;
+import com.turkcell.turkcellcrm.customerService.business.messages.IndividualCustomerMessages;
 import com.turkcell.turkcellcrm.customerService.business.rules.AddressBusinessRules;
 import com.turkcell.turkcellcrm.customerService.core.utilities.exceptions.types.BusinessException;
-import com.turkcell.turkcellcrm.customerService.core.utilities.mapping.ModelMapperManager;
 import com.turkcell.turkcellcrm.customerService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.turkcellcrm.customerService.dataAccess.AddressRepository;
 import com.turkcell.turkcellcrm.customerService.entity.Address;
@@ -26,39 +26,34 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.never;
 
 @ExtendWith(MockitoExtension.class)
 class AddressManagerTest {
-
     @Mock
     private AddressRepository addressRepository;
-
     @Mock
     private ModelMapperService modelMapperService;
-
     @Mock
     private AddressBusinessRules addressBusinessRules;
-
     @Mock
     private ModelMapper modelMapper;
-
     @InjectMocks
     private AddressManager addressManager;
 
-
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
 
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
     void testAdd() {
+
         CreateAddressRequest request = new CreateAddressRequest();
         Address address = new Address();
         CreatedAddressResponse response = new CreatedAddressResponse();
@@ -80,9 +75,25 @@ class AddressManagerTest {
         verify(modelMapper).map(address,CreatedAddressResponse.class);
         assertEquals(response, result);
     }
+    @Test
+    void testAdd_whenCustomerDoesNotExist_thenThrowException() {
+
+        CreateAddressRequest createAddressRequest = new CreateAddressRequest();
+
+        doThrow(new BusinessException(AddressMessages.ADDRESS_DOES_NOT_EXIST)).when(addressBusinessRules).isCustomerExist(createAddressRequest);
+
+
+        Exception exception = assertThrows(BusinessException.class, () -> {
+            addressManager.add(createAddressRequest);
+        });
+        assertEquals(AddressMessages.ADDRESS_DOES_NOT_EXIST, exception.getMessage());
+        verify(addressBusinessRules).isCustomerExist(createAddressRequest);
+        verify(addressRepository, never()).save(any(Address.class));
+    }
 
     @Test
     void testGetAll() {
+
         Address address = new Address();
         GetAllAddressResponse response = new GetAllAddressResponse();
 
@@ -121,9 +132,23 @@ class AddressManagerTest {
 
         assertEquals(response, result);
     }
+    @Test
+    void testGetById_whenAddressAlreadyDeleted_thenThrowException() {
+
+        int id = 1;
+        doThrow(new BusinessException(IndividualCustomerMessages.CUSTOMER_ALREADY_DELETED)).when(addressBusinessRules).isAddressAlreadyDeleted(id);
+
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            addressManager.getById(id);
+        });
+        assertEquals(IndividualCustomerMessages.CUSTOMER_ALREADY_DELETED, exception.getMessage());
+        verify(addressBusinessRules).isAddressAlreadyDeleted(id);
+        verify(addressRepository, never()).findById(id);
+    }
 
     @Test
     void testUpdate() {
+
         UpdateAddressRequest request = new UpdateAddressRequest();
         request.setId(1);
         Address address = new Address();
@@ -145,9 +170,23 @@ class AddressManagerTest {
 
         assertEquals(response, result);
     }
+    @Test
+    void testUpdate_whenAddressAlreadyDeleted_thenThrowException() {
 
+        UpdateAddressRequest updateAddressRequest = new UpdateAddressRequest();
+        updateAddressRequest.setId(1);
+        doThrow(new BusinessException(AddressMessages.ADDRESS_DOES_NOT_EXIST)).when(addressBusinessRules).isAddressAlreadyDeleted(updateAddressRequest.getId());
+
+        BusinessException exception = assertThrows(BusinessException.class, () -> {
+            addressManager.update(updateAddressRequest);
+        });
+        assertEquals(AddressMessages.ADDRESS_DOES_NOT_EXIST, exception.getMessage());
+        verify(addressBusinessRules).isAddressAlreadyDeleted(updateAddressRequest.getId());
+        verify(addressRepository, never()).save(any(Address.class));
+    }
     @Test
     void testDelete() {
+
         int id = 1;
         Address address = new Address();
 
@@ -171,6 +210,5 @@ class AddressManagerTest {
         verify(addressBusinessRules).isAddressAlreadyDeleted(addressId);
         verify(addressRepository, never()).save(any());
         verify(modelMapperService, never()).forRequest();
-
     }
 }
