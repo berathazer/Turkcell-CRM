@@ -110,4 +110,5 @@ public class ProductPropertyManager implements ProductPropertyService {
         return productPropertyResponseDto;
     }
 
+
 }
