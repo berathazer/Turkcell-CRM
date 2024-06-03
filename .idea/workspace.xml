@@ -5,36 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac7ddf0b-91b0-49e4-9255-23e2356e65f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/customerService/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_13_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_05_2024_13_51__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_04_2024_13_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_04_2024_13_17__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_04_2024_23_50__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_04_2024_23_50__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_04_2024_14_22__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_04_2024_14_22__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_05_2024_14_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_05_2024_14_32__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_05_2024_21_51__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountTypesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountTypesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/api/controller/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/core/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/java/com/turkcell/crm/accountService/core/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accountService/src/test/java/com/turkcell/crm/accountService/api/controller/AccountsControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/test/java/com/turkcell/crm/accountService/api/controller/AccountsControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basketService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/basketService/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basketService/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/basketService/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/BasketItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/BasketItemDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/CreateBasketItemRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/CreateBasketItemRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/CreateOrderRequestByAccountId.class" beforeDir="false" afterPath="$PROJECT_DIR$/basketService/target/classes/com/turkcell/crm/basketService/business/dtos/CreateOrderRequestByAccountId.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customerService/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customerService/src/test/java/com/turkcell/rentacar/inventoryService/InventoryServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/accountService/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/accountService/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/api/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/identityService/src/main/java/com/turkcell/identityService/core/configuration/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/BasketItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/BasketItemDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/CreateOrderRequestByAccountId.class" beforeDir="false" afterPath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/CreateOrderRequestByAccountId.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/ProductPropertyResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/business/dto/ProductPropertyResponseDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/core/entities/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/salesService/target/classes/com/turkcell/crm/salesService/core/entities/BaseEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesService/src/main/java/com/turkcell/crm/salesService/core/mapping/ModelMapperManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesService/src/main/java/com/turkcell/crm/salesService/core/mapping/ModelMapperManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesService/src/main/java/com/turkcell/crm/salesService/core/mapping/ModelMapperService.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesService/src/main/java/com/turkcell/crm/salesService/core/mapping/ModelMapperService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +27,9 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2hHg8qkzcLK7tWRmbuE6QQDYUdk" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -60,11 +39,16 @@
     "Application.AccountServiceApplication.executor": "Run",
     "Application.BasketServiceApplication.executor": "Run",
     "Application.CatalogServiceApplication.executor": "Run",
+    "Application.ConfigServerApplication.executor": "Run",
     "Application.CustomerServiceApplication.executor": "Run",
+    "Application.DiscoveryServerApplication.executor": "Run",
     "Application.IdentityServiceApplication.executor": "Run",
     "Application.InvoiceServiceApplication.executor": "Run",
     "Application.SalesServiceApplication.executor": "Run",
     "Application.SearchServiceApplication.executor": "Run",
+    "Docker.docker-compose.yml.invoice-service: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.kafka: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml.sales-service: Compose Deployment.executor": "Run",
     "JUnit.AddressManagerTest.executor": "Coverage",
     "Maven.identityService [clean,install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -72,7 +56,7 @@
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/berat/Desktop/Codes/JAVA/TurkcellCRM/customerService",
+    "last_opened_file_path": "C:/Users/berat/Desktop/Codes/JAVA/TurkcellCRM/searchService",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
@@ -81,42 +65,20 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\berat\Desktop\Codes\JAVA\TurkcellCRM\customerService" />
+      <recent name="C:\Users\berat\Desktop\Codes\JAVA\TurkcellCRM\searchService" />
+      <recent name="C:\Users\berat\Desktop\Codes\JAVA\TurkcellCRM\salesService" />
+      <recent name="C:\Users\berat\Desktop\Codes\JAVA\TurkcellCRM\invoiceService" />
+      <recent name="C:\Users\berat\Desktop\Codes\JAVA\TurkcellCRM\identityService" />
+      <recent name="C:\Users\berat\Desktop\Codes\JAVA\TurkcellCRM\catalogService" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BasketServiceApplication">
-    <configuration name="BasketServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.basketService.BasketServiceApplication" />
-      <module name="basketService" />
+  <component name="RunManager" selected="Application.AccountServiceApplication">
+    <configuration name="AccountServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.accountService.AccountServiceApplication" />
+      <module name="accountService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.turkcell.crm.basketService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IdentityServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.identityService.IdentityServiceApplication" />
-      <module name="identityService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.identityService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InvoiceServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.crm.invoiceService.InvoiceServiceApplication" />
-      <module name="invoiceService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.crm.invoiceService.*" />
+          <option name="PATTERN" value="com.turkcell.crm.accountService.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -137,19 +99,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SearchServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.turkcell.turkcellcrm.searchService.SearchServiceApplication" />
-      <module name="searchService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.turkcell.turkcellcrm.searchService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="configServer" />
       <method v="2">
@@ -163,13 +112,56 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.invoice-service: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="invoice-service" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.kafka: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="kafka" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.sales-service: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="sales-service" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BasketServiceApplication" />
+        <item itemvalue="Application.AccountServiceApplication" />
         <item itemvalue="Application.SalesServiceApplication" />
-        <item itemvalue="Application.SearchServiceApplication" />
-        <item itemvalue="Application.IdentityServiceApplication" />
-        <item itemvalue="Application.InvoiceServiceApplication" />
+        <item itemvalue="Docker.docker-compose.yml.sales-service: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.invoice-service: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.kafka: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>

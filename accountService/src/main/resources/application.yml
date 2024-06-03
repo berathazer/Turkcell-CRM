@@ -7,6 +7,6 @@ spring:
     config:
       profile: ${profile}
 
-serverUrl: config-server-prod  #localhost or configserverprod
+serverUrl: config-server-prod  #localhost or config-server-prod
 profile: prod # dev or prod
 
