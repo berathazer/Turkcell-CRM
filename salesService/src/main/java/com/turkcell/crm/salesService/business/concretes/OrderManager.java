@@ -1,12 +1,11 @@
 package com.turkcell.crm.salesService.business.concretes;
 
 
+import com.turkcell.crm.salesService.api.client.AccountClient;
 import com.turkcell.crm.salesService.api.client.CatalogClient;
 import com.turkcell.crm.salesService.api.client.CustomerClient;
 import com.turkcell.crm.salesService.business.abstracts.OrderService;
-import com.turkcell.crm.salesService.business.dto.response.GetAllOrderResponse;
-import com.turkcell.crm.salesService.business.dto.response.GetAllProductConfigResponse;
-import com.turkcell.crm.salesService.business.dto.response.ProductPropertyResponseDto;
+import com.turkcell.crm.salesService.business.dto.response.*;
 import com.turkcell.crm.salesService.core.mapping.ModelMapperService;
 import com.turkcell.crm.salesService.dataAccess.OrderRepository;
 import com.turkcell.crm.salesService.entities.Order;
@@ -20,6 +19,7 @@ import com.turkcell.turkcellcrm.common.events.basket.BasketItemDto;
 import com.turkcell.turkcellcrm.common.events.basket.CreateOrderRequest;
 import com.turkcell.turkcellcrm.common.events.order.OrderCreatedEvent;
 import lombok.AllArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +35,7 @@ public class OrderManager implements OrderService {
     private CatalogClient catalogClient;
     private OrderProducer orderProducer;
     private ModelMapperService modelMapperService;
+    private AccountClient accountClient;
 
 
     @Override
@@ -49,6 +50,11 @@ public class OrderManager implements OrderService {
         order.setOrderItems(setOrderItemList(createOrderRequest));
         this.orderRepository.save(order);
 
+        OrderAccountResponse orderAccountResponse = new OrderAccountResponse();
+        orderAccountResponse.setOrderId(order.getId());
+        orderAccountResponse.setAccountId(order.getAccountId());
+        this.accountClient.setAccountStatusByOrderId(orderAccountResponse);
+
         OrderCreatedEvent orderCreatedEvent = this.modelMapperService.forResponse().map(order, OrderCreatedEvent.class);
         this.orderProducer.sendCreatedMessage(orderCreatedEvent);
     }
@@ -62,6 +68,16 @@ public class OrderManager implements OrderService {
                 map(order -> this.modelMapperService.forResponse().map(order, GetAllOrderResponse.class)).toList();
     }
 
+    @Override
+    public GetByIdOrderResponse getById(String orderId){
+
+        Order order = this.orderRepository.findById(orderId).orElse(null);
+
+        GetByIdOrderResponse getByIdOrderResponse = this.modelMapperService.forResponse().
+                map(order, GetByIdOrderResponse.class);
+
+        return getByIdOrderResponse;
+    }
 
     @Override
     public List<GetAllProductConfigResponse> getAllProductConfig(int accountId) {

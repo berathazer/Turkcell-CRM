@@ -78,6 +78,6 @@ public class SearchProductManager implements SearchProductService {
         CreateBasketItemRequest createBasketItemRequests = this.modelMapperService.forRequest().
                 map(product, CreateBasketItemRequest.class);
 
-        basketClient.addItem(createBasketItemRequests);
+        this.basketClient.addItem(createBasketItemRequests);
     }
 }

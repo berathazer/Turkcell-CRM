@@ -1,4 +1,4 @@
-package com.turkcell.crm.accountService.business.dtos.request;
+package com.turkcell.crm.accountService.business.dtos.request.customer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

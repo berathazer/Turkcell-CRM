@@ -4,6 +4,7 @@ import com.turkcell.crm.accountService.business.abstracts.AccountService;
 import com.turkcell.crm.accountService.business.abstracts.AccountTypeService;
 import com.turkcell.crm.accountService.business.dtos.request.account.CreateAccountRequest;
 import com.turkcell.crm.accountService.business.dtos.request.account.UpdateAccountRequest;
+import com.turkcell.crm.accountService.business.dtos.request.order.OrderAccountResponse;
 import com.turkcell.crm.accountService.business.dtos.response.account.CreatedAccountResponse;
 import com.turkcell.crm.accountService.business.dtos.response.account.GetAllAccountResponse;
 import com.turkcell.crm.accountService.business.dtos.response.account.GetByIdAccountResponse;
@@ -35,6 +36,8 @@ public class AccountManager implements AccountService {
         this.accountBusinessRules.isCustomerExistById(createAccountRequest.getCustomerId());
 
         Account account = this.modelMapperService.forRequest().map(createAccountRequest, Account.class);
+        account.setStatus(false);
+        account.setOrderId(0);
         this.accountRepository.save(account);
 
         return this.modelMapperService.forResponse().map(account, CreatedAccountResponse.class);
@@ -44,7 +47,6 @@ public class AccountManager implements AccountService {
     public GetByIdAccountResponse getById(int id) {
 
         this.accountBusinessRules.isAccountAlreadyDeleted(id);
-       // this.accountBusinessRules.isAccountExistById(id);
 
         Optional<Account> account = this.accountRepository.findById(id);
 
@@ -83,4 +85,18 @@ public class AccountManager implements AccountService {
 
         this.accountRepository.save(account);
     }
+
+    @Override
+    public void setAccountStatus(OrderAccountResponse orderAccountResponse) {
+
+        this.accountBusinessRules.isAccountExistById(orderAccountResponse.getAccountId());
+
+        Account account = this.accountRepository.findById(orderAccountResponse.getAccountId()).orElse(null);
+
+        account.setOrderId(orderAccountResponse.getOrderId());
+        account.setStatus(true);
+
+        this.accountRepository.save(account);
+    }
+
 }

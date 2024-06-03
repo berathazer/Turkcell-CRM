@@ -6,10 +6,14 @@ import com.turkcell.crm.basketService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.crm.basketService.dataAccess.RedisRepository;
 import com.turkcell.crm.basketService.entity.Basket;
 import com.turkcell.crm.basketService.entity.BasketItem;
+import com.turkcell.turkcellcrm.common.events.basket.BasketItemDto;
+import com.turkcell.turkcellcrm.common.events.basket.CreateBasketItemRequest;
+import com.turkcell.turkcellcrm.common.events.basket.CreateOrderRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Service
