@@ -6,7 +6,9 @@ import com.turkcell.crm.accountService.business.dtos.response.accountType.Create
 import com.turkcell.crm.accountService.business.dtos.response.accountType.GetAllAccountTypeResponse;
 import com.turkcell.crm.accountService.business.dtos.response.accountType.GetByIdAccountTypeResponse;
 import com.turkcell.crm.accountService.business.dtos.response.accountType.UpdatedAccountTypeResponse;
+import com.turkcell.crm.accountService.business.messages.AccountMessages;
 import com.turkcell.crm.accountService.business.rules.AccountTypeBusinessRules;
+import com.turkcell.crm.accountService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.crm.accountService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.crm.accountService.dataAccess.AccountTypeRepository;
 import com.turkcell.crm.accountService.entities.AccountType;
@@ -14,17 +16,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
 import java.util.Optional;
 
+import static org.hibernate.internal.util.ExceptionHelper.doThrow;
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class AccountTypeManagerTest {
 
@@ -50,8 +54,8 @@ class AccountTypeManagerTest {
     }
     @Test
     void testAdd() {
+
         CreateAccountTypeRequest createAccountTypeRequest = new CreateAccountTypeRequest();
-        // populate createAccountTypeRequest with test data
 
         AccountType accountType = new AccountType();
 
@@ -70,6 +74,7 @@ class AccountTypeManagerTest {
         assertEquals(createdAccountTypeResponse, result);
     }@Test
     void testUpdate() {
+
         UpdateAccountTypeRequest updateAccountTypeRequest = new UpdateAccountTypeRequest();
 
         AccountType accountType = new AccountType();
@@ -93,6 +98,7 @@ class AccountTypeManagerTest {
 
     @Test
     void testGetAll() {
+
         List<AccountType> accountTypes = List.of(new AccountType());
 
         List<GetAllAccountTypeResponse> getAllAccountTypeResponses = List.of(new GetAllAccountTypeResponse());
@@ -113,27 +119,34 @@ class AccountTypeManagerTest {
         assertEquals(getAllAccountTypeResponses, result);
     }
 
+
     @Test
     void testGetById() {
-        int accountTypeId = 1;
-        AccountType accountType = new AccountType();
 
-        GetByIdAccountTypeResponse getByIdAccountTypeResponse = new GetByIdAccountTypeResponse();
+        int id = 123;
+        AccountType mockAccountType = new AccountType();
 
-        when(accountTypeRepository.findById(accountTypeId)).thenReturn(Optional.of(accountType));
+        GetByIdAccountTypeResponse expectedResponse = new GetByIdAccountTypeResponse();
 
+        when(accountTypeBusinessRules.isAccountTypeAlreadyDeleted(id)).thenReturn(null);
+        when(accountTypeBusinessRules.isAccountTypeExistById(id)).thenReturn(mockAccountType);
+        when(accountTypeRepository.findById(id)).thenReturn(Optional.of(mockAccountType));
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
-        when(modelMapper.map(accountType, GetByIdAccountTypeResponse.class)).thenReturn(getByIdAccountTypeResponse);
+        when(modelMapperService.forResponse().map(mockAccountType, GetByIdAccountTypeResponse.class)).thenReturn(expectedResponse);
 
-        GetByIdAccountTypeResponse result = accountTypeManager.getById(accountTypeId);
+        GetByIdAccountTypeResponse response = accountTypeManager.getById(id);
 
-        verify(accountTypeBusinessRules).isAccountTypeAlreadyDeleted(accountTypeId);
-        verify(accountTypeBusinessRules).isAccountTypeExistById(accountTypeId);
-        assertEquals(getByIdAccountTypeResponse, result);
-
+        assertNotNull(response);
+        assertSame(expectedResponse, response);
+        verify(accountTypeRepository).findById(id);
+        verify(accountTypeBusinessRules).isAccountTypeAlreadyDeleted(id);
+        verify(accountTypeBusinessRules).isAccountTypeExistById(id);
+        verify(modelMapperService.forResponse()).map(mockAccountType, GetByIdAccountTypeResponse.class);
     }
+
     @Test
     void testDelete() {
+
         int accountTypeId = 1;
         AccountType accountType = new AccountType();
 
@@ -144,5 +157,36 @@ class AccountTypeManagerTest {
         verify(accountTypeBusinessRules).isAccountTypeAlreadyDeleted(accountTypeId);
         verify(accountTypeRepository).save(accountType);
         assertNotNull(accountType.getDeletedDate());
+    }
+    @Test
+    void testDelete_WhenAccountTypeAlreadyDeleted_thenThrowException() {
+
+        int accountTypeId = 1;
+
+        Mockito.doThrow(new BusinessException(AccountMessages.ACCOUNT_TYPE_NOT_FOUND)).when(accountTypeBusinessRules).isAccountTypeAlreadyDeleted(accountTypeId);
+
+        BusinessException businessException = assertThrows(BusinessException.class, () -> {
+            accountTypeManager.delete(accountTypeId);
+        });
+
+        assertEquals(AccountMessages.ACCOUNT_TYPE_NOT_FOUND, businessException.getMessage());
+        verify(accountTypeBusinessRules).isAccountTypeAlreadyDeleted(accountTypeId);
+        verify(accountTypeRepository, never()).save(any());
+    }
+
+    @Test
+    void testGetById_AccountTypeNotFound_thenThrowException() {
+        int accountTypeId=1;
+
+        when(accountTypeRepository.findById(anyInt())).thenReturn(Optional.empty());
+
+        Mockito.doThrow(new BusinessException(AccountMessages.ACCOUNT_TYPE_NOT_FOUND)).when(accountTypeBusinessRules).isAccountTypeAlreadyDeleted(accountTypeId);
+
+        BusinessException businessException = assertThrows(BusinessException.class, () -> {
+            accountTypeManager.getById(accountTypeId);
+        });
+
+        verify(accountTypeRepository, never()).save(any());
+        assertEquals(AccountMessages.ACCOUNT_TYPE_NOT_FOUND, businessException.getMessage());
     }
 }

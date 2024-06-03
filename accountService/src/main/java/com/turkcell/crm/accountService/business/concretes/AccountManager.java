@@ -44,7 +44,7 @@ public class AccountManager implements AccountService {
     public GetByIdAccountResponse getById(int id) {
 
         this.accountBusinessRules.isAccountAlreadyDeleted(id);
-        this.accountBusinessRules.isAccountExistById(id);
+       // this.accountBusinessRules.isAccountExistById(id);
 
         Optional<Account> account = this.accountRepository.findById(id);
 
@@ -73,6 +73,7 @@ public class AccountManager implements AccountService {
         return this.modelMapperService.forResponse().
                 map(this.accountRepository.save(account), UpdatedAccountResponse.class);
     }
+
 
     @Override
     public void delete(int id) {
