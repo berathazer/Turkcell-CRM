@@ -3,6 +3,7 @@ package com.turkcell.crm.accountService.api.controller;
 import com.turkcell.crm.accountService.business.abstracts.AccountService;
 import com.turkcell.crm.accountService.business.dtos.request.account.CreateAccountRequest;
 import com.turkcell.crm.accountService.business.dtos.request.account.UpdateAccountRequest;
+import com.turkcell.crm.accountService.business.dtos.request.order.OrderAccountResponse;
 import com.turkcell.crm.accountService.business.dtos.response.account.CreatedAccountResponse;
 import com.turkcell.crm.accountService.business.dtos.response.account.GetAllAccountResponse;
 import com.turkcell.crm.accountService.business.dtos.response.account.GetByIdAccountResponse;
@@ -20,6 +21,7 @@ import java.util.List;
 @RequestMapping("/accountservice/api/v1/accounts")
 @AllArgsConstructor
 public class AccountController {
+
     private AccountService accountService;
     private MessageService messageService;
 
@@ -29,6 +31,7 @@ public class AccountController {
 
         return this.accountService.add(createAccountRequest);
     }
+
     @GetMapping("/getAll")
     @ResponseStatus(HttpStatus.OK)
     public List<GetAllAccountResponse> getAll(){
@@ -51,11 +54,12 @@ public class AccountController {
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public String delete(@PathVariable int id){
-
         this.accountService.delete(id);
-
-        // TODO: Düzgün formata getir (resources)
         return messageService.getMessage(AccountMessages.ACCOUNT_DELETION_SUCCESSFUL);
     }
 
+    @PostMapping("/setStatus")
+    void setAccountStatusByOrderId(@RequestBody OrderAccountResponse orderAccountResponse){
+        this.accountService.setAccountStatus(orderAccountResponse);
+    }
 }

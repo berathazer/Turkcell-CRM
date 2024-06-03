@@ -12,9 +12,12 @@ import lombok.*;
 @Entity
 @Table(name = "accounts")
 public class Account extends BaseEntity {
+
     private String accountNumber;
     private String accountName;
     private int customerId;
+    private boolean status;
+    private int orderId;
 
     @ManyToOne
     @JoinColumn(name = "account_type_id")
