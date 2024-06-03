@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class AccountTypeManager implements AccountTypeService {
@@ -23,6 +24,7 @@ public class AccountTypeManager implements AccountTypeService {
     private AccountTypeRepository accountTypeRepository;
     private ModelMapperService modelMapperService;
     private AccountTypeBusinessRules accountTypeBusinessRules;
+
     @Override
     public CreatedAccountTypeResponse add(CreateAccountTypeRequest createAccountTypeRequest) {
 
@@ -47,9 +49,12 @@ public class AccountTypeManager implements AccountTypeService {
 
         this.accountTypeBusinessRules.isAccountTypeAlreadyDeleted(id);
         this.accountTypeBusinessRules.isAccountTypeExistById(id);
+        AccountType accountType =this.accountTypeRepository.findById(id).orElse(null);
 
-        return this.modelMapperService.forResponse()
-                .map(this.accountTypeRepository.findById(id), GetByIdAccountTypeResponse.class);
+        GetByIdAccountTypeResponse getByIdAccountTypeResponse=this.modelMapperService.forResponse()
+                .map(accountType, GetByIdAccountTypeResponse.class);
+        return getByIdAccountTypeResponse;
+
     }
 
     @Override
@@ -71,4 +76,6 @@ public class AccountTypeManager implements AccountTypeService {
 
         this.accountTypeRepository.save(accountType);
     }
+
 }
+

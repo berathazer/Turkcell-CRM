@@ -14,6 +14,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class AccountTypeBusinessRules {
+
     private AccountTypeRepository accountTypeRepository;
     private MessageService messageService;
 
