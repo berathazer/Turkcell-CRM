@@ -1,8 +1,10 @@
 package com.turkcell.crm.catalogService.business.concretes;
 
+import com.turkcell.crm.catalogService.business.abstracts.ProductPropertyService;
 import com.turkcell.crm.catalogService.business.abstracts.ProductService;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.CreateProductPropertyRequest;
 import com.turkcell.crm.catalogService.business.dtos.request.productProperties.UpdateProductPropertyRequest;
+import com.turkcell.crm.catalogService.business.dtos.response.ProductPropertyResponseDto;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.CreatedProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetAllProductPropertyResponse;
 import com.turkcell.crm.catalogService.business.dtos.response.productProperties.GetByIdProductPropertyResponse;
@@ -12,6 +14,7 @@ import com.turkcell.crm.catalogService.business.rules.ProductPropertyBusinessRul
 import com.turkcell.crm.catalogService.core.utilities.exceptions.types.BusinessException;
 import com.turkcell.crm.catalogService.core.utilities.mapping.ModelMapperService;
 import com.turkcell.crm.catalogService.dataAccess.ProductPropertyRepository;
+import com.turkcell.crm.catalogService.entity.Product;
 import com.turkcell.crm.catalogService.entity.ProductProperty;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,24 +36,20 @@ public class ProductPropertyManagerTest {
 
     @Mock
     private ModelMapperService modelMapperService;
-
     @Mock
     private ProductPropertyRepository productPropertyRepository;
-
     @Mock
     private ProductPropertyBusinessRules productPropertyBusinessRules;
-
     @Mock
     private ProductService productService;
-
     @Mock
     private ModelMapper modelMapper;
-
     @InjectMocks
     private ProductPropertyManager productPropertyManager;
 
     @Test
     void testAdd() {
+
         ProductProperty productProperty = new ProductProperty();
         productProperty.setId(0);
 
@@ -83,6 +82,7 @@ public class ProductPropertyManagerTest {
 
     @Test
     void testGetAll() {
+
         ProductProperty productProperty = new ProductProperty();
         productProperty.setId(1);
         productProperty.setKey("Renk");
@@ -119,9 +119,7 @@ public class ProductPropertyManagerTest {
         assertEquals(2, result.get(1).getId());
         assertEquals("Mavi", result.get(1).getValue());
 
-
         verify(modelMapperService.forResponse(), times(2)).map(any(), eq(GetAllProductPropertyResponse.class));
-
     }
 
     @Test
@@ -166,7 +164,6 @@ public class ProductPropertyManagerTest {
         verify(productPropertyRepository).save(productProperty);
 
         assertEquals(response, result);
-
     }
 
     @Test
@@ -185,10 +182,7 @@ public class ProductPropertyManagerTest {
 
         verify(productPropertyBusinessRules).isProductPropertyAlreadyDeleted(request.getId());
         verify(productPropertyRepository, never()).save(any(ProductProperty.class));
-
     }
-
-
 
     @Test
     void testGetById() {
@@ -218,8 +212,6 @@ public class ProductPropertyManagerTest {
         verify(modelMapperService.forResponse()).map(productProperty, GetByIdProductPropertyResponse.class);
 
         assertEquals(getByIdProductPropertyResponse, response);
-
-
     }
 
     @Test
@@ -230,15 +222,12 @@ public class ProductPropertyManagerTest {
         doThrow(new BusinessException(ProductPropertyMessages.PRODUCT_PROPERTY_ALREADY_DELETED))
                 .when(productPropertyBusinessRules).isProductPropertyAlreadyDeleted(productId);
 
-
         assertThrows(BusinessException.class, () -> productPropertyManager.getById(productId));
-
 
         verify(productPropertyBusinessRules).isProductPropertyAlreadyDeleted(productId);
         verify(productPropertyRepository, never()).findById(anyInt());
         verify(productPropertyBusinessRules, never()).isProductPropertyExistById(anyInt());
         verify(modelMapperService, never()).forResponse();
-
     }
 
     @Test
@@ -262,7 +251,6 @@ public class ProductPropertyManagerTest {
 
         int producPropertytId = 1;
 
-        // `isProductPropertyAlreadyDeleted` metodu çağrıldığında bir ProductPropertyAlreadyDeletedException fırlatması sağlanır.
         when(productPropertyBusinessRules.isProductPropertyAlreadyDeleted(producPropertytId)).thenThrow(new BusinessException("PRODUCT PROPERTY ALREADY DELETED"));
 
         assertThrows(BusinessException.class, () -> productPropertyManager.delete(producPropertytId));
@@ -273,39 +261,36 @@ public class ProductPropertyManagerTest {
 
     }
 
-    /*@Test
-    void testGetProductPropertyByProductId_Success() {
-        List<Integer> productIds = List.of(1, 2);
+    @Test
+    void testGetProductPropertyByProductId() {
 
-        ProductProperty property1 = new ProductProperty();
-        property1.setId(1);
+        List<Integer> productIds = Arrays.asList(1, 2);
 
-        ProductProperty property2 = new ProductProperty();
-        property2.setId(2);
+        Product product1 = new Product();
+        ProductProperty productProperty1 = new ProductProperty();
+        productProperty1.setProduct(product1);
 
-        ProductPropertyResponseDto dto1 = new ProductPropertyResponseDto();
-        dto1.setProductId(1);
+        Product product2 = new Product();
+        ProductProperty productProperty2 = new ProductProperty();
+        productProperty2.setProduct(product2);
 
-        ProductPropertyResponseDto dto2 = new ProductPropertyResponseDto();
-        dto2.setProductId(2);
+        List<ProductProperty> productProperties1 = Arrays.asList(productProperty1);
+        List<ProductProperty> productProperties2 = Arrays.asList(productProperty2);
 
-        when(productPropertyRepository.findProductPropertiesByProductId(1)).thenReturn(List.of(property1));
-        when(productPropertyRepository.findProductPropertiesByProductId(2)).thenReturn(List.of(property2));
+        when(productPropertyRepository.findProductPropertiesByProductId(1)).thenReturn(productProperties1);
+        when(productPropertyRepository.findProductPropertiesByProductId(2)).thenReturn(productProperties2);
 
         when(modelMapperService.forResponse()).thenReturn(modelMapper);
-        when(modelMapperService.forResponse().map(property1, ProductPropertyResponseDto.class)).thenReturn(dto1);
-        when(modelMapperService.forResponse().map(property2, ProductPropertyResponseDto.class)).thenReturn(dto2);
 
-        List<ProductPropertyResponseDto> response = productPropertyManager.getProductPropertyByProductId(productIds);
+        when(modelMapper.map(productProperty1, ProductPropertyResponseDto.class)).thenReturn(new ProductPropertyResponseDto());
+        when(modelMapper.map(productProperty2, ProductPropertyResponseDto.class)).thenReturn(new ProductPropertyResponseDto());
 
-        assertNotNull(response);
-        assertEquals(2, response.size());
-        assertTrue(response.contains(dto1));
-        assertTrue(response.contains(dto2));
+        List<ProductPropertyResponseDto> result = productPropertyManager.getProductPropertyByProductId(productIds);
 
+        assertNotNull(result);
+        assertEquals(2, result.size());
         verify(productPropertyRepository, times(1)).findProductPropertiesByProductId(1);
         verify(productPropertyRepository, times(1)).findProductPropertiesByProductId(2);
         verify(modelMapperService.forResponse(), times(2)).map(any(), eq(ProductPropertyResponseDto.class));
-
-    }*/
+    }
 }

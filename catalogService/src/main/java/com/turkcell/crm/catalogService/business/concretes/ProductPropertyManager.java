@@ -94,7 +94,7 @@ public class ProductPropertyManager implements ProductPropertyService {
     }
 
     @Override
-    public List<ProductPropertyResponseDto> getProductPropertyByProductId(@RequestBody List<Integer> productIds) {
+    public List<ProductPropertyResponseDto> getProductPropertyByProductId(List<Integer> productIds) {
 
         List<ProductPropertyResponseDto> productPropertyResponseDto = new ArrayList<>();
 
@@ -102,13 +102,13 @@ public class ProductPropertyManager implements ProductPropertyService {
 
             List<ProductProperty> productProperty = this.productPropertyRepository.findProductPropertiesByProductId(productId);
 
-            productPropertyResponseDto.addAll(productProperty.stream().map(productProperty1 ->
+           List<ProductPropertyResponseDto> productPropertyResponseDtos = productProperty.stream().map(productProperty1 ->
                     this.modelMapperService.forResponse().
-                    map(productProperty, ProductPropertyResponseDto.class)).toList());
+                            map(productProperty1, ProductPropertyResponseDto.class)).toList();
+
+            productPropertyResponseDto.addAll(productPropertyResponseDtos);
         }
 
         return productPropertyResponseDto;
     }
-
-
 }
