@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.Optional;
 
@@ -18,19 +19,18 @@ import static org.mockito.Mockito.*;
 class UserManagerTest {
     @Mock
     private UserRepository userRepository;
-
     @InjectMocks
     private UserManager userManager;
-
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    void testAddUser() {
+    void add_whenValidUser_shouldSaveUser() {
 
         User user = new User();
+        user.setEmail("user@gmail.com");
 
         userManager.add(user);
 
@@ -38,28 +38,25 @@ class UserManagerTest {
     }
 
     @Test
-    void testLoadUserByUsernameSuccess() {
+    void loadUserByUsername_whenUserExists_shouldReturnUserDetails() {
 
         User user = new User();
-        user.setEmail("test@example.com");
+        user.setEmail("user@gmail.com");
+        user.setPassword("password");
 
-        when(userRepository.findUserByEmail(user.getEmail())).thenReturn(Optional.of(user));
+        when(userRepository.findUserByEmail("user@gmail.com")).thenReturn(Optional.of(user));
 
-        UserDetails userDetails = userManager.loadUserByUsername(user.getEmail());
+        UserDetails userDetails = userManager.loadUserByUsername("user@gmail.com");
 
-        assertNotNull(userDetails);
-        assertEquals(user.getEmail(), userDetails.getUsername());
+        assertEquals("user@gmail.com", userDetails.getUsername());
+        assertEquals("password", userDetails.getPassword());
     }
 
     @Test
-    void testLoadUserByUsernameNotFound() {
+    void loadUserByUsername_whenUserDoesNotExist_shouldThrowBadCredentialsException() {
 
-        String email = "nonexistent@example.com";
+        when(userRepository.findUserByEmail("user@gmail.com")).thenReturn(Optional.empty());
 
-        when(userRepository.findUserByEmail(email)).thenReturn(Optional.empty());
-
-        assertThrows(BadCredentialsException.class, () -> {
-            userManager.loadUserByUsername(email);
-        });
+        assertThrows(BadCredentialsException.class, () -> userManager.loadUserByUsername("user@gmail.com"));
     }
 }
